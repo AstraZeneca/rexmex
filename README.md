@@ -4,7 +4,7 @@
 [![build badge](https://github.com/AZ-AI/rexmex/workflows/CI/badge.svg)](https://github.com/AZ-AI/rexmex/actions?query=workflow%3ACI)
 
 <p align="center">
-  <img width="90%" src="https://github.com/AZ-AI/rexmex_logo/blob/master/rexmex_logo.jpeg?sanitize=true" />
+  <img width="90%" src="https://github.com/AZ-AI/rexmex/blob/master/rexmex_logo.jpeg?sanitize=true" />
 </p>
 
 

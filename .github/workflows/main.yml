@@ -28,3 +28,8 @@ jobs:
          conda install -y scipy
          pip install codecov
          python setup.py install
+      - name: Test coverage.
+        run: |
+         pip install pytest
+         pytest --cov bikg/tests/unit
+         pytest --cov bikg/tests/integration

@@ -8,6 +8,22 @@
 </p>
 
 
+--------------------------------------------------------------------------------
+
+**A simple example**
+
+Text. Bla.
+
+```python
+import rexmex
+
+A =
+B = 
+
+rec_value = rexmex.metric.recall()
+print(rec_value)
+```
+
 **Metrics included**
 
 In detail, the following evluation metrics were included:

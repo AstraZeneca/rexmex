@@ -8,8 +8,7 @@ install_requires = [
     "pandas",
     "matplotlib",
     "seaborn",
-    "plotly",
-    "inspection"
+    "plotly"
 ]
 
 

@@ -31,6 +31,19 @@ In detail, the following evluation metrics were included:
 * **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Metric](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 
 
 Head over to our [documentation](https://rexmex.readthedocs.io) to find out more about installation and data handling, a full list of implemented methods, and datasets. For a quick start, check out our [examples](https://github.com/AZ-AI/rexmex/tree/master/examples/).

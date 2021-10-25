@@ -25,7 +25,16 @@ We are motivated to constantly make RexMex even better.
 
 --------------------------------------------------------------------------------
 
-**Installation**
+
+**Installation via pip**
+
+RexMex can be installed with the following command after the repo is cloned.
+
+```sh
+$ python setup.py install
+```
+
+**Installation via pip**
 
 RexMex can be installed with the following pip command.
 

@@ -9,7 +9,7 @@ install_requires = [
     "matplotlib",
     "seaborn",
     "plotly",
-    "inspect"
+    "inspection"
 ]
 
 

@@ -7,7 +7,13 @@
   <img width="90%" src="https://github.com/AZ-AI/rexmex/blob/main/rexmex_logo.jpeg?raw=true?sanitize=true" />
 </p>
 
+--------------------------------------------------------------------------------
 
+**reXmeX** is recommender system evaluation metric library.
+
+Please look at the **[Documentation]()** and **[External Resources]()**.
+
+*reXMex* consists of utilities for recommender system evaluation. First, it provides metrics for the evaluation of recommender systems. Second, it includes a variety of methods for plotting the performance results. Implemented metrics cover a range of data mining ([ICDM](http://icdm2019.bigke.org/), [CIKM](http://www.cikm2019.net/), [KDD](https://www.kdd.org/kdd2020/)) conferences and pieces from prominent journals.
 --------------------------------------------------------------------------------
 
 **A simple example**

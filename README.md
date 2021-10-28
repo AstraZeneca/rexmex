@@ -35,6 +35,8 @@ print(rec_value)
 
 In detail, the following evluation metrics were included.
 
+**Rating Metrics**
+
 **Classification Accuracy Metrics**
 
 **Rank Accuracy Metrics**

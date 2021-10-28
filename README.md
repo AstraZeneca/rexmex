@@ -37,6 +37,8 @@ In detail, the following evluation metrics were included.
 
 **Classification accuracy metrics**
 
+**Rank accuracy metrics**
+
 * **[Mean Reciprocal Rank](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[HITS@k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Novelty](docs)** from Author *et al.*: [Title](paper_link) (Venue year)

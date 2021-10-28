@@ -31,13 +31,13 @@ rec_value = rexmex.metric.recall()
 print(rec_value)
 ```
 
-**Metrics included**
+**Metrics Included**
 
 In detail, the following evluation metrics were included.
 
-**Classification accuracy metrics**
+**Classification Accuracy Metrics**
 
-**Rank accuracy metrics**
+**Rank Accuracy Metrics**
 
 * **[Mean Reciprocal Rank](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[HITS@k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)

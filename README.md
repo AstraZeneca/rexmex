@@ -33,7 +33,9 @@ print(rec_value)
 
 **Metrics included**
 
-In detail, the following evluation metrics were included:
+In detail, the following evluation metrics were included.
+
+**Classification accuracy metrics**
 
 * **[Mean Reciprocal Rank](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[HITS@k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)

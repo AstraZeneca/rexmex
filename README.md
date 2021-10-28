@@ -13,7 +13,7 @@
 
 Please look at the **[Documentation](bla)** and **[External Resources](bla)**.
 
-**reXmeX** consists of utilities for recommender system evaluation. First, it provides metrics for the evaluation of recommender systems. Second, it includes a variety of methods for plotting the performance results. Implemented metrics cover a range of data mining ([ICDM](http://icdm2019.bigke.org/), [CIKM](http://www.cikm2019.net/), [KDD](https://www.kdd.org/kdd2020/)) conferences and pieces from prominent journals.
+**reXmeX** consists of utilities for recommender system evaluation. First, it provides a comprehensive collection of metrics for the evaluation of recommender systems. Second, it includes a variety of methods for plotting the performance results. Implemented metrics cover a range of data mining ([ICDM](http://icdm2019.bigke.org/), [CIKM](http://www.cikm2019.net/), [KDD](https://www.kdd.org/kdd2020/)) conferences and pieces from prominent journals.
 
 --------------------------------------------------------------------------------
 

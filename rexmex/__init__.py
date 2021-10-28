@@ -1,3 +1,3 @@
-from rexmex import metrics, plot
+from rexmex import classification
 
-all = ["metrics", "plot"]
+all = ["classification"]

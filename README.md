@@ -35,8 +35,9 @@ print(rec_value)
 
 In detail, the following evluation metrics were included:
 
-* **[MRR](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Mean Reciprocal Rank](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[HITS@k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Novelty](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Novelty](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Prediction Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Catalog Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)

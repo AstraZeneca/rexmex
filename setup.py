@@ -2,13 +2,6 @@ from setuptools import find_packages, setup
 
 install_requires = [
     "numpy",
-    "tqdm",
-    "scikit-learn",
-    "scipy",
-    "pandas",
-    "matplotlib",
-    "seaborn",
-    "plotly"
 ]
 
 

@@ -59,14 +59,17 @@ In detail, the following evluation metrics were included.
 
 **Rank Accuracy Metrics**
 
+* **[DPM](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[NDPM](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[NDCG](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[DCG](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[NDCG](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Reciprocal Rank](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Mean Reciprocal Rank](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Spearmanns Rho](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Kendall Tau](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[HITS@k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Novelty](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Average Recall @ k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Mean Average Recall @ k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Average Precision @ k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Mean Average Precision @ k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)

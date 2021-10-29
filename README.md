@@ -37,13 +37,29 @@ In detail, the following evluation metrics were included.
 
 **Rating Metrics**
 
+* **[MSE](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[RMSE](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[MAE](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Normalized RMSE](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Normalized MSE](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Normalized MAE](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+
+
 **Classification Accuracy Metrics**
+
+* **[Precision](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Recall](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Fallout](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 
 **Rank Accuracy Metrics**
 
+* **[NDPM](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[NDCG](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[DCG](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Mean Reciprocal Rank](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Spearmanns Rho](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Kendall Tau](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[HITS@k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Novelty](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Novelty](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Prediction Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Catalog Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
@@ -52,11 +68,6 @@ In detail, the following evluation metrics were included.
 * **[Mean Average Precision @ k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Personalisation](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Intra List Similarity](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[MSE](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[RMSE](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Precision](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Recall](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Fallout](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 
 **Improved Metrics**
 

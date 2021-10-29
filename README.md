@@ -37,18 +37,18 @@ In detail, the following evluation metrics were included.
 
 **Rating Metrics**
 
-* **[MSE](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[RMSE](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[MAE](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Normalized RMSE](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Normalized MSE](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Normalized MAE](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[MSE](docs)**
+* **[RMSE](docs)**
+* **[MAE](docs)**
+* **[Normalized RMSE](docs)**
+* **[Normalized MSE](docs)**
+* **[Normalized MAE](docs)**
 
 
 **Classification Accuracy Metrics**
 
-* **[Precision](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Recall](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Precision](docs)**
+* **[Recall](docs)**
 * **[Fallout](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Miss Rate](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Inverse Precision](docs)** from Author *et al.*: [Title](paper_link) (Venue year)

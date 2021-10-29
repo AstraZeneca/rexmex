@@ -50,6 +50,9 @@ In detail, the following evluation metrics were included.
 * **[Precision](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Recall](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Fallout](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Markedness](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Informedness](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Matthews Correlation](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 
 **Rank Accuracy Metrics**
 
@@ -61,20 +64,18 @@ In detail, the following evluation metrics were included.
 * **[Kendall Tau](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[HITS@k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Novelty](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Prediction Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Catalog Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Weighted Catalog Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Mean Average Recall @ k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Average Precision @ k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Mean Average Precision @ k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Personalisation](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Intra List Similarity](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 
-**Improved Metrics**
+**Coverage Metrics**
 
-* **[Markedness](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Informedness](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Matthews Correlation](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Prediction Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Weighted Prediction Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Catalog Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Weighted Catalog Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 
 Head over to our [documentation](https://rexmex.readthedocs.io) to find out more about installation and data handling, a full list of implemented methods, and datasets. For a quick start, check out our [examples](https://github.com/AZ-AI/rexmex/tree/master/examples/).
 

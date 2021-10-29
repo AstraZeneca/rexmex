@@ -63,6 +63,7 @@ In detail, the following evluation metrics were included.
 * **[Novelty](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Prediction Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Catalog Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Weighted Catalog Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Mean Average Recall @ k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Average Precision @ k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Mean Average Precision @ k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)

@@ -1,3 +1,3 @@
-from rexmex import classification
+from rexmex import classification, dataset
 
-all = ["classification"]
+all = ["classification", "dataset"]

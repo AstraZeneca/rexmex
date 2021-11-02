@@ -2,6 +2,10 @@ import datetime
 import sphinx_rtd_theme
 import doctest
 import rexmex
+import sys
+import os
+
+sys.path.insert(0, os.path.abspath('../../'))
 
 extensions = [
     'sphinx.ext.autodoc',

@@ -6,3 +6,5 @@ sklearn
 scipy
 pandas
 six
+nbsphinx
+nbsphinx_link

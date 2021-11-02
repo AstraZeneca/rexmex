@@ -9,6 +9,7 @@ sys.path.insert(0, os.path.abspath('../../'))
 
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.autosummary',
     'sphinx.ext.doctest',
     'sphinx.ext.intersphinx',
     'sphinx.ext.mathjax',
@@ -39,9 +40,9 @@ html_theme_options = {
     'logo_only': True,
 }
 
-html_logo = 'static/img/rexmex_small.jpg'
-html_static_path = ['static']
-html_context = {'css_files': ['static/css/custom.css']}
+html_logo = '_static/img/rexmex_small.jpg'
+html_static_path = ['_static']
+html_context = {'css_files': ['_static/css/custom.css']}
 
 add_module_names = False
 

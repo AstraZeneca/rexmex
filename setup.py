@@ -2,6 +2,9 @@ from setuptools import find_packages, setup
 
 install_requires = [
     "numpy",
+    "sklearn",
+    "pandas",
+    "scipy"
 ]
 
 
@@ -25,7 +28,7 @@ setup(
     author="AstraZeneca BIKG Team",
     author_email="",
     url="https://github.com/AstraZeneca/rexmex",
-    download_url="https://github.com/AstraZeneca/rexmex/archive/v_001.tar.gz",
+    download_url="https://github.com/AstraZeneca/rexmex/archive/v_00001.tar.gz",
     keywords=keywords,
     install_requires=install_requires,
     setup_requires=setup_requires,

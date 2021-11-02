@@ -1,0 +1,8 @@
+tqdm
+numpy
+sphinx
+sphinx_rtd_theme
+sklearn
+scipy
+pandas
+six

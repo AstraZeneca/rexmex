@@ -5,6 +5,6 @@ class ScoreCard(object):
         
         self.metric_set = metric_set
 
-    def calculate(self, scores: pd.DataFrame, groupping: List[str]):
-         performance_metrics = scores.groupby(groupping).apply(lambda group: self.metric_set.calculate(group.y, group.y_scores))
-         return performance_metrics
+    def calculate(self, scores: pd.DataFrame, groupping: List[str], filter List[Tuple[str]]) -> pd.DataFrame:
+        performance_metrics = scores.groupby(groupping).apply(lambda group: self.metric_set.calculate(group.y_true, group.y_score, filter))
+        return performance_metrics

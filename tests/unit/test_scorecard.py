@@ -2,17 +2,15 @@ import pytest
 import unittest
 
 from rexmex.dataset import DatasetReader
+from rexmex.metrics import ClassificationMetricSet
 
+class TestScoreCard(unittest.TestCase):
 
-class TestErdosRenyiDataset(unittest.TestCase):
-
-    def test_erdos_renyi_structure(self):
+    def test_classification(self):
 
         reader = DatasetReader()
         dataset = reader.read_dataset()
-
-        assert dataset.shape[0] == 50235
-        assert dataset.shape[1] == 6
-        assert set(["source_group", "target_group", "source_id", "target_id", "y_score", "y_true"]).issubset(dataset.columns) == True
-
-
+        metric_set = ClassificationMetricSet()
+        score_card = ScoreCard(metric_set)
+        performance_metrics = score_card.calculate(scores, groupping=["source_group", "target_group"], filter=["roc_auc"])
+        print(performance_metrics)

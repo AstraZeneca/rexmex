@@ -1,11 +1,15 @@
 import pandas as pd
 from typing import List, Dict
 from abc import ABC, abstractmethod
-from sklearn.metrics  import roc_auc_score, f1_score
+from sklearn.metrics  import roc_auc_score, precision_recall_curve, auc
 
 class MetricSet(ABC):
     """
     """
+    
+    def __init__(self):
+        self._metrics = {}
+
     @abstractmethod
     def setup_basic_metrics(self):
         pass
@@ -20,6 +24,7 @@ class MetricSet(ABC):
     #def add_new_metrics(self, metrics: List[Tuple]):
     #    self._metrics = self._metrics + metrics
     #    return self._metrics
+
     def reset_metrics(self):
         self._metrics = {}
     
@@ -32,36 +37,29 @@ class MetricSet(ABC):
 class ClassificationMetricSet(MetricSet):
     """
     """
-    def __init__(self, cutoff: float=0.5):
-        self.cutoff = cutoff
-        self._metrics = {}
-
     def setup_basic_metrics(self):
         self._metrics["roc_auc"] = roc_auc_score
-        self._metrics["f1_score"] = roc_auc_score
+        self._metrics["pr_auc"] = pr_auc_score
 
 
 class RankingMetricSet(MetricSet):
-    
-
-    def __init__(self):
-        self._metrics = {}
 
     def setup_basic_metrics(self):
         pass
 
 
 class RatingMetricSet(MetricSet):
-    def __init__(self):
-        self._metrics = {}
 
     def setup_basic_metrics(self):
         pass
 
 
 class CoverageMetricSet(MetricSet):
-    def __init__(self):
-        self._metrics = {}
 
     def setup_basic_metrics(self):
         pass
+
+def pr_auc_score(y_true, y_scores):
+    precision, recall, thresholds = precision_recall_curve(y_true, y_scores)
+    pr_auc = auc(recall, precision)
+    return pr_auc

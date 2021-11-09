@@ -33,3 +33,4 @@ jobs:
          pip install pytest
          pip install pytest-cov
          pytest ./tests/unit -cov rexmex/
+         pytest ./tests/integration -cov rexmex/

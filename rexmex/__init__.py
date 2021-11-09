@@ -1,3 +1,3 @@
-from rexmex import classification, dataset
+from rexmex import scorecard, dataset, metrics
 
-all = ["classification", "dataset"]
+all = ["scorecard", "dataset", "metrics"]

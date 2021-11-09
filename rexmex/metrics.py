@@ -1,7 +1,10 @@
 import pandas as pd
+from functools import wraps
 from typing import List, Dict
 from abc import ABC, abstractmethod
-from sklearn.metrics  import roc_auc_score, precision_recall_curve, auc, f1_score
+from sklearn.metrics import roc_auc_score, precision_recall_curve, auc
+from sklearn.metrics import f1_score, precision_score, recall_score
+
 
 class MetricSet(ABC):
     """
@@ -40,8 +43,9 @@ class ClassificationMetricSet(MetricSet):
     def setup_basic_metrics(self):
         self._metrics["roc_auc"] = roc_auc_score
         self._metrics["pr_auc"] = pr_auc_score
-        self._metrics["f1_score" = binarize(f1_score)
-
+        self._metrics["f1_score"] = binarize(f1_score)
+        self._metrics["precision"] = binarize(precision_score)
+        self._metrics["recall"] = binarize(recall_score)
 
 class RankingMetricSet(MetricSet):
 
@@ -67,9 +71,11 @@ def pr_auc_score(y_true, y_scores):
 
 def binarize(metric):
     @wraps(metric)
-    def wrapper(*args, **kwargs):
+    def metric_wrapper(*args, **kwargs):
+        # TODO: Move to optimal binning.
+        y_score = args[1]
         y_score[y_score < 0.5] = 0
-        y_score[y_scores >=0.5] = 1
-
+        y_score[y_score >=0.5] = 1
         score = metric(*args, **kwargs)
-    return wrapper
+        return score
+    return metric_wrapper

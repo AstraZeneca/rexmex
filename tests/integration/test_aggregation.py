@@ -6,6 +6,7 @@ from rexmex.dataset import DatasetReader
 from rexmex.metrics import ClassificationMetricSet
 
 class TestMetricAggregation(unittest.TestCase):
+
     def test_classification(self):
         reader = DatasetReader()
         scores = reader.read_dataset()
@@ -13,4 +14,5 @@ class TestMetricAggregation(unittest.TestCase):
         metric_set.setup_basic_metrics()
         score_card = ScoreCard(metric_set)
         performance_metrics = score_card.calculate(scores, groupping=["source_group"])
-        assert performance_metrics.shape[0] == 10
+        print(performance_metrics)
+        assert performance_metrics.shape == (10, 5)

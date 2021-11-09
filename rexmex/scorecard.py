@@ -7,7 +7,8 @@ class ScoreCard(object):
         
         self.metric_set = metric_set
 
-    def calculate(self, scores: pd.DataFrame, groupping: List[str], filter: List[str]=None) -> pd.DataFrame:
-        scores = scores.groupby(groupping)
+    def calculate(self, scores: pd.DataFrame, groupping: List[str]=None, filter: List[str]=None) -> pd.DataFrame:
+        if groupping is not None:
+             scores = scores.groupby(groupping)
         performance_metrics = scores.apply(lambda group: self.metric_set.get_performance_metrics(group.y_true, group.y_score, filter))
         return performance_metrics

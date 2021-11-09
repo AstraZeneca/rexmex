@@ -1,7 +1,7 @@
 import pandas as pd
 from typing import List, Dict
 from abc import ABC, abstractmethod
-from sklearn.metrics  import roc_auc_score, precision_recall_curve, auc
+from sklearn.metrics  import roc_auc_score, precision_recall_curve, auc, f1_score
 
 class MetricSet(ABC):
     """
@@ -40,6 +40,7 @@ class ClassificationMetricSet(MetricSet):
     def setup_basic_metrics(self):
         self._metrics["roc_auc"] = roc_auc_score
         self._metrics["pr_auc"] = pr_auc_score
+        self._metrics["f1_score" = binarize(f1_score)
 
 
 class RankingMetricSet(MetricSet):
@@ -63,3 +64,12 @@ def pr_auc_score(y_true, y_scores):
     precision, recall, thresholds = precision_recall_curve(y_true, y_scores)
     pr_auc = auc(recall, precision)
     return pr_auc
+
+def binarize(metric):
+    @wraps(metric)
+    def wrapper(*args, **kwargs):
+        y_score[y_score < 0.5] = 0
+        y_score[y_scores >=0.5] = 1
+
+        score = metric(*args, **kwargs)
+    return wrapper

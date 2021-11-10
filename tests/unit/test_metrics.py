@@ -11,5 +11,5 @@ class TestMetrics(unittest.TestCase):
         metric_set = ClassificationMetricSet()
         metric_set.setup_basic_metrics()
         performance_metrics = metric_set.get_performance_metrics(scores.y_true, scores.y_score)
-        assert performance_metrics.shape == (1, 5)
+        assert performance_metrics.shape == (1, 6)
 

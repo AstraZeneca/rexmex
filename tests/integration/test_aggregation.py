@@ -15,4 +15,4 @@ class TestMetricAggregation(unittest.TestCase):
         score_card = ScoreCard(metric_set)
         performance_metrics = score_card.calculate(scores, groupping=["source_group"])
         print(performance_metrics)
-        assert performance_metrics.shape == (10, 5)
+        assert performance_metrics.shape == (10, 6)

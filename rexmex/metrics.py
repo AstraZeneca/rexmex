@@ -3,7 +3,7 @@ from functools import wraps
 from typing import List, Dict
 from abc import ABC, abstractmethod
 from sklearn.metrics import roc_auc_score, precision_recall_curve, auc
-from sklearn.metrics import f1_score, precision_score, recall_score
+from sklearn.metrics import f1_score, precision_score, recall_score, average_precision_score
 
 
 class MetricSet(ABC):
@@ -43,6 +43,7 @@ class ClassificationMetricSet(MetricSet):
     def setup_basic_metrics(self):
         self._metrics["roc_auc"] = roc_auc_score
         self._metrics["pr_auc"] = pr_auc_score
+        self._metrics["average_precision"] = average_precision_score
         self._metrics["f1_score"] = binarize(f1_score)
         self._metrics["precision"] = binarize(precision_score)
         self._metrics["recall"] = binarize(recall_score)

@@ -22,13 +22,18 @@ Please look at the **[Documentation](bla)** and **[External Resources](bla)**.
 Text. Bla.
 
 ```python
-import rexmex
+from rexmex.scorecard import ScoreCard
+from rexmex.dataset import DatasetReader
+from rexmex.metricset import ClassificationMetricSet
 
-A =
-B = 
+reader = DatasetReader()
+scores = reader.read_dataset()
 
-rec_value = rexmex.metric.recall()
-print(rec_value)
+metric_set = ClassificationMetricSet()
+
+score_card = ScoreCard(metric_set)
+
+performance_metrics = score_card.calculate(scores, groupping=["source_group"])
 ```
 
 ## Metrics Included with the Specialized Scorecards
@@ -51,7 +56,7 @@ The specialized scorecards with pre-set metrics have the following general categ
 * **[Pearson Correlation](docs)**
 * **[Coefficient of Determination](docs)**
 
-**Classification Accuracy Metrics**
+##  Classification Metric Scorecard
 
 * **[Precision](docs)**
 * **[Recall](docs)**
@@ -63,7 +68,7 @@ The specialized scorecards with pre-set metrics have the following general categ
 * **[Informedness](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Matthews Correlation](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 
-**Rank Accuracy Metrics**
+## Rank Accuracy Metric Scorecard
 
 * **[DPM](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[NDPM](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
@@ -82,7 +87,7 @@ The specialized scorecards with pre-set metrics have the following general categ
 * **[Personalisation](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Intra List Similarity](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 
-**Coverage Metrics**
+## Coverage Metric Scorecard
 
 * **[Prediction Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Weighted Prediction Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)

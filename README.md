@@ -31,9 +31,15 @@ rec_value = rexmex.metric.recall()
 print(rec_value)
 ```
 
-**Metrics Included**
+**Metrics Included with the Specialized Scorecards**
 
-In detail, the following evaluation metrics were included.
+The specialized scorecards with pre-set metrics have the following general categories:
+
+- Rating
+- Classification
+- Ranking
+- Coverage
+
 
 **Rating Metric Scorecard**
 

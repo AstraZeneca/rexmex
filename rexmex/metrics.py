@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn.metrics precision_recall_curve, auc
+from sklearn.metrics import precision_recall_curve, auc
 from sklearn.metrics import mean_squared_error
 
 def pr_auc_score(y_true, y_scores):

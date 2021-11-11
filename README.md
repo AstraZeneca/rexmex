@@ -33,22 +33,17 @@ print(rec_value)
 
 **Metrics Included**
 
-In detail, the following evluation metrics were included.
+In detail, the following evaluation metrics were included.
 
-**Rating Metric Scorecards**
+**Rating Metric Scorecard**
 
 * **[Mean Squared Error](docs)**
 * **[Root Mean Squared Error](docs)**
 * **[Mean Absolute Error](docs)**
 * **[Mean Absolute Percentile Error](docs)**
 * **[Symmetric Mean Absolute Percentage Error](docs)**
-
-* **[Normalized RMSE](docs)**
-* **[Normalized MSE](docs)**
-* **[Normalized MAE](docs)**
-* **[Normalized MSE](docs)**
-* **[Normalized MAE](docs)**
-
+* **[Pearson Correlation](docs)**
+* **[Coefficient of Determination](docs)**
 
 **Classification Accuracy Metrics**
 

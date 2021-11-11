@@ -12,7 +12,7 @@ def binarize(metric):
     return metric_wrapper
 
 
-def normalize_metric(metric):
+def normalize(metric):
     @wraps(metric)
     def metric_wrapper(*args, **kwargs):    
         y_mean = np.mean(y_true)

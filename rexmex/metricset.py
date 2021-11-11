@@ -66,6 +66,13 @@ class RatingMetricSet(MetricSet):
         self._metrics["rmse"] = root_mean_squared_error
         self._metrics["mape"] = mean_absolute_percentage_error
         self._metrics["smape"] = symmetric_mean_absolute_percentage_error
+
+        self._metrics["nmae"] = normalize(mean_absolute_error)
+        self._metrics["nmse"] = normalize(mean_squared_error)
+        self._metrics["nrmse"] = normalize(root_mean_squared_error)
+        self._metrics["nmape"] = normalize(mean_absolute_percentage_error)
+        self._metrics["nsmape"] = normalize(symmetric_mean_absolute_percentage_error)
+
         self._metrics["r_squared"] = r2_score
         self._metrics["linear_correlation"] = pearsonr
 

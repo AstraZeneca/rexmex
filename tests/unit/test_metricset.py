@@ -2,7 +2,7 @@ import unittest
 import pytest
 import pandas as pd
 
-from rexmex.metrics import ClassificationMetricSet
+from rexmex.metricset import ClassificationMetricSet
 
 class TestMetrics(unittest.TestCase):
 

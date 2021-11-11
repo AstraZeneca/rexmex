@@ -12,21 +12,21 @@ Score Cards
     :members:
     :undoc-members:
 
-Score Cards
+Metric Sets
 --------------------
 
 .. automodule:: rexmex.metricset
     :members:
     :undoc-members:
 
-Score Cards
+New Metrics
 --------------------
 
 .. automodule:: rexmex.metrics
     :members:
     :undoc-members:
 
-Score Cards
+Utility
 --------------------
 
 .. automodule:: rexmex.utility
@@ -34,10 +34,10 @@ Score Cards
     :undoc-members:
 
 
-Synthetic Dataset
+Synthetic Datasets
 --------------------
 
-.. automodule:: rexmex.scorecard
+.. automodule:: rexmex.dataset
     :members:
     :undoc-members:
 

@@ -12,5 +12,5 @@ class TestMetricAggregation(unittest.TestCase):
         scores = reader.read_dataset()
         metric_set = ClassificationMetricSet()
         score_card = ScoreCard(metric_set)
-        performance_metrics = score_card.calculate(scores, groupping=["source_group"])
+        performance_metrics = score_card.generate_report(scores, groupping=["source_group"])
         assert performance_metrics.shape == (10, 6)

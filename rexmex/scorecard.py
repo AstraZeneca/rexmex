@@ -14,8 +14,10 @@ class ScoreCard(object):
         performance_metrics = pd.DataFrame.from_dict(performance_metrics)
         return performance_metrics
 
-    def calculate(self, scores: pd.DataFrame, groupping: List[str]=None) -> pd.DataFrame:
+    def generate_report(self, scores: pd.DataFrame, groupping: List[str]=None) -> pd.DataFrame:
+        """
+        """
         if groupping is not None:
              scores = scores.groupby(groupping)
-        performance_metrics = scores.apply(lambda group: self._get_performance_metrics(group.y_true, group.y_score))
-        return performance_metrics
+        report = scores.apply(lambda group: self._get_performance_metrics(group.y_true, group.y_score))
+        return report

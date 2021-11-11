@@ -31,7 +31,7 @@ rec_value = rexmex.metric.recall()
 print(rec_value)
 ```
 
-**Metrics Included with the Specialized Scorecards**
+## Metrics Included with the Specialized Scorecards
 
 The specialized scorecards with pre-set metrics have the following general categories:
 
@@ -41,7 +41,7 @@ The specialized scorecards with pre-set metrics have the following general categ
 - **Coverage**
 
 
-**Rating Metric Scorecard**
+## Rating Metric Scorecard
 
 * **[Mean Squared Error](docs)**
 * **[Root Mean Squared Error](docs)**

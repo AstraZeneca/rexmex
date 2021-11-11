@@ -8,5 +8,5 @@ class TestMetrics(unittest.TestCase):
 
     def test_classification_metric_set(self):
         metric_set = ClassificationMetricSet()
-        assert "auc_score" in metric_set
+        assert "roc_auc" in metric_set
 

@@ -1,8 +1,7 @@
 import pandas as pd
 from typing import List, Dict
-from abc import ABC, abstractmethod
 
-from rexmex.utils import binarize, normalize
+from rexmex.utils import binarize
 
 from scipy.stats.stats import pearsonr
 from sklearn.metrics import roc_auc_score
@@ -12,37 +11,17 @@ from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolu
 from rexmex.metrics import pr_auc_score
 from rexmex.metrics import symmetric_mean_absolute_percentage_error, root_mean_squared_error
 
-class MetricSet(ABC):
+class MetricSet(dict):
     """
     """   
-    def __init__(self):
-        """
-        """
-        self._metrics = {}
-
-    @abstractmethod
-    def setup_basic_metrics(self):
-        """
-        """
-        pass
-
     def _get_metrics(self, filter: List[str]=None) -> Dict:
         """
         """
         if filter is None:
-            selected_metrics = self._metrics
+            selected_metrics = self
         else:
-            selected_metrics = {name: metric for name, metric in self._metrics.items()}
+            selected_metrics = {name: metric for name, metric in self.items()}
         return selected_metrics
-
-    #def add_new_metrics(self, metrics: List[Tuple]):
-    #    self._metrics = self._metrics + metrics
-    #    return self._metrics
-
-    def reset_metrics(self):
-        """
-        """
-        self._metrics = {}
     
     def get_performance_metrics(self, y_true, y_score, filter: List[str]=None) -> pd.DataFrame:
         """
@@ -52,42 +31,38 @@ class MetricSet(ABC):
         performance_metrics = pd.DataFrame.from_dict(performance_metrics)
         return performance_metrics
 
+    def filter_metric_set(self, filter: List[str]=None):
+        for name, _ in self.items():
+            del self[name]
+
 class ClassificationMetricSet(MetricSet):
     """
     """
-    def setup_basic_metrics(self):
-        self._metrics["roc_auc"] = roc_auc_score
-        self._metrics["pr_auc"] = pr_auc_score
-        self._metrics["average_precision"] = average_precision_score
-        self._metrics["f1_score"] = binarize(f1_score)
-        self._metrics["precision"] = binarize(precision_score)
-        self._metrics["recall"] = binarize(recall_score)
+    def __init__(self):
+        self["roc_auc"] = roc_auc_score
+        self["pr_auc"] = pr_auc_score
+        self["average_precision"] = average_precision_score
+        self["f1_score"] = binarize(f1_score)
+        self["precision"] = binarize(precision_score)
+        self["recall"] = binarize(recall_score)
 
 class RatingMetricSet(MetricSet):
     """
     """
-    def setup_basic_metrics(self):
-        self._metrics["mae"] = mean_absolute_error
-        self._metrics["mse"] = mean_squared_error
-        self._metrics["rmse"] = root_mean_squared_error
-        self._metrics["mape"] = mean_absolute_percentage_error
-        self._metrics["smape"] = symmetric_mean_absolute_percentage_error
-
-        self._metrics["nmae"] = normalize(mean_absolute_error)
-        self._metrics["nmse"] = normalize(mean_squared_error)
-        self._metrics["nrmse"] = normalize(root_mean_squared_error)
-        self._metrics["nmape"] = normalize(mean_absolute_percentage_error)
-        self._metrics["nsmape"] = normalize(symmetric_mean_absolute_percentage_error)
-
-        self._metrics["r_squared"] = r2_score
-        self._metrics["pearson_correlation"] = pearsonr
+    def __init__(self):
+        self["mae"] = mean_absolute_error
+        self["mse"] = mean_squared_error
+        self["rmse"] = root_mean_squared_error
+        self["mape"] = mean_absolute_percentage_error
+        self["smape"] = symmetric_mean_absolute_percentage_error
+        self["r_squared"] = r2_score
+        self["pearson_correlation"] = pearsonr
 
 class CoverageMetricSet(MetricSet):
     """
     """
     def setup_basic_metrics(self):
         pass
-
 
 class RankingMetricSet(MetricSet):
     """

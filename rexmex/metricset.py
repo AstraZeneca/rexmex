@@ -1,7 +1,8 @@
 import pandas as pd
-from functools import wraps
 from typing import List, Dict
 from abc import ABC, abstractmethod
+
+from rexmex.utils import binarize
 
 from scipy.stats.stats import pearsonr
 from sklearn.metrics import roc_auc_score
@@ -60,6 +61,7 @@ class RankingMetricSet(MetricSet):
 
 
 class RatingMetricSet(MetricSet):
+    
     def setup_basic_metrics(self):
         self._metrics["mae"] = mean_absolute_error
         self._metrics["mse"] = mean_squared_error
@@ -73,14 +75,3 @@ class CoverageMetricSet(MetricSet):
 
     def setup_basic_metrics(self):
         pass
-
-def binarize(metric):
-    @wraps(metric)
-    def metric_wrapper(*args, **kwargs):
-        # TODO: Move to optimal binning. Youden’s J statistic.
-        y_score = args[1]
-        y_score[y_score < 0.5] = 0
-        y_score[y_score >= 0.5] = 1
-        score = metric(*args, **kwargs)
-        return score
-    return metric_wrapper

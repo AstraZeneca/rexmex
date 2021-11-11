@@ -97,16 +97,14 @@ The specialized scorecards with pre-set metrics have the following general categ
 * **[Catalog Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Weighted Catalog Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 
-Head over to our [documentation](https://rexmex.readthedocs.io) to find out more about installation and data handling, a full list of implemented methods, and datasets. For a quick start, check out our [examples](https://github.com/AZ-AI/rexmex/tree/master/examples/).
+Head over to our [documentation](https://rexmex.readthedocs.io) to find out more about installation and data handling, a full list of implemented methods, and datasets. For a quick start, check out our [examples](https://github.com/AstraZeneca/rexmex/tree/master/examples/).
 
-If you notice anything unexpected, please open an [issue](https://github.com/AZ-AI/rexmex/issues) and let us know. If you are missing a specific method, feel free to open a [feature request](https://github.com/AZ-AI/rexmex/issues).
+If you notice anything unexpected, please open an [issue](https://github.com/AstraZeneca/rexmex/issues) and let us know. If you are missing a specific method, feel free to open a [feature request](https://github.com/AstraZeneca/rexmex/issues).
 We are motivated to constantly make RexMex even better.
-
 
 --------------------------------------------------------------------------------
 
-
-**Installation via pip**
+**Installation via the command line**
 
 RexMex can be installed with the following command after the repo is cloned.
 

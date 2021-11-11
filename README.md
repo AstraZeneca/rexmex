@@ -35,12 +35,17 @@ print(rec_value)
 
 In detail, the following evluation metrics were included.
 
-**Rating Metrics**
+**Rating Metric Scorecards**
 
-* **[MSE](docs)**
-* **[RMSE](docs)**
-* **[MAE](docs)**
+* **[Mean Squared Error](docs)**
+* **[Root Mean Squared Error](docs)**
+* **[Mean Absolute Error](docs)**
+* **[Mean Absolute Percentile Error](docs)**
+* **[Symmetric Mean Absolute Percentage Error](docs)**
+
 * **[Normalized RMSE](docs)**
+* **[Normalized MSE](docs)**
+* **[Normalized MAE](docs)**
 * **[Normalized MSE](docs)**
 * **[Normalized MAE](docs)**
 

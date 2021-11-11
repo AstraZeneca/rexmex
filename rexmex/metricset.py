@@ -27,6 +27,8 @@ class MetricSet(ABC):
         pass
 
     def _get_metrics(self, filter: List[str]=None) -> Dict:
+        """
+        """
         if filter is None:
             selected_metrics = self._metrics
         else:
@@ -38,9 +40,13 @@ class MetricSet(ABC):
     #    return self._metrics
 
     def reset_metrics(self):
+        """
+        """
         self._metrics = {}
     
     def get_performance_metrics(self, y_true, y_score, filter: List[str]=None) -> pd.DataFrame:
+        """
+        """
         selected_metrics = self._get_metrics(filter)
         performance_metrics = {name: [metric(y_true, y_score)] for name, metric in selected_metrics.items()}
         performance_metrics = pd.DataFrame.from_dict(performance_metrics)
@@ -74,7 +80,7 @@ class RatingMetricSet(MetricSet):
         self._metrics["nsmape"] = normalize(symmetric_mean_absolute_percentage_error)
 
         self._metrics["r_squared"] = r2_score
-        self._metrics["linear_correlation"] = pearsonr
+        self._metrics["pearson_correlation"] = pearsonr
 
 class CoverageMetricSet(MetricSet):
     """

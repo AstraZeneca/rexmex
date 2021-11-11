@@ -18,5 +18,7 @@ def symmetric_mean_absolute_percentage_error(y_true, y_scores):
 def normalize(y_true, y_scores):
     y_mean = np.mean(y_true)
     y_std = np.mean(y_true)
-    y_true = , (y_true - y_mean)/y_std
+    y_true = (y_true - y_mean)/y_std
     y_scores = (y_scores - y_mean)/y_std
+    return y_true, y_scores
+

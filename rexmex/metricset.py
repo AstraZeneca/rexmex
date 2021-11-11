@@ -14,13 +14,16 @@ from rexmex.metrics import symmetric_mean_absolute_percentage_error, root_mean_s
 
 class MetricSet(ABC):
     """
-    """
-    
+    """   
     def __init__(self):
+        """
+        """
         self._metrics = {}
 
     @abstractmethod
     def setup_basic_metrics(self):
+        """
+        """
         pass
 
     def _get_metrics(self, filter: List[str]=None) -> Dict:
@@ -54,14 +57,9 @@ class ClassificationMetricSet(MetricSet):
         self._metrics["precision"] = binarize(precision_score)
         self._metrics["recall"] = binarize(recall_score)
 
-class RankingMetricSet(MetricSet):
-
-    def setup_basic_metrics(self):
-        pass
-
-
 class RatingMetricSet(MetricSet):
-    
+    """
+    """
     def setup_basic_metrics(self):
         self._metrics["mae"] = mean_absolute_error
         self._metrics["mse"] = mean_squared_error
@@ -72,6 +70,14 @@ class RatingMetricSet(MetricSet):
         self._metrics["linear_correlation"] = pearsonr
 
 class CoverageMetricSet(MetricSet):
+    """
+    """
+    def setup_basic_metrics(self):
+        pass
 
+
+class RankingMetricSet(MetricSet):
+    """
+    """
     def setup_basic_metrics(self):
         pass

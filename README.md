@@ -35,10 +35,10 @@ print(rec_value)
 
 The specialized scorecards with pre-set metrics have the following general categories:
 
-- Rating
-- Classification
-- Ranking
-- Coverage
+- **Rating**
+- **Classification**
+- **Ranking**
+- **Coverage**
 
 
 **Rating Metric Scorecard**

@@ -47,13 +47,15 @@ The specialized scorecards with pre-set metrics have the following general categ
 
 ## Rating Metric Scorecard
 
-* **[Mean Squared Error](docs)**
-* **[Root Mean Squared Error](docs)**
-* **[Mean Absolute Error](docs)**
-* **[Mean Absolute Percentile Error](docs)**
-* **[Symmetric Mean Absolute Percentage Error](docs)**
-* **[Pearson Correlation](docs)**
-* **[Coefficient of Determination](docs)**
+These metrics assume that items are scored with explicit ratings and these ratings are predicted by a regression model. 
+
+* **[Mean Squared Error](https://en.wikipedia.org/wiki/Mean_squared_error)**
+* **[Root Mean Squared Error](https://en.wikipedia.org/wiki/Mean_squared_error)**
+* **[Mean Absolute Error](https://en.wikipedia.org/wiki/Mean_absolute_error)**
+* **[Mean Absolute Percentage Error](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)**
+* **[Symmetric Mean Absolute Percentage Error](https://en.wikipedia.org/wiki/Symmetric_mean_absolute_percentage_error)**
+* **[Pearson Correlation](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)**
+* **[Coefficient of Determination](https://en.wikipedia.org/wiki/Coefficient_of_determination)**
 
 ##  Classification Metric Scorecard
 
@@ -62,7 +64,7 @@ The specialized scorecards with pre-set metrics have the following general categ
 * **[PR AUC](docs)**
 * **[ROC AUC](docs)**
 * **[F-1 Score](docs)**
-* **[Average Precision](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[Average Precision](docs)**
 
 * **[Miss Rate](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Inverse Precision](docs)** from Author *et al.*: [Title](paper_link) (Venue year)

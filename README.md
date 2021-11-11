@@ -19,7 +19,7 @@ Please look at the **[Documentation](https://rexmex.readthedocs.io/en/latest/)**
 
 **A simple example**
 
-The following example loads a synthetic dataset which has the `source_id`, `target_id`, `source_group` and `target group` keys besides the mandatory `y_true` and `y_scores`. 
+The following example loads a synthetic dataset which has the `source_id`, `target_id`, `source_group` and `target group` keys besides the mandatory `y_true` and `y_scores`.  The dataset has binary labels and predictied probability scores. We read the dataset and define a defult `ClassificationMetric` instance for the evaluation of the predictions. Using this we create a score card, group the predictions on the `source_group` key and return a performance metric report.
 
 ```python
 from rexmex.scorecard import ScoreCard
@@ -33,7 +33,7 @@ metric_set = ClassificationMetricSet()
 
 score_card = ScoreCard(metric_set)
 
-performance_metrics = score_card.generate_report(scores, groupping=["source_group"])
+report = score_card.generate_report(scores, groupping=["source_group"])
 ```
 
 ## Metrics Included with the Specialized Scorecards
@@ -44,7 +44,6 @@ The specialized scorecards with pre-set metrics have the following general categ
 - **Classification**
 - **Ranking**
 - **Coverage**
-
 
 ## Rating Metric Scorecard
 
@@ -60,7 +59,11 @@ The specialized scorecards with pre-set metrics have the following general categ
 
 * **[Precision](docs)**
 * **[Recall](docs)**
-* **[Fallout](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[PR AUC](docs)**
+* **[ROC AUC](docs)**
+* **[F-1 Score](docs)**
+* **[Average Precision](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+
 * **[Miss Rate](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Inverse Precision](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Inverse Recall](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
@@ -68,7 +71,7 @@ The specialized scorecards with pre-set metrics have the following general categ
 * **[Informedness](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[Matthews Correlation](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 
-## Rank Accuracy Metric Scorecard
+## Ranking Metric Scorecard
 
 * **[DPM](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
 * **[NDPM](docs)** from Author *et al.*: [Title](paper_link) (Venue year)

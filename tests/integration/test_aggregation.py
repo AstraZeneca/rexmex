@@ -3,7 +3,7 @@ import unittest
 
 from rexmex.scorecard import ScoreCard
 from rexmex.dataset import DatasetReader
-from rexmex.metrics import ClassificationMetricSet
+from rexmex.metricset import ClassificationMetricSet
 
 class TestMetricAggregation(unittest.TestCase):
 

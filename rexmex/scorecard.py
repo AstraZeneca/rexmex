@@ -1,9 +1,9 @@
 import pandas as pd
-import rexmex.metrics
+import rexmex.metricset
 from typing import List
 
 class ScoreCard(object):
-    def __init__(self, metric_set: rexmex.metrics.MetricSet):
+    def __init__(self, metric_set: rexmex.metricset.MetricSet):
         
         self.metric_set = metric_set
 

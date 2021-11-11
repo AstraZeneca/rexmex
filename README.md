@@ -1,10 +1,10 @@
 ![Version](https://badge.fury.io/py/rexmex.svg?style=plastic)
-![License](https://img.shields.io/github/license/AZ-AI/rexmex.svg)
-[![repo size](https://img.shields.io/github/repo-size/AZ-AI/rexmex.svg)](https://github.com/AZ-AI/rexmex/archive/master.zip)
-[![build badge](https://github.com/AZ-AI/rexmex/workflows/CI/badge.svg)](https://github.com/AZ-AI/rexmex/actions?query=workflow%3ACI)
+![License](https://img.shields.io/github/license/AstraZeneca/rexmex.svg)
+[![repo size](https://img.shields.io/github/repo-size/AstraZeneca/rexmex.svg)](https://github.com/AstraZeneca/rexmex/archive/master.zip)
+[![build badge](https://github.com/AstraZeneca/rexmex/workflows/CI/badge.svg)](https://github.com/AstraZeneca/rexmex/actions?query=workflow%3ACI)
 
 <p align="center">
-  <img width="90%" src="https://github.com/AZ-AI/rexmex/blob/main/rexmex_small.jpg?raw=true?sanitize=true" />
+  <img width="90%" src="https://github.com/AstraZeneca/rexmex/blob/main/rexmex_small.jpg?raw=true?sanitize=true" />
 </p>
 
 --------------------------------------------------------------------------------
@@ -19,7 +19,7 @@ Please look at the **[Documentation](https://rexmex.readthedocs.io/en/latest/)**
 
 **A simple example**
 
-Text. Bla.
+The following example loads a synthetic dataset which has the `source_id`, `target_id`, `source_group` and `target group` keys besides the mandatory `y_true` and `y_scores`. 
 
 ```python
 from rexmex.scorecard import ScoreCard

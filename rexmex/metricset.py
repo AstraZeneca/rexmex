@@ -14,26 +14,12 @@ from rexmex.metrics import symmetric_mean_absolute_percentage_error, root_mean_s
 class MetricSet(dict):
     """
     """   
-    def _get_metrics(self, filter: List[str]=None) -> Dict:
-        """
-        """
-        if filter is None:
-            selected_metrics = self
-        else:
-            selected_metrics = {name: metric for name, metric in self.items()}
-        return selected_metrics
-    
-    def get_performance_metrics(self, y_true, y_score, filter: List[str]=None) -> pd.DataFrame:
-        """
-        """
-        selected_metrics = self._get_metrics(filter)
-        performance_metrics = {name: [metric(y_true, y_score)] for name, metric in selected_metrics.items()}
-        performance_metrics = pd.DataFrame.from_dict(performance_metrics)
-        return performance_metrics
 
     def filter_metric_set(self, filter: List[str]=None):
         for name, _ in self.items():
-            del self[name]
+            if name in filter:
+                del self[name]
+        return self
 
 class ClassificationMetricSet(MetricSet):
     """

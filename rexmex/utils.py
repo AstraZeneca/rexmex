@@ -10,3 +10,15 @@ def binarize(metric):
         score = metric(*args, **kwargs)
         return score
     return metric_wrapper
+
+
+def normalize_metric(metric):
+    @wraps(metric)
+    def metric_wrapper(*args, **kwargs):    
+        y_mean = np.mean(y_true)
+        y_std = np.mean(y_true)
+        y_true = (y_true - y_mean)/y_std
+        y_scores = (y_scores - y_mean)/y_std
+        score = metric(*args, **kwargs)
+        return score
+    return metric_wrapper

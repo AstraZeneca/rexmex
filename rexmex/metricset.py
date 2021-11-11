@@ -2,7 +2,7 @@ import pandas as pd
 from typing import List, Dict
 from abc import ABC, abstractmethod
 
-from rexmex.utils import binarize
+from rexmex.utils import binarize, normalize
 
 from scipy.stats.stats import pearsonr
 from sklearn.metrics import roc_auc_score

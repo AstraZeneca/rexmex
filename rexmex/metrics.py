@@ -1,4 +1,4 @@
-import numpy
+import numpy as np
 from sklearn.metrics precision_recall_curve, auc
 from sklearn.metrics import mean_squared_error
 
@@ -12,7 +12,7 @@ def root_mean_squared_error(y_true, y_scores):
     return rmse
 
 def symmetric_mean_absolute_percentage_error(y_true, y_scores):
-    smape = np.mean(np.abs(y_scores-y_true)/((np.abs(y_scores)+np.abs(y_true))/2))
+    smape = np.mean(np.abs(y_scores - y_true)/((np.abs(y_scores)+np.abs(y_true))/2))
     return smape 
 
 def normalize(y_true, y_scores):
@@ -21,4 +21,3 @@ def normalize(y_true, y_scores):
     y_true = (y_true - y_mean)/y_std
     y_scores = (y_scores - y_mean)/y_std
     return y_true, y_scores
-

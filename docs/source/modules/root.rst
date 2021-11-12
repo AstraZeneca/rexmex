@@ -29,7 +29,7 @@ Metrics
 Utility
 --------------------
 
-.. automodule:: rexmex.utility
+.. automodule:: rexmex.utils
     :members:
     :undoc-members:
 

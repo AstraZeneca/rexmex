@@ -2,6 +2,14 @@ import numpy as np
 from functools import wraps
 
 def binarize(metric):
+    """
+    Binarize the predictions for a ground-truth - prediction vector pair.
+
+    Args:
+        metric (function): The metric function which needs a binarization pre-processing step.
+    Returns:
+        metric_wrapper (function): The function which wraps the metric and binarized the probability scores.
+    """
     @wraps(metric)
     def metric_wrapper(*args, **kwargs):
         # TODO: Move to optimal binning. Youden’s J statistic.
@@ -14,6 +22,14 @@ def binarize(metric):
 
 
 def normalize(metric):
+    """
+    Normalize the predictions for a ground-truth - prediction vector pair.
+
+    Args:
+        metric (function): The metric function which needs a normalization pre-processing step.
+    Returns:
+        metric_wrapper (function): The function which wraps the metric and normalized predictions.
+    """
     @wraps(metric)
     def metric_wrapper(*args, **kwargs):    
         y_mean = np.mean(y_true)

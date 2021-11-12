@@ -33,12 +33,12 @@ class ClassificationMetricSet(MetricSet):
     """
     A set of classification metrics with the following metrics included:
 
-    |**Bla**
-    |**Bla**
-    |**Bla**
-    |**Bla**
-    |**Bla**
-    |**Bla**
+    | **Bla**
+    | **Bla**
+    | **Bla**
+    | **Bla**
+    | **Bla**
+    | **Bla**
     """
     def __init__(self):
         self["roc_auc"] = roc_auc_score
@@ -52,13 +52,13 @@ class RatingMetricSet(MetricSet):
     """
     A set of rating metrics with the following metrics included:
 
-    |**Bla** 
-    |**Bla** 
-    |**Bla** 
-    |**Bla**
-    |**Bla** 
-    |**Bla** 
-    |**Bla** 
+    | **Bla** 
+    | **Bla** 
+    | **Bla** 
+    | **Bla**
+    | **Bla** 
+    | **Bla** 
+    | **Bla** 
     """
     def __init__(self):
         self["mae"] = mean_absolute_error

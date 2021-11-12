@@ -13,13 +13,13 @@
 
 Please look at the **[Documentation](https://rexmex.readthedocs.io/en/latest/)** and **[External Resources](bla)**.
 
-**reXmeX** consists of utilities for recommender system evaluation. First, it provides a comprehensive collection of metrics for the evaluation of recommender systems. Second, it includes a variety of methods for reporting plotting the performance results. Implemented metrics cover a range of well-known metrics and newly proposed metrics ones from data mining ([ICDM](http://icdm2019.bigke.org/), [CIKM](http://www.cikm2019.net/), [KDD](https://www.kdd.org/kdd2020/)) conferences and pieces from prominent journals.
+**reXmeX** consists of utilities for recommender system evaluation. First, it provides a comprehensive collection of metrics for the evaluation of recommender systems. Second, it includes a variety of methods for reporting plotting the performance results. Implemented metrics cover a range of well-known metrics and newly proposed metrics from data mining ([ICDM](http://icdm2019.bigke.org/), [CIKM](http://www.cikm2019.net/), [KDD](https://www.kdd.org/kdd2020/)) conferences and pieces from prominent journals.
 
 --------------------------------------------------------------------------------
 
-**A simple example**
+**An introductory example**
 
-The following example loads a synthetic dataset which has the `source_id`, `target_id`, `source_group` and `target group` keys besides the mandatory `y_true` and `y_scores`.  The dataset has binary labels and predictied probability scores. We read the dataset and define a defult `ClassificationMetric` instance for the evaluation of the predictions. Using this we create a score card, group the predictions on the `source_group` key and return a performance metric report.
+The following example loads a synthetic dataset which has the `source_id`, `target_id`, `source_group` and `target group` keys besides the mandatory `y_true` and `y_scores`.  The dataset has binary labels and predictied probability scores. We read the dataset and define a defult `ClassificationMetric` instance for the evaluation of the predictions. Using this metric set we create a score card, group the predictions on with the `source_group` key and return a performance metric report.
 
 ```python
 from rexmex.scorecard import ScoreCard
@@ -36,7 +36,11 @@ score_card = ScoreCard(metric_set)
 report = score_card.generate_report(scores, groupping=["source_group"])
 ```
 
-## Metrics Included with the Specialized Scorecards
+**New Metrics**
+
+**Scorecard**
+
+**Metric Sets**
 
 The specialized scorecards with pre-set metrics have the following general categories:
 
@@ -45,7 +49,7 @@ The specialized scorecards with pre-set metrics have the following general categ
 - **Ranking**
 - **Coverage**
 
-## Rating Metric Scorecard
+**Rating Metric Scorecard**
 
 These metrics assume that items are scored with explicit ratings and these ratings are predicted by a regression model. 
 
@@ -53,51 +57,72 @@ These metrics assume that items are scored with explicit ratings and these ratin
 * **[Root Mean Squared Error](https://en.wikipedia.org/wiki/Mean_squared_error)**
 * **[Mean Absolute Error](https://en.wikipedia.org/wiki/Mean_absolute_error)**
 * **[Mean Absolute Percentage Error](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)**
+
+
+<details>
+<summary><b>Expand to see all rating metrics in the metric set.</b></summary>
+
 * **[Symmetric Mean Absolute Percentage Error](https://en.wikipedia.org/wiki/Symmetric_mean_absolute_percentage_error)**
 * **[Pearson Correlation](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)**
 * **[Coefficient of Determination](https://en.wikipedia.org/wiki/Coefficient_of_determination)**
 
-##  Classification Metric Scorecard
+</details>
 
-* **[Precision](docs)**
-* **[Recall](docs)**
+**Classification Metric Scorecard**
+
+* **[Precision](https://en.wikipedia.org/wiki/Precision_and_recall)**
+* **[Recall](https://en.wikipedia.org/wiki/Precision_and_recall)**
 * **[PR AUC](docs)**
-* **[ROC AUC](docs)**
-* **[F-1 Score](docs)**
+* **[ROC AUC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)**
+* **[F-1 Score](https://en.wikipedia.org/wiki/F-score)**
 * **[Average Precision](docs)**
 
-* **[Miss Rate](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Inverse Precision](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Inverse Recall](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Markedness](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Informedness](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Matthews Correlation](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+<details>
+<summary><b>Expand to see all classification metrics in the metric set.</b></summary>
 
-## Ranking Metric Scorecard
+* **[Miss Rate](docs)**
+* **[Inverse Precision](docs)**
+* **[Inverse Recall](docs)**
+* **[Markedness](docs)**
+* **[Informedness](docs)**
+* **[Matthews Correlation](docs)**
 
-* **[DPM](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[NDPM](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[DCG](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[NDCG](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Reciprocal Rank](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Mean Reciprocal Rank](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Spearmanns Rho](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Kendall Tau](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[HITS@k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Novelty](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Average Recall @ k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Mean Average Recall @ k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Average Precision @ k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Mean Average Precision @ k](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Personalisation](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Intra List Similarity](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+</details>
 
-## Coverage Metric Scorecard
+**Ranking Metric Scorecard**
 
-* **[Prediction Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Weighted Prediction Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Catalog Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
-* **[Weighted Catalog Coverage](docs)** from Author *et al.*: [Title](paper_link) (Venue year)
+* **[DPM](docs)**
+* **[NDPM](docs)**
+* **[DCG](docs)**
+* **[NDCG](docs)**
+
+<details>
+<summary><b>Expand to see all ranking metrics in the metric set.</b></summary>
+
+* **[Reciprocal Rank](docs)**
+* **[Mean Reciprocal Rank](docs)**
+* **[Spearmanns Rho](docs)**
+* **[Kendall Tau](docs)**
+* **[HITS@k](docs)**
+* **[Novelty](docs)**
+* **[Average Recall @ k](docs)**
+* **[Mean Average Recall @ k](docs)**
+* **[Average Precision @ k](docs)**
+* **[Mean Average Precision @ k](docs)**
+* **[Personalisation](docs)**
+* **[Intra List Similarity](docs)**
+
+</details>
+
+**Coverage Metric Scorecard**
+
+* **[Prediction Coverage](docs)**
+* **[Weighted Prediction Coverage](docs)**
+* **[Catalog Coverage](docs)**
+* **[Weighted Catalog Coverage](docs)**
+
+
+
 
 Head over to our [documentation](https://rexmex.readthedocs.io) to find out more about installation and data handling, a full list of implemented methods, and datasets. For a quick start, check out our [examples](https://github.com/AstraZeneca/rexmex/tree/master/examples/).
 

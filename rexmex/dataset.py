@@ -8,6 +8,8 @@ class DatasetReader(object):
     Args:
         dataset (str): Dataset of interest, one of:
             (:obj:`"erdos_renyi_example"`). Default is 'erdos_renyi_example'.
+    Returns:
+        data (pd.DataFrame): The example dataset for testing the library.
     """
 
     def __init__(self):

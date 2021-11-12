@@ -5,6 +5,13 @@ RexMex Documentation
 
 *RexMex* is a ...
 
+.. toctree::
+   :glob:
+   :maxdepth: 2
+   :caption: Package Reference
+
+   modules/root
+
 
 .. toctree::
    :glob:
@@ -15,9 +22,3 @@ RexMex Documentation
    notes/introduction
    notes/resources
 
-.. toctree::
-   :glob:
-   :maxdepth: 2
-   :caption: Package Reference
-
-   modules/root

@@ -4,12 +4,6 @@ External resources
 Metrics
 --------------------
 
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-
 
 
 Survey Papers
@@ -22,8 +16,8 @@ Recommendation Systems** `Paper <https://citeseerx.ist.psu.edu/viewdoc/download?
 Similar Libraries
 --------------------
 
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
+* `Code <link>`_
+* `Code <link>`_
+* `Code <link>`_
+* `Code <link>`_
+* `Code <link>`_

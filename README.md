@@ -35,6 +35,7 @@ score_card = ScoreCard(metric_set)
 
 report = score_card.generate_report(scores, groupping=["source_group"])
 ```
+
 --------------------------------------------------------------------------------
 
 **New Metrics**
@@ -57,9 +58,9 @@ Metric sets allow the users to calculate a range of evaluation metrics for a lab
 
 --------------------------------------------------------------------------------
 
-**Rating Metric Scorecard**
+**Rating Metric Set**
 
-These metrics assume that items are scored with explicit ratings and these ratings are predicted by a regression model. 
+These metrics assume that items are scored explicitly and ratings are predicted by a regression model. 
 
 * **[Mean Squared Error (MSE)](https://en.wikipedia.org/wiki/Mean_squared_error)**
 * **[Root Mean Squared Error (RMSE)](https://en.wikipedia.org/wiki/Mean_squared_error)**
@@ -75,11 +76,12 @@ These metrics assume that items are scored with explicit ratings and these ratin
 * **[Coefficient of Determination](https://en.wikipedia.org/wiki/Coefficient_of_determination)**
 
 </details>
+
 --------------------------------------------------------------------------------
 
-**Classification Metric Scorecard**
+**Classification Metric Set**
 
-These metrics assume that the items are scored with raw probabilities. Some of the metrics uses the propensities - others evaluate the predictions after the probabilities are thresholded.
+These metrics assume that the items are scored with raw probabilities (these can be binarized).
 
 * **[Precision](https://en.wikipedia.org/wiki/Precision_and_recall)**
 * **[Recall](https://en.wikipedia.org/wiki/Precision_and_recall)**
@@ -99,9 +101,10 @@ These metrics assume that the items are scored with raw probabilities. Some of t
 * **[Matthews Correlation](docs)**
 
 </details>
+
 --------------------------------------------------------------------------------
 
-**Ranking Metric Scorecard**
+**Ranking Metric Set**
 
 * **[DPM](docs)**
 * **[NDPM](docs)**
@@ -125,9 +128,10 @@ These metrics assume that the items are scored with raw probabilities. Some of t
 * **[Intra List Similarity](docs)**
 
 </details>
+
 --------------------------------------------------------------------------------
 
-**Coverage Metric Scorecard**
+**Coverage Metric Set**
 
 These merics measure how well the recommender system covers the available items in the catalog. In other words measure the diversity of predictions.
 
@@ -138,7 +142,7 @@ These merics measure how well the recommender system covers the available items 
 
 
 --------------------------------------------------------------------------------
-**Documentation and Reporting Bugs and Issues**
+**Documentation and Reporting Issues**
 
 Head over to our [documentation](https://rexmex.readthedocs.io) to find out more about installation and data handling, a full list of implemented methods, and datasets. For a quick start, check out our [examples](https://github.com/AstraZeneca/rexmex/tree/master/examples/).
 
@@ -168,6 +172,7 @@ As we create new releases frequently, upgrading the package casually might be be
 ```sh
 $ pip install rexmex --upgrade
 ```
+
 --------------------------------------------------------------------------------
 
 **Running tests**

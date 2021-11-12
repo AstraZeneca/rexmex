@@ -19,29 +19,8 @@ Survey Papers
 * Iman Avazpour, Teerat Pitakrat, Lars Grunske, John Grundy: **Dimensions and Metrics for Evaluating
 Recommendation Systems** `Paper <https://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.736.8956&rep=rep1&type=pdf>`_
 
-System Design Papers
---------------------
-
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-
-
 Similar Libraries
 --------------------
-
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-* Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
-
-
-Placeholder
---------------------
-
 
 * Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_
 * Name, Name, Name: **Title** `Paper <>`_, `Code <link>`_

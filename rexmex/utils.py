@@ -8,7 +8,7 @@ def binarize(metric):
     Args:
         metric (function): The metric function which needs a binarization pre-processing step.
     Returns:
-        metric_wrapper (function): The function which wraps the metric and binarized the probability scores.
+        metric_wrapper (function): The function which wraps the metric and binarizes the probability scores.
     """
     @wraps(metric)
     def metric_wrapper(*args, **kwargs):
@@ -20,7 +20,6 @@ def binarize(metric):
         return score
     return metric_wrapper
 
-
 def normalize(metric):
     """
     Normalize the predictions for a ground-truth - prediction vector pair.
@@ -28,7 +27,7 @@ def normalize(metric):
     Args:
         metric (function): The metric function which needs a normalization pre-processing step.
     Returns:
-        metric_wrapper (function): The function which wraps the metric and normalized predictions.
+        metric_wrapper (function): The function which wraps the metric and normalizes predictions.
     """
     @wraps(metric)
     def metric_wrapper(*args, **kwargs):    

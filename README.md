@@ -35,10 +35,16 @@ score_card = ScoreCard(metric_set)
 
 report = score_card.generate_report(scores, groupping=["source_group"])
 ```
+--------------------------------------------------------------------------------
 
 **New Metrics**
 
+--------------------------------------------------------------------------------
+
+
 **Scorecard**
+
+--------------------------------------------------------------------------------
 
 **Metric Sets**
 
@@ -48,6 +54,8 @@ Metric sets allow the users to calculate a range of evaluation metrics for a lab
 - **Classification**
 - **Ranking**
 - **Coverage**
+
+--------------------------------------------------------------------------------
 
 **Rating Metric Scorecard**
 
@@ -67,6 +75,7 @@ These metrics assume that items are scored with explicit ratings and these ratin
 * **[Coefficient of Determination](https://en.wikipedia.org/wiki/Coefficient_of_determination)**
 
 </details>
+--------------------------------------------------------------------------------
 
 **Classification Metric Scorecard**
 
@@ -90,6 +99,7 @@ These metrics assume that the items are scored with raw probabilities. Some of t
 * **[Matthews Correlation](docs)**
 
 </details>
+--------------------------------------------------------------------------------
 
 **Ranking Metric Scorecard**
 
@@ -115,6 +125,7 @@ These metrics assume that the items are scored with raw probabilities. Some of t
 * **[Intra List Similarity](docs)**
 
 </details>
+--------------------------------------------------------------------------------
 
 **Coverage Metric Scorecard**
 
@@ -126,7 +137,8 @@ These merics measure how well the recommender system covers the available items 
 * **[Weighted Catalog Coverage](docs)**
 
 
-
+--------------------------------------------------------------------------------
+**Documentation and Reporting Bugs and Issues**
 
 Head over to our [documentation](https://rexmex.readthedocs.io) to find out more about installation and data handling, a full list of implemented methods, and datasets. For a quick start, check out our [examples](https://github.com/AstraZeneca/rexmex/tree/master/examples/).
 

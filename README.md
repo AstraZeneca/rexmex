@@ -53,16 +53,16 @@ Metric sets allow the users to calculate a range of evaluation metrics for a lab
 
 These metrics assume that items are scored with explicit ratings and these ratings are predicted by a regression model. 
 
-* **[Mean Squared Error](https://en.wikipedia.org/wiki/Mean_squared_error)**
-* **[Root Mean Squared Error](https://en.wikipedia.org/wiki/Mean_squared_error)**
-* **[Mean Absolute Error](https://en.wikipedia.org/wiki/Mean_absolute_error)**
-* **[Mean Absolute Percentage Error](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)**
+* **[Mean Squared Error (MSE)](https://en.wikipedia.org/wiki/Mean_squared_error)**
+* **[Root Mean Squared Error (RMSE)](https://en.wikipedia.org/wiki/Mean_squared_error)**
+* **[Mean Absolute Error (MAE)](https://en.wikipedia.org/wiki/Mean_absolute_error)**
+* **[Mean Absolute Percentage Error (MAPE)](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)**
 
 
 <details>
 <summary><b>Expand to see all rating metrics in the metric set.</b></summary>
 
-* **[Symmetric Mean Absolute Percentage Error](https://en.wikipedia.org/wiki/Symmetric_mean_absolute_percentage_error)**
+* **[Symmetric Mean Absolute Percentage Error (SMAPE)](https://en.wikipedia.org/wiki/Symmetric_mean_absolute_percentage_error)**
 * **[Pearson Correlation](https://en.wikipedia.org/wiki/Pearson_correlation_coefficient)**
 * **[Coefficient of Determination](https://en.wikipedia.org/wiki/Coefficient_of_determination)**
 

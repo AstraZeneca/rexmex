@@ -1,7 +1,7 @@
 import pandas as pd
 from typing import List, Dict
 
-from rexmex.utils import binarize
+from rexmex.utils import binarize, normalize
 
 from scipy.stats.stats import pearsonr
 from sklearn.metrics import roc_auc_score
@@ -13,15 +13,29 @@ from rexmex.metrics import symmetric_mean_absolute_percentage_error, root_mean_s
 
 class MetricSet(dict):
     """
+    A metric set is a special dictionary which contains metric name keys and evaluation metric function values.
     """
     def filter_metric_set(self, filter: List[str]=None):
+        """
+        A method to keep a list of metrics.
+
+        Args:
+            filter (str): A list of metric names to keep.
+        Returns:
+            self: The metric set after the metrics were filtered out.
+        """
         for name, _ in self.items():
-            if name in filter:
+            if name not in filter:
                 del self[name]
         return self
 
 class ClassificationMetricSet(MetricSet):
     """
+    A set of classification metrics with the following metrics included:
+        **Bla**
+        **Bla**
+        **Bla**
+        **Bla**
     """
     def __init__(self):
         self["roc_auc"] = roc_auc_score
@@ -33,6 +47,11 @@ class ClassificationMetricSet(MetricSet):
 
 class RatingMetricSet(MetricSet):
     """
+    A set of rating metrics with the following metrics included:
+        **Bla**
+        **Bla**
+        **Bla**
+        **Bla**   
     """
     def __init__(self):
         self["mae"] = mean_absolute_error
@@ -43,12 +62,20 @@ class RatingMetricSet(MetricSet):
         self["r_squared"] = r2_score
         self["pearson_correlation"] = pearsonr
 
+    def normalize_metrics(self):
+        for name, metric in self.items():
+            self[name] = normalize(metric)
+
 class CoverageMetricSet(MetricSet):
     """
+    A set of coverage metrics with the following metrics included:
+    
     """
     pass
 
 class RankingMetricSet(MetricSet):
     """
+    A set of ranking metrics with the following metrics included:
+    
     """
     pass

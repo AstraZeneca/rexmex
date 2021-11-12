@@ -13,7 +13,8 @@ from rexmex.metrics import symmetric_mean_absolute_percentage_error, root_mean_s
 
 class MetricSet(dict):
     """
-    A metric set is a special dictionary which contains metric name keys and evaluation metric function values.
+    A metric set is a special dictionary that contains metric
+     name keys and evaluation metric function values.
     """
     def filter_metric_set(self, filter: List[str]=None):
         """

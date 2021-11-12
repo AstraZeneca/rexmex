@@ -11,9 +11,9 @@
 
 **reXmeX** is recommender system evaluation metric library.
 
-Please look at the **[Documentation](https://rexmex.readthedocs.io/en/latest/)** and **[External Resources](bla)**.
+Please look at the **[Documentation](https://rexmex.readthedocs.io/en/latest/)** and **[External Resources](https://rexmex.readthedocs.io/en/latest/notes/resources.html)**.
 
-**reXmeX** consists of utilities for recommender system evaluation. First, it provides a comprehensive collection of metrics for the evaluation of recommender systems. Second, it includes a variety of methods for reporting plotting the performance results. Implemented metrics cover a range of well-known metrics and newly proposed metrics from data mining ([ICDM](http://icdm2019.bigke.org/), [CIKM](http://www.cikm2019.net/), [KDD](https://www.kdd.org/kdd2020/)) conferences and pieces from prominent journals.
+**reXmeX** consists of utilities for recommender system evaluation. First, it provides a comprehensive collection of metrics for the evaluation of recommender systems. Second, it includes a variety of methods for reporting and plotting the performance results. Implemented metrics cover a range of well-known metrics and newly proposed metrics from data mining ([ICDM](http://icdm2019.bigke.org/), [CIKM](http://www.cikm2019.net/), [KDD](https://www.kdd.org/kdd2020/)) conferences and pieces from prominent journals.
 
 --------------------------------------------------------------------------------
 

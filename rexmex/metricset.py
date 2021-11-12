@@ -13,8 +13,7 @@ from rexmex.metrics import symmetric_mean_absolute_percentage_error, root_mean_s
 
 class MetricSet(dict):
     """
-    """   
-
+    """
     def filter_metric_set(self, filter: List[str]=None):
         for name, _ in self.items():
             if name in filter:
@@ -47,11 +46,9 @@ class RatingMetricSet(MetricSet):
 class CoverageMetricSet(MetricSet):
     """
     """
-    def setup_basic_metrics(self):
-        pass
+    pass
 
 class RankingMetricSet(MetricSet):
     """
     """
-    def setup_basic_metrics(self):
-        pass
+    pass

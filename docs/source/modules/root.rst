@@ -16,10 +16,10 @@ Metric Sets
 --------------------
 
 .. automodule:: rexmex.metricset
-    :members:
+    :members: MetricSet, ClassificationMetricSet, CoverageMetricSet, RatingMetricSet, RankingMetricSet
     :undoc-members:
 
-New Metrics
+Metrics
 --------------------
 
 .. automodule:: rexmex.metrics

@@ -42,7 +42,7 @@ report = score_card.generate_report(scores, groupping=["source_group"])
 
 **Metric Sets**
 
-The specialized scorecards with pre-set metrics have the following general categories:
+Metric sets allow the users to calculate a range of evaluation metrics for a label - predicted label vector pair. We provide a general `MetricSet` class and specialized metric sets with pre-set metrics have the following general categories:
 
 - **Rating**
 - **Classification**
@@ -70,16 +70,18 @@ These metrics assume that items are scored with explicit ratings and these ratin
 
 **Classification Metric Scorecard**
 
+These metrics assume that the items are scored with raw probabilities. Some of the metrics uses the propensities - others evaluate the predictions after the probabilities are thresholded.
+
 * **[Precision](https://en.wikipedia.org/wiki/Precision_and_recall)**
 * **[Recall](https://en.wikipedia.org/wiki/Precision_and_recall)**
-* **[PR AUC](docs)**
+* **[PR AUC](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13140)**
 * **[ROC AUC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)**
-* **[F-1 Score](https://en.wikipedia.org/wiki/F-score)**
-* **[Average Precision](docs)**
 
 <details>
 <summary><b>Expand to see all classification metrics in the metric set.</b></summary>
 
+* **[F-1 Score](https://en.wikipedia.org/wiki/F-score)**
+* **[Average Precision](docs)**
 * **[Miss Rate](docs)**
 * **[Inverse Precision](docs)**
 * **[Inverse Recall](docs)**
@@ -115,6 +117,8 @@ These metrics assume that items are scored with explicit ratings and these ratin
 </details>
 
 **Coverage Metric Scorecard**
+
+These merics measure how well the recommender system covers the available items in the catalog. In other words measure the diversity of predictions.
 
 * **[Prediction Coverage](docs)**
 * **[Weighted Prediction Coverage](docs)**

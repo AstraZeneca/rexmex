@@ -34,12 +34,12 @@ class ClassificationMetricSet(MetricSet):
     """
     A set of classification metrics with the following metrics included:
 
-    | **Bla**
-    | **Bla**
-    | **Bla**
-    | **Bla**
-    | **Bla**
-    | **Bla**
+    | **Area Under the Receiver Operating Characteristic Curve**
+    | **Precision-Recall Area Under the Curve**
+    | **Average Precision**
+    | **F-1 Score**
+    | **Precision**
+    | **Recall**
     """
     def __init__(self):
         self["roc_auc"] = roc_auc_score
@@ -53,13 +53,13 @@ class RatingMetricSet(MetricSet):
     """
     A set of rating metrics with the following metrics included:
 
-    | **Bla** 
-    | **Bla** 
-    | **Bla** 
-    | **Bla**
-    | **Bla** 
-    | **Bla** 
-    | **Bla** 
+    | **Mean Absolute Error** 
+    | **Mean Squared Error** 
+    | **Root Mean Squared Error** 
+    | **Mean Absolute Percentage Error**
+    | **Symmetric Mean Absolute Percentage Error** 
+    | **R^2 Score** 
+    | **Pearson Correlation Coefficient** 
     """
     def __init__(self):
         self["mae"] = mean_absolute_error

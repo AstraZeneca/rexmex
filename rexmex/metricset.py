@@ -32,6 +32,7 @@ class MetricSet(dict):
 class ClassificationMetricSet(MetricSet):
     """
     A set of classification metrics with the following metrics included:
+    
         |**Bla**
         |**Bla**
         |**Bla**
@@ -51,6 +52,7 @@ class ClassificationMetricSet(MetricSet):
 class RatingMetricSet(MetricSet):
     """
     A set of rating metrics with the following metrics included:
+
         |**Bla** 
         |**Bla** 
         |**Bla** 

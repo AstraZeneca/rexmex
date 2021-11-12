@@ -38,14 +38,11 @@ report = score_card.generate_report(scores, groupping=["source_group"])
 
 --------------------------------------------------------------------------------
 
-**New Metrics**
-
---------------------------------------------------------------------------------
-
-
 **Scorecard**
 
 --------------------------------------------------------------------------------
+
+A **rexmex** score card allows the reporting of recommender system performance metrics, plotting the performance metrics and saving those 
 
 **Metric Sets**
 

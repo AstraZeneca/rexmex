@@ -2,8 +2,7 @@
 ![License](https://img.shields.io/github/license/AstraZeneca/rexmex.svg)
 [![repo size](https://img.shields.io/github/repo-size/AstraZeneca/rexmex.svg)](https://github.com/AstraZeneca/rexmex/archive/master.zip)
 [![build badge](https://github.com/AstraZeneca/rexmex/workflows/CI/badge.svg)](https://github.com/AstraZeneca/rexmex/actions?query=workflow%3ACI)
-
- [![coverage badge](https://codecov.io/gh/AstraZeneca/rexmex/branch/master/graph/badge.svg)](https://codecov.io/github/AstraZeneca/rexmex?branch=master)
+[![coverage badge](https://codecov.io/gh/AstraZeneca/rexmex/branch/master/graph/badge.svg)](https://codecov.io/github/AstraZeneca/rexmex?branch=master)
 
 <p align="center">
   <img width="90%" src="https://github.com/AstraZeneca/rexmex/blob/main/rexmex_small.jpg?raw=true?sanitize=true" />

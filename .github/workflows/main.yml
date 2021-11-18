@@ -39,6 +39,7 @@ jobs:
         if: success()
         run: |
           pip install coverage
+          coverage run -m pytest
           coverage xml
       - name: Upload coverage report to codecov
         uses: codecov/codecov-action@v1

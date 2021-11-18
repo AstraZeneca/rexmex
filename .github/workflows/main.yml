@@ -30,6 +30,7 @@ jobs:
          python setup.py install
       - name: Run test-suite
         run: |
+          pip install pytest
           python -m pytest
       - name: Generate coverage report
         if: success()

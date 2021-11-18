@@ -34,3 +34,42 @@ jobs:
          pip install pytest-cov
          pytest ./tests/unit -cov rexmex/
          pytest ./tests/integration -cov rexmex/
+name: CI
+
+on:
+
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+
+jobs:
+    build:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.7.12
+      - uses: s-weigand/setup-conda@v1
+        with:
+          activate-conda: true
+          python-version: 3.7
+      - run: conda --version
+      - run: which python
+      - name: Run installation.
+        run: |
+         conda install -y scipy
+         pip install codecov
+         python setup.py install
+      - name: Test coverage.
+        run: |
+         pip install pytest
+         pip install pytest-cov
+         pytest ./tests/unit -cov rexmex/
+         pytest ./tests/integration -cov rexmex/
+         codecov
+      - name: Code Coverage
+        uses: codecov/codecov-action@v1

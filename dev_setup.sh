@@ -4,4 +4,4 @@ set -e
 pip install pre-commit 
 pre-commit install 
 
-pip install -e bikg/ 
+pip install -e rexmex/ 

@@ -28,12 +28,13 @@ jobs:
          conda install -y scipy
          pip install codecov
          python setup.py install
-      - name: Test coverage.
+      - name: Run test-suite
         run: |
-         pip install pytest
-         pip install pytest-cov
-         pytest ./tests/unit -cov rexmex/
-         pytest ./tests/integration -cov rexmex/
-         python -m codecov
+          python -m pytest
+      - name: Generate coverage report
+        if: success()
+        run: |
+          pip install coverage
+          coverage xml
       - name: Code Coverage
         uses: codecov/codecov-action@v1

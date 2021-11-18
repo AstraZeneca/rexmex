@@ -27,6 +27,7 @@ jobs:
         run: |
          conda install -y scipy
          pip install codecov
+         pip install pytest
       - name: Install main package
         run: |
           pip install -e .[test]

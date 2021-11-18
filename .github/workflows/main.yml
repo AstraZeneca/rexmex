@@ -34,6 +34,6 @@ jobs:
          pip install pytest-cov
          pytest ./tests/unit -cov rexmex/
          pytest ./tests/integration -cov rexmex/
-         codecov
+         python -m codecov
       - name: Code Coverage
         uses: codecov/codecov-action@v1

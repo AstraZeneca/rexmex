@@ -1,7 +1,7 @@
 import unittest
 import pytest
 import pandas as pd
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, balanced_accuracy_score
 from rexmex.metricset import MetricSet, ClassificationMetricSet, RatingMetricSet, RankingMetricSet, CoverageMetricSet
 
 class TestMetrics(unittest.TestCase):
@@ -26,8 +26,12 @@ class TestMetrics(unittest.TestCase):
         assert len(metric_set) == 1
         metric_set.add_metrics([("accuracy", accuracy_score)])
         assert len(metric_set) == 1
-        metric_set.add_metrics([("accuracy_variant", accuracy_score)])
+        metric_set.add_metrics([("balanced_accuracy", balanced_accuracy_score)])
         assert len(metric_set) == 2
 
     def test_print(self):
-        assert 2 == 2
+        metric_set = MetricSet()
+        metric_set.add_metrics([("accuracy", accuracy_score)])
+        metric_set.add_metrics([("balanced_accuracy", balanced_accuracy_score)])
+        print(metric_set)
+        assert len(metric_set) == 2

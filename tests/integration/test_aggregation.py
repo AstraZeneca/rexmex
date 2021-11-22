@@ -12,8 +12,12 @@ class TestMetricAggregation(unittest.TestCase):
         scores = reader.read_dataset()
         metric_set = ClassificationMetricSet()
         score_card = ScoreCard(metric_set)
+
         performance_metrics = score_card.generate_report(scores, groupping=["source_group"])
-        assert performance_metrics.shape == (10, 8)
+        assert performance_metrics.shape == (5, 8)
+
+        performance_metrics = score_card.generate_report(scores, groupping=["source_group", "target_group"])
+        assert performance_metrics.shape == (25, 8)
 
     def test_regression(self):
         reader = DatasetReader()
@@ -21,13 +25,21 @@ class TestMetricAggregation(unittest.TestCase):
         metric_set = RatingMetricSet()
         metric_set.normalize_metrics()
         score_card = ScoreCard(metric_set)
+
         performance_metrics = score_card.generate_report(scores, groupping=["source_group"])
-        assert performance_metrics.shape == (10, 7)
+        assert performance_metrics.shape == (5, 7)
+
+        performance_metrics = score_card.generate_report(scores, groupping=["source_group", "target_group"])
+        assert performance_metrics.shape == (25, 7)
 
     def test_addition(self):
         reader = DatasetReader()
         scores = reader.read_dataset()
         metric_set = RatingMetricSet() + ClassificationMetricSet()
         score_card = ScoreCard(metric_set)
+
         performance_metrics = score_card.generate_report(scores, groupping=["source_group"])
-        assert performance_metrics.shape == (10, 15)
+        assert performance_metrics.shape == (5, 15)
+
+        performance_metrics = score_card.generate_report(scores, groupping=["source_group", "target_group"])
+        assert performance_metrics.shape == (25, 15)

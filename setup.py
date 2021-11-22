@@ -15,20 +15,29 @@ tests_require = ["pytest", "pytest-cov", "mock", "unittest"]
 
 
 keywords = [
-    "Bla",
+    "recommender",
+    "nmf",
+    "matrix factorisation",
+    "system",
+    "evaluation metric",
+    "ranking",
+    "recsys",
+    "metric",
+    "ranking metric",
+    "performance metric",
 ]
 
 
 setup(
     name="rexmex",
     packages=find_packages(),
-    version="0.0.1",
+    version="0.0.2",
     license="Apache License, Version 2.0",
     description="",
     author="AstraZeneca BIKG Team",
     author_email="",
     url="https://github.com/AstraZeneca/rexmex",
-    download_url="https://github.com/AstraZeneca/rexmex/archive/v_00001.tar.gz",
+    download_url="https://github.com/AstraZeneca/rexmex/archive/v_00002.tar.gz",
     keywords=keywords,
     install_requires=install_requires,
     setup_requires=setup_requires,
@@ -37,7 +46,7 @@ setup(
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "Topic :: Software Development :: Build Tools",
-        "License :: OSI Approved :: MIT License",
+        "License :: OSI Approved :: Apache License, Version 2.0",
         "Programming Language :: Python :: 3.7",
     ],
 )

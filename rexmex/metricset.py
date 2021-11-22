@@ -71,7 +71,6 @@ class MetricSet(dict):
             new_metric_set[name] = metric
         return new_metric_set
 
-
 class ClassificationMetricSet(MetricSet):
     """
     A set of classification metrics with the following metrics included:

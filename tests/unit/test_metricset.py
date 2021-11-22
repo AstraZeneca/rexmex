@@ -11,3 +11,12 @@ class TestMetrics(unittest.TestCase):
         assert repr(CoverageMetricSet()) == "CoverageMetricSet()"
         assert repr(RankingMetricSet()) == "RankingMetricSet()"
         assert repr(RatingMetricSet()) == "RatingMetricSet()"
+
+    def test_metric_filter(self):
+        assert 2 == 2
+
+    def test_metric_add(self):
+        assert 2 == 2
+
+    def test_print(self):
+        assert 2 == 2

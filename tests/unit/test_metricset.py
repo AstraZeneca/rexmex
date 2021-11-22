@@ -21,7 +21,7 @@ class TestMetrics(unittest.TestCase):
         assert len(metric_set) == 0
 
     def test_metric_add(self):
-        assert 
+        assert 2 == 2
 
     def test_print(self):
         assert 2 == 2

@@ -8,6 +8,6 @@ class TestMetrics(unittest.TestCase):
 
     def test_representation(self):
         assert repr(ClassificationMetricSet()) == "ClassificationMetricSet()"
-        assert repr(CoverageMetricSet()) == "<CoverageMetricSet()>"
-        assert repr(RankingMetricSet()) == "<RankingMetricSet()>"
-        assert repr(RatingMetricSet()) == "<RatingMetricSet()>"
+        assert repr(CoverageMetricSet()) == "CoverageMetricSet()"
+        assert repr(RankingMetricSet()) == "RankingMetricSet()"
+        assert repr(RatingMetricSet()) == "RatingMetricSet()"

@@ -35,7 +35,7 @@ class TestMetrics(unittest.TestCase):
         metric_set = MetricSet()
         metric_set.add_metrics([("accuracy", accuracy_score)])
         metric_set.add_metrics([("balanced_accuracy", balanced_accuracy_score)])
-        captured = StringIO.StringIO()
+        captured = StringIO()
         sys.stdout = captured
         metric_set.print_metrics()
         sys.stdout = sys.__stdout__

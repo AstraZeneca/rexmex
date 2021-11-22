@@ -26,7 +26,7 @@ class MetricSet(dict):
         Returns:
             self: The metric set after the metrics were filtered out.
         """
-        for name, _ in list(self.keys()):
+        for name in list(self.keys()):
             if name not in filter:
                 del self[name]
         return self

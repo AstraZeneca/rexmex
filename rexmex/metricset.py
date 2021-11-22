@@ -17,7 +17,7 @@ class MetricSet(dict):
     A metric set is a special dictionary that contains metric
      name keys and evaluation metric function values.
     """
-    def filter_metric_set(self, filter: List[str]=None):
+    def filter_metrics(self, filter: List[str]=None):
         """
         A method to keep a list of metrics.
 
@@ -51,11 +51,11 @@ class MetricSet(dict):
         """
         return "MetricSet()"
 
-    def __str__(self):
+    def print_metrics(self):
         """
         Printing the name of metrics when the print() function is called.
         """
-        return {k for k in self.keys()}
+        return print({k for k in self.keys()})
 
     def __add__(self, other_metric_set):
         """

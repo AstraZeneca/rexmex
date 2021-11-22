@@ -14,10 +14,10 @@ class TestMetrics(unittest.TestCase):
 
     def test_metric_filter(self):
         metric_set = ClassificationMetricSet()
-        metric_set.filter_metric_set(["roc_auc", "pr_auc"])
+        metric_set.filter_metrics(["roc_auc", "pr_auc"])
         assert len(metric_set) == 2
         metric_set = ClassificationMetricSet()
-        metric_set.filter_metric_set(["fake_metric"])
+        metric_set.filter_metrics(["fake_metric"])
         assert len(metric_set) == 0
 
     def test_metric_add(self):
@@ -33,5 +33,8 @@ class TestMetrics(unittest.TestCase):
         metric_set = MetricSet()
         metric_set.add_metrics([("accuracy", accuracy_score)])
         metric_set.add_metrics([("balanced_accuracy", balanced_accuracy_score)])
-        print(metric_set)
-        assert len(metric_set) == 2
+        captured = StringIO.StringIO()
+        sys.stdout = captured
+        metric_set.print_metrics()
+        sys.stdout = sys.__stdout__
+        assert sys.stdout = {"accuracy", "balanced_accuracy"}

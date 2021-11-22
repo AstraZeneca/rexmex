@@ -1,5 +1,5 @@
 ![Version](https://badge.fury.io/py/rexmex.svg?style=plastic)
-![License](https://img.shields.io/github/license/AstraZeneca/rexmex.svg)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![repo size](https://img.shields.io/github/repo-size/AstraZeneca/rexmex.svg)](https://github.com/AstraZeneca/rexmex/archive/master.zip)
 [![build badge](https://github.com/AstraZeneca/rexmex/workflows/CI/badge.svg)](https://github.com/AstraZeneca/rexmex/actions?query=workflow%3ACI)
 [![codecov](https://codecov.io/gh/AstraZeneca/rexmex/branch/main/graph/badge.svg?token=cYgAejRA0Z)](https://codecov.io/gh/AstraZeneca/rexmex)

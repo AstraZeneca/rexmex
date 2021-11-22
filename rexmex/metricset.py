@@ -1,10 +1,11 @@
 import pandas as pd
-from typing import List, Dict
+from typing import List, Dict, Tuple
 
 from rexmex.utils import binarize, normalize
 
 from scipy.stats.stats import pearsonr
 from sklearn.metrics import roc_auc_score
+from sklearn.metrics import accuracy, balanced_accuracy
 from sklearn.metrics import f1_score, precision_score, recall_score, average_precision_score
 from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error, r2_score
 
@@ -30,6 +31,34 @@ class MetricSet(dict):
                 del self[name]
         return self
 
+    def add_metrics(self, metrics: List[Tuple]):
+        for metric in metrics:
+            metric_name, metric_function = metric
+            self[metric_name] = metric_function
+        return self
+
+    def __repr__(self):
+        """
+        A representation of the MetricSet object.
+        """
+        return "MetricSet()"
+
+    def __str__(self):
+        """
+        Printing the name of metrics when the print() function is called.
+        """
+        return {k for k in self.keys()}
+
+    def __add__(self, other_metric_set):
+        """
+        Adding two metric sets together with the + syntactic sugar operator.
+        """
+        new_metric_set = self
+        for name, metric in other_metric_set.items():
+            new_metric_set[name] = metric
+        return new_metric_set
+
+
 class ClassificationMetricSet(MetricSet):
     """
     A set of classification metrics with the following metrics included:
@@ -40,6 +69,8 @@ class ClassificationMetricSet(MetricSet):
     | **F-1 Score**
     | **Precision**
     | **Recall**
+    | **Accuracy**
+    | **Balanced Accuracy**
     """
     def __init__(self):
         self["roc_auc"] = roc_auc_score
@@ -48,6 +79,14 @@ class ClassificationMetricSet(MetricSet):
         self["f1_score"] = binarize(f1_score)
         self["precision"] = binarize(precision_score)
         self["recall"] = binarize(recall_score)
+        self["accuracy"] = binarize(accuracy)
+        self["balanced_accuracy"] = binarize(balanced_accuracy)
+
+    def __repr__(self):
+        """
+        A representation of the ClassificationMetricSet object.
+        """
+        return "ClassificationMetricSet()"
 
 class RatingMetricSet(MetricSet):
     """
@@ -80,6 +119,12 @@ class RatingMetricSet(MetricSet):
         for name, metric in self.items():
             self[name] = normalize(metric)
         return self
+
+    def __repr__(self):
+        """
+        A representation of the RatingMetricSet object.
+        """
+        return "ClassificationMetricSet()"
 
 class CoverageMetricSet(MetricSet):
     """

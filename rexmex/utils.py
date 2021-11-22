@@ -30,7 +30,9 @@ def normalize(metric):
         metric_wrapper (function): The function which wraps the metric and normalizes predictions.
     """
     @wraps(metric)
-    def metric_wrapper(*args, **kwargs):    
+    def metric_wrapper(*args, **kwargs):  
+        y_true = args[0]
+        y_score = args[1]
         y_mean = np.mean(y_true)
         y_std = np.mean(y_true)
         y_true = (y_true - y_mean)/y_std

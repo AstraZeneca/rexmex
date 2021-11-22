@@ -19,6 +19,15 @@ class TestMetricAggregation(unittest.TestCase):
         reader = DatasetReader()
         scores = reader.read_dataset()
         metric_set = RatingMetricSet()
+        metric_set.normalize_metrics()
         score_card = ScoreCard(metric_set)
         performance_metrics = score_card.generate_report(scores, groupping=["source_group"])
         assert performance_metrics.shape == (10, 7)
+
+    def test_addition(self):
+        reader = DatasetReader()
+        scores = reader.read_dataset()
+        metric_set = RatingMetricSet() + ClassificationMetricSet()
+        score_card = ScoreCard(metric_set)
+        performance_metrics = score_card.generate_report(scores, groupping=["source_group"])
+        assert performance_metrics.shape == (10, 15)

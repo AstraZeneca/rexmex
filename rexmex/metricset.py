@@ -32,6 +32,14 @@ class MetricSet(dict):
         return self
 
     def add_metrics(self, metrics: List[Tuple]):
+        """
+        A method to add metric functions from a list of function names and functions.
+
+        Args:
+            metrics (List[Tuple]): A list of metric name and metric function tuples.
+        Returns:
+            self: The metric set after the metrics were added.
+        """
         for metric in metrics:
             metric_name, metric_function = metric
             self[metric_name] = metric_function
@@ -51,7 +59,12 @@ class MetricSet(dict):
 
     def __add__(self, other_metric_set):
         """
-        Adding two metric sets together with the + syntactic sugar operator.
+        Adding two metric sets together with the addition syntactic sugar operator.
+
+        Args:
+            other_metric_set (rexmex.metricset.MetricSet): Metric set added from the right.
+        Returns:
+            new_metric_set (rexmex.metricset.MetricSet): The combined metric set.
         """
         new_metric_set = self
         for name, metric in other_metric_set.items():
@@ -124,18 +137,26 @@ class RatingMetricSet(MetricSet):
         """
         A representation of the RatingMetricSet object.
         """
-        return "ClassificationMetricSet()"
+        return "RatingMetricSet()"
 
 class CoverageMetricSet(MetricSet):
     """
     A set of coverage metrics with the following metrics included:
     
     """
-    pass
+    def __repr__(self):
+        """
+        A representation of the CoverageMetricSet object.
+        """
+        return "CoverageMetricSet()"
 
 class RankingMetricSet(MetricSet):
     """
     A set of ranking metrics with the following metrics included:
     
     """
-    pass
+    def __repr__(self):
+        """
+        A representation of the RankingMetricSet object.
+        """
+        return "RankingMetricSet()"

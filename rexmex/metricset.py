@@ -5,7 +5,7 @@ from rexmex.utils import binarize, normalize
 
 from scipy.stats.stats import pearsonr
 from sklearn.metrics import roc_auc_score
-from sklearn.metrics import accuracy, balanced_accuracy
+from sklearn.metrics import accuracy_score, balanced_accuracy_score
 from sklearn.metrics import f1_score, precision_score, recall_score, average_precision_score
 from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error, r2_score
 
@@ -79,8 +79,8 @@ class ClassificationMetricSet(MetricSet):
         self["f1_score"] = binarize(f1_score)
         self["precision"] = binarize(precision_score)
         self["recall"] = binarize(recall_score)
-        self["accuracy"] = binarize(accuracy)
-        self["balanced_accuracy"] = binarize(balanced_accuracy)
+        self["accuracy"] = binarize(accuracy_score)
+        self["balanced_accuracy"] = binarize(balanced_accuracy_score)
 
     def __repr__(self):
         """

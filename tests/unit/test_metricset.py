@@ -1,7 +1,7 @@
 import unittest
 import pytest
 import pandas as pd
-from sklearn_metrics import accuracy_score
+from sklearn.metrics import accuracy_score
 from rexmex.metricset import ClassificationMetricSet, RatingMetricSet, RankingMetricSet, CoverageMetricSet
 
 class TestMetrics(unittest.TestCase):
@@ -21,7 +21,9 @@ class TestMetrics(unittest.TestCase):
         assert len(metric_set) == 0
 
     def test_metric_add(self):
-        assert 2 == 2
+        metric_set = MetricSet()
+        metric_set.add_metrics(["accuracy", accuracy_score])
+        assert len(metric_set) == 1
 
     def test_print(self):
         assert 2 == 2

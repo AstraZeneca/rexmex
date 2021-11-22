@@ -55,7 +55,7 @@ class MetricSet(dict):
         """
         Printing the name of metrics when the print() function is called.
         """
-        return print({k for k in self.keys()})
+        print({k for k in self.keys()})
 
     def __add__(self, other_metric_set):
         """

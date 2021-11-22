@@ -34,7 +34,7 @@ def normalize(metric):
         y_true = args[0]
         y_score = args[1]
         y_mean = np.mean(y_true)
-        y_std = np.mean(y_true)
+        y_std = np.std(y_true)
         y_true = (y_true - y_mean)/y_std
         y_score = (y_score - y_mean)/y_std
         score = metric(*args, **kwargs)

@@ -2,7 +2,7 @@ import unittest
 import pytest
 import pandas as pd
 from sklearn.metrics import accuracy_score
-from rexmex.metricset import ClassificationMetricSet, RatingMetricSet, RankingMetricSet, CoverageMetricSet
+from rexmex.metricset import MetricSet, ClassificationMetricSet, RatingMetricSet, RankingMetricSet, CoverageMetricSet
 
 class TestMetrics(unittest.TestCase):
 

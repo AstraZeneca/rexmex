@@ -37,4 +37,4 @@ class TestMetrics(unittest.TestCase):
         sys.stdout = captured
         metric_set.print_metrics()
         sys.stdout = sys.__stdout__
-        assert sys.stdout = {"accuracy", "balanced_accuracy"}
+        assert sys.stdout == {"accuracy", "balanced_accuracy"}

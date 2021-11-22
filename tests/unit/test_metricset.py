@@ -22,8 +22,12 @@ class TestMetrics(unittest.TestCase):
 
     def test_metric_add(self):
         metric_set = MetricSet()
-        metric_set.add_metrics(["accuracy", accuracy_score])
+        metric_set.add_metrics([("accuracy", accuracy_score)])
         assert len(metric_set) == 1
+        metric_set.add_metrics([("accuracy", accuracy_score)])
+        assert len(metric_set) == 1
+        metric_set.add_metrics([("accuracy_variant", accuracy_score)])
+        assert len(metric_set) == 2
 
     def test_print(self):
         assert 2 == 2

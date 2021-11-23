@@ -12,18 +12,18 @@ class TestClassificationMetrics(unittest.TestCase):
     Newly defined classification metric tests.
     """
     def setUp(self):
-        self.y_true = np.array([0, 1, 1, 1, 1, 0, 0, 0, 0])
-        self.y_scores = np.array([1, 1, 1, 0, 0, 1, 0, 0, 0])
+        self.y_true = np.array([0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0])
+        self.y_scores = np.array([1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0])
 
     def test_conditions(self):
-        assert condition_positive(self.y_true) == 4
-        assert condition_negative(self.y_true) == 5
+        assert condition_positive(self.y_true) == 6
+        assert condition_negative(self.y_true) == 8
 
     def test_false_and_true(self):
-        assert binarize(false_positive(self.y_true, self.y_scores)) == 2
-        assert binarize(false_negative(self.y_true, self.y_scores)) == 2 
-        assert binarize(true_positive(self.y_true, self.y_scores)) == 2 
-        assert binarize(true_negative(self.y_true, self.y_scores)) == 3
+        assert false_positive(self.y_true, self.y_scores) == 5
+        assert false_negative(self.y_true, self.y_scores) == 2
+        assert true_positive(self.y_true, self.y_scores) == 4
+        assert true_negative(self.y_true, self.y_scores) == 3
 
 class TestRatingMetrics(unittest.TestCase):
 

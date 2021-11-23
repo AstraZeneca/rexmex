@@ -158,7 +158,7 @@ def true_negative_rate(y_true: np.array, y_scores: np.array) -> float:
         tnr (float): The true negative rate.
     """
     tnr = specificity(y_true, y_scores)
-    pass tnr
+    return tnr
 
 def sensitivity(y_true: np.array, y_scores: np.array) -> float:
     """

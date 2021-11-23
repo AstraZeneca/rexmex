@@ -11,6 +11,7 @@ from rexmex.metrics import specificity, selectivity, true_negative_rate
 from rexmex.metrics import sensitivity, hit_rate, true_positive_rate
 
 from rexmex.metrics import positive_predictive_value, negative_predictive_value
+from rexmex.metrics import miss_rate, false_negative_rate
 
 class TestClassificationMetrics(unittest.TestCase):
     """
@@ -51,6 +52,9 @@ class TestClassificationMetrics(unittest.TestCase):
     def test_negative_predictive_value(self):
         assert negative_predictive_value(self.y_true, self.y_scores) == 3/5
 
+    def test_false_negative_rate(self):
+        assert miss_rate(self.y_true, self.y_scores) == 1/3
+        assert false_negative_rate(self.y_true, self.y_scores) == 1/3
 
 class TestRatingMetrics(unittest.TestCase):
     """

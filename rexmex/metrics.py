@@ -230,3 +230,31 @@ def negative_predictive_value(y_true: np.array, y_scores: np.array) -> float:
     fn = false_negative(y_true, y_scores)
     npv = tn/(tn+fn)
     return npv
+
+def miss_rate(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the miss rate (same as false negative rate).
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        fnr (float): The miss rate value.
+    """
+    fn = false_negative(y_true, y_score)
+    p = condition_positive(y_true)
+    fnr = fn/p
+    return fnr
+
+def false_negative_rate(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the false negative rate (same as miss rate).
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        fnr (float): The false negative rate value.
+    """
+    fnr = miss_rate(y_true, y_scores)
+    return fnr

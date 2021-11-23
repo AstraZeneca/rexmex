@@ -286,3 +286,39 @@ def false_positive_rate(y_true: np.array, y_scores: np.array) -> float:
     """
     fpr = fall_out(y_true, y_scores)
     return fpr
+
+def false_discovery_rate():
+    pass
+
+def false_omission_rate():
+    pass
+
+def positive_likelihood_ratio():
+    pass
+
+def negative_likelihood_ratio():
+    pass
+
+def prevalence_threshold():
+    pass
+
+def threat_score():
+    pass
+
+def critical_success_index():
+    pass
+
+def prevalence():
+    pass
+
+def fowlkes_mallows_index():
+    pass
+
+def informedness():
+    pass 
+
+def markedness():
+    pass
+
+def diagnostic_odds_ratio():
+    pass

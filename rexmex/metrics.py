@@ -312,8 +312,8 @@ def false_omission_rate(y_true: np.array, y_scores: np.array) -> float:
     Returns:
         fomr (float): The false omission rate ralue.
     """
-    fn = false_positive(y_true, y_scores)
-    tn = true_positive(y_true, y_scores)
+    fn = false_negative(y_true, y_scores)
+    tn = true_negative(y_true, y_scores)
     fomr = fn/(fn+tn)
     return fomr
 

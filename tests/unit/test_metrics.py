@@ -63,8 +63,8 @@ class TestClassificationMetrics(unittest.TestCase):
         assert false_positive_rate(self.y_true, self.y_scores) == 5/8
 
     def test_discovery_omission(self):
-        assert false_omission_rate(self.y_true, self.y_scores) == (1 - positive_predictive_value(self.y_true, self.y_scores))
-        assert false_discovery_rate(self.y_true, self.y_scores) == (1 - negative_predictive_value(self.y_true, self.y_scores))
+        assert false_omission_rate(self.y_true, self.y_scores) == (1 - negative_predictive_value(self.y_true, self.y_scores))
+        assert false_discovery_rate(self.y_true, self.y_scores) == (1 - positive_predictive_value(self.y_true, self.y_scores))
 
 class TestRatingMetrics(unittest.TestCase):
     """

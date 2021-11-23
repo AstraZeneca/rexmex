@@ -13,6 +13,7 @@ from rexmex.metrics import sensitivity, hit_rate, true_positive_rate
 from rexmex.metrics import positive_predictive_value, negative_predictive_value
 from rexmex.metrics import miss_rate, false_negative_rate
 from rexmex.metrics import fall_out, false_positive_rate
+from rexmex.metrics import false_discovery_rate, false_omission_rate
 
 class TestClassificationMetrics(unittest.TestCase):
     """
@@ -60,6 +61,10 @@ class TestClassificationMetrics(unittest.TestCase):
     def test_false_positive_rate(self):
         assert fall_out(self.y_true, self.y_scores) == 5/8
         assert false_positive_rate(self.y_true, self.y_scores) == 5/8
+
+    def test_discovery_omission(self):
+        assert false_omission_rate(self.y_true, self.y_scores) == 1 - positive_predictive_value(self.y_true, self.y_scores)
+        assert false_discovery_rate(self.y_true, self.y_scores) == 1 - negative_predictive_value(self.y_true, self.y_scores)
 
 
 

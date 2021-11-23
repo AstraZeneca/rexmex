@@ -46,7 +46,7 @@ class TestClassificationMetrics(unittest.TestCase):
 
     def test_positivie_predictive_value(self):
         assert positive_predictive_value(self.y_true, self.y_scores) == precision_score(self.y_true, self.y_scores)
-        assert positive_predictive_value(self.y_true, self.y_scores) == 3/5
+        assert positive_predictive_value(self.y_true, self.y_scores) == 4/9
 
     def test_negative_predictive_value(self):
         assert negative_predictive_value(self.y_true, self.y_scores) == 3/5

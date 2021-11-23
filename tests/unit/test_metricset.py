@@ -7,7 +7,7 @@ from io import StringIO
 from sklearn.metrics import accuracy_score, balanced_accuracy_score
 from rexmex.metricset import MetricSet, ClassificationMetricSet, RatingMetricSet, RankingMetricSet, CoverageMetricSet
 
-class TestMetrics(unittest.TestCase):
+class TestMetricSet(unittest.TestCase):
 
     def test_representation(self):
         assert repr(ClassificationMetricSet()) == "ClassificationMetricSet()"

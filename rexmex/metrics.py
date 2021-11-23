@@ -282,16 +282,40 @@ def false_positive_rate(y_true: np.array, y_scores: np.array) -> float:
         y_true (array-like): An N x 1 array of ground truth values.
         y_scores (array-like):  An N x 1 array of predicted values.
     Returns:
-        fnr (float): The false positive rate value.
+        fpr (float): The false positive rate value.
     """
     fpr = fall_out(y_true, y_scores)
     return fpr
 
-def false_discovery_rate():
-    pass
+def false_discovery_rate(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the false discovery rate.
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        fdr (float): The false discovery rate ralue.
+    """
+    fp = false_positive(y_true, y_scores)
+    tp = true_positive(y_true, y_scores)
+    fdr = fp/(fp+tp)
+    return fdr
 
 def false_omission_rate():
-    pass
+    """
+    Calculate the false omission rate.
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        fomr (float): The false omission rate ralue.
+    """
+    fn = false_positive(y_true, y_scores)
+    tn = true_positive(y_true, y_scores)
+    fomr = fn/(fn+tn)
+    return fomr
 
 def positive_likelihood_ratio():
     pass

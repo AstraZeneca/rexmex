@@ -172,7 +172,7 @@ def sensitivity(y_true: np.array, y_scores: np.array) -> float:
     """
     p = condition_positive(y_true)
     tp = true_positive(y_true, y_scores)
-    tpr = p / tp
+    tpr = tp / p
     return tpr
 
 def hit_rate(y_true: np.array, y_scores: np.array) -> float:

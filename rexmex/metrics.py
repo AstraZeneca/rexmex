@@ -200,3 +200,18 @@ def true_positive_rate(y_true: np.array, y_scores: np.array) -> float:
     """
     tpr = sensitivity(y_true, y_scores)
     return tpr
+
+def positive_predictive_value(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the positive predictive value (same as precision).
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        ppv (float): The positive predictive value.
+    """
+    tp = true_positive(y_true, y_scores)
+    fp = false_positive(y_true, y_scores)
+    ppv = tp/(tp+fp)
+    return ppv

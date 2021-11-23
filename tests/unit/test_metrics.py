@@ -10,6 +10,8 @@ from rexmex.metrics import specificity, selectivity, true_negative_rate
 
 from rexmex.metrics import sensitivity, hit_rate, true_positive_rate
 
+from rexmex.metrics import positive_predictive_value
+
 class TestClassificationMetrics(unittest.TestCase):
     """
     Newly defined classification metric tests.
@@ -41,6 +43,9 @@ class TestClassificationMetrics(unittest.TestCase):
         assert sensitivity(self.y_true, self.y_scores) == recall_score(self.y_true, self.y_scores)
         assert hit_rate(self.y_true, self.y_scores) == recall_score(self.y_true, self.y_scores)
         assert true_positive_rate(self.y_true, self.y_scores) == recall_score(self.y_true, self.y_scores)
+
+    def test_positivie_predictive_value(self):
+        assert positive_predictive_value(self.y_true, self.y_scores) == precision_score(self.y_true, self.y_scores)
 
 
 class TestRatingMetrics(unittest.TestCase):

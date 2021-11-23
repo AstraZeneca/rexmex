@@ -302,7 +302,7 @@ def false_discovery_rate(y_true: np.array, y_scores: np.array) -> float:
     fdr = fp/(fp+tp)
     return fdr
 
-def false_omission_rate():
+def false_omission_rate(y_true: np.array, y_scores: np.array) -> float:
     """
     Calculate the false omission rate.
 

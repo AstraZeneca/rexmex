@@ -28,5 +28,5 @@ class TestRatingMetrics(unittest.TestCase):
     def setUp(self):
         pass
     
-    def test_metrics(self)
+    def test_metrics(self):
         pass

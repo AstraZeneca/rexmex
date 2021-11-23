@@ -215,3 +215,18 @@ def positive_predictive_value(y_true: np.array, y_scores: np.array) -> float:
     fp = false_positive(y_true, y_scores)
     ppv = tp/(tp+fp)
     return ppv
+
+def negative_predictive_value(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the negative predictive value (same as precision).
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        npv (float): The negative predictive value.
+    """
+    tn = true_negative(y_true, y_scores)
+    fn = false_negative(y_true, y_scores)
+    npv = tn/(tn+fn)
+    return npv

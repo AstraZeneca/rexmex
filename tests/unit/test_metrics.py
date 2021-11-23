@@ -6,6 +6,7 @@ from sklearn.metrics import precision_score, recall_score
 
 from rexmex.metrics import condition_positive, condition_negative
 from rexmex.metrics import true_positive, true_negative, false_positive, false_negative
+from rexmex.metrics import specificity, selectivity, true_negative_rate
 
 class TestClassificationMetrics(unittest.TestCase):
     """
@@ -24,6 +25,11 @@ class TestClassificationMetrics(unittest.TestCase):
         assert false_negative(self.y_true, self.y_scores) == 2
         assert true_positive(self.y_true, self.y_scores) == 4
         assert true_negative(self.y_true, self.y_scores) == 3
+
+    def test_specificity(self):
+        assert specificity(self.y_true, self.y_scores) == 0.375
+        assert selectivity(self.y_true, self.y_scores) == 0.375 
+        assert true_negative_rate(self.y_true, self.y_scores) == 0.375
 
 class TestRatingMetrics(unittest.TestCase):
 

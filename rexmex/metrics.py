@@ -241,7 +241,7 @@ def miss_rate(y_true: np.array, y_scores: np.array) -> float:
     Returns:
         fnr (float): The miss rate value.
     """
-    fn = false_negative(y_true, y_score)
+    fn = false_negative(y_true, y_scores)
     p = condition_positive(y_true)
     fnr = fn/p
     return fnr
@@ -258,3 +258,33 @@ def false_negative_rate(y_true: np.array, y_scores: np.array) -> float:
     """
     fnr = miss_rate(y_true, y_scores)
     return fnr
+
+fall-out or false positive rate 
+
+def fall_out(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the fall out (same as false positive rate).
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        fpr (float): The fall out value.
+    """
+    fp = false_positive(y_true, y_scores)
+    n = condition_negative(y_true)
+    fpr = fp/n
+    return fpr
+
+def false_positive_rate(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the false positive rate (same as fall out).
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        fnr (float): The false positive rate value.
+    """
+    fpr = fall_out(y_true, y_scores)
+    return fpr

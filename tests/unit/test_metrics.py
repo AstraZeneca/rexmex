@@ -12,6 +12,7 @@ from rexmex.metrics import sensitivity, hit_rate, true_positive_rate
 
 from rexmex.metrics import positive_predictive_value, negative_predictive_value
 from rexmex.metrics import miss_rate, false_negative_rate
+from rexmex.metrics import fall_out, false_positive_rate
 
 class TestClassificationMetrics(unittest.TestCase):
     """
@@ -32,9 +33,9 @@ class TestClassificationMetrics(unittest.TestCase):
         assert true_negative(self.y_true, self.y_scores) == 3
 
     def test_specificity(self):
-        assert specificity(self.y_true, self.y_scores) == 0.375
-        assert selectivity(self.y_true, self.y_scores) == 0.375 
-        assert true_negative_rate(self.y_true, self.y_scores) == 0.375
+        assert specificity(self.y_true, self.y_scores) == 3/8
+        assert selectivity(self.y_true, self.y_scores) == 3/8
+        assert true_negative_rate(self.y_true, self.y_scores) == 3/8
 
     def test_sensitivity(self):
         assert sensitivity(self.y_true, self.y_scores) == 4/6
@@ -55,6 +56,12 @@ class TestClassificationMetrics(unittest.TestCase):
     def test_false_negative_rate(self):
         assert miss_rate(self.y_true, self.y_scores) == 1/3
         assert false_negative_rate(self.y_true, self.y_scores) == 1/3
+
+    def test_false_positive_rate(self):
+        assert fall_out(self.y_true, self.y_scores) == 5/8
+        assert false_positive_rate(self.y_true, self.y_scores) == 5/8
+
+
 
 class TestRatingMetrics(unittest.TestCase):
     """

@@ -63,7 +63,7 @@ def condition_negative(y_true: np.array) -> float:
     Returns:
         cn (float): The number of negative instances.
     """
-    cpn = np.sum(1-y_true)
+    cn = np.sum(1-y_true)
     return cn
 
 def true_positive(y_true: np.array, y_scores: np.array) -> float:

@@ -259,8 +259,6 @@ def false_negative_rate(y_true: np.array, y_scores: np.array) -> float:
     fnr = miss_rate(y_true, y_scores)
     return fnr
 
-fall-out or false positive rate 
-
 def fall_out(y_true: np.array, y_scores: np.array) -> float:
     """
     Calculate the fall out (same as false positive rate).

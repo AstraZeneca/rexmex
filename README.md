@@ -81,8 +81,8 @@ These metrics assume that items are scored explicitly and ratings are predicted 
 
 These metrics assume that the items are scored with raw probabilities (these can be binarized).
 
-* **[Precision](https://en.wikipedia.org/wiki/Precision_and_recall)**
-* **[Recall](https://en.wikipedia.org/wiki/Precision_and_recall)**
+* **[Precision (or Positive Predictive Value)](https://en.wikipedia.org/wiki/Precision_and_recall)**
+* **[Recall (Sensitivity, Hit Rate, or True Positive Rate)](https://en.wikipedia.org/wiki/Precision_and_recall)**
 * **[PR AUC](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13140)**
 * **[ROC AUC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)**
 
@@ -94,7 +94,7 @@ These metrics assume that the items are scored with raw probabilities (these can
 * **[Miss Rate](docs)**
 * **[Inverse Precision](docs)**
 * **[Inverse Recall](docs)**
-* **[Markedness](docs)**
+* **[Markedness](https://en.wikipedia.org/wiki/Markedness)**
 * **[Informedness](docs)**
 * **[Matthews Correlation](docs)**
 

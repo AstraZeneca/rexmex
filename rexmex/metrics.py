@@ -355,7 +355,7 @@ def fowlkes_mallows_index(y_true: np.array, y_scores: np.array) -> float:
 def informedness(y_true: np.array, y_scores: np.array) -> float:
     tpr = true_positive_rate(y_true, y_scores)
     tnr = true_negative_rate(y_true, y_scores)
-    bm = tpr+tnr-2
+    bm = tpr+tnr-1
     return bm
 
 def markedness(y_true: np.array, y_scores: np.array) -> float:

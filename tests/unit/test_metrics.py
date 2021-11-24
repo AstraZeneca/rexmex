@@ -82,7 +82,7 @@ class TestClassificationMetrics(unittest.TestCase):
 
     def test_informedness_markedness(self):
         assert fowlkes_mallows_index(self.y_true, self.y_scores) == (8/27)**0.5
-        assert informedness(self.y_true, self.y_scores) == 1/8
+        assert informedness(self.y_true, self.y_scores) == 1/24
         assert markedness(self.y_true, self.y_scores) == 2/45
         assert diagnostic_odds_ratio(self.y_true, self.y_scores) == 6/5
 

@@ -76,7 +76,7 @@ class TestClassificationMetrics(unittest.TestCase):
         assert negative_likelihood_ratio(self.y_true, self.y_scores) == 8/9
 
     def test_prevalence_threshold(self):
-        assert prevalence_threshold(self.y_true, self.y_scores) == (4/6)**0.5/((4/6)**0.5 + (5/8)**0.5)
+        assert prevalence_threshold(self.y_true, self.y_scores) == (5/8)**0.5/((4/6)**0.5 + (5/8)**0.5)
         assert threat_score(self.y_true, self.y_scores) == 4/11
         assert critical_success_index(self.y_true, self.y_scores) == 4/11
 

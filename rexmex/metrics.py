@@ -362,10 +362,10 @@ def markedness(y_true: np.array, y_scores: np.array) -> float:
     ppv = positive_predictive_value(y_true, y_scores)
     npv = negative_predictive_value(y_true, y_scores)
     mk = ppv+npv-1
-    return ml
+    return mk
 
 def diagnostic_odds_ratio(y_true: np.array, y_scores: np.array) -> float:
-    lr_minus = lr_minus(y_true, y_scores)
-    lr_plus = lr_plus(y_true, y_scores)
+    lr_minus = negative_likelihood_ratio(y_true, y_scores)
+    lr_plus = positive_likelihood_ratio(y_true, y_scores)
     dor = lr_plus / lr_minus
     return dor

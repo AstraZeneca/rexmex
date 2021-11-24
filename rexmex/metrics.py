@@ -69,6 +69,7 @@ def condition_negative(y_true: np.array) -> float:
 def true_positive(y_true: np.array, y_scores: np.array) -> float:
     """
     Calculate the number of true positives.
+
     Args:
         y_true (array-like): An N x 1 array of ground truth values.
         y_scores (array-like):  An N x 1 array of predicted values.

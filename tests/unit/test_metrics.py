@@ -98,4 +98,4 @@ class TestRatingMetrics(unittest.TestCase):
     
     def test_metrics(self):
         assert root_mean_squared_error(self.y_true, self.y_scores) == 22**0.5
-        assert round(symmetric_mean_absolute_percentage_error(self.y_true, self.y_scores)) == 0.5 
+        assert round(symmetric_mean_absolute_percentage_error(self.y_true, self.y_scores)) == 134

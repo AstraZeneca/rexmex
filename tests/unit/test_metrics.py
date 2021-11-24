@@ -86,8 +86,6 @@ class TestClassificationMetrics(unittest.TestCase):
         assert markedness(self.y_true, self.y_scores) == 2/45
         assert diagnostic_odds_ratio(self.y_true, self.y_scores) == 6/5
 
-    
-
 class TestRatingMetrics(unittest.TestCase):
     """
     Newly defined rating metric tests.

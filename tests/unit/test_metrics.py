@@ -15,6 +15,11 @@ from rexmex.metrics import miss_rate, false_negative_rate
 from rexmex.metrics import fall_out, false_positive_rate
 from rexmex.metrics import false_discovery_rate, false_omission_rate
 
+from rexmex.metrics import positive_likelihood_ratio, negative_likelihood_ratio
+from rexmex.metrics import prevalence_threshold, threat_score, critical_success_index
+
+from rexmex.metrics import fowlkes_mallows_index, informedness, markedness, diagnostic_odds_ratio
+
 class TestClassificationMetrics(unittest.TestCase):
     """
     Newly defined classification metric tests.
@@ -65,6 +70,10 @@ class TestClassificationMetrics(unittest.TestCase):
     def test_discovery_omission(self):
         assert false_omission_rate(self.y_true, self.y_scores) == (1 - negative_predictive_value(self.y_true, self.y_scores))
         assert false_discovery_rate(self.y_true, self.y_scores) == (1 - positive_predictive_value(self.y_true, self.y_scores))
+
+    def test_likelihood_ratios(self):
+        assert positive_likelihood_ratio(self.y_true, self.y_scores) == 16/15
+        assert negative_likelihood_ratio(self.y_true, self.y_scores) == 8/15
 
 class TestRatingMetrics(unittest.TestCase):
     """

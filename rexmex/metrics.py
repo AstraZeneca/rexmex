@@ -343,7 +343,7 @@ def threat_score(y_true: np.array, y_scores: np.array) -> float:
     return ts
 
 def critical_success_index(y_true: np.array, y_scores: np.array) -> float:
-    ts  = threat_score()
+    ts  = threat_score(y_true, y_scores)
     return ts
 
 def fowlkes_mallows_index(y_true: np.array, y_scores: np.array) -> float:

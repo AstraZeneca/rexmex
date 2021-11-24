@@ -80,6 +80,12 @@ class TestClassificationMetrics(unittest.TestCase):
         assert threat_score(self.y_true, self.y_scores) == 4/11
         assert critical_success_index(self.y_true, self.y_scores) == 4/11
 
+    def test_informedness_markedness(self):
+        assert fowlkes_mallows_index(self.y_true, self.y_scores) == (8/27)**0.5
+        assert informedness(self.y_true, self.y_scores) == 1/8
+        assert markedness(self.y_true, self.y_scores) == 2/45
+        assert diagnostic_odds_ratio(self.y_true, self.y_scores) == 6/5
+
     
 
 class TestRatingMetrics(unittest.TestCase):

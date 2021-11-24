@@ -20,7 +20,7 @@ from rexmex.metrics import prevalence_threshold, threat_score, critical_success_
 
 from rexmex.metrics import fowlkes_mallows_index, informedness, markedness, diagnostic_odds_ratio
 
-from rexmex.metrics import 
+from rexmex.metrics import root_mean_squared_error, symmetric_mean_absolute_percentage_error
 
 class TestClassificationMetrics(unittest.TestCase):
     """

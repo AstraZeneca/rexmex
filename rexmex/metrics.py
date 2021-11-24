@@ -317,32 +317,55 @@ def false_omission_rate(y_true: np.array, y_scores: np.array) -> float:
     fomr = fn/(fn+tn)
     return fomr
 
-def positive_likelihood_ratio():
-    pass
+def positive_likelihood_ratio(y_true: np.array, y_scores: np.array) -> float:
+    tpr = true_positive_rate(y_true, y_scores)
+    fpr = false_positive_rate(y_true, y_scores)
+    lr_plus = tpr/fpr
+    return lr_plus
 
-def negative_likelihood_ratio():
-    pass
+def negative_likelihood_ratio(y_true: np.array, y_scores: np.array) -> float:
+    fnr = false_negative_rate(y_true, y_scores)
+    tnr = true_negative_rate(y_true, y_scores)
+    lr_minus = fnr/tnr
+    return lr_minus
 
-def prevalence_threshold():
-    pass
+def prevalence_threshold(y_true: np.array, y_scores: np.array) -> float:
+    fpr = false_positive_rate(y_true, y_scores)
+    tpr = true_positive_rate(y_true, y_scores)
+    pthr = (fpr**0.5)/(fpr**0.5+tpr**0.5)
+    return pthr
 
-def threat_score():
-    pass
+def threat_score(y_true: np.array, y_scores: np.array) -> float:
+    tp = true_positive(y_true, y_scores)
+    fn = false_negative(y_true, y_scores)
+    fp = false_positive(y_true, y_scores)
+    ts = tp/(tp+fn+fp)
+    return ts
 
-def critical_success_index():
-    pass
+def critical_success_index(y_true: np.array, y_scores: np.array) -> float:
+    ts  = threat_score()
+    return ts
 
-def prevalence():
-    pass
+def fowlkes_mallows_index(y_true: np.array, y_scores: np.array) -> float:
+    ppv = positive_predictive_value(y_true, y_scores)
+    tpr = true_positive_rate(y_true, y_scores)
+    fm = (ppv*tpr)**0.5
+    return fm
 
-def fowlkes_mallows_index():
-    pass
+def informedness(y_true: np.array, y_scores: np.array) -> float:
+    tpr = true_positive_rate(y_true, y_scores)
+    tnr = true_negative_rate(y_true, y_scores)
+    bm = tpr+tnr-2
+    return bm
 
-def informedness():
-    pass 
+def markedness(y_true: np.array, y_scores: np.array) -> float:
+    ppv = positive_predictive_value(y_true, y_scores)
+    npv = negative_predictive_value(y_true, y_scores)
+    mk = ppv+tpv-1
+    return ml
 
-def markedness():
-    pass
-
-def diagnostic_odds_ratio():
-    pass
+def diagnostic_odds_ratio(y_true: np.array, y_scores: np.array) -> float:
+    lr_minus = lr_minus(y_true, y_scores)
+    lr_plus = lr_plus(y_true, y_scores)
+    dor = lr_plus / lr_minus
+    return dor

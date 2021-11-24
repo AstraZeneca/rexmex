@@ -79,7 +79,7 @@ class ClassificationMetricSet(MetricSet):
     | **Area Under the Precision Recall Curve**
     | **Average Precision**
     | **F-1 Score**
-    | **Matthews Correlation Coefficient**
+    | **Matthew's Correlation Coefficient**
     | **Fowlkes-Mallows Index**
     | **Precision**
     | **Recall**

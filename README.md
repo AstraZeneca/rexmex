@@ -43,7 +43,7 @@ report = score_card.generate_report(scores, groupping=["source_group"])
 
 --------------------------------------------------------------------------------
 
-A **rexmex** score card allows the reporting of recommender system performance metrics, plotting the performance metrics and saving those 
+A **rexmex** score card allows the reporting of recommender system performance metrics, plotting the performance metrics and saving those. Our framework provides 7 rating, Y classification, Z ranking, and W coverage metrics.
 
 **Metric Sets**
 
@@ -90,12 +90,12 @@ These metrics assume that the items are scored with raw probabilities (these can
 <summary><b>Expand to see all classification metrics in the metric set.</b></summary>
 
 * **[F-1 Score](https://en.wikipedia.org/wiki/F-score)**
-* **[Average Precision](docs)**
-* **[Specificty](docs)**
-* **[Matthew's Correlation](docs)**
-* **[Specificity](docs)**
-* **[Accuracy](docs)**
-* **[Balanced Accuracy](docs)**
+* **[Average Precision](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)**
+* **[Specificty](https://en.wikipedia.org/wiki/Precision_and_recall)**
+* **[Matthew's Correlation](https://en.wikipedia.org/wiki/Precision_and_recall)**
+* **[Accuracy](https://en.wikipedia.org/wiki/Precision_and_recall)**
+* **[Balanced Accuracy](https://en.wikipedia.org/wiki/Precision_and_recall)**
+* **[Fowlkes-Mallows Index](https://en.wikipedia.org/wiki/Precision_and_recall)**
 
 </details>
 

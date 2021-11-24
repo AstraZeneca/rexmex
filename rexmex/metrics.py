@@ -361,7 +361,7 @@ def informedness(y_true: np.array, y_scores: np.array) -> float:
 def markedness(y_true: np.array, y_scores: np.array) -> float:
     ppv = positive_predictive_value(y_true, y_scores)
     npv = negative_predictive_value(y_true, y_scores)
-    mk = ppv+tpv-1
+    mk = ppv+npv-1
     return ml
 
 def diagnostic_odds_ratio(y_true: np.array, y_scores: np.array) -> float:

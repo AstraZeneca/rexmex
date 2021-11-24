@@ -2,7 +2,7 @@ import pytest
 import unittest
 import numpy as np
 
-from sklearn.metrics import precision_score, recall_score
+from rexmex.metrics import precision_score, recall_score
 
 from rexmex.metrics import condition_positive, condition_negative
 from rexmex.metrics import true_positive, true_negative, false_positive, false_negative

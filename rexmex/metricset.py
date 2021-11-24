@@ -3,11 +3,11 @@ from typing import List, Dict, Tuple
 
 from rexmex.utils import binarize, normalize
 
-from scipy.stats.stats import pearsonr
-from sklearn.metrics import roc_auc_score
-from sklearn.metrics import accuracy_score, balanced_accuracy_score
-from sklearn.metrics import f1_score, precision_score, recall_score, average_precision_score, matthews_corrcoef
-from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error, r2_score
+from rexmex.metrics import pearsonr
+from rexmex.metrics import roc_auc_score
+from rexmex.metrics import accuracy_score, balanced_accuracy_score
+from rexmex.metrics import f1_score, precision_score, recall_score, average_precision_score, matthews_corrcoef
+from rexmex.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error, r2_score
 
 from rexmex.metrics import pr_auc_score, specificity, fowlkes_mallows_index
 from rexmex.metrics import symmetric_mean_absolute_percentage_error, root_mean_squared_error

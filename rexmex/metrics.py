@@ -213,7 +213,7 @@ def positive_predictive_value(y_true: np.array, y_scores: np.array) -> float:
     """
     tp = true_positive(y_true, y_scores)
     fp = false_positive(y_true, y_scores)
-    ppv = tp/(tp+fp)
+    ppv = tp/(tp + fp)
     return ppv
 
 def negative_predictive_value(y_true: np.array, y_scores: np.array) -> float:
@@ -228,7 +228,7 @@ def negative_predictive_value(y_true: np.array, y_scores: np.array) -> float:
     """
     tn = true_negative(y_true, y_scores)
     fn = false_negative(y_true, y_scores)
-    npv = tn/(tn+fn)
+    npv = tn/(tn + fn)
     return npv
 
 def miss_rate(y_true: np.array, y_scores: np.array) -> float:
@@ -295,7 +295,7 @@ def false_discovery_rate(y_true: np.array, y_scores: np.array) -> float:
         y_true (array-like): An N x 1 array of ground truth values.
         y_scores (array-like):  An N x 1 array of predicted values.
     Returns:
-        fdr (float): The false discovery rate ralue.
+        fdr (float): The false discovery rate value.
     """
     fp = false_positive(y_true, y_scores)
     tp = true_positive(y_true, y_scores)
@@ -310,7 +310,7 @@ def false_omission_rate(y_true: np.array, y_scores: np.array) -> float:
         y_true (array-like): An N x 1 array of ground truth values.
         y_scores (array-like):  An N x 1 array of predicted values.
     Returns:
-        fomr (float): The false omission rate ralue.
+        fomr (float): The false omission rate value.
     """
     fn = false_negative(y_true, y_scores)
     tn = true_negative(y_true, y_scores)
@@ -318,53 +318,134 @@ def false_omission_rate(y_true: np.array, y_scores: np.array) -> float:
     return fomr
 
 def positive_likelihood_ratio(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the positive likelihood ratio.
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+         (float): The positive likelihood ratio value.
+    """
     tpr = true_positive_rate(y_true, y_scores)
     fpr = false_positive_rate(y_true, y_scores)
     lr_plus = tpr/fpr
     return lr_plus
 
 def negative_likelihood_ratio(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the negative likelihood ratio.
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        lr_minus (float): The negative likelihood ratio value.
+    """
     fnr = false_negative_rate(y_true, y_scores)
     tnr = true_negative_rate(y_true, y_scores)
     lr_minus = fnr/tnr
     return lr_minus
 
 def prevalence_threshold(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the prevalence threshold score.
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        pthr (float): The prevalence threshold value.
+    """
     fpr = false_positive_rate(y_true, y_scores)
     tpr = true_positive_rate(y_true, y_scores)
-    pthr = (fpr**0.5)/(fpr**0.5+tpr**0.5)
+    pthr = (fpr**0.5)/(fpr**0.5 + tpr**0.5)
     return pthr
 
 def threat_score(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the threat score.
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        ts (float): The threat score value.
+    """
     tp = true_positive(y_true, y_scores)
     fn = false_negative(y_true, y_scores)
     fp = false_positive(y_true, y_scores)
-    ts = tp/(tp+fn+fp)
+    ts = tp / (tp + fn + fp)
     return ts
 
 def critical_success_index(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the critical success index (same as the theat score).
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        ts (float): The critical success index value.
+    """
     ts  = threat_score(y_true, y_scores)
     return ts
 
 def fowlkes_mallows_index(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the Fowlkes-Mallows index.
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        fm (float): The the Fowlkes-Mallows index value.
+    """
     ppv = positive_predictive_value(y_true, y_scores)
     tpr = true_positive_rate(y_true, y_scores)
-    fm = (ppv*tpr)**0.5
+    fm = (ppv * tpr)**0.5
     return fm
 
 def informedness(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the informedness.
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        bm (float): The informedness value.
+    """
     tpr = true_positive_rate(y_true, y_scores)
     tnr = true_negative_rate(y_true, y_scores)
-    bm = tpr+tnr-1
+    bm = tpr + tnr - 1
     return bm
 
 def markedness(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the markedness.
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        mk (float): The markedness value.
+    """
     ppv = positive_predictive_value(y_true, y_scores)
     npv = negative_predictive_value(y_true, y_scores)
-    mk = ppv+npv-1
+    mk = ppv + npv - 1
     return mk
 
 def diagnostic_odds_ratio(y_true: np.array, y_scores: np.array) -> float:
+    """
+    Calculate the diagnostic odds ratio.
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_scores (array-like):  An N x 1 array of predicted values.
+    Returns:
+        dor (float): The diagnostic odds ratio value.
+    """
     lr_minus = negative_likelihood_ratio(y_true, y_scores)
     lr_plus = positive_likelihood_ratio(y_true, y_scores)
     dor = lr_plus / lr_minus

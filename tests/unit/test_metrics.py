@@ -20,9 +20,11 @@ from rexmex.metrics import prevalence_threshold, threat_score, critical_success_
 
 from rexmex.metrics import fowlkes_mallows_index, informedness, markedness, diagnostic_odds_ratio
 
+from rexmex.metrics import 
+
 class TestClassificationMetrics(unittest.TestCase):
     """
-    Newly defined classification metric tests.
+    Newly defined classification metric behaviour tests.
     """
     def setUp(self):
         self.y_true = np.array([0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0])
@@ -88,10 +90,12 @@ class TestClassificationMetrics(unittest.TestCase):
 
 class TestRatingMetrics(unittest.TestCase):
     """
-    Newly defined rating metric tests.
+    Newly defined rating metric behaviour tests.
     """
     def setUp(self):
-        pass
+        self.y_true = np.array([0, 2, 3])
+        self.y_scores = np.array([4, 7, 8])
     
     def test_metrics(self):
-        pass
+        assert root_mean_squared_error(self.y_true, self.y_scores) == 14
+        assert round(symmetric_mean_absolute_percentage_error(self.y_true, self.y_scores)) == 0.5 

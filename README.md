@@ -91,12 +91,11 @@ These metrics assume that the items are scored with raw probabilities (these can
 
 * **[F-1 Score](https://en.wikipedia.org/wiki/F-score)**
 * **[Average Precision](docs)**
-* **[Miss Rate](docs)**
-* **[Inverse Precision](docs)**
-* **[Inverse Recall](docs)**
-* **[Markedness](https://en.wikipedia.org/wiki/Markedness)**
-* **[Informedness](docs)**
-* **[Matthews Correlation](docs)**
+* **[Specificty](docs)**
+* **[Matthew's Correlation](docs)**
+* **[Specificity](docs)**
+* **[Accuracy](docs)**
+* **[Balanced Accuracy](docs)**
 
 </details>
 

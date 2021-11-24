@@ -6,10 +6,10 @@ from rexmex.utils import binarize, normalize
 from scipy.stats.stats import pearsonr
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import accuracy_score, balanced_accuracy_score
-from sklearn.metrics import f1_score, precision_score, recall_score, average_precision_score
+from sklearn.metrics import f1_score, precision_score, recall_score, average_precision_score, matthews_corrcoef
 from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error, r2_score
 
-from rexmex.metrics import pr_auc_score
+from rexmex.metrics import pr_auc_score, specificity, fowlkes_mallows_index
 from rexmex.metrics import symmetric_mean_absolute_percentage_error, root_mean_squared_error
 
 class MetricSet(dict):
@@ -75,12 +75,15 @@ class ClassificationMetricSet(MetricSet):
     """
     A set of classification metrics with the following metrics included:
 
-    | **ROC AUC**
-    | **PR AUC**
+    | **AUROC**
+    | **AUPR**
     | **Average Precision**
     | **F-1 Score**
+    | **Matthews Correlation Coefficient**
+    | **Fowlkes-Mallows Index**
     | **Precision**
     | **Recall**
+    | **Specificity**
     | **Accuracy**
     | **Balanced Accuracy**
     """
@@ -89,8 +92,11 @@ class ClassificationMetricSet(MetricSet):
         self["pr_auc"] = pr_auc_score
         self["average_precision"] = average_precision_score
         self["f1_score"] = binarize(f1_score)
+        self["matthews_corrcoeff"] = binarize(matthews_corrcoef)
+        self["fowlkes_mallows_index"] = binarize(fowlkes_mallows_index)
         self["precision"] = binarize(precision_score)
         self["recall"] = binarize(recall_score)
+        self["specificity"] = binarize(specificity)
         self["accuracy"] = binarize(accuracy_score)
         self["balanced_accuracy"] = binarize(balanced_accuracy_score)
 

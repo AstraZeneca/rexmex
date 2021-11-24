@@ -75,8 +75,8 @@ class ClassificationMetricSet(MetricSet):
     """
     A set of classification metrics with the following metrics included:
 
-    | **AUROC**
-    | **AUPR**
+    | **Area Under the Receiver Operating Characteristic Curve**
+    | **Area Under the Precision Recall Curve**
     | **Average Precision**
     | **F-1 Score**
     | **Matthews Correlation Coefficient**
@@ -110,13 +110,13 @@ class RatingMetricSet(MetricSet):
     """
     A set of rating metrics with the following metrics included:
 
-    | **MAE** 
-    | **MSE** 
-    | **RMSE** 
-    | **MAPE**
-    | **SMAPE** 
-    | **R Squared** 
-    | **Pearson Correlation** 
+    | **Mean Absolute Error** 
+    | **Mean Squared Error** 
+    | **Root Mean Squared Error** 
+    | **Mean Absolute Percentage Error**
+    | **Symmetric Mean Absolute Percentage Error** 
+    | **Coefficient of Determination** 
+    | **Pearson Correlation Coefficient** 
     """
     def __init__(self):
         self["mae"] = mean_absolute_error

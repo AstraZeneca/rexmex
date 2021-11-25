@@ -9,15 +9,15 @@ def mean_squared_error(y_true: np.array, y_scores: np.array) -> float:
     return mse
 
 def mean_absolute_error(y_true: np.array, y_scores: np.array) -> float:
-    mae =  sklearn.mean_absolute_error(y_true, y_scores)
+    mae =  sklearn.metrics.mean_absolute_error(y_true, y_scores)
     return mae
 
 def mean_absolute_percentage_error(y_true: np.array, y_scores: np.array) -> float:
-    mape =  sklearn.mean_absolute_percentage_error(y_true, y_scores)
+    mape =  sklearn.metrics.mean_absolute_percentage_error(y_true, y_scores)
     return mape
 
 def r2_score(y_true: np.array, y_scores: np.array) -> float:
-    r2 =  sklearn.r2_score(y_true, y_scores)
+    r2 =  sklearn.metrics.r2_score(y_true, y_scores)
     return r2
 
 def pearson_correlation_coefficient(y_true: np.array, y_scores: np.array) -> float:

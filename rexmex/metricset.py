@@ -3,14 +3,14 @@ from typing import List, Dict, Tuple
 
 from rexmex.utils import binarize, normalize
 
-from rexmex.metrics import pearsonr
-from rexmex.metrics import roc_auc_score
-from rexmex.metrics import accuracy_score, balanced_accuracy_score
-from rexmex.metrics import f1_score, precision_score, recall_score, average_precision_score, matthews_corrcoef
-from rexmex.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error, r2_score
+from rexmex.metrics.classification import roc_auc_score
+from rexmex.metrics.classification import accuracy_score, balanced_accuracy_score
+from rexmex.metrics.classification import pr_auc_score, specificity, fowlkes_mallows_index
+from rexmex.metrics.classification import f1_score, precision_score, recall_score, average_precision_score, matthews_correlation_coefficent
 
-from rexmex.metrics import pr_auc_score, specificity, fowlkes_mallows_index
-from rexmex.metrics import symmetric_mean_absolute_percentage_error, root_mean_squared_error
+from rexmex.metrics.rating import pearson_correlation_coefficient
+from rexmex.metrics.rating import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error, r2_score
+from rexmex.metrics.rating import symmetric_mean_absolute_percentage_error, root_mean_squared_error
 
 class MetricSet(dict):
     """
@@ -92,7 +92,7 @@ class ClassificationMetricSet(MetricSet):
         self["pr_auc"] = pr_auc_score
         self["average_precision"] = average_precision_score
         self["f1_score"] = binarize(f1_score)
-        self["matthews_corrcoeff"] = binarize(matthews_corrcoef)
+        self["matthews_correlation_coefficent"] = binarize(matthews_correlation_coefficent)
         self["fowlkes_mallows_index"] = binarize(fowlkes_mallows_index)
         self["precision"] = binarize(precision_score)
         self["recall"] = binarize(recall_score)
@@ -125,7 +125,7 @@ class RatingMetricSet(MetricSet):
         self["mape"] = mean_absolute_percentage_error
         self["smape"] = symmetric_mean_absolute_percentage_error
         self["r_squared"] = r2_score
-        self["pearson_correlation"] = pearsonr
+        self["pearson_correlation"] = pearson_correlation_coefficient
 
     def normalize_metrics(self):
         """

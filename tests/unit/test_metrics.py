@@ -2,25 +2,25 @@ import pytest
 import unittest
 import numpy as np
 
-from rexmex.metrics import precision_score, recall_score
+from rexmex.metrics.classification import precision_score, recall_score
 
-from rexmex.metrics import condition_positive, condition_negative
-from rexmex.metrics import true_positive, true_negative, false_positive, false_negative
-from rexmex.metrics import specificity, selectivity, true_negative_rate
+from rexmex.metrics.classification import condition_positive, condition_negative
+from rexmex.metrics.classification import true_positive, true_negative, false_positive, false_negative
+from rexmex.metrics.classification import specificity, selectivity, true_negative_rate
 
-from rexmex.metrics import sensitivity, hit_rate, true_positive_rate
+from rexmex.metrics.classification import sensitivity, hit_rate, true_positive_rate
 
-from rexmex.metrics import positive_predictive_value, negative_predictive_value
-from rexmex.metrics import miss_rate, false_negative_rate
-from rexmex.metrics import fall_out, false_positive_rate
-from rexmex.metrics import false_discovery_rate, false_omission_rate
+from rexmex.metrics.classification import positive_predictive_value, negative_predictive_value
+from rexmex.metrics.classification import miss_rate, false_negative_rate
+from rexmex.metrics.classification import fall_out, false_positive_rate
+from rexmex.metrics.classification import false_discovery_rate, false_omission_rate
 
-from rexmex.metrics import positive_likelihood_ratio, negative_likelihood_ratio
-from rexmex.metrics import prevalence_threshold, threat_score, critical_success_index
+from rexmex.metrics.classification import positive_likelihood_ratio, negative_likelihood_ratio
+from rexmex.metrics.classification import prevalence_threshold, threat_score, critical_success_index
 
-from rexmex.metrics import fowlkes_mallows_index, informedness, markedness, diagnostic_odds_ratio
+from rexmex.metrics.classification import fowlkes_mallows_index, informedness, markedness, diagnostic_odds_ratio
 
-from rexmex.metrics import root_mean_squared_error, symmetric_mean_absolute_percentage_error
+from rexmex.metrics.rating import root_mean_squared_error, symmetric_mean_absolute_percentage_error
 
 class TestClassificationMetrics(unittest.TestCase):
     """

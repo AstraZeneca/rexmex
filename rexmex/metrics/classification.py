@@ -1,12 +1,40 @@
 import numpy as np
-from sklearn.metrics import mean_squared_error
-from sklearn.metrics import precision_recall_curve, auc
-
-from scipy.stats.stats import pearsonr
-from sklearn.metrics import roc_auc_score
+import sklearn.metrics 
+from sklearn.metrics import precision_recall_curve, auc, roc_auc_score
 from sklearn.metrics import accuracy_score, balanced_accuracy_score
 from sklearn.metrics import f1_score, precision_score, recall_score, average_precision_score, matthews_corrcoef
-from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error, r2_score
+
+def roc_auc_score(y_true: np.array, y_scores: np.array) -> float:
+    auc = sklearn.metrics.roc_auc_score(y_true, y_scores)
+    return auc
+
+def accuracy_score(y_true: np.array, y_scores: np.array) -> float:
+    accuracy = sklearn.metrics.accuracy_score(y_true, y_scores)
+    return accuracy
+
+def balanced_accuracy_score(y_true: np.array, y_scores: np.array) -> float:
+    balanced_accuracy = sklearn.metrics.balanced_accuracy_score(y_true, y_scores)
+    return balanced_accuracy
+
+def f1_score(y_true: np.array, y_scores: np.array) -> float:
+    f1 = sklearn.metrics.f1_score(y_true, y_scores)
+    return f1
+
+def precision_score(y_true: np.array, y_scores: np.array) -> float:
+    precision = sklearn.metrics.precision_score(y_true, y_scores)
+    return precision
+
+def recall_score(y_true: np.array, y_scores: np.array) -> float:
+    recall = sklearn.metrics.recall_score(y_true, y_scores)
+    return recall
+
+def average_precision_score(y_true: np.array, y_scores: np.array) -> float:
+    average_precision = sklearn.metrics.average_precision_score(y_true, y_scores)
+    return average_precision
+
+def matthews_correlation_coeffficient(y_true: np.array, y_scores: np.array) -> float:
+    mat_cor = sklearn.metrics.matthews_corrcoef(y_true, y_scores)
+    return mat_cor
 
 
 def pr_auc_score(y_true: np.array, y_scores: np.array) -> float:

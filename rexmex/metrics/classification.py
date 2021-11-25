@@ -32,7 +32,7 @@ def average_precision_score(y_true: np.array, y_scores: np.array) -> float:
     average_precision = sklearn.metrics.average_precision_score(y_true, y_scores)
     return average_precision
 
-def matthews_correlation_coeffficient(y_true: np.array, y_scores: np.array) -> float:
+def matthews_correlation_coefficient(y_true: np.array, y_scores: np.array) -> float:
     mat_cor = sklearn.metrics.matthews_corrcoef(y_true, y_scores)
     return mat_cor
 

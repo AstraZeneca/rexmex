@@ -45,7 +45,7 @@ def pr_auc_score(y_true: np.array, y_scores: np.array) -> float:
         pr_auc (float): The value of the precision-recall area under the curve.
     """
     precision, recall, thresholds = sklearn.metrics.precision_recall_curve(y_true, y_scores)
-    pr_auc = sklearm.metrics.auc(recall, precision)
+    pr_auc = sklearn.metrics.auc(recall, precision)
     return pr_auc
 
 def condition_positive(y_true: np.array) -> float:

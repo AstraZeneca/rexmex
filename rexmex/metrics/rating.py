@@ -1,8 +1,6 @@
 import numpy as np
 import sklearn.metrics
-from scipy.stats.stats import pearsonr
-from sklearn.metrics import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error, r2_score
-
+import scipy.stats.stats
 
 def mean_squared_error(y_true: np.array, y_scores: np.array) -> float:
     mse =  sklearn.metrics.mean_squared_error(y_true, y_scores)
@@ -21,7 +19,7 @@ def r2_score(y_true: np.array, y_scores: np.array) -> float:
     return r2
 
 def pearson_correlation_coefficient(y_true: np.array, y_scores: np.array) -> float:
-    rho =  pearsonr(y_true, y_scores)
+    rho =  scipy.stats.stats.pearsonr(y_true, y_scores)
     return rho
 
 def root_mean_squared_error(y_true: np.array, y_scores: np.array) -> float:

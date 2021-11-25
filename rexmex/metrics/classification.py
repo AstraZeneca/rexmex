@@ -1,8 +1,5 @@
 import numpy as np
 import sklearn.metrics 
-from sklearn.metrics import precision_recall_curve, auc, roc_auc_score
-from sklearn.metrics import accuracy_score, balanced_accuracy_score
-from sklearn.metrics import f1_score, precision_score, recall_score, average_precision_score, matthews_corrcoef
 
 def roc_auc_score(y_true: np.array, y_scores: np.array) -> float:
     auc = sklearn.metrics.roc_auc_score(y_true, y_scores)

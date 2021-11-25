@@ -19,10 +19,17 @@ Metric Sets
     :members: MetricSet, ClassificationMetricSet, CoverageMetricSet, RatingMetricSet, RankingMetricSet
     :undoc-members:
 
-Metrics
+Classification Metrics
 --------------------
 
-.. automodule:: rexmex.metrics
+.. automodule:: rexmex.metrics.classification
+    :members:
+    :undoc-members:
+
+Rating Metrics
+--------------------
+
+.. automodule:: rexmex.metrics.rating
     :members:
     :undoc-members:
 

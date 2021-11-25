@@ -92,7 +92,7 @@ class ClassificationMetricSet(MetricSet):
         self["pr_auc"] = pr_auc_score
         self["average_precision"] = average_precision_score
         self["f1_score"] = binarize(f1_score)
-        self["matthews_correlation_coefficent"] = binarize(matthews_correlation_coefficent)
+        self["matthews_correlation_coefficent"] = binarize(matthews_correlation_coefficient)
         self["fowlkes_mallows_index"] = binarize(fowlkes_mallows_index)
         self["precision"] = binarize(precision_score)
         self["recall"] = binarize(recall_score)

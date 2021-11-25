@@ -6,7 +6,7 @@ from rexmex.utils import binarize, normalize
 from rexmex.metrics.classification import roc_auc_score
 from rexmex.metrics.classification import accuracy_score, balanced_accuracy_score
 from rexmex.metrics.classification import pr_auc_score, specificity, fowlkes_mallows_index
-from rexmex.metrics.classification import f1_score, precision_score, recall_score, average_precision_score, matthews_correlation_coefficent
+from rexmex.metrics.classification import f1_score, precision_score, recall_score, average_precision_score, matthews_correlation_coefficient
 
 from rexmex.metrics.rating import pearson_correlation_coefficient
 from rexmex.metrics.rating import mean_absolute_error, mean_squared_error, mean_absolute_percentage_error, r2_score

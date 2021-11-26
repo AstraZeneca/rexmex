@@ -41,9 +41,7 @@ report = score_card.generate_report(scores, groupping=["source_group"])
 
 **Scorecard**
 
---------------------------------------------------------------------------------
-
-A **rexmex** score card allows the reporting of recommender system performance metrics, plotting the performance metrics and saving those. Our framework provides 7 rating, Y classification, Z ranking, and W coverage metrics.
+A **rexmex** score card allows the reporting of recommender system performance metrics, plotting the performance metrics and saving those. Our framework provides 7 rating, 38 classification, Z ranking, and W coverage metrics.
 
 **Metric Sets**
 

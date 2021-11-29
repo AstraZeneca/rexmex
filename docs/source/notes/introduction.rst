@@ -47,7 +47,7 @@ The generic design **rexmex** involves classification metrics that exist on the 
     from rexmex.metrics.classification import pr_auc_score
 
     pr_auc_value = pr_auc_score(scores["y_true"], scores["y_score"])
-    print("{:.2f}".format(pr_auc_value))
+    print("{:.3f}".format(pr_auc_value))
 
 Metric sets
 ------------------------------
@@ -96,12 +96,13 @@ Utility functions
 A core idea of **rexmex** is the use of ``wrapper`` functions to help with recurring data manipulation. Our utility functions can be used to wrap the metrics when the predictions need to be transformed the ``y_score`` values are not binary. Because of this most evaluation metrics are not meaningful. However wrapping the classification metrics in the ``binarize`` function ensures that there is a binarization step. Let us take a look at this example snippet:
 
 .. jupyter-execute::
+
     from rexmex.merics.classification import accuracy_score
     from rexmex.utility import binaries
 
     new_accuracy_score = binarize(accuracy)
     accuracy_value = new_accuracy_score(scores.y_true, scores.y_score)
-    print("{:.2f}".format(accuracy_value))
+    print("{:.3f}".format(accuracy_value))
     
 
 

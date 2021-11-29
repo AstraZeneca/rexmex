@@ -8,13 +8,32 @@ Overview
 =======================
 --------------------------------------------------------------------------------
 
-We shortly overview the fundamental concepts and features of RexMex through simple examples. These are the following:
+We shortly overview the fundamental concepts and features of **rexmex** through simple examples. These are the following:
 
 .. contents::
     :local:
 
+Design philosophy
+-----------------
+
+**rexmex** is designed with the assumption that end users might want to use the evaluation metrics and utility functions without using the metric sets and score cards. Because of this, the evaluation metrics and utility functions (e.g. binarisation and normalisation) can be used independently from the **rexmex** library.
+
+
 Standardized dataset ingestion
 ------------------------------
+
+**rexmex** is designed with the assumption that the 
+
+.. code-block:: python
+
+    import networkx as nx
+    from karateclub import DeepWalk
+    
+    g = nx.newman_watts_strogatz_graph(100, 20, 0.05)
+
+    model = DeepWalk()
+    model.fit(g)
+    embedding = model.get_embedding()
 
 Evaluation metrics
 ------------------------------

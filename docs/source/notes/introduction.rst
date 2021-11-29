@@ -35,7 +35,7 @@ Synthetic toy datasets
 
     print(scores.head())
 
-Let us overview the structure of the ``DataFrame`` used in our example before we look at the core functionalities of the library. First of all we observe that: it is unindexed, has 6 columns and each row is a prediction. The first two columns ``source_id`` and ``target_id`` correspond to the user and item identifiers. The next two columns ``source_group`` and ``target_group`` help with the calculation of group performance metrics. Finally, ``y_true`` is a vector of ground truth values and ``y_score`` represents predicted probabilities. 
+Let us overview the structure of the ``scores DataFrame`` used in our example before we look at the core functionalities of the library. First of all we observe that: it is unindexed, has 6 columns and each row is a prediction. The first two columns ``source_id`` and ``target_id`` correspond to the user and item identifiers. The next two columns ``source_group`` and ``target_group`` help with the calculation of group performance metrics. Finally, ``y_true`` is a vector of ground truth values and ``y_score`` represents predicted probabilities. 
 
 Evaluation metrics
 ------------------------------

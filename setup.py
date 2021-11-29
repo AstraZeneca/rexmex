@@ -1,11 +1,6 @@
 from setuptools import find_packages, setup
 
-install_requires = [
-    "numpy",
-    "sklearn",
-    "pandas",
-    "scipy"
-]
+install_requires = ["numpy", "sklearn", "pandas", "scipy"]
 
 
 setup_requires = ["pytest-runner"]

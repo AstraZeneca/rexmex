@@ -1,5 +1,6 @@
 import numpy as np
-import sklearn.metrics 
+import sklearn.metrics
+
 
 def condition_positive(y_true: np.array) -> float:
     """
@@ -13,6 +14,7 @@ def condition_positive(y_true: np.array) -> float:
     cp = np.sum(y_true)
     return cp
 
+
 def condition_negative(y_true: np.array) -> float:
     """
     Calculate the number of instances which are negative.
@@ -22,8 +24,9 @@ def condition_negative(y_true: np.array) -> float:
     Returns:
         cn (float): The number of negative instances.
     """
-    cn = np.sum(1-y_true)
+    cn = np.sum(1 - y_true)
     return cn
+
 
 def true_positive(y_true: np.array, y_score: np.array) -> float:
     """
@@ -35,8 +38,9 @@ def true_positive(y_true: np.array, y_score: np.array) -> float:
     Returns:
         tp (float): The number of true positives.
     """
-    tp = np.sum(y_score[y_true==1])
+    tp = np.sum(y_score[y_true == 1])
     return tp
+
 
 def true_negative(y_true: np.array, y_score: np.array) -> float:
     """
@@ -49,8 +53,9 @@ def true_negative(y_true: np.array, y_score: np.array) -> float:
         tn (float): The number of true negatives.
     """
     y_score = 1 - y_score
-    tn = np.sum(y_score[y_true==0])
+    tn = np.sum(y_score[y_true == 0])
     return tn
+
 
 def false_positive(y_true: np.array, y_score: np.array) -> float:
     """
@@ -62,8 +67,9 @@ def false_positive(y_true: np.array, y_score: np.array) -> float:
     Returns:
         fp (float): The number of false positives.
     """
-    fp = np.sum(y_score[y_true==0])
+    fp = np.sum(y_score[y_true == 0])
     return fp
+
 
 def false_negative(y_true: np.array, y_score: np.array) -> float:
     """
@@ -76,8 +82,9 @@ def false_negative(y_true: np.array, y_score: np.array) -> float:
         fn (float): The number of false negatives.
     """
     y_score = 1 - y_score
-    fn = np.sum(y_score[y_true==1])
+    fn = np.sum(y_score[y_true == 1])
     return fn
+
 
 def specificity(y_true: np.array, y_score: np.array) -> float:
     """
@@ -94,6 +101,7 @@ def specificity(y_true: np.array, y_score: np.array) -> float:
     tnr = tn / n
     return tnr
 
+
 def selectivity(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the selectivity (same as specificity and true negative rate).
@@ -107,6 +115,7 @@ def selectivity(y_true: np.array, y_score: np.array) -> float:
     tnr = specificity(y_true, y_score)
     return tnr
 
+
 def true_negative_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the true negative rate (same as specificity and selectivity).
@@ -119,6 +128,7 @@ def true_negative_rate(y_true: np.array, y_score: np.array) -> float:
     """
     tnr = specificity(y_true, y_score)
     return tnr
+
 
 def sensitivity(y_true: np.array, y_score: np.array) -> float:
     """
@@ -135,6 +145,7 @@ def sensitivity(y_true: np.array, y_score: np.array) -> float:
     tpr = tp / p
     return tpr
 
+
 def hit_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the hit rate (same as recall, sensitivity and true positive rate).
@@ -147,6 +158,7 @@ def hit_rate(y_true: np.array, y_score: np.array) -> float:
     """
     tpr = sensitivity(y_true, y_score)
     return tpr
+
 
 def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -161,6 +173,7 @@ def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
     tpr = sensitivity(y_true, y_score)
     return tpr
 
+
 def positive_predictive_value(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the positive predictive value (same as precision).
@@ -173,8 +186,9 @@ def positive_predictive_value(y_true: np.array, y_score: np.array) -> float:
     """
     tp = true_positive(y_true, y_score)
     fp = false_positive(y_true, y_score)
-    ppv = tp/(tp + fp)
+    ppv = tp / (tp + fp)
     return ppv
+
 
 def negative_predictive_value(y_true: np.array, y_score: np.array) -> float:
     """
@@ -188,8 +202,9 @@ def negative_predictive_value(y_true: np.array, y_score: np.array) -> float:
     """
     tn = true_negative(y_true, y_score)
     fn = false_negative(y_true, y_score)
-    npv = tn/(tn + fn)
+    npv = tn / (tn + fn)
     return npv
+
 
 def miss_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -203,8 +218,9 @@ def miss_rate(y_true: np.array, y_score: np.array) -> float:
     """
     fn = false_negative(y_true, y_score)
     p = condition_positive(y_true)
-    fnr = fn/p
+    fnr = fn / p
     return fnr
+
 
 def false_negative_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -219,6 +235,7 @@ def false_negative_rate(y_true: np.array, y_score: np.array) -> float:
     fnr = miss_rate(y_true, y_score)
     return fnr
 
+
 def fall_out(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the fall out (same as false positive rate).
@@ -231,8 +248,9 @@ def fall_out(y_true: np.array, y_score: np.array) -> float:
     """
     fp = false_positive(y_true, y_score)
     n = condition_negative(y_true)
-    fpr = fp/n
+    fpr = fp / n
     return fpr
+
 
 def false_positive_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -247,6 +265,7 @@ def false_positive_rate(y_true: np.array, y_score: np.array) -> float:
     fpr = fall_out(y_true, y_score)
     return fpr
 
+
 def false_discovery_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the false discovery rate.
@@ -259,8 +278,9 @@ def false_discovery_rate(y_true: np.array, y_score: np.array) -> float:
     """
     fp = false_positive(y_true, y_score)
     tp = true_positive(y_true, y_score)
-    fdr = fp/(fp+tp)
+    fdr = fp / (fp + tp)
     return fdr
+
 
 def false_omission_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -274,8 +294,9 @@ def false_omission_rate(y_true: np.array, y_score: np.array) -> float:
     """
     fn = false_negative(y_true, y_score)
     tn = true_negative(y_true, y_score)
-    fomr = fn/(fn+tn)
+    fomr = fn / (fn + tn)
     return fomr
+
 
 def positive_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     """
@@ -289,8 +310,9 @@ def positive_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     """
     tpr = true_positive_rate(y_true, y_score)
     fpr = false_positive_rate(y_true, y_score)
-    lr_plus = tpr/fpr
+    lr_plus = tpr / fpr
     return lr_plus
+
 
 def negative_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     """
@@ -304,8 +326,9 @@ def negative_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     """
     fnr = false_negative_rate(y_true, y_score)
     tnr = true_negative_rate(y_true, y_score)
-    lr_minus = fnr/tnr
+    lr_minus = fnr / tnr
     return lr_minus
+
 
 def prevalence_threshold(y_true: np.array, y_score: np.array) -> float:
     """
@@ -319,8 +342,9 @@ def prevalence_threshold(y_true: np.array, y_score: np.array) -> float:
     """
     fpr = false_positive_rate(y_true, y_score)
     tpr = true_positive_rate(y_true, y_score)
-    pthr = (fpr**0.5)/(fpr**0.5 + tpr**0.5)
+    pthr = (fpr ** 0.5) / (fpr ** 0.5 + tpr ** 0.5)
     return pthr
+
 
 def threat_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -338,6 +362,7 @@ def threat_score(y_true: np.array, y_score: np.array) -> float:
     ts = tp / (tp + fn + fp)
     return ts
 
+
 def critical_success_index(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the critical success index (same as the theat score).
@@ -348,8 +373,9 @@ def critical_success_index(y_true: np.array, y_score: np.array) -> float:
     Returns:
         ts (float): The critical success index value.
     """
-    ts  = threat_score(y_true, y_score)
+    ts = threat_score(y_true, y_score)
     return ts
+
 
 def fowlkes_mallows_index(y_true: np.array, y_score: np.array) -> float:
     """
@@ -363,8 +389,9 @@ def fowlkes_mallows_index(y_true: np.array, y_score: np.array) -> float:
     """
     ppv = positive_predictive_value(y_true, y_score)
     tpr = true_positive_rate(y_true, y_score)
-    fm = (ppv * tpr)**0.5
+    fm = (ppv * tpr) ** 0.5
     return fm
+
 
 def informedness(y_true: np.array, y_score: np.array) -> float:
     """
@@ -381,6 +408,7 @@ def informedness(y_true: np.array, y_score: np.array) -> float:
     bm = tpr + tnr - 1
     return bm
 
+
 def markedness(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the markedness.
@@ -395,6 +423,7 @@ def markedness(y_true: np.array, y_score: np.array) -> float:
     npv = negative_predictive_value(y_true, y_score)
     mk = ppv + npv - 1
     return mk
+
 
 def diagnostic_odds_ratio(y_true: np.array, y_score: np.array) -> float:
     """
@@ -411,6 +440,7 @@ def diagnostic_odds_ratio(y_true: np.array, y_score: np.array) -> float:
     dor = lr_plus / lr_minus
     return dor
 
+
 def roc_auc_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the AUC for a ground-truth prediction vector pair.
@@ -423,6 +453,7 @@ def roc_auc_score(y_true: np.array, y_score: np.array) -> float:
     """
     auc = sklearn.metrics.roc_auc_score(y_true, y_score)
     return auc
+
 
 def accuracy_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -437,6 +468,7 @@ def accuracy_score(y_true: np.array, y_score: np.array) -> float:
     accuracy = sklearn.metrics.accuracy_score(y_true, y_score)
     return accuracy
 
+
 def balanced_accuracy_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the balanced accuracy for a ground-truth prediction vector pair.
@@ -449,6 +481,7 @@ def balanced_accuracy_score(y_true: np.array, y_score: np.array) -> float:
     """
     balanced_accuracy = sklearn.metrics.balanced_accuracy_score(y_true, y_score)
     return balanced_accuracy
+
 
 def f1_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -463,6 +496,7 @@ def f1_score(y_true: np.array, y_score: np.array) -> float:
     f1 = sklearn.metrics.f1_score(y_true, y_score)
     return f1
 
+
 def precision_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the precision for a ground-truth prediction vector pair.
@@ -475,6 +509,7 @@ def precision_score(y_true: np.array, y_score: np.array) -> float:
     """
     precision = sklearn.metrics.precision_score(y_true, y_score)
     return precision
+
 
 def recall_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -489,6 +524,7 @@ def recall_score(y_true: np.array, y_score: np.array) -> float:
     recall = sklearn.metrics.recall_score(y_true, y_score)
     return recall
 
+
 def average_precision_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate for a ground-truth prediction vector pair.
@@ -501,6 +537,7 @@ def average_precision_score(y_true: np.array, y_score: np.array) -> float:
     """
     average_precision = sklearn.metrics.average_precision_score(y_true, y_score)
     return average_precision
+
 
 def matthews_correlation_coefficient(y_true: np.array, y_score: np.array) -> float:
     """
@@ -526,6 +563,8 @@ def pr_auc_score(y_true: np.array, y_score: np.array) -> float:
     Returns:
         pr_auc (float): The value of the precision-recall area under the curve.
     """
-    precision, recall, thresholds = sklearn.metrics.precision_recall_curve(y_true, y_score)
+    precision, recall, thresholds = sklearn.metrics.precision_recall_curve(
+        y_true, y_score
+    )
     pr_auc = sklearn.metrics.auc(recall, precision)
     return pr_auc

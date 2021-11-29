@@ -40,7 +40,7 @@ class ScoreCard(object):
         if groupping is not None:
              scores = scores.groupby(groupping)
         report = scores.apply(lambda group: self._get_performance_metrics(group.y_true, group.y_score))
-        scores = scores.reset_index()
+        scores.reset_index()
         return report
 
     def __repr__(self):

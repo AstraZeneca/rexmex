@@ -53,7 +53,7 @@ class MetricSet(dict):
 
     def print_metrics(self):
         """
-        Printing the name of metrics when the print() function is called.
+        Printing the name of metrics.
         """
         print({k for k in self.keys()})
 

@@ -8,3 +8,4 @@ pandas
 six
 nbsphinx
 nbsphinx_link
+jupyter-sphinx

@@ -40,7 +40,11 @@ Let us overview the structure of the ``scores DataFrame`` used in our example be
 Evaluation metrics
 ------------------------------
 
-.. code-block:: python
+.. jupyter-execute::
+    from rexmex.metrics.classification import pr_auc_score
+
+    pr_auc_value = pr_auc_score(scores["y_true"], scores["y_score"])
+    print(pr_auc_value)
 
 Metric sets
 ------------------------------

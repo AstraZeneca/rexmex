@@ -39,7 +39,9 @@ class ScoreCard(object):
         """
         if groupping is not None:
              scores_to_evaluate = scores_to_evaluate.groupby(groupping)
-        report = scores_to_evaluate.apply(lambda group: self._get_performance_metrics(group.y_true, group.y_score))
+             report = scores_to_evaluate.apply(lambda group: self._get_performance_metrics(group.y_true, group.y_score))
+        else:
+            report = self._get_performance_metrics(scores_to_evaluate.y_true, scores_to_evaluate.y_score)
         return report
 
     def __repr__(self):

@@ -97,7 +97,7 @@ A core idea of **rexmex** is the use of ``wrapper`` functions to help with recur
 
 .. jupyter-execute::
 
-    from rexmex.merics.classification import accuracy_score
+    from rexmex.metrics.classification import accuracy_score
     from rexmex.utility import binaries
 
     new_accuracy_score = binarize(accuracy)

@@ -76,7 +76,7 @@ Score cards allow the calculation of performance metrics for a whole metric set 
 
 .. jupyter-execute::
 
-    from rexmex.scorecard import Scorecard
+    from rexmex.scorecard import ScoreCard
 
     score_card = ScoreCard(metric_set)
     report = score_card.generate_report(scores)

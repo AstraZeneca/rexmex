@@ -24,22 +24,22 @@ class ScoreCard(object):
         performance_metrics = pd.DataFrame.from_dict(performance_metrics)
         return performance_metrics
 
-    def generate_report(self, scores: pd.DataFrame, groupping: List[str]=None) -> pd.DataFrame:
+    def generate_report(self, scores_to_evaluate: pd.DataFrame, groupping: List[str]=None) -> pd.DataFrame:
         """
         A method to calculate (aggregated) performance metrics based
         on a dataframe of ground truth and predictions. It assumes that the dataframe has the `y_true`
         and `y_score` keys in the dataframe.
 
         Args:
-            scores (pd.DataFrame): A dataframe with the scores and ground-truth - it has the `y_true`
+            scores_to_evaluate (pd.DataFrame): A dataframe with the scores and ground-truth - it has the `y_true`
             and `y_score` keys.
             groupping (list): A list of performance groupping variable names.
         Returns:
             report (pd.DataFrame): The performance report.
         """
         if groupping is not None:
-             scores = scores.groupby(groupping)
-        report = scores.apply(lambda group: self._get_performance_metrics(group.y_true, group.y_score))
+             scores_to_evaluate = scores_to_evaluate.groupby(groupping)
+        report = scores_to_evaluate.apply(lambda group: self._get_performance_metrics(group.y_true, group.y_score))
         return report
 
     def __repr__(self):

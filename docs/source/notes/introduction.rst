@@ -82,6 +82,14 @@ Score cards allow the calculation of performance metrics for a whole metric set 
     report = score_card.generate_report(scores)
     print(report)
 
+The score cards allow the advanced reporting of the performance metrics. We could also group on the ``source_group`` and ``target_group`` keys and get very specific subgroup performances. Just like this:
+
+.. jupyter-execute::
+
+    report = score_card.generate_report(scores, ["source_group", "target_group"])
+    print(report)
+
+
 
 
 Utility functions

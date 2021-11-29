@@ -3,7 +3,7 @@
 RexMex Documentation
 ===============================
 
-*RexMex* is a ...
+rexmex is recommender system evaluation metric library. It consists of utilities for recommender system evaluation. First, it provides a comprehensive collection of metrics for the evaluation of recommender systems. Second, it includes a variety of methods for reporting and plotting the performance results. Implemented metrics cover a range of well-known metrics and newly proposed metrics from data mining (ICDM, CIKM, KDD) conferences and pieces from prominent journals.
 
 .. toctree::
    :glob:

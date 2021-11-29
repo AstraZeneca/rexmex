@@ -100,7 +100,7 @@ A core idea of **rexmex** is the use of ``wrapper`` functions to help with recur
     from rexmex.metrics.classification import accuracy_score
     from rexmex.utils import binarize
 
-    new_accuracy_score = binarize(accuracy)
+    new_accuracy_score = binarize(accuracy_score)
     accuracy_value = new_accuracy_score(scores.y_true, scores.y_score)
     print("{:.3f}".format(accuracy_value))
     

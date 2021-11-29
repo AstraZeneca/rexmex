@@ -19,24 +19,19 @@ Design philosophy
 **rexmex** is designed with the assumption that end users might want to use the evaluation metrics and utility functions without using the metric sets and score cards. Because of this, the evaluation metrics and utility functions (e.g. binarisation and normalisation) can be used independently from the **rexmex** library.
 
 
-Standardized dataset ingestion
+Synthetic toy datasets
 ------------------------------
 
-**rexmex** is designed with the assumption that the 
+**rexmex** is designed with the assumption that the predictions and the ground truth are stored in a  pandas ``DataFrame``. In our example we assume that this ``DataFrame`` has at least two columns ``y_true`` and ``y_score``. The first one contains the ground truth labels/ratings while the second one contains the predictions. Each row in the ``dataframe`` is a single score (user - item) like pair of a source and target. Additional columns represent the source and target identifier and groupings of the model predictions.
 
 .. code-block:: python
 
-    import networkx as nx
-    from karateclub import DeepWalk
-    
-    g = nx.newman_watts_strogatz_graph(100, 20, 0.05)
 
-    model = DeepWalk()
-    model.fit(g)
-    embedding = model.get_embedding()
 
 Evaluation metrics
 ------------------------------
+
+.. code-block:: python
 
 Metric sets
 ------------------------------

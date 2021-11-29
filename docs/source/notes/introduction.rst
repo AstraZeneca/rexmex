@@ -22,11 +22,14 @@ Design philosophy
 Synthetic toy datasets
 ------------------------------
 
-**rexmex** is designed with the assumption that the predictions and the ground truth are stored in a  pandas ``DataFrame``. In our example we assume that this ``DataFrame`` has at least two columns ``y_true`` and ``y_score``. The first one contains the ground truth labels/ratings while the second one contains the predictions. Each row in the ``dataframe`` is a single score (user - item) like pair of a source and target. Additional columns represent the source and target identifier and groupings of the model predictions.
+**rexmex** is designed with the assumption that the predictions and the ground truth are stored in a  pandas ``DataFrame``. In our example we assume that this ``DataFrame`` has at least two columns ``y_true`` and ``y_score``. The first one contains the ground truth labels/ratings while the second one contains the predictions. Each row in the ``dataframe`` is a single user - item like pairing of a source and target with ground truth and predictions. Additional columns represent groupings of the model predictions. Our library provides synthetic data which can be used for testing the library. The following lines import a dataset and print the head of the table.
 
 . jupyter-execute::
+    from rexmex.dataset import DatasetReader
 
-
+    reader = DatasetReader()
+    scores = reader.read_dataset()
+    print(scores.head())
 
 Evaluation metrics
 ------------------------------

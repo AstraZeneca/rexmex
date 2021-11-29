@@ -35,7 +35,7 @@ setup(
     license="Apache License, Version 2.0",
     description="",
     author="AstraZeneca BIKG Team",
-    author_email="",
+    author_email="bikg@astrazeneca.com",
     url="https://github.com/AstraZeneca/rexmex",
     download_url="https://github.com/AstraZeneca/rexmex/archive/v_00007.tar.gz",
     keywords=keywords,

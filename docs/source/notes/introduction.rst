@@ -70,7 +70,7 @@ Metric sets also allow the filtering of metrics which are interesting for a spec
 
 
 Score cards
-------------------------------
+-----------------------
 
 Score cards allow the calculation of performance metrics for a whole metric set with ease. Let us create a scorecard and reuse the filtered metrics with the scorecard. We will calculate the performance metrics for the toy example. The ``ScoreCard()`` constructor uses the ``metric_set`` instance and the ``generate_report`` method uses the scores from earlier.  The result is a ``DataFrame`` of the scores.
 
@@ -82,7 +82,7 @@ Score cards allow the calculation of performance metrics for a whole metric set 
     report = score_card.generate_report(scores)
     print(report)
 
-The score cards allow the advanced reporting of the performance metrics. We could also group on the ``source_group`` and ``target_group`` keys and get very specific subgroup performances. Just like this:
+The score cards allow the advanced reporting of the performance metrics. We could also group on the ``source_group`` and ``target_group`` keys and get specific subgroup performances. Just like this:
 
 .. jupyter-execute::
 
@@ -90,8 +90,19 @@ The score cards allow the advanced reporting of the performance metrics. We coul
     print(report)
 
 
-
-
 Utility functions
 ------------------------------
+
+A core idea of **rexmex** is the use of ``wrapper`` functions to help with recurring data manipulation. Our utility functions can be used to wrap the metrics when the predictions need to be transformed the ``y_score`` values are not binary. Because of this most evaluation metrics are not meaningful. However wrapping the classification metrics in the ``binarize`` function ensures that there is a binarization step. Let us take a look at this example snippet:
+
+.. jupyter-execute::
+    from rexmex.merics.classification import accuracy_score
+    from rexmex.utility import binaries
+
+    new_accuracy_score = binarize(accuracy)
+    accuracy_value = new_accuracy_score(scores.y_true, scores.y_score)
+    print("{:.2f}".format(accuracy_value))
+    
+
+
 

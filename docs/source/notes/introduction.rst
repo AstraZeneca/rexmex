@@ -47,7 +47,7 @@ The generic design **rexmex** involves classification metrics that exist on the 
     from rexmex.metrics.classification import pr_auc_score
 
     pr_auc_value = pr_auc_score(scores["y_true"], scores["y_score"])
-    print(pr_auc_value)
+    print("{:.2f}".format(pr_auc_value))
 
 Metric sets
 ------------------------------
@@ -61,9 +61,42 @@ A ``MetricSet()`` is a base class which inherits from ``dict`` and contains the 
     metric_set = ClassificationMetricSet()
     metric_set.print_metrics()
 
+Metric sets also allow the filtering of metrics which are interesting for a specific application. In our case we will only keep 3 of the metrics: ``roc_auc``, ``pr_auc`` and ``accuracy``.
+
+.. jupyter-execute::
+
+    metric_set.filter_metrics(["roc_auc", "pr_auc", "accuracy"])
+    metric_set.print_metrics()
+
 
 Score cards
 ------------------------------
+
+Score cards allow the calculation of performance metrics for a whole metric set with ease. Let us create a scorecard and reuse the filtered metrics with the scorecard. We will calculate the performance metrics for the toy example. The ``ScoreCard()`` constructor uses the ``metric_set`` instance and the ``generate_report`` method uses the scores from earlier.  The result is a ``DataFrame`` of the scores.
+
+.. jupyter-execute::
+
+    from rexmex.scorecard import Scorecard
+
+    score_card = ScoreCard(metric_set)
+    report = score_card.generate_report(scores)
+    print(report)
+
+The score cards allow the advanced reporting of the performance metrics. We recalculate the performance metrics with grouping on the ``source_group`` key.
+
+.. jupyter-execute::
+
+    report = score_card.generate_report(scores, ["source_group"])
+    print(report)
+
+We could also group on the ``source_group`` and ``target_group`` keys and get very specific subgroup performances. Just like this:
+
+
+.. jupyter-execute::
+
+    report = score_card.generate_report(scores, ["source_group", "target_group"])
+    print(report)
+
 
 Utility functions
 ------------------------------

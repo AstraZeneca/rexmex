@@ -16,12 +16,13 @@ extensions = [
     'sphinx.ext.napoleon',
     'sphinx.ext.viewcode',
     'sphinx.ext.githubpages',
+    'jupyter_sphinx',
 ]
 
 source_suffix = '.rst'
 master_doc = 'index'
 
-author = 'Benedek Rozemberczki'
+author = 'Benedek Rozemberczki & Sebastian Nilsson & Piotr Grabowski'
 project = 'rexmex'
 copyright = '{}, {}'.format(datetime.datetime.now().year, author)
 

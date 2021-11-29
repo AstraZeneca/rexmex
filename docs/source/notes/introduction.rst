@@ -39,6 +39,8 @@ Let us overview the structure of the ``scores DataFrame`` used in our example be
 
 Evaluation metrics
 ------------------------------
+The generic design **rexmex** involves classification metrics that exist on the appropriate namespace. For example the ``pr_auc_score`` is on the ``rexmex.metrics.classification`` namespace, because it is a classification metric. Functions that are on the same name space have the same signature. This specific function takes a target and prediction vector (we use the toy dataset) and outputs the precision recall area under the curve value as a ``float``.
+
 
 .. jupyter-execute::
     from rexmex.metrics.classification import pr_auc_score

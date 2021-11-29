@@ -69,18 +69,6 @@ Metric sets also allow the filtering of metrics which are interesting for a spec
     metric_set.print_metrics()
 
 
-Score cards
-------------------------------
-
-Score cards allow the calculation of performance metrics for a whole metric set with ease. Let us create a scorecard and reuse the filtered metrics with the scorecard. We will calculate the performance metrics for the toy example. The ``ScoreCard()`` constructor uses the ``metric_set`` instance and the ``generate_report`` method uses the scores from earlier.  The result is a ``DataFrame`` of the scores.
-
-.. jupyter-execute::
-
-    from rexmex.scorecard import ScoreCard
-
-    score_card = ScoreCard(metric_set)
-    report = score_card.generate_report(scores)
-    print(report)
 
 
 

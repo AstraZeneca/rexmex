@@ -32,7 +32,8 @@ Synthetic toy datasets
 
     reader = DatasetReader()
     scores = reader.read_dataset()
-    print(scores.head())
+
+    scores.head()
 
 Evaluation metrics
 ------------------------------

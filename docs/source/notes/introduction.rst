@@ -51,6 +51,15 @@ The generic design **rexmex** involves classification metrics that exist on the 
 Metric sets
 ------------------------------
 
+A ``MetricSet()`` is a base class which inherits from ``dict`` and contains the name of the evaluation metrics and the evaluation metric functions as keys. Each of these functions should have the same signature. There are specialised ``MetricSet()`` variants which inherit from the base class such as the ``ClassificationMetricSet()``. The following example prints the classification metrics stored in this metric set.
+
+.. jupyter-execute::
+    from rexmex.metricset import ClassificationMetricSet
+
+    metric_set = ClassificationMetricSet()
+    metric_set.print_metrics()
+
+
 Score cards
 ------------------------------
 

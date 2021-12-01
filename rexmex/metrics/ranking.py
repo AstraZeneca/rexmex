@@ -10,7 +10,7 @@ def reciprocal_rank(relevant_item: any, ranking: np.array) -> float:
         item (Object): an object in the list of items.
         ranking (array-like):  An N x 1 ranking of items.
     Returns:
-        RR (float): The reciprocal rank of the item
+        RR (float): The reciprocal rank of the item.
     """
 
     return 1.0 / (np.in1d(ranking, relevant_item).argmax() + 1)
@@ -42,7 +42,7 @@ def average_percision_at_k(relevant_items: np.array, ranking: np.array, k=10):
     Args:
         relevant_items (array-like): An N x 1 array of relevant items.
         ranking (array-like):  An N x 1 array of ordered items.
-        k (int): the number of items considered in the ranking
+        k (int): the number of items considered in the ranking.
     Returns:
         AP@K (float): The average percision @ k of a ranking.
     """
@@ -68,7 +68,6 @@ def mean_average_percision_at_k(relevant_items: np.array, rankings: np.array, k=
         import numpy as np
         from rexmex.metrics.ranking import mean_average_percision_at_k
 
-
         mean_average_percision_at_k(
             relevant_items=np.array(
                 [
@@ -85,8 +84,8 @@ def mean_average_percision_at_k(relevant_items: np.array, rankings: np.array, k=
 
     Args:
         relevant_items (array-like): An M x N array of relevant items.
-        rankings (array-like):  An M x N array of ranking arrays
-        k (int): the number of items considered in the rankings
+        rankings (array-like):  An M x N array of ranking arrays.
+        k (int): the number of items considered in the rankings.
     Returns:
         MAP@K (float): The average percision @ k of a ranking.
     """
@@ -119,14 +118,27 @@ def hits_at_k(relevant_items: np.array, ranking: np.array, k=10):
 
 def spearmanns_rho(list_a: np.array, list_b: np.array):
     """
-    Calculate the Spearmann's rank correlation coefficient (Spearmann's rho)
-    between two arrays.
+    Calculate the Spearmann's rank correlation coefficient (Spearmann's rho) between two arrays.
 
     Args:
         list_a (array-like): An 1 x N array of items.
         list_b (array-like):  An 1 x N array of items.
     Returns:
-        Spearmann's rho (float): Spearmann's rho
-        p-value (float): p-value for null hypothesis that both rankings are uncorrelated
+        Spearmann's rho (float): Spearmann's rho.
+        p-value (float): two-sided p-value for null hypothesis that both rankings are uncorrelated.
     """
     return stats.spearmanr(list_a, list_b)
+
+
+def kendall_tau(ranking_a: np.array, ranking_b: np.array):
+    """
+    Calculate the Kendall's tau, measuring the correspondance between two rankings.
+
+    Args:
+        ranking_a (array-like): An 1 x N array of items.
+        ranking_b (array-like):  An 1 x N array of items.
+    Returns:
+        Kendall tau (float): The tau statistic.
+        p-value (float): two-sided p-value for null hypothesis that there's no association between the rankings.
+    """
+    return stats.kendalltau(ranking_a, ranking_b)

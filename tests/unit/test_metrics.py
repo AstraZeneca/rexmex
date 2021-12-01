@@ -42,6 +42,7 @@ from rexmex.metrics.classification import (
 from rexmex.metrics.ranking import (
     average_percision_at_k,
     hits_at_k,
+    kendall_tau,
     mean_average_percision_at_k,
     mean_reciprocal_rank,
     reciprocal_rank,
@@ -197,3 +198,9 @@ class TestRankingMetrics(unittest.TestCase):
         corr, p_value = spearmanns_rho(range(1, 5), range(4, 0, -1))
         assert corr == -1.0
         assert p_value == 0.0
+
+    def test_kendall_tau(self):
+        corr, p_value = kendall_tau(range(1, 5), range(1, 5))
+
+        assert corr == 1.0
+        self.assertAlmostEqual(p_value, 0.0833, 2)

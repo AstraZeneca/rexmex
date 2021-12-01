@@ -45,6 +45,7 @@ from rexmex.metrics.ranking import (
     mean_average_percision_at_k,
     mean_reciprocal_rank,
     reciprocal_rank,
+    spearmanns_rho,
 )
 
 from rexmex.metrics.rating import (
@@ -186,3 +187,13 @@ class TestRankingMetrics(unittest.TestCase):
         self.assertAlmostEqual(hits_at_1, 1.0, 2)
         self.assertAlmostEqual(hits_at_5, 0.8, 2)
         self.assertAlmostEqual(hits_at_10, 0.6, 2)
+
+    def test_spearmanns_rho(self):
+        corr, p_value = spearmanns_rho(range(1, 5), range(1, 5))
+
+        assert corr == 1.0
+        assert p_value == 0.0
+
+        corr, p_value = spearmanns_rho(range(1, 5), range(4, 0, -1))
+        assert corr == -1.0
+        assert p_value == 0.0

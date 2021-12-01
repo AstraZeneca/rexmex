@@ -1,4 +1,5 @@
 import numpy as np
+from scipy import stats
 
 
 def reciprocal_rank(relevant_item: any, ranking: np.array) -> float:
@@ -114,3 +115,18 @@ def hits_at_k(relevant_items: np.array, ranking: np.array, k=10):
 
     hits = np.array(np.in1d(ranking, relevant_items), dtype=int).sum()
     return hits / len(ranking)
+
+
+def spearmanns_rho(list_a: np.array, list_b: np.array):
+    """
+    Calculate the Spearmann's rank correlation coefficient (Spearmann's rho)
+    between two arrays.
+
+    Args:
+        list_a (array-like): An 1 x N array of items.
+        list_b (array-like):  An 1 x N array of items.
+    Returns:
+        Spearmann's rho (float): Spearmann's rho
+        p-value (float): p-value for null hypothesis that both rankings are uncorrelated
+    """
+    return stats.spearmanr(list_a, list_b)

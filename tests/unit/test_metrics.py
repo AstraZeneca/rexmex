@@ -39,7 +39,7 @@ from rexmex.metrics.classification import (
     markedness,
     diagnostic_odds_ratio,
 )
-from rexmex.metrics.ranking import reciprocal_rank
+from rexmex.metrics.ranking import mean_reciprocal_rank, reciprocal_rank
 
 from rexmex.metrics.rating import (
     root_mean_squared_error,
@@ -76,20 +76,12 @@ class TestClassificationMetrics(unittest.TestCase):
         assert hit_rate(self.y_true, self.y_score) == 4 / 6
         assert true_positive_rate(self.y_true, self.y_score) == 4 / 6
 
-        assert sensitivity(self.y_true, self.y_score) == recall_score(
-            self.y_true, self.y_score
-        )
-        assert hit_rate(self.y_true, self.y_score) == recall_score(
-            self.y_true, self.y_score
-        )
-        assert true_positive_rate(self.y_true, self.y_score) == recall_score(
-            self.y_true, self.y_score
-        )
+        assert sensitivity(self.y_true, self.y_score) == recall_score(self.y_true, self.y_score)
+        assert hit_rate(self.y_true, self.y_score) == recall_score(self.y_true, self.y_score)
+        assert true_positive_rate(self.y_true, self.y_score) == recall_score(self.y_true, self.y_score)
 
     def test_positivie_predictive_value(self):
-        assert positive_predictive_value(self.y_true, self.y_score) == precision_score(
-            self.y_true, self.y_score
-        )
+        assert positive_predictive_value(self.y_true, self.y_score) == precision_score(self.y_true, self.y_score)
         assert positive_predictive_value(self.y_true, self.y_score) == 4 / 9
 
     def test_negative_predictive_value(self):
@@ -116,9 +108,7 @@ class TestClassificationMetrics(unittest.TestCase):
         assert negative_likelihood_ratio(self.y_true, self.y_score) == 8 / 9
 
     def test_prevalence_threshold(self):
-        assert prevalence_threshold(self.y_true, self.y_score) == (5 / 8) ** 0.5 / (
-            (4 / 6) ** 0.5 + (5 / 8) ** 0.5
-        )
+        assert prevalence_threshold(self.y_true, self.y_score) == (5 / 8) ** 0.5 / ((4 / 6) ** 0.5 + (5 / 8) ** 0.5)
         assert threat_score(self.y_true, self.y_score) == 4 / 11
         assert critical_success_index(self.y_true, self.y_score) == 4 / 11
 
@@ -140,10 +130,7 @@ class TestRatingMetrics(unittest.TestCase):
 
     def test_metrics(self):
         assert root_mean_squared_error(self.y_true, self.y_score) == 22 ** 0.5
-        assert (
-            round(symmetric_mean_absolute_percentage_error(self.y_true, self.y_score))
-            == 134
-        )
+        assert round(symmetric_mean_absolute_percentage_error(self.y_true, self.y_score)) == 134
 
 
 class TestRankingMetrics(unittest.TestCase):
@@ -152,8 +139,13 @@ class TestRankingMetrics(unittest.TestCase):
     """
 
     def setUp(self):
-        self.prediction = np.array([1, 2, 3, 4])
-        self.reference = np.array([4, 2, 1, 0, 3])
+        self.ranking = np.array([4, 5, 1, 0, 3, 9, 6, 8, 7, 2])
+        self.relevant_items = np.array([1, 2, 3])
 
     def test_reciprocal_rank(self):
-        assert reciprocal_rank(1, self.reference) == 1 / 3
+        assert reciprocal_rank(1, self.ranking) == 1 / 3
+        assert reciprocal_rank(2, self.ranking) == 1 / 10
+        assert reciprocal_rank(3, self.ranking) == 1 / 5
+
+    def test_mean_reciprocal_rank(self):
+        self.assertAlmostEqual(mean_reciprocal_rank(self.relevant_items, self.ranking), 0.2111, 4)

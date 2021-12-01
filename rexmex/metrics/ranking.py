@@ -1,15 +1,34 @@
 import numpy as np
 
 
-def reciprocal_rank(item: any, ranking: np.array) -> float:
+def reciprocal_rank(relevant_item: any, ranking: np.array) -> float:
     """
-    Calculate the reciprocal rank (RR) of an item.
+    Calculate the reciprocal rank (RR) of an item in a ranked list of items.
 
     Args:
-        ranking (Object): an object in the ranking.
-        ranking (array-like):  An N x 1 array of items.
+        item (Object): an object in the list of items.
+        ranking (array-like):  An N x 1 ranking of items.
     Returns:
         RR (float): The reciprocal rank of the item
     """
 
-    return 1 / (np.where(ranking == item)[0] + 1)
+    return 1.0 / (np.in1d(ranking, relevant_item).argmax() + 1)
+
+
+def mean_reciprocal_rank(relevant_items: np.array, ranking: np.array):
+    """
+    Calculate the mean reciprocal rank (MRR) of items in a ranked list.
+
+    Args:
+        relevant_items (array-like): An N x 1 array of relevant items.
+        ranking (array-like):  An N x 1 array of ordered items.
+    Returns:
+        MRR (float): The mean reciprocal rank of the relevant items in a ranking.
+    """
+
+    reciprocal_ranks = []
+    for item in relevant_items:
+        rr = reciprocal_rank(item, ranking)
+        reciprocal_ranks.append(rr)
+
+    return np.mean(reciprocal_ranks)

@@ -4,4 +4,4 @@ set -e
 pip install pre-commit 
 pre-commit install 
 
-pip install -e rexmex/ 
+pip install -e .

@@ -5,10 +5,16 @@ import pandas as pd
 from io import StringIO
 
 from sklearn.metrics import accuracy_score, balanced_accuracy_score
-from rexmex.metricset import MetricSet, ClassificationMetricSet, RatingMetricSet, RankingMetricSet, CoverageMetricSet
+from rexmex.metricset import (
+    MetricSet,
+    ClassificationMetricSet,
+    RatingMetricSet,
+    RankingMetricSet,
+    CoverageMetricSet,
+)
+
 
 class TestMetricSet(unittest.TestCase):
-
     def test_representation(self):
         assert repr(ClassificationMetricSet()) == "ClassificationMetricSet()"
         assert repr(CoverageMetricSet()) == "CoverageMetricSet()"
@@ -39,6 +45,6 @@ class TestMetricSet(unittest.TestCase):
         captured = StringIO()
         sys.stdout = captured
         metric_set.print_metrics()
-        sys.stdout = sys.__stdout__ 
+        sys.stdout = sys.__stdout__
         out = captured.getvalue().strip("\n")
         assert out == str({"accuracy", "balanced_accuracy"})

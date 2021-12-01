@@ -28,7 +28,11 @@ jobs:
          conda install -y scipy
          pip install codecov
          pip install pytest
+         pip install tox
          python setup.py install
+      - name: Run code quality tests
+        run: |
+          tox -e flake8
       - name: Install main package
         run: |
           pip install -e .[test]

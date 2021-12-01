@@ -41,6 +41,7 @@ from rexmex.metrics.classification import (
 )
 from rexmex.metrics.ranking import (
     average_percision_at_k,
+    hits_at_k,
     mean_average_percision_at_k,
     mean_reciprocal_rank,
     reciprocal_rank,
@@ -176,3 +177,12 @@ class TestRankingMetrics(unittest.TestCase):
 
     def test_mean_reciprocal_rank(self):
         self.assertAlmostEqual(mean_reciprocal_rank(self.relevant_items, self.ranking), 0.3416, 3)
+
+    def test_hits_at_k(self):
+        hits_at_1 = hits_at_k(self.relevant_items, self.ranking, k=1)
+        hits_at_5 = hits_at_k(self.relevant_items, self.ranking, k=5)
+        hits_at_10 = hits_at_k(self.relevant_items, self.ranking, k=10)
+
+        self.assertAlmostEqual(hits_at_1, 1.0, 2)
+        self.assertAlmostEqual(hits_at_5, 0.8, 2)
+        self.assertAlmostEqual(hits_at_10, 0.6, 2)

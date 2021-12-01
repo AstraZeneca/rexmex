@@ -41,6 +41,7 @@ def average_percision_at_k(relevant_items: np.array, ranking: np.array, k=10):
     Args:
         relevant_items (array-like): An N x 1 array of relevant items.
         ranking (array-like):  An N x 1 array of ordered items.
+        k (int): the number of items considered in the ranking
     Returns:
         AP@K (float): The average percision @ k of a ranking.
     """
@@ -84,6 +85,7 @@ def mean_average_percision_at_k(relevant_items: np.array, rankings: np.array, k=
     Args:
         relevant_items (array-like): An M x N array of relevant items.
         rankings (array-like):  An M x N array of ranking arrays
+        k (int): the number of items considered in the rankings
     Returns:
         MAP@K (float): The average percision @ k of a ranking.
     """
@@ -94,3 +96,21 @@ def mean_average_percision_at_k(relevant_items: np.array, rankings: np.array, k=
         aps.append(ap)
 
     return np.mean(aps)
+
+
+def hits_at_k(relevant_items: np.array, ranking: np.array, k=10):
+    """
+    Calculate the number of hits of relevant items in a ranked list HITS@K.
+
+    Args:
+        relevant_items (array-like): An 1 x N array of relevant items.
+        rankings (array-like):  An 1 x N array of ranking arrays
+        k (int): the number of items considered in the ranking
+    Returns:
+        HITS@K (float):  The number of relevant items in the first k items in a ranking.
+    """
+    if len(ranking) > k:
+        ranking = ranking[:k]
+
+    hits = np.array(np.in1d(ranking, relevant_items), dtype=int).sum()
+    return hits / len(ranking)

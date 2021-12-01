@@ -42,6 +42,7 @@ from rexmex.metrics.classification import (
 from rexmex.metrics.ranking import (
     average_percision_at_k,
     hits_at_k,
+    intra_list_similarity,
     kendall_tau,
     mean_average_percision_at_k,
     mean_reciprocal_rank,
@@ -204,3 +205,20 @@ class TestRankingMetrics(unittest.TestCase):
 
         assert corr == 1.0
         self.assertAlmostEqual(p_value, 0.0833, 2)
+
+    def test_intra_list_similarity(self):
+        features = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
+        recommendation_1 = [0, 0, 0]
+        recommendation_2 = [0, 1, 2]
+
+        # same similarities
+        sim = intra_list_similarity([recommendation_1], features)
+        assert sim == 1.0
+
+        # no similarities
+        sim = intra_list_similarity([recommendation_2], features)
+        assert sim == 0.0
+
+        # multiple recommendations
+        sim = intra_list_similarity([recommendation_1, recommendation_2], features)
+        assert sim == 0.5

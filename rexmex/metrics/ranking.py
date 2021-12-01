@@ -1,5 +1,7 @@
+from typing import List
 import numpy as np
 from scipy import stats
+from sklearn.metrics.pairwise import cosine_similarity
 
 
 def reciprocal_rank(relevant_item: any, ranking: np.array) -> float:
@@ -142,3 +144,31 @@ def kendall_tau(ranking_a: np.array, ranking_b: np.array):
         p-value (float): two-sided p-value for null hypothesis that there's no association between the rankings.
     """
     return stats.kendalltau(ranking_a, ranking_b)
+
+
+def intra_list_similarity(rankings: List[list], items_feature_matrix: np.array):
+    """
+    Calculate the intra list similarity of recommended items. The items
+    are represented by feature vectors, which compared with cosine similarity.
+    The ranking consists of item indices, which are used to fetch the item
+    features.
+
+    Args:
+        rankings (List[list]): A M x N array of rankings, where M is the number
+                               of rankings and N the number of recommended items
+        features (matrix-link): A N x D matrix, where N is the number of items and D the
+                                number of features representing one item
+
+    Returns:
+        (float): Average intra list similarity across rankings
+    """
+
+    intra_list_similarities = []
+    for ranking in rankings:
+        ranking_features = items_feature_matrix[ranking]
+        similarity = cosine_similarity(ranking_features)
+        upper_right = np.triu_indices(similarity.shape[0], k=1)
+        avg_similarity = np.mean(similarity[upper_right])
+        intra_list_similarities.append(avg_similarity)
+
+    return np.mean(intra_list_similarities)

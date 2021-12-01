@@ -39,7 +39,11 @@ from rexmex.metrics.classification import (
     markedness,
     diagnostic_odds_ratio,
 )
-from rexmex.metrics.ranking import mean_reciprocal_rank, reciprocal_rank
+from rexmex.metrics.ranking import (
+    average_percision_at_k,
+    mean_reciprocal_rank,
+    reciprocal_rank,
+)
 
 from rexmex.metrics.rating import (
     root_mean_squared_error,
@@ -139,13 +143,20 @@ class TestRankingMetrics(unittest.TestCase):
     """
 
     def setUp(self):
-        self.ranking = np.array([4, 5, 1, 0, 3, 9, 6, 8, 7, 2])
-        self.relevant_items = np.array([1, 2, 3])
+        self.relevant_items = np.array([1, 2, 3, 4, 5, 6])
+        self.ranking = np.array([1, 7, 3, 4, 5, 2, 10, 8, 9, 6])
 
     def test_reciprocal_rank(self):
-        assert reciprocal_rank(1, self.ranking) == 1 / 3
-        assert reciprocal_rank(2, self.ranking) == 1 / 10
-        assert reciprocal_rank(3, self.ranking) == 1 / 5
+        assert reciprocal_rank(1, self.ranking) == 1
+        assert reciprocal_rank(2, self.ranking) == 1 / 6
+        assert reciprocal_rank(3, self.ranking) == 1 / 3
+
+    def test_average_percision_at_k(self):
+        ap_10 = average_percision_at_k(self.relevant_items, self.ranking, k=10)
+        self.assertAlmostEqual(ap_10, 0.775, 2)
+
+        ap_4 = average_percision_at_k(self.relevant_items, self.ranking, k=4)
+        self.assertAlmostEqual(ap_4, 0.805, 2)
 
     def test_mean_reciprocal_rank(self):
-        self.assertAlmostEqual(mean_reciprocal_rank(self.relevant_items, self.ranking), 0.2111, 4)
+        self.assertAlmostEqual(mean_reciprocal_rank(self.relevant_items, self.ranking), 0.3416, 3)

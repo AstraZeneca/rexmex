@@ -32,3 +32,23 @@ def mean_reciprocal_rank(relevant_items: np.array, ranking: np.array):
         reciprocal_ranks.append(rr)
 
     return np.mean(reciprocal_ranks)
+
+
+def average_percision_at_k(relevant_items: np.array, ranking: np.array, k=10):
+    """
+    Calculate the average percision at k (AP@K) of items in a ranked list.
+
+    Args:
+        relevant_items (array-like): An N x 1 array of relevant items.
+        ranking (array-like):  An N x 1 array of ordered items.
+    Returns:
+        AP@K (float): The average percision @ k of a ranking.
+    """
+
+    if len(ranking) > k:
+        ranking = ranking[:k]
+
+    hits = np.in1d(ranking, relevant_items)
+    ranks = np.arange(1, k + 1)
+    aps = np.arange(1, len(ranks[hits]) + 1) / ranks[hits]
+    return np.mean(aps)

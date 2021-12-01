@@ -39,6 +39,7 @@ from rexmex.metrics.classification import (
     markedness,
     diagnostic_odds_ratio,
 )
+from rexmex.metrics.ranking import reciprocal_rank
 
 from rexmex.metrics.rating import (
     root_mean_squared_error,
@@ -143,3 +144,16 @@ class TestRatingMetrics(unittest.TestCase):
             round(symmetric_mean_absolute_percentage_error(self.y_true, self.y_score))
             == 134
         )
+
+
+class TestRankingMetrics(unittest.TestCase):
+    """
+    Newly defined ranking metric behaviour tests.
+    """
+
+    def setUp(self):
+        self.prediction = np.array([1, 2, 3, 4])
+        self.reference = np.array([4, 2, 1, 0, 3])
+
+    def test_reciprocal_rank(self):
+        assert reciprocal_rank(1, self.reference) == 1 / 3

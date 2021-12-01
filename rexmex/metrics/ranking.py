@@ -50,5 +50,47 @@ def average_percision_at_k(relevant_items: np.array, ranking: np.array, k=10):
 
     hits = np.in1d(ranking, relevant_items)
     ranks = np.arange(1, k + 1)
-    aps = np.arange(1, len(ranks[hits]) + 1) / ranks[hits]
+    p_at_ks = np.arange(1, len(ranks[hits]) + 1) / ranks[hits]
+    return np.mean(p_at_ks)
+
+
+def mean_average_percision_at_k(relevant_items: np.array, rankings: np.array, k=10):
+    """
+    Calculate the mean average percision at k (MAP@K) for a list of rankings.
+    Each ranking should be paired with a list of relevant items. First ranking list is
+    evaluated against the first list of relevant items, and so on.
+
+    Example usage:
+    .. code-block:: python
+
+        import numpy as np
+        from rexmex.metrics.ranking import mean_average_percision_at_k
+
+
+        mean_average_percision_at_k(
+            relevant_items=np.array(
+                [
+                    [1,2],
+                    [2,3]
+                ]
+            ),
+            rankings=np.array([
+                [3,2,1],
+                [2,1,3]
+            ])
+        )
+        >>> 0.708333...
+
+    Args:
+        relevant_items (array-like): An M x N array of relevant items.
+        rankings (array-like):  An M x N array of ranking arrays
+    Returns:
+        MAP@K (float): The average percision @ k of a ranking.
+    """
+
+    aps = []
+    for items, ranking in zip(relevant_items, rankings):
+        ap = average_percision_at_k(items, ranking, k)
+        aps.append(ap)
+
     return np.mean(aps)

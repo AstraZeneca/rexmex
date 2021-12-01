@@ -41,6 +41,7 @@ from rexmex.metrics.classification import (
 )
 from rexmex.metrics.ranking import (
     average_percision_at_k,
+    mean_average_percision_at_k,
     mean_reciprocal_rank,
     reciprocal_rank,
 )
@@ -157,6 +158,21 @@ class TestRankingMetrics(unittest.TestCase):
 
         ap_4 = average_percision_at_k(self.relevant_items, self.ranking, k=4)
         self.assertAlmostEqual(ap_4, 0.805, 2)
+
+    def test_mean_average_percision_at_k(self):
+        relevant_items_1 = np.array([1, 2, 3, 4, 5])
+        relevant_items_2 = np.array([1, 2, 3])
+
+        ranking_1 = np.array([1, 10, 3, 9, 6, 5, 7, 8, 4, 2])
+        ranking_2 = np.array([7, 2, 5, 4, 3, 6, 1, 8, 9, 10])
+
+        map_10 = mean_average_percision_at_k(
+            relevant_items=[relevant_items_1, relevant_items_2],
+            rankings=[ranking_1, ranking_2],
+            k=10,
+        )
+
+        self.assertAlmostEqual(map_10, 0.53, 2)
 
     def test_mean_reciprocal_rank(self):
         self.assertAlmostEqual(mean_reciprocal_rank(self.relevant_items, self.ranking), 0.3416, 3)

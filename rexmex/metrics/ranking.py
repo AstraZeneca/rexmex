@@ -54,6 +54,9 @@ def average_precision_at_k(relevant_items: np.array, recommendation: np.array, k
         k (int): the number of items considered in the predicted list.
     Returns:
         AP@K (float): The average precision @ k of a predicted list.
+
+    Original implementation:
+    https://github.com/benhamner/Metrics/blob/master/Python/ml_metrics/average_precision.py
     """
 
     if len(recommendation) > k:
@@ -225,6 +228,9 @@ def intra_list_similarity(recommendations: List[list], items_feature_matrix: np.
 
     Returns:
         (float): Average intra list similarity across predicted
+
+    Original implementation:
+    https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L232
     """
 
     intra_list_similarities = []
@@ -249,6 +255,9 @@ def personalization(recommendations: List[list]):
 
     Returns:
         (float): personalization
+
+    Original implementation:
+    https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L160
     """
 
     n_predictions = len(recommendations)
@@ -294,6 +303,14 @@ def novelty(recommendations: List[list], item_popularities: dict, num_users: int
 
     Returns:
         (float): novelty
+
+    Metric Definition:
+    Zhou, T., Kuscsik, Z., Liu, J. G., Medo, M., Wakeling, J. R., & Zhang, Y. C. (2010).
+    Solving the apparent diversity-accuracy dilemma of recommender systems.
+    Proceedings of the National Academy of Sciences, 107(10), 4511-4515.
+
+    Original implementation:
+    https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L14
     """
 
     epsilon = 1e-10
@@ -323,9 +340,13 @@ def NDPM(relevant_items: List, recommendation: List):
     Returns:
         NDPM (float): Normalized Distance-based Performance Measure
 
-    Reference:
+    Metric Definition:
     Yao, Y. Y. "Measuring retrieval effectiveness based on user preference of documents."
     Journal of the American Society for Information science 46.2 (1995): 133-145.
+
+    Definition from:
+    Shani, Guy, and Asela Gunawardana. "Evaluating recommendation systems."
+    Recommender systems handbook. Springer, Boston, MA, 2011. 257-297
     """
     assert set(relevant_items) == set(recommendation)
 

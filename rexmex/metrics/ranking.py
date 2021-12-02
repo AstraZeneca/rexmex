@@ -328,7 +328,7 @@ def novelty(recommendations: List[list], item_popularities: dict, num_users: int
     return np.mean(all_self_information)
 
 
-def NDPM(relevant_items: List, recommendation: List):
+def normalized_distance_based_performance_measure(relevant_items: List, recommendation: List):
     """
     Calculates the Normalized Distance-based Performance Measure (NPDM) between two
     ordered lists. Two matching orderings return 0.0 while two unmatched orderings returns 1.0.
@@ -383,7 +383,7 @@ def NDPM(relevant_items: List, recommendation: List):
     return NDPM
 
 
-def DCG(y_true: np.array, y_score: np.array):
+def discounted_cumulative_gain(y_true: np.array, y_score: np.array):
     """
     Computes the Discounted Cumulative Gain (DCG), a sum of the true scores ordered
     by the predicted scores, and then penalized by a logarithmic discount based on ordering.
@@ -397,7 +397,7 @@ def DCG(y_true: np.array, y_score: np.array):
     return dcg_score(y_true, y_score)
 
 
-def NDCG(y_true: np.array, y_score: np.array):
+def normalized_discounted_cumulative_gain(y_true: np.array, y_score: np.array):
     """
     Computes the Normalized Discounted Cumulative Gain (NDCG), a sum of the true scores ordered
     by the predicted scores, and then penalized by a logarithmic discount based on ordering.

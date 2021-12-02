@@ -15,6 +15,9 @@ class TestMetricAggregation(unittest.TestCase):
         metric_set = ClassificationMetricSet()
         score_card = ScoreCard(metric_set)
 
+        performance_metrics = score_card.generate_report(self.scores)
+        assert performance_metrics.shape == (1, 11)
+
         performance_metrics = score_card.generate_report(
             self.scores, groupping=["source_group"]
         )
@@ -30,6 +33,9 @@ class TestMetricAggregation(unittest.TestCase):
         metric_set.normalize_metrics()
         score_card = ScoreCard(metric_set)
 
+        performance_metrics = score_card.generate_report(self.scores)
+        assert performance_metrics.shape == (1, 7)
+
         performance_metrics = score_card.generate_report(
             self.scores, groupping=["source_group"]
         )
@@ -43,6 +49,9 @@ class TestMetricAggregation(unittest.TestCase):
     def test_addition(self):
         metric_set = RatingMetricSet() + ClassificationMetricSet()
         score_card = ScoreCard(metric_set)
+
+        performance_metrics = score_card.generate_report(self.scores)
+        assert performance_metrics.shape == (1, 18)
 
         performance_metrics = score_card.generate_report(
             self.scores, groupping=["source_group"]

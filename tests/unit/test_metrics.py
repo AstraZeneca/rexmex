@@ -40,6 +40,8 @@ from rexmex.metrics.classification import (
     diagnostic_odds_ratio,
 )
 from rexmex.metrics.ranking import (
+    DCG,
+    NDCG,
     NDPM,
     average_percision_at_k,
     average_recall_at_k,
@@ -307,3 +309,15 @@ class TestRankingMetrics(unittest.TestCase):
         actual = [1, 2, 3]
         system = [1, 2, 2, 2, 2, 2, 3, 3, 3, 3]
         assert NDPM(actual, system) == 0.0
+
+    def test_DCG(self):
+        true_relevance = np.asarray([[10, 0, 0, 1, 5]])
+        scores = np.asarray([[0.1, 0.2, 0.3, 4, 70]])
+        dcg = DCG(true_relevance, scores)
+        self.assertAlmostEqual(dcg, 9.499, 2)
+
+    def test_NDCG(self):
+        true_relevance = np.asarray([[10, 0, 0, 1, 5]])
+        scores = np.asarray([[0.1, 0.2, 0.3, 4, 70]])
+        ndcg = NDCG(true_relevance, scores)
+        self.assertAlmostEqual(ndcg, 0.6956, 2)

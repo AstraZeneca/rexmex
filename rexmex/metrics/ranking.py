@@ -4,6 +4,7 @@ import numpy as np
 from scipy import stats
 from sklearn.metrics.pairwise import cosine_similarity
 import itertools
+from sklearn.metrics import dcg_score, ndcg_score
 
 
 def reciprocal_rank(relevant_item: any, ranking: np.array) -> float:
@@ -310,6 +311,8 @@ def NDPM(actual_ranking: List, system_ranking: List):
         actual_ranking (List): List of items
         system_ranking (List): The predicted list of items
 
+    Returns:
+        NDPM (float): Normalized Distance-based Performance Measure
 
     Yao, Y. Y. "Measuring retrieval effectiveness based on user preference of documents."
     Journal of the American Society for Information science 46.2 (1995): 133-145.
@@ -347,3 +350,32 @@ def NDPM(actual_ranking: List, system_ranking: List):
 
     NDPM = (C_minus + 0.5 * C_u0) / C_u
     return NDPM
+
+
+def DCG(y_true: np.array, y_score: np.array):
+    """
+    Computes the Discounted Cumulative Gain (DCG), a sum of the true scores ordered
+    by the predicted scores, and then penalized by a logarithmic discount based on ordering.
+
+    Args:
+        y_true (array-like): An N x M array of ground truth values, where M > 1 for multilabel classification problems.
+        y_score (array-like): An N x M array of predicted values, where M > 1 for multilabel classification problems..
+    Returns:
+        DCG (float): Discounted Cumulative Gain
+    """
+    return dcg_score(y_true, y_score)
+
+
+def NDCG(y_true: np.array, y_score: np.array):
+    """
+    Computes the Normalized Discounted Cumulative Gain (NDCG), a sum of the true scores ordered
+    by the predicted scores, and then penalized by a logarithmic discount based on ordering.
+    The score is normalized between [0.0, 1.0]
+
+    Args:
+        y_true (array-like): An N x M array of ground truth values, where M > 1 for multilabel classification problems.
+        y_score (array-like): An N x M array of predicted values, where M > 1 for multilabel classification problems..
+    Returns:
+        NDCG (float) : Normalized Discounted Cumulative Gain
+    """
+    return ndcg_score(y_true, y_score)

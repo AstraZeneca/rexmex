@@ -172,3 +172,44 @@ def intra_list_similarity(rankings: List[list], items_feature_matrix: np.array):
         intra_list_similarities.append(avg_similarity)
 
     return np.mean(intra_list_similarities)
+
+
+def personalization(rankings: List[list]):
+    """
+    Calculates personalization, a measure of similarity between recommendations.
+    A high value indicates that the recommendations are disimillar, or "personalized".
+
+    Args:
+        rankings (List[list]): A M x N array of rankings, where M is the number
+                               of rankings and N the number of recommended items
+
+    Returns:
+        (float): personalization
+    """
+
+    n_rankings = len(rankings)
+
+    # map each ranked item to index
+    item2ix = {}
+    counter = 0
+    for ranking in rankings:
+        for item in ranking:
+            if item not in item2ix:
+                item2ix[item] = counter
+                counter += 1
+
+    n_items = len(item2ix.keys())
+
+    # create matrix of rankings x items
+    items_matrix = np.zeros((n_rankings, n_items))
+
+    for i, ranking in enumerate(rankings):
+        for item in ranking:
+            item_ix = item2ix[item]
+            items_matrix[i][item_ix] = 1
+
+    similarity = cosine_similarity(X=items_matrix)
+    dim = similarity.shape[0]
+    personalization = (similarity.sum() - dim) / (dim * (dim - 1))
+
+    return 1 - personalization

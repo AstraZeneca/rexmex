@@ -46,6 +46,7 @@ from rexmex.metrics.ranking import (
     kendall_tau,
     mean_average_percision_at_k,
     mean_reciprocal_rank,
+    personalization,
     reciprocal_rank,
     spearmanns_rho,
 )
@@ -222,3 +223,15 @@ class TestRankingMetrics(unittest.TestCase):
         # multiple recommendations
         sim = intra_list_similarity([recommendation_1, recommendation_2], features)
         assert sim == 0.5
+
+    def test_personalization(self):
+
+        rec1 = [0, 0, 0]
+        rec2 = [1, 1, 1]
+        recommendations = [rec1, rec2]
+        assert personalization(recommendations) == 1.0
+
+        rec1 = [0, 0, 0]
+        rec2 = [0, 0, 0]
+        recommendations = [rec1, rec2]
+        assert personalization(recommendations) == 0.0

@@ -46,6 +46,7 @@ from rexmex.metrics.ranking import (
     intra_list_similarity,
     kendall_tau,
     mean_average_percision_at_k,
+    mean_average_recall_at_k,
     mean_reciprocal_rank,
     novelty,
     personalization,
@@ -202,6 +203,15 @@ class TestRankingMetrics(unittest.TestCase):
         ranking = [1, 2, 3]
         recall = average_recall_at_k(relevant_items, ranking, k=2)
         assert recall == 0.5
+
+    def mean_average_recall_at_k(self):
+        relevant_items = [1]
+        rec1 = [1, 1, 1]
+        rec2 = [0, 0, 0]
+
+        mark = mean_average_recall_at_k(relevant_items=relevant_items, recommendations=[rec1, rec2])
+
+        assert mark == 0.5
 
     def test_mean_reciprocal_rank(self):
         self.assertAlmostEqual(mean_reciprocal_rank(self.relevant_items, self.ranking), 0.3416, 3)

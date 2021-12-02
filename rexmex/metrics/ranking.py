@@ -86,7 +86,31 @@ def average_recall_at_k(relevant_items: List, ranking: List, k: int = 10):
     return score / len(relevant_items)
 
 
-def mean_average_percision_at_k(relevant_items: np.array, rankings: np.array, k=10):
+def mean_average_recall_at_k(relevant_items: List[list], rankings: List[list], k: int = 10):
+    """
+    Calculate the mean average recall at k (MAR@K) for a list of recommendations.
+    Each recommendation should be paired with a list of relevant items. First recommendation list is
+    evaluated against the first list of relevant items, and so on.
+
+    Args:
+        relevant_items (array-like): An M x R list where M is the number of recommendation lists,
+                                     and R is the number of relevant items.
+        rankings (array-like):  An M x N list where M is the number of recommendation lists and
+                                N is the number of recommended items.
+        k (int): the number of items considered in the recommendation.
+    Returns:
+        MAR@K (float): The mean average recall @ k across the recommendations.
+
+    """
+    ars = []
+    for items, ranking in zip(relevant_items, rankings):
+        ar = average_recall_at_k(items, ranking, k)
+        ars.append(ar)
+
+    return np.mean(ars)
+
+
+def mean_average_percision_at_k(relevant_items: np.array, rankings: np.array, k: int = 10):
     """
     Calculate the mean average percision at k (MAP@K) for a list of rankings.
     Each ranking should be paired with a list of relevant items. First ranking list is
@@ -117,7 +141,7 @@ def mean_average_percision_at_k(relevant_items: np.array, rankings: np.array, k=
         rankings (array-like):  An M x N array of ranking arrays.
         k (int): the number of items considered in the rankings.
     Returns:
-        MAP@K (float): The average percision @ k of a ranking.
+        MAP@K (float): The mean average percision @ k across recommendations.
     """
 
     aps = []

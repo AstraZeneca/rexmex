@@ -69,6 +69,48 @@ def average_precision_at_k(relevant_items: np.array, recommendation: np.array, k
     return score / min(len(relevant_items), k)
 
 
+def mean_average_precision_at_k(relevant_items: List[list], recommendations: List[list], k: int = 10):
+    """
+    Calculate the mean average precision at k (MAP@K) across predicted lists.
+    Each prediction should be paired with a list of relevant items. First predicted list is
+    evaluated against the first list of relevant items, and so on.
+
+    Example usage:
+    .. code-block:: python
+
+        import numpy as np
+        from rexmex.metrics.predicted import mean_average_precision_at_k
+
+        mean_average_precision_at_k(
+            relevant_items=np.array(
+                [
+                    [1,2],
+                    [2,3]
+                ]
+            ),
+            predicted=np.array([
+                [3,2,1],
+                [2,1,3]
+            ])
+        )
+        >>> 0.708333...
+
+    Args:
+        relevant_items (array-like): An M x N array of relevant items.
+        recommendations (array-like):  An M x N array of recommendation lists.
+        k (int): the number of items considered in the predicted list.
+    Returns:
+        MAP@K (float): The mean average precision @ k across recommendations.
+    """
+
+    aps = []
+    for items, recommendation in zip(relevant_items, recommendations):
+        ap = average_precision_at_k(items, recommendation, k)
+        aps.append(ap)
+
+    return np.mean(aps)
+
+
 def average_recall_at_k(relevant_items: List, recommendation: List, k: int = 10):
     """
     Calculate the average recall at k (AR@K) of items in a ranked list.
@@ -116,48 +158,6 @@ def mean_average_recall_at_k(relevant_items: List[list], recommendations: List[l
         ars.append(ar)
 
     return np.mean(ars)
-
-
-def mean_average_precision_at_k(relevant_items: List[list], recommendations: List[list], k: int = 10):
-    """
-    Calculate the mean average precision at k (MAP@K) across predicted lists.
-    Each prediction should be paired with a list of relevant items. First predicted list is
-    evaluated against the first list of relevant items, and so on.
-
-    Example usage:
-    .. code-block:: python
-
-        import numpy as np
-        from rexmex.metrics.predicted import mean_average_precision_at_k
-
-        mean_average_precision_at_k(
-            relevant_items=np.array(
-                [
-                    [1,2],
-                    [2,3]
-                ]
-            ),
-            predicted=np.array([
-                [3,2,1],
-                [2,1,3]
-            ])
-        )
-        >>> 0.708333...
-
-    Args:
-        relevant_items (array-like): An M x N array of relevant items.
-        recommendations (array-like):  An M x N array of recommendation lists.
-        k (int): the number of items considered in the predicted list.
-    Returns:
-        MAP@K (float): The mean average precision @ k across recommendations.
-    """
-
-    aps = []
-    for items, recommendation in zip(relevant_items, recommendations):
-        ap = average_precision_at_k(items, recommendation, k)
-        aps.append(ap)
-
-    return np.mean(aps)
 
 
 def hits_at_k(relevant_items: np.array, recommendation: np.array, k=10):

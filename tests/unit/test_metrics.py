@@ -43,12 +43,12 @@ from rexmex.metrics.ranking import (
     DCG,
     NDCG,
     NDPM,
-    average_percision_at_k,
+    average_precision_at_k,
     average_recall_at_k,
     hits_at_k,
     intra_list_similarity,
     kendall_tau,
-    mean_average_percision_at_k,
+    mean_average_precision_at_k,
     mean_average_recall_at_k,
     mean_reciprocal_rank,
     novelty,
@@ -182,16 +182,16 @@ class TestRankingMetrics(unittest.TestCase):
         actual = [1, 2, 3]
         predicted = [1, 5, 4, 3, 2]
 
-        apk = average_percision_at_k(actual, predicted, k=3)
+        apk = average_precision_at_k(actual, predicted, k=3)
         self.assertEqual(apk, 1 / 3, 2)
 
-        apk = average_percision_at_k(actual, predicted, k=5)
+        apk = average_precision_at_k(actual, predicted, k=5)
         self.assertAlmostEqual(apk, 0.7, 2)
 
-        ap_4 = average_percision_at_k(self.relevant_items, self.ranking, k=4)
+        ap_4 = average_precision_at_k(self.relevant_items, self.ranking, k=4)
         self.assertAlmostEqual(ap_4, 0.6041, 2)
 
-        ap_10 = average_percision_at_k(self.relevant_items, self.ranking, k=10)
+        ap_10 = average_precision_at_k(self.relevant_items, self.ranking, k=10)
         self.assertAlmostEqual(ap_10, 0.775, 2)
 
     def test_mean_average_percision_at_k(self):
@@ -201,13 +201,13 @@ class TestRankingMetrics(unittest.TestCase):
         ranking_1 = np.array([1, 10, 3, 9, 6, 5, 7, 8, 4, 2])
         ranking_2 = np.array([7, 2, 5, 4, 3, 6, 1, 8, 9, 10])
 
-        apk1 = average_percision_at_k(relevant_items_1, ranking_1)
-        apk2 = average_percision_at_k(relevant_items_2, ranking_2)
+        apk1 = average_precision_at_k(relevant_items_1, ranking_1)
+        apk2 = average_precision_at_k(relevant_items_2, ranking_2)
 
         self.assertAlmostEqual(apk1, 0.62, 2)
         self.assertAlmostEqual(apk2, 0.44, 2)
 
-        map_10 = mean_average_percision_at_k(
+        map_10 = mean_average_precision_at_k(
             relevant_items=[relevant_items_1, relevant_items_2],
             recommendations=[ranking_1, ranking_2],
             k=10,

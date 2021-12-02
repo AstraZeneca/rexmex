@@ -44,16 +44,16 @@ def mean_reciprocal_rank(relevant_items: List, recommendation: List):
     return np.mean(reciprocal_ranks)
 
 
-def average_percision_at_k(relevant_items: np.array, recommendation: np.array, k=10):
+def average_precision_at_k(relevant_items: np.array, recommendation: np.array, k=10):
     """
-    Calculate the average percision at k (AP@K) of items in a ranked list.
+    Calculate the average precision at k (AP@K) of items in a ranked list.
 
     Args:
         relevant_items (array-like): An N x 1 array of relevant items.
         predicted (array-like):  An N x 1 array of ordered items.
         k (int): the number of items considered in the predicted list.
     Returns:
-        AP@K (float): The average percision @ k of a predicted list.
+        AP@K (float): The average precision @ k of a predicted list.
     """
 
     if len(recommendation) > k:
@@ -78,7 +78,7 @@ def average_recall_at_k(relevant_items: List, recommendation: List, k: int = 10)
         recommendation (array-like):  An N x 1 array of items.
         k (int): the number of items considered in the predicted list.
     Returns:
-        AR@K (float): The average percision @ k of a predicted list.
+        AR@K (float): The average precision @ k of a predicted list.
     """
     if len(recommendation) > k:
         recommendation = recommendation[:k]
@@ -118,9 +118,9 @@ def mean_average_recall_at_k(relevant_items: List[list], recommendations: List[l
     return np.mean(ars)
 
 
-def mean_average_percision_at_k(relevant_items: List[list], recommendations: List[list], k: int = 10):
+def mean_average_precision_at_k(relevant_items: List[list], recommendations: List[list], k: int = 10):
     """
-    Calculate the mean average percision at k (MAP@K) across predicted lists.
+    Calculate the mean average precision at k (MAP@K) across predicted lists.
     Each prediction should be paired with a list of relevant items. First predicted list is
     evaluated against the first list of relevant items, and so on.
 
@@ -128,9 +128,9 @@ def mean_average_percision_at_k(relevant_items: List[list], recommendations: Lis
     .. code-block:: python
 
         import numpy as np
-        from rexmex.metrics.predicted import mean_average_percision_at_k
+        from rexmex.metrics.predicted import mean_average_precision_at_k
 
-        mean_average_percision_at_k(
+        mean_average_precision_at_k(
             relevant_items=np.array(
                 [
                     [1,2],
@@ -149,12 +149,12 @@ def mean_average_percision_at_k(relevant_items: List[list], recommendations: Lis
         recommendations (array-like):  An M x N array of recommendation lists.
         k (int): the number of items considered in the predicted list.
     Returns:
-        MAP@K (float): The mean average percision @ k across recommendations.
+        MAP@K (float): The mean average precision @ k across recommendations.
     """
 
     aps = []
     for items, recommendation in zip(relevant_items, recommendations):
-        ap = average_percision_at_k(items, recommendation, k)
+        ap = average_precision_at_k(items, recommendation, k)
         aps.append(ap)
 
     return np.mean(aps)

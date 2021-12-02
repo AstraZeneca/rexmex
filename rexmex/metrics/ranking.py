@@ -59,6 +59,33 @@ def average_percision_at_k(relevant_items: np.array, ranking: np.array, k=10):
     return np.mean(p_at_ks)
 
 
+def average_recall_at_k(relevant_items: List, ranking: List, k: int = 10):
+    """
+    Calculate the average recall at k (AR@K) of items in a ranked list.
+
+    Args:
+        relevant_items (array-like): An N x 1 array of relevant items.
+        ranking (array-like):  An N x 1 array of items.
+        k (int): the number of items considered in the ranking.
+    Returns:
+        AR@K (float): The average percision @ k of a ranking.
+    """
+    if len(ranking) > k:
+        ranking = ranking[:k]
+    else:
+        k = len(ranking)
+
+    num_hits = 0.0
+    score = 0.0
+
+    for i, item in enumerate(ranking):
+        if item in relevant_items and item not in ranking[:i]:
+            num_hits += 1.0
+            score += num_hits / (i + 1.0)
+
+    return score / len(relevant_items)
+
+
 def mean_average_percision_at_k(relevant_items: np.array, rankings: np.array, k=10):
     """
     Calculate the mean average percision at k (MAP@K) for a list of rankings.

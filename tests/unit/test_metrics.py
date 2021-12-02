@@ -40,9 +40,9 @@ from rexmex.metrics.classification import (
     diagnostic_odds_ratio,
 )
 from rexmex.metrics.ranking import (
-    DCG,
-    NDCG,
-    NDPM,
+    discounted_cumulative_gain,
+    normalized_discounted_cumulative_gain,
+    normalized_distance_based_performance_measure,
     average_precision_at_k,
     average_recall_at_k,
     hits_at_k,
@@ -328,28 +328,28 @@ class TestRankingMetrics(unittest.TestCase):
         # Ranking is fully correct
         actual = [1, 2, 3]
         system = [1, 2, 3]
-        assert NDPM(actual, system) == 0.0
+        assert normalized_distance_based_performance_measure(actual, system) == 0.0
 
         # Ranking is fully incorrect
         actual = [1, 2, 3]
         system = [3, 2, 1]
-        assert NDPM(actual, system) == 1.0
+        assert normalized_distance_based_performance_measure(actual, system) == 1.0
 
         # Ranking contains duplicates
         actual = [1, 2, 3]
         system = [1, 2, 2, 2, 2, 2, 3, 3, 3, 3]
-        assert NDPM(actual, system) == 0.0
+        assert normalized_distance_based_performance_measure(actual, system) == 0.0
 
     def test_DCG(self):
         # test examples from:
         # https://scikit-learn.org/stable/modules/generated/sklearn.metrics.dcg_score.html
         true_relevance = np.asarray([[10, 0, 0, 1, 5]])
         scores = np.asarray([[0.1, 0.2, 0.3, 4, 70]])
-        dcg = DCG(true_relevance, scores)
+        dcg = discounted_cumulative_gain(true_relevance, scores)
         self.assertAlmostEqual(dcg, 9.499, 2)
 
     def test_NDCG(self):
         true_relevance = np.asarray([[10, 0, 0, 1, 5]])
         scores = np.asarray([[0.1, 0.2, 0.3, 4, 70]])
-        ndcg = NDCG(true_relevance, scores)
+        ndcg = normalized_discounted_cumulative_gain(true_relevance, scores)
         self.assertAlmostEqual(ndcg, 0.6956, 2)

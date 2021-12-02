@@ -10,7 +10,7 @@ class ScoreCard(object):
     """
 
     def __init__(self, metric_set: rexmex.metricset.MetricSet):
-        self._metric_set = metric_set
+        self.metric_set = metric_set
 
     def _get_performance_metrics(self, y_true: np.array, y_score: np.array) -> pd.DataFrame:
         """
@@ -22,7 +22,7 @@ class ScoreCard(object):
         Returns:
             performance_metrics (pd.DataFrame): The performance metrics calculated from the vectors.
         """
-        performance_metrics = {name: [metric(y_true, y_score)] for name, metric in self._metric_set.items()}
+        performance_metrics = {name: [metric(y_true, y_score)] for name, metric in self.metric_set.items()}
         performance_metrics = pd.DataFrame.from_dict(performance_metrics)
         return performance_metrics
 
@@ -56,4 +56,4 @@ class ScoreCard(object):
         """
         Printing the name of metrics.
         """
-        print({k for k in self._metric_set.keys()})
+        print({k for k in self.metric_set.keys()})

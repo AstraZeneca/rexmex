@@ -174,7 +174,11 @@ def hits_at_k(relevant_items: np.array, recommendation: np.array, k=10):
     if len(recommendation) > k:
         recommendation = recommendation[:k]
 
-    hits = np.array(np.in1d(recommendation, relevant_items), dtype=int).sum()
+    hits = 0.0
+    for item in recommendation:
+        if item in relevant_items:
+            hits += 1.0
+
     return hits / len(recommendation)
 
 

@@ -7,103 +7,103 @@ import itertools
 from sklearn.metrics import dcg_score, ndcg_score
 
 
-def reciprocal_rank(relevant_item: any, predicted: List) -> float:
+def reciprocal_rank(relevant_item: any, recommendation: List) -> float:
     """
     Calculate the reciprocal rank (RR) of an item in a ranked list of items.
 
     Args:
         relevant_item (any): a target item in the predicted list of items.
-        predicted (array-like): An N x 1 predicted of items.
+        recommendation (array-like): An N x 1 predicted of items.
     Returns:
         RR (float): The reciprocal rank of the item.
     """
 
-    assert relevant_item in predicted
+    assert relevant_item in recommendation
 
-    for i, item in enumerate(predicted):
+    for i, item in enumerate(recommendation):
         if item == relevant_item:
             return 1.0 / (i + 1.0)
 
 
-def mean_reciprocal_rank(actual: List, predicted: List):
+def mean_reciprocal_rank(relevant_items: List, recommendation: List):
     """
     Calculate the mean reciprocal rank (MRR) of items in a ranked list.
 
     Args:
-        actual (array-like): An N x 1 array of relevant items.
+        relevant_items (array-like): An N x 1 array of relevant items.
         predicted (array-like):  An N x 1 array of ordered items.
     Returns:
         MRR (float): The mean reciprocal rank of the relevant items in a predicted.
     """
 
     reciprocal_ranks = []
-    for item in actual:
-        rr = reciprocal_rank(item, predicted)
+    for item in relevant_items:
+        rr = reciprocal_rank(item, recommendation)
         reciprocal_ranks.append(rr)
 
     return np.mean(reciprocal_ranks)
 
 
-def average_percision_at_k(actual: np.array, predicted: np.array, k=10):
+def average_percision_at_k(relevant_items: np.array, recommendation: np.array, k=10):
     """
     Calculate the average percision at k (AP@K) of items in a ranked list.
 
     Args:
-        actual (array-like): An N x 1 array of relevant items.
+        relevant_items (array-like): An N x 1 array of relevant items.
         predicted (array-like):  An N x 1 array of ordered items.
         k (int): the number of items considered in the predicted list.
     Returns:
         AP@K (float): The average percision @ k of a predicted list.
     """
 
-    if len(predicted) > k:
-        predicted = predicted[:k]
+    if len(recommendation) > k:
+        recommendation = recommendation[:k]
 
     score = 0.0
     hits = 0.0
-    for i, item in enumerate(predicted):
-        if item in actual and item not in predicted[:i]:
+    for i, item in enumerate(recommendation):
+        if item in relevant_items and item not in recommendation[:i]:
             hits += 1.0
             score += hits / (i + 1.0)
 
-    return score / min(len(actual), k)
+    return score / min(len(relevant_items), k)
 
 
-def average_recall_at_k(actual: List, predicted: List, k: int = 10):
+def average_recall_at_k(relevant_items: List, recommendation: List, k: int = 10):
     """
     Calculate the average recall at k (AR@K) of items in a ranked list.
 
     Args:
-        actual (array-like): An N x 1 array of relevant items.
-        predicted (array-like):  An N x 1 array of items.
+        relevant_items (array-like): An N x 1 array of relevant items.
+        recommendation (array-like):  An N x 1 array of items.
         k (int): the number of items considered in the predicted list.
     Returns:
         AR@K (float): The average percision @ k of a predicted list.
     """
-    if len(predicted) > k:
-        predicted = predicted[:k]
+    if len(recommendation) > k:
+        recommendation = recommendation[:k]
 
     num_hits = 0.0
     score = 0.0
 
-    for i, item in enumerate(predicted):
-        if item in actual and item not in predicted[:i]:
+    for i, item in enumerate(recommendation):
+        if item in relevant_items and item not in recommendation[:i]:
             num_hits += 1.0
             score += num_hits / (i + 1.0)
 
-    return score / len(actual)
+    return score / len(relevant_items)
 
 
-def mean_average_recall_at_k(actual: List[list], predicted: List[list], k: int = 10):
+def mean_average_recall_at_k(relevant_items: List[list], recommendations: List[list], k: int = 10):
     """
     Calculate the mean average recall at k (MAR@K) for a list of recommendations.
     Each recommendation should be paired with a list of relevant items. First recommendation list is
     evaluated against the first list of relevant items, and so on.
 
     Args:
-        actual (array-like): An M x R list where M is the number of recommendation lists,
+        relevant_items (array-like): An M x R list where M is the number of recommendation lists,
                                      and R is the number of relevant items.
-        predicted (array-like):  An M x N list where M is the number of recommendation lists and
+        recommendations (array-like):  An M x N list where M is the number of recommendation lists and
                                 N is the number of recommended items.
         k (int): the number of items considered in the recommendation.
     Returns:
@@ -111,14 +111,14 @@ def mean_average_recall_at_k(actual: List[list], predicted: List[list], k: int =
 
     """
     ars = []
-    for items, predicted in zip(actual, predicted):
-        ar = average_recall_at_k(items, predicted, k)
+    for items, recommendation in zip(relevant_items, recommendations):
+        ar = average_recall_at_k(items, recommendation, k)
         ars.append(ar)
 
     return np.mean(ars)
 
 
-def mean_average_percision_at_k(actual: List[list], predicted: List[list], k: int = 10):
+def mean_average_percision_at_k(relevant_items: List[list], recommendations: List[list], k: int = 10):
     """
     Calculate the mean average percision at k (MAP@K) across predicted lists.
     Each prediction should be paired with a list of relevant items. First predicted list is
@@ -131,7 +131,7 @@ def mean_average_percision_at_k(actual: List[list], predicted: List[list], k: in
         from rexmex.metrics.predicted import mean_average_percision_at_k
 
         mean_average_percision_at_k(
-            actual=np.array(
+            relevant_items=np.array(
                 [
                     [1,2],
                     [2,3]
@@ -145,65 +145,65 @@ def mean_average_percision_at_k(actual: List[list], predicted: List[list], k: in
         >>> 0.708333...
 
     Args:
-        actual (array-like): An M x N array of relevant items.
-        predicted (array-like):  An M x N array of predicted items.
+        relevant_items (array-like): An M x N array of relevant items.
+        recommendations (array-like):  An M x N array of recommendation lists.
         k (int): the number of items considered in the predicted list.
     Returns:
         MAP@K (float): The mean average percision @ k across recommendations.
     """
 
     aps = []
-    for items, predicted in zip(actual, predicted):
-        ap = average_percision_at_k(items, predicted, k)
+    for items, recommendation in zip(relevant_items, recommendations):
+        ap = average_percision_at_k(items, recommendation, k)
         aps.append(ap)
 
     return np.mean(aps)
 
 
-def hits_at_k(actual: np.array, predicted: np.array, k=10):
+def hits_at_k(relevant_items: np.array, recommendation: np.array, k=10):
     """
     Calculate the number of hits of relevant items in a ranked list HITS@K.
 
     Args:
-        actual (array-like): An 1 x N array of relevant items.
+        relevant_items (array-like): An 1 x N array of relevant items.
         predicted (array-like):  An 1 x N array of predicted arrays
         k (int): the number of items considered in the predicted list
     Returns:
         HITS@K (float):  The number of relevant items in the first k items of a prediction.
     """
-    if len(predicted) > k:
-        predicted = predicted[:k]
+    if len(recommendation) > k:
+        recommendation = recommendation[:k]
 
-    hits = np.array(np.in1d(predicted, actual), dtype=int).sum()
-    return hits / len(predicted)
+    hits = np.array(np.in1d(recommendation, relevant_items), dtype=int).sum()
+    return hits / len(recommendation)
 
 
-def spearmanns_rho(actual: np.array, predicted: np.array):
+def spearmanns_rho(relevant_items: np.array, recommendation: np.array):
     """
     Calculate the Spearmann's rank correlation coefficient (Spearmann's rho) between two lists.
 
     Args:
-        actual (array-like): An 1 x N array of items.
-        predicted (array-like):  An 1 x N array of items.
+        relevant_items (array-like): An 1 x N array of items.
+        recommendation (array-like):  An 1 x N array of items.
     Returns:
         Spearmann's rho (float): Spearmann's rho.
         p-value (float): two-sided p-value for null hypothesis that both predicted are uncorrelated.
     """
-    return stats.spearmanr(actual, predicted)
+    return stats.spearmanr(relevant_items, recommendation)
 
 
-def kendall_tau(actual: np.array, predicted: np.array):
+def kendall_tau(relevant_items: np.array, recommendation: np.array):
     """
     Calculate the Kendall's tau, measuring the correspondance between two lists.
 
     Args:
-        actual (array-like): An 1 x N array of items.
-        predicted (array-like):  An 1 x N array of items.
+        relevant_items (array-like): An 1 x N array of items.
+        recommendation (array-like):  An 1 x N array of items.
     Returns:
         Kendall tau (float): The tau statistic.
         p-value (float): two-sided p-value for null hypothesis that there's no association between the predicted.
     """
-    return stats.kendalltau(actual, predicted)
+    return stats.kendalltau(relevant_items, recommendation)
 
 
 def intra_list_similarity(recommendations: List[list], items_feature_matrix: np.array):
@@ -307,14 +307,14 @@ def novelty(recommendations: List[list], item_popularities: dict, num_users: int
     return np.mean(all_self_information)
 
 
-def NDPM(actual: List, predicted: List):
+def NDPM(relevant_items: List, recommendation: List):
     """
     Calculates the Normalized Distance-based Performance Measure (NPDM) between two
     ordered lists. Two matching orderings return 0.0 while two unmatched orderings returns 1.0.
 
     Args:
-        actual (List): List of items
-        predicted (List): The predicted list of items
+        relevant_items (List): List of items
+        recommendation (List): The predicted list of items
 
     Returns:
         NDPM (float): Normalized Distance-based Performance Measure
@@ -323,12 +323,12 @@ def NDPM(actual: List, predicted: List):
     Yao, Y. Y. "Measuring retrieval effectiveness based on user preference of documents."
     Journal of the American Society for Information science 46.2 (1995): 133-145.
     """
-    assert set(actual) == set(predicted)
+    assert set(relevant_items) == set(recommendation)
 
-    item_actual_rank = {item: i + 1 for i, item in enumerate(dict.fromkeys(actual))}
-    item_predicted_rank = {item: i + 1 for i, item in enumerate(dict.fromkeys(predicted))}
+    item_relevant_items_rank = {item: i + 1 for i, item in enumerate(dict.fromkeys(relevant_items))}
+    item_predicted_rank = {item: i + 1 for i, item in enumerate(dict.fromkeys(recommendation))}
 
-    items = set(actual)
+    items = set(relevant_items)
 
     item_combinations = itertools.combinations(items, 2)
 
@@ -337,13 +337,13 @@ def NDPM(actual: List, predicted: List):
     C_u = 0
 
     for item1, item2 in item_combinations:
-        item1_actual_rank = item_actual_rank[item1]
-        item2_actual_rank = item_actual_rank[item2]
+        item1_relevant_items_rank = item_relevant_items_rank[item1]
+        item2_relevant_items_rank = item_relevant_items_rank[item2]
 
         item1_pred_rank = item_predicted_rank[item1]
         item2_pred_rank = item_predicted_rank[item2]
 
-        C = np.sign(item1_pred_rank - item2_pred_rank) * np.sign(item1_actual_rank - item2_actual_rank)
+        C = np.sign(item1_pred_rank - item2_pred_rank) * np.sign(item1_relevant_items_rank - item2_relevant_items_rank)
 
         C_u += C ** 2
 

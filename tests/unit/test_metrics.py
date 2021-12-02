@@ -208,8 +208,8 @@ class TestRankingMetrics(unittest.TestCase):
         self.assertAlmostEqual(apk2, 0.44, 2)
 
         map_10 = mean_average_percision_at_k(
-            actual=[relevant_items_1, relevant_items_2],
-            predicted=[ranking_1, ranking_2],
+            relevant_items=[relevant_items_1, relevant_items_2],
+            recommendations=[ranking_1, ranking_2],
             k=10,
         )
 
@@ -238,11 +238,11 @@ class TestRankingMetrics(unittest.TestCase):
         assert recall == 0.5
 
     def test_mean_average_recall_at_k(self):
-        relevant_items = [1]
+        relevant_items = [[1], [1]]
         rec1 = [1, 1, 1]
         rec2 = [0, 0, 0]
 
-        mark = mean_average_recall_at_k(actual=relevant_items, predicted=[rec1, rec2])
+        mark = mean_average_recall_at_k(relevant_items=relevant_items, recommendations=[rec1, rec2])
         assert mark == 0.5
 
     def test_hits_at_k(self):

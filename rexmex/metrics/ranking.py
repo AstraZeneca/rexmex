@@ -3,6 +3,7 @@ from typing import List
 import numpy as np
 from scipy import stats
 from sklearn.metrics.pairwise import cosine_similarity
+import itertools
 
 
 def reciprocal_rank(relevant_item: any, ranking: np.array) -> float:
@@ -297,3 +298,52 @@ def novelty(rankings: List[list], item_popularities: dict, num_users: int, k: in
         all_self_information.append(avg_self_information)
 
     return np.mean(all_self_information)
+
+
+def NDPM(actual_ranking: List, system_ranking: List):
+    """
+    Calculates the Normalized Distance-based Performance Measure (NPDM) between two
+    ranked lists. Two matching rankings return 0.0 while two unmatched rankings
+    returns 1.0.
+
+    Args:
+        actual_ranking (List): List of items
+        system_ranking (List): The predicted list of items
+
+
+    Yao, Y. Y. "Measuring retrieval effectiveness based on user preference of documents."
+    Journal of the American Society for Information science 46.2 (1995): 133-145.
+    """
+    assert set(actual_ranking) == set(system_ranking)
+
+    item_actual_rank = {item: i + 1 for i, item in enumerate(dict.fromkeys(actual_ranking))}
+    item_system_rank = {item: i + 1 for i, item in enumerate(dict.fromkeys(system_ranking))}
+
+    items = set(actual_ranking)
+
+    item_combinations = itertools.combinations(items, 2)
+
+    C_minus = 0
+    C_plus = 0
+    C_u = 0
+
+    for item1, item2 in item_combinations:
+        item1_actual_rank = item_actual_rank[item1]
+        item2_actual_rank = item_actual_rank[item2]
+
+        item1_system_rank = item_system_rank[item1]
+        item2_system_rank = item_system_rank[item2]
+
+        C = np.sign(item1_system_rank - item2_system_rank) * np.sign(item1_actual_rank - item2_actual_rank)
+
+        C_u += C ** 2
+
+        if C < 0:
+            C_minus += 1
+        else:
+            C_plus += 1
+
+    C_u0 = C_u - (C_plus + C_minus)
+
+    NPDM = (C_minus + 0.5 * C_u0) / C_u
+    return NPDM

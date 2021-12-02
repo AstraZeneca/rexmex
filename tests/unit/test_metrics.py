@@ -40,6 +40,7 @@ from rexmex.metrics.classification import (
     diagnostic_odds_ratio,
 )
 from rexmex.metrics.ranking import (
+    NDPM,
     average_percision_at_k,
     average_recall_at_k,
     hits_at_k,
@@ -289,3 +290,20 @@ class TestRankingMetrics(unittest.TestCase):
         popularity = {0: 1, 1: 1, 2: 0}
         nov2 = novelty(recommendations, popularity, 2, k=3)
         self.assertAlmostEqual(nov2, 1, 2)
+
+    def test_NDPM(self):
+
+        # Ranking is fully correct
+        actual = [1, 2, 3]
+        system = [1, 2, 3]
+        assert NDPM(actual, system) == 0.0
+
+        # Ranking is fully incorrect
+        actual = [1, 2, 3]
+        system = [3, 2, 1]
+        assert NDPM(actual, system) == 1.0
+
+        # Ranking contains duplicates
+        actual = [1, 2, 3]
+        system = [1, 2, 2, 2, 2, 2, 3, 3, 3, 3]
+        assert NDPM(actual, system) == 0.0

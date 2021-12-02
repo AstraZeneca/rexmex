@@ -1,3 +1,4 @@
+from math import log2
 from typing import List
 import numpy as np
 from scipy import stats
@@ -213,3 +214,35 @@ def personalization(rankings: List[list]):
     personalization = (similarity.sum() - dim) / (dim * (dim - 1))
 
     return 1 - personalization
+
+
+def novelty(rankings: List[list], item_popularities: dict, num_users: int, k: int = 10):
+    """
+    Calculates the capacity of the recommender system to to generate novel
+    and unexpected results.
+
+    Args:
+        rankings (List[list]): A M x N array of rankings, where M is the number
+                               of rankings and N the number of recommended items
+        item_popularities (dict): A dict mapping each item in the recommendations to a popularity value.
+                                  Popular items have higher values.
+        num_users (int): The number of users
+        k (int): The number of items considered in each recommendation.
+
+    Returns:
+        (float): novelty
+    """
+
+    epsilon = 1e-10
+    all_self_information = []
+    for ranking in rankings:
+        self_information_sum = 0
+        for i in range(k):
+            item = ranking[i]
+            item_pop = item_popularities[item]
+            self_information_sum += -log2((item_pop + epsilon) / num_users)
+
+        avg_self_information = self_information_sum / k
+        all_self_information.append(avg_self_information)
+
+    return np.mean(all_self_information)

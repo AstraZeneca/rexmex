@@ -46,6 +46,7 @@ from rexmex.metrics.ranking import (
     kendall_tau,
     mean_average_percision_at_k,
     mean_reciprocal_rank,
+    novelty,
     personalization,
     reciprocal_rank,
     spearmanns_rho,
@@ -235,3 +236,23 @@ class TestRankingMetrics(unittest.TestCase):
         rec2 = [0, 0, 0]
         recommendations = [rec1, rec2]
         assert personalization(recommendations) == 0.0
+
+    def test_novelty(self):
+
+        # TODO: Better test cases?
+
+        # users see the same items, novelty -> 0
+        rec1 = [1, 1, 1]
+        rec2 = [1, 1, 1]
+        recommendations = [rec1, rec2]
+        popularity = {0: 0, 1: 2, 2: 0}
+        nov1 = novelty(recommendations, popularity, 2, k=3)
+        self.assertAlmostEqual(nov1, 0, 2)
+
+        # users are the only one's seing their item, novelty -> 1
+        rec1 = [0, 0, 0]
+        rec2 = [1, 1, 1]
+        recommendations = [rec1, rec2]
+        popularity = {0: 1, 1: 1, 2: 0}
+        nov2 = novelty(recommendations, popularity, 2, k=3)
+        self.assertAlmostEqual(nov2, 1, 2)

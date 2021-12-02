@@ -163,6 +163,18 @@ class TestRankingMetrics(unittest.TestCase):
         assert reciprocal_rank(2, self.ranking) == 1 / 6
         assert reciprocal_rank(3, self.ranking) == 1 / 3
 
+    def test_mean_reciprocal_rank(self):
+        actual = ["a", "b", "c"]
+        rec = ["b", "c", "a"]
+
+        a_rr = 1 / 3
+        b_rr = 1
+        c_rr = 1 / 2
+        expected_mrr = (a_rr + b_rr + c_rr) / 3
+
+        mrr = mean_reciprocal_rank(actual, rec)
+        self.assertAlmostEqual(expected_mrr, mrr, 3)
+
     def test_average_percision_at_k(self):
         ap_10 = average_percision_at_k(self.relevant_items, self.ranking, k=10)
         self.assertAlmostEqual(ap_10, 0.775, 2)
@@ -178,8 +190,8 @@ class TestRankingMetrics(unittest.TestCase):
         ranking_2 = np.array([7, 2, 5, 4, 3, 6, 1, 8, 9, 10])
 
         map_10 = mean_average_percision_at_k(
-            relevant_items=[relevant_items_1, relevant_items_2],
-            rankings=[ranking_1, ranking_2],
+            actual=[relevant_items_1, relevant_items_2],
+            predicted=[ranking_1, ranking_2],
             k=10,
         )
 
@@ -212,12 +224,8 @@ class TestRankingMetrics(unittest.TestCase):
         rec1 = [1, 1, 1]
         rec2 = [0, 0, 0]
 
-        mark = mean_average_recall_at_k(relevant_items=relevant_items, recommendations=[rec1, rec2])
-
+        mark = mean_average_recall_at_k(actual=relevant_items, predicted=[rec1, rec2])
         assert mark == 0.5
-
-    def test_mean_reciprocal_rank(self):
-        self.assertAlmostEqual(mean_reciprocal_rank(self.relevant_items, self.ranking), 0.3416, 3)
 
     def test_hits_at_k(self):
         hits_at_1 = hits_at_k(self.relevant_items, self.ranking, k=1)

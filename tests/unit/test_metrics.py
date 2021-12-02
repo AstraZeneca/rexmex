@@ -254,6 +254,10 @@ class TestRankingMetrics(unittest.TestCase):
         self.assertAlmostEqual(hits_at_5, 0.8, 2)
         self.assertAlmostEqual(hits_at_10, 0.6, 2)
 
+        # duplicates are not counted twice
+        hak = hits_at_k([1, 2, 3], [4, 5, 1, 1, 3], k=5)
+        self.assertAlmostEqual(hak, 2 / 5, 2)
+
     def test_spearmanns_rho(self):
         corr, p_value = spearmanns_rho(range(1, 5), range(1, 5))
 

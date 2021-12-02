@@ -175,8 +175,8 @@ def hits_at_k(relevant_items: np.array, recommendation: np.array, k=10):
         recommendation = recommendation[:k]
 
     hits = 0.0
-    for item in recommendation:
-        if item in relevant_items:
+    for i, item in enumerate(recommendation):
+        if item in relevant_items and item not in recommendation[:i]:
             hits += 1.0
 
     return hits / len(recommendation)

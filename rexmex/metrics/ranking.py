@@ -66,7 +66,7 @@ def average_percision_at_k(actual: np.array, predicted: np.array, k=10):
             hits += 1.0
             score += hits / (i + 1.0)
 
-    return score / hits
+    return score / min(len(actual), k)
 
 
 def average_recall_at_k(actual: List, predicted: List, k: int = 10):
@@ -82,8 +82,6 @@ def average_recall_at_k(actual: List, predicted: List, k: int = 10):
     """
     if len(predicted) > k:
         predicted = predicted[:k]
-    else:
-        k = len(predicted)
 
     num_hits = 0.0
     score = 0.0

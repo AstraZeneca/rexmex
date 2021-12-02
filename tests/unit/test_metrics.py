@@ -155,6 +155,8 @@ class TestRankingMetrics(unittest.TestCase):
     """
 
     def setUp(self):
+        # example from:
+        # https://web.stanford.edu/class/cs276/handouts/EvaluationNew-handout-1-per.pdf
         self.relevant_items = np.array([1, 2, 3, 4, 5, 6])
         self.ranking = np.array([1, 7, 3, 4, 5, 2, 10, 8, 9, 6])
 
@@ -176,11 +178,21 @@ class TestRankingMetrics(unittest.TestCase):
         self.assertAlmostEqual(expected_mrr, mrr, 3)
 
     def test_average_percision_at_k(self):
-        ap_10 = average_percision_at_k(self.relevant_items, self.ranking, k=10)
-        self.assertAlmostEqual(ap_10, 0.775, 2)
+
+        actual = [1, 2, 3]
+        predicted = [1, 5, 4, 3, 2]
+
+        apk = average_percision_at_k(actual, predicted, k=3)
+        self.assertEqual(apk, 1 / 3, 2)
+
+        apk = average_percision_at_k(actual, predicted, k=5)
+        self.assertAlmostEqual(apk, 0.7, 2)
 
         ap_4 = average_percision_at_k(self.relevant_items, self.ranking, k=4)
-        self.assertAlmostEqual(ap_4, 0.805, 2)
+        self.assertAlmostEqual(ap_4, 0.6041, 2)
+
+        ap_10 = average_percision_at_k(self.relevant_items, self.ranking, k=10)
+        self.assertAlmostEqual(ap_10, 0.775, 2)
 
     def test_mean_average_percision_at_k(self):
         relevant_items_1 = np.array([1, 2, 3, 4, 5])
@@ -189,13 +201,19 @@ class TestRankingMetrics(unittest.TestCase):
         ranking_1 = np.array([1, 10, 3, 9, 6, 5, 7, 8, 4, 2])
         ranking_2 = np.array([7, 2, 5, 4, 3, 6, 1, 8, 9, 10])
 
+        apk1 = average_percision_at_k(relevant_items_1, ranking_1)
+        apk2 = average_percision_at_k(relevant_items_2, ranking_2)
+
+        self.assertAlmostEqual(apk1, 0.62, 2)
+        self.assertAlmostEqual(apk2, 0.44, 2)
+
         map_10 = mean_average_percision_at_k(
             actual=[relevant_items_1, relevant_items_2],
             predicted=[ranking_1, ranking_2],
             k=10,
         )
 
-        self.assertAlmostEqual(map_10, 0.53, 2)
+        self.assertAlmostEqual(map_10, (0.62 + 0.44) / 2, 2)
 
     def test_average_recall_at_k(self):
 
@@ -219,7 +237,7 @@ class TestRankingMetrics(unittest.TestCase):
         recall = average_recall_at_k(relevant_items, ranking, k=2)
         assert recall == 0.5
 
-    def mean_average_recall_at_k(self):
+    def test_mean_average_recall_at_k(self):
         relevant_items = [1]
         rec1 = [1, 1, 1]
         rec2 = [0, 0, 0]
@@ -319,6 +337,8 @@ class TestRankingMetrics(unittest.TestCase):
         assert NDPM(actual, system) == 0.0
 
     def test_DCG(self):
+        # test examples from:
+        # https://scikit-learn.org/stable/modules/generated/sklearn.metrics.dcg_score.html
         true_relevance = np.asarray([[10, 0, 0, 1, 5]])
         scores = np.asarray([[0.1, 0.2, 0.3, 4, 70]])
         dcg = DCG(true_relevance, scores)

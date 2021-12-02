@@ -345,5 +345,5 @@ def NDPM(actual_ranking: List, system_ranking: List):
 
     C_u0 = C_u - (C_plus + C_minus)
 
-    NPDM = (C_minus + 0.5 * C_u0) / C_u
-    return NPDM
+    NDPM = (C_minus + 0.5 * C_u0) / C_u
+    return NDPM

@@ -54,7 +54,7 @@ from rexmex.metrics.ranking import (
     novelty,
     personalization,
     reciprocal_rank,
-    spearmanns_rho,
+    spearmans_rho,
 )
 
 from rexmex.metrics.rating import (
@@ -258,13 +258,13 @@ class TestRankingMetrics(unittest.TestCase):
         hak = hits_at_k([1, 2, 3], [4, 5, 1, 1, 3], k=5)
         self.assertAlmostEqual(hak, 2 / 5, 2)
 
-    def test_spearmanns_rho(self):
-        corr, p_value = spearmanns_rho(range(1, 5), range(1, 5))
+    def test_spearmans_rho(self):
+        corr, p_value = spearmans_rho(range(1, 5), range(1, 5))
 
         assert corr == 1.0
         assert p_value == 0.0
 
-        corr, p_value = spearmanns_rho(range(1, 5), range(4, 0, -1))
+        corr, p_value = spearmans_rho(range(1, 5), range(4, 0, -1))
         assert corr == -1.0
         assert p_value == 0.0
 

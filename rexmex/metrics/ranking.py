@@ -182,15 +182,15 @@ def hits_at_k(relevant_items: np.array, recommendation: np.array, k=10):
     return hits / len(recommendation)
 
 
-def spearmanns_rho(relevant_items: np.array, recommendation: np.array):
+def spearmans_rho(relevant_items: np.array, recommendation: np.array):
     """
-    Calculate the Spearmann's rank correlation coefficient (Spearmann's rho) between two lists.
+    Calculate the Spearman's rank correlation coefficient (Spearman's rho) between two lists.
 
     Args:
         relevant_items (array-like): An 1 x N array of items.
         recommendation (array-like):  An 1 x N array of items.
     Returns:
-        Spearmann's rho (float): Spearmann's rho.
+        (float): Spearman's rho.
         p-value (float): two-sided p-value for null hypothesis that both predicted are uncorrelated.
     """
     return stats.spearmanr(relevant_items, recommendation)

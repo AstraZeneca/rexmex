@@ -12,9 +12,7 @@ class ScoreCard(object):
     def __init__(self, metric_set: rexmex.metricset.MetricSet):
         self._metric_set = metric_set
 
-    def _get_performance_metrics(
-        self, y_true: np.array, y_score: np.array
-    ) -> pd.DataFrame:
+    def _get_performance_metrics(self, y_true: np.array, y_score: np.array) -> pd.DataFrame:
         """
         A method to get the performance metrics for a pair of vectors.
 
@@ -24,15 +22,11 @@ class ScoreCard(object):
         Returns:
             performance_metrics (pd.DataFrame): The performance metrics calculated from the vectors.
         """
-        performance_metrics = {
-            name: [metric(y_true, y_score)] for name, metric in self._metric_set.items()
-        }
+        performance_metrics = {name: [metric(y_true, y_score)] for name, metric in self._metric_set.items()}
         performance_metrics = pd.DataFrame.from_dict(performance_metrics)
         return performance_metrics
 
-    def generate_report(
-        self, scores_to_evaluate: pd.DataFrame, groupping: List[str] = None
-    ) -> pd.DataFrame:
+    def generate_report(self, scores_to_evaluate: pd.DataFrame, groupping: List[str] = None) -> pd.DataFrame:
         """
         A method to calculate (aggregated) performance metrics based
         on a dataframe of ground truth and predictions. It assumes that the dataframe has the `y_true`
@@ -47,13 +41,9 @@ class ScoreCard(object):
         """
         if groupping is not None:
             scores_to_evaluate = scores_to_evaluate.groupby(groupping)
-            report = scores_to_evaluate.apply(
-                lambda group: self._get_performance_metrics(group.y_true, group.y_score)
-            )
+            report = scores_to_evaluate.apply(lambda group: self._get_performance_metrics(group.y_true, group.y_score))
         else:
-            report = self._get_performance_metrics(
-                scores_to_evaluate.y_true, scores_to_evaluate.y_score
-            )
+            report = self._get_performance_metrics(scores_to_evaluate.y_true, scores_to_evaluate.y_score)
         return report
 
     def __repr__(self):

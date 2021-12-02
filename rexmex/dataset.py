@@ -13,9 +13,7 @@ class DatasetReader(object):
     """
 
     def __init__(self):
-        self.base_url = (
-            "https://raw.githubusercontent.com/AstraZeneca/rexmex/main/dataset/"
-        )
+        self.base_url = "https://raw.githubusercontent.com/AstraZeneca/rexmex/main/dataset/"
 
     def read_dataset(self, dataset: str = "erdos_renyi_example"):
         """

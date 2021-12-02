@@ -87,9 +87,7 @@ def root_mean_squared_error(y_true: np.array, y_score: np.array) -> float:
     return rmse
 
 
-def symmetric_mean_absolute_percentage_error(
-    y_true: np.array, y_score: np.array
-) -> float:
+def symmetric_mean_absolute_percentage_error(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the symmetric mean absolute percentage error (SMAPE) for a ground-truth prediction vector pair.
 
@@ -99,7 +97,5 @@ def symmetric_mean_absolute_percentage_error(
     Returns:
         smape (float): The value of the symmetric mean absolute percentage error.
     """
-    smape = 100 * np.mean(
-        np.abs(y_score - y_true) / ((np.abs(y_score) + np.abs(y_true)) / 2)
-    )
+    smape = 100 * np.mean(np.abs(y_score - y_true) / ((np.abs(y_score) + np.abs(y_true)) / 2))
     return smape

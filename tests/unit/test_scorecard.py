@@ -8,7 +8,6 @@ from rexmex.scorecard import ScoreCard
 
 
 class TestMetricSet(unittest.TestCase):
-
     def setUp(self):
         self.metric_set = ClassificationMetricSet()
         self.score_card = ScoreCard(self.metric_set)

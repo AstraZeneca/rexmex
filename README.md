@@ -20,7 +20,7 @@ Please look at the **[Documentation](https://rexmex.readthedocs.io/en/latest/)**
 
 **An introductory example**
 
-The following example loads a synthetic dataset which has the `source_id`, `target_id`, `source_group` and `target group` keys besides the mandatory `y_true` and `y_scores`.  The dataset has binary labels and predictied probability scores. We read the dataset and define a defult `ClassificationMetric` instance for the evaluation of the predictions. Using this metric set we create a score card, group the predictions on with the `source_group` key and return a performance metric report.
+The following example loads a synthetic dataset which has the `source_id`, `target_id`, `source_group` and `target group` keys besides the mandatory `y_true` and `y_score`.  The dataset has binary labels and predictied probability scores. We read the dataset and define a defult `ClassificationMetric` instance for the evaluation of the predictions. Using this metric set we create a score card, group the predictions on with the `source_group` key and return a performance metric report.
 
 ```python
 from rexmex.scorecard import ScoreCard

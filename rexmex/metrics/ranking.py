@@ -79,6 +79,7 @@ def mean_average_precision_at_k(relevant_items: List[list], recommendations: Lis
     evaluated against the first list of relevant items, and so on.
 
     Example usage:
+
     .. code-block:: python
 
         import numpy as np
@@ -229,8 +230,7 @@ def intra_list_similarity(recommendations: List[list], items_feature_matrix: np.
     Returns:
         (float): Average intra list similarity across predicted
 
-    Original implementation:
-    https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L232
+    `Original impl.:<https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L232>`_
     """
 
     intra_list_similarities = []
@@ -256,8 +256,7 @@ def personalization(recommendations: List[list]):
     Returns:
         (float): personalization
 
-    Original implementation:
-    https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L160
+    `Original impl.:<https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L160>`_
     """
 
     n_predictions = len(recommendations)
@@ -309,8 +308,7 @@ def novelty(recommendations: List[list], item_popularities: dict, num_users: int
     Solving the apparent diversity-accuracy dilemma of recommender systems.
     Proceedings of the National Academy of Sciences, 107(10), 4511-4515.
 
-    Original implementation:
-    https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L14
+    `Original impl.:<https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L14>`_
     """
 
     epsilon = 1e-10

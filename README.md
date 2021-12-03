@@ -20,7 +20,7 @@ Please look at the **[Documentation](https://rexmex.readthedocs.io/en/latest/)**
 
 **An introductory example**
 
-The following example loads a synthetic dataset which has the `source_id`, `target_id`, `source_group` and `target group` keys besides the mandatory `y_true` and `y_scores`.  The dataset has binary labels and predictied probability scores. We read the dataset and define a defult `ClassificationMetric` instance for the evaluation of the predictions. Using this metric set we create a score card, group the predictions on with the `source_group` key and return a performance metric report.
+The following example loads a synthetic dataset which has the `source_id`, `target_id`, `source_group` and `target group` keys besides the mandatory `y_true` and `y_score`.  The dataset has binary labels and predictied probability scores. We read the dataset and define a defult `ClassificationMetric` instance for the evaluation of the predictions. Using this metric set we create a score card, group the predictions on with the `source_group` key and return a performance metric report.
 
 ```python
 from rexmex.scorecard import ScoreCard
@@ -47,10 +47,36 @@ A **rexmex** score card allows the reporting of recommender system performance m
 
 Metric sets allow the users to calculate a range of evaluation metrics for a label - predicted label vector pair. We provide a general `MetricSet` class and specialized metric sets with pre-set metrics have the following general categories:
 
+- **Ranking**
 - **Rating**
 - **Classification**
-- **Ranking**
 - **Coverage**
+
+--------------------------------------------------------------------------------
+
+**Ranking Metric Set**
+
+* **[Normalized Distance Based Performance Measure (NDPM)](https://asistdl.onlinelibrary.wiley.com/doi/abs/10.1002/%28SICI%291097-4571%28199503%2946%3A2%3C133%3A%3AAID-ASI6%3E3.0.CO%3B2-Z)**
+* **[Discounted Cumulative Gain (DCG)](https://en.wikipedia.org/wiki/Discounted_cumulative_gain)**
+* **[Normalized Discounted Cumulative Gain (NDCG)](https://en.wikipedia.org/wiki/Discounted_cumulative_gain)**
+* **[Reciprocal Rank](https://en.wikipedia.org/wiki/Mean_reciprocal_rank)**
+
+<details>
+<summary><b>Expand to see all ranking metrics in the metric set.</b></summary>
+
+* **[Mean Reciprocal Rank (MRR)](https://en.wikipedia.org/wiki/Mean_reciprocal_rank)**
+* **[Spearmanns Rho](https://en.wikipedia.org/wiki/Spearman%27s_rank_correlation_coefficient)**
+* **[Kendall Tau](https://en.wikipedia.org/wiki/Kendall_rank_correlation_coefficient)**
+* **[HITS@k](https://en.wikipedia.org/wiki/Evaluation_measures_(information_retrieval))**
+* **[Novelty](https://www.sciencedirect.com/science/article/pii/S163107051930043X)**
+* **[Average Recall @ k](https://en.wikipedia.org/wiki/Evaluation_measures_(information_retrieval))**
+* **[Mean Average Recall @ k](https://en.wikipedia.org/wiki/Evaluation_measures_(information_retrieval))**
+* **[Average Precision @ k](https://en.wikipedia.org/wiki/Evaluation_measures_(information_retrieval))**
+* **[Mean Average Precision @ k](https://en.wikipedia.org/wiki/Evaluation_measures_(information_retrieval))**
+* **[Personalisation](http://www.mavir.net/docs/tfm-vargas-sandoval.pdf)**
+* **[Intra List Similarity](http://www.mavir.net/docs/tfm-vargas-sandoval.pdf)**
+
+</details>
 
 --------------------------------------------------------------------------------
 
@@ -81,46 +107,19 @@ These metrics assume that the items are scored with raw probabilities (these can
 
 * **[Precision (or Positive Predictive Value)](https://en.wikipedia.org/wiki/Precision_and_recall)**
 * **[Recall (Sensitivity, Hit Rate, or True Positive Rate)](https://en.wikipedia.org/wiki/Precision_and_recall)**
-* **[PR AUC](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13140)**
-* **[ROC AUC](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)**
+* **[Area Under the Precision Recall Curve (AUPRC)](https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13140)**
+* **[Area Under the Receiver Operating Characteristic (AUROC)](https://en.wikipedia.org/wiki/Receiver_operating_characteristic)**
 
 <details>
 <summary><b>Expand to see all classification metrics in the metric set.</b></summary>
 
 * **[F-1 Score](https://en.wikipedia.org/wiki/F-score)**
 * **[Average Precision](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html)**
-* **[Specificty](https://en.wikipedia.org/wiki/Precision_and_recall)**
+* **[Specificty (Selectivity or True Negative Rate )](https://en.wikipedia.org/wiki/Precision_and_recall)**
 * **[Matthew's Correlation](https://en.wikipedia.org/wiki/Precision_and_recall)**
 * **[Accuracy](https://en.wikipedia.org/wiki/Precision_and_recall)**
 * **[Balanced Accuracy](https://en.wikipedia.org/wiki/Precision_and_recall)**
 * **[Fowlkes-Mallows Index](https://en.wikipedia.org/wiki/Precision_and_recall)**
-
-</details>
-
---------------------------------------------------------------------------------
-
-**Ranking Metric Set**
-
-* **[DPM](docs)**
-* **[NDPM](docs)**
-* **[DCG](docs)**
-* **[NDCG](docs)**
-
-<details>
-<summary><b>Expand to see all ranking metrics in the metric set.</b></summary>
-
-* **[Reciprocal Rank](docs)**
-* **[Mean Reciprocal Rank](docs)**
-* **[Spearmanns Rho](docs)**
-* **[Kendall Tau](docs)**
-* **[HITS@k](docs)**
-* **[Novelty](docs)**
-* **[Average Recall @ k](docs)**
-* **[Mean Average Recall @ k](docs)**
-* **[Average Precision @ k](docs)**
-* **[Mean Average Precision @ k](docs)**
-* **[Personalisation](docs)**
-* **[Intra List Similarity](docs)**
 
 </details>
 

@@ -34,7 +34,7 @@ metric_set = ClassificationMetricSet()
 
 score_card = ScoreCard(metric_set)
 
-report = score_card.generate_report(scores, groupping=["source_group"])
+report = score_card.generate_report(scores, grouping=["source_group"])
 ```
 
 --------------------------------------------------------------------------------

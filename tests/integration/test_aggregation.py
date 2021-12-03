@@ -19,12 +19,12 @@ class TestMetricAggregation(unittest.TestCase):
         assert performance_metrics.shape == (1, 11)
 
         performance_metrics = score_card.generate_report(
-            self.scores, groupping=["source_group"]
+            self.scores, grouping=["source_group"]
         )
         assert performance_metrics.shape == (5, 11)
 
         performance_metrics = score_card.generate_report(
-            self.scores, groupping=["source_group", "target_group"]
+            self.scores, grouping=["source_group", "target_group"]
         )
         assert performance_metrics.shape == (20, 11)
 
@@ -37,12 +37,12 @@ class TestMetricAggregation(unittest.TestCase):
         assert performance_metrics.shape == (1, 7)
 
         performance_metrics = score_card.generate_report(
-            self.scores, groupping=["source_group"]
+            self.scores, grouping=["source_group"]
         )
         assert performance_metrics.shape == (5, 7)
 
         performance_metrics = score_card.generate_report(
-            self.scores, groupping=["source_group", "target_group"]
+            self.scores, grouping=["source_group", "target_group"]
         )
         assert performance_metrics.shape == (20, 7)
 
@@ -54,11 +54,11 @@ class TestMetricAggregation(unittest.TestCase):
         assert performance_metrics.shape == (1, 18)
 
         performance_metrics = score_card.generate_report(
-            self.scores, groupping=["source_group"]
+            self.scores, grouping=["source_group"]
         )
         assert performance_metrics.shape == (5, 18)
 
         performance_metrics = score_card.generate_report(
-            self.scores, groupping=["source_group", "target_group"]
+            self.scores, grouping=["source_group", "target_group"]
         )
         assert performance_metrics.shape == (20, 18)

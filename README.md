@@ -34,7 +34,7 @@ metric_set = ClassificationMetricSet()
 
 score_card = ScoreCard(metric_set)
 
-report = score_card.generate_report(scores, groupping=["source_group"])
+report = score_card.generate_report(scores, grouping=["source_group"])
 ```
 
 --------------------------------------------------------------------------------
@@ -175,6 +175,14 @@ $ pip install rexmex --upgrade
 $ pytest ./tests/unit -cov rexmex/
 $ pytest ./tests/integration -cov rexmex/
 ```
+
+--------------------------------------------------------------------------------
+
+**Citation**
+
+If you use RexMex in a scientific publication, we would appreciate citations. Please see GitHubs built in citation tool.
+
+
 
 --------------------------------------------------------------------------------
 

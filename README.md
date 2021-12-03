@@ -178,6 +178,14 @@ $ pytest ./tests/integration -cov rexmex/
 
 --------------------------------------------------------------------------------
 
+**Citation**
+
+If you use RexMex in a scientific publication, we would appreciate citations. Please see GitHubs built in citation tool.
+
+
+
+--------------------------------------------------------------------------------
+
 **License**
 
 - [Apache-2.0 License](https://github.com/AZ-AI/rexmex/blob/master/LICENSE)

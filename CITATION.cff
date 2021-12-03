@@ -1,0 +1,17 @@
+cff-version: 0.1.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Rozemberczki"
+  given-names: "Benedek"
+  orcid: "https://orcid.org/0000-0000-0000-0000"
+- family-names: "Nilsson"
+  given-names: "Sebastian"
+  orcid: "https://orcid.org/0000-0000-0000-0000"
+- family-names: "Edwards"
+  given-names: "Gavin"
+  orcid: "https://orcid.org/0000-0003-0630-5529"
+title: "RexMex"
+version: 0.1.0
+# doi: 10.5281/zenodo.1234
+# date-released: 2021-12-01
+url: "https://github.com/AstraZeneca/rexmex"

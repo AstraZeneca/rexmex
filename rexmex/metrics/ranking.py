@@ -7,8 +7,8 @@ import itertools
 from sklearn.metrics import dcg_score, ndcg_score
 from typing import Variable
 
-
 X = Variable(X)
+
 
 def reciprocal_rank(relevant_item: any, recommendation: List) -> float:
     """
@@ -55,7 +55,7 @@ def rank(relevant_item: X, recommendation: Sequence[X]) -> float:
         relevant_item: a target item in the predicted list of items.
         recommendation: An N x 1 sequence of predicted items.
     Returns:
-        rank (float): The rank of the item.
+        : The rank of the item.
     """
     assert relevant_item in recommendation
     for i, item in enumerate(recommendation):
@@ -71,7 +71,7 @@ def mean_rank(relevant_items: Sequence[X], recommendation: Sequence[X]) -> float
         relevant_items: An N x 1 sequence of relevant items.
         predicted:  An N x 1 sequence of ordered items.
     Returns:
-        MR (float): The mean rank of the relevant items in a predicted.
+        : The mean rank of the relevant items in a predicted.
     """
     return np.mean([
         rank(item, recommendation)
@@ -87,7 +87,7 @@ def gmean_rank(relevant_items: Sequence[X], recommendation: Sequence[X]) -> floa
         relevant_items: An N x 1 sequence of relevant items.
         predicted:  An N x 1 sequence of ordered items.
     Returns:
-        GMR (float): The mean reciprocal rank of the relevant items in a predicted.
+        : The mean reciprocal rank of the relevant items in a predicted.
     """
     return stats.gmean([
         rank(item, recommendation)

@@ -44,8 +44,16 @@ def mean_reciprocal_rank(relevant_items: List, recommendation: List):
     return np.mean(reciprocal_ranks)
 
 
-def _rank(relevant_item: any, recommendation: List) -> float:
-    # calculate the mean rank of an item
+def rank(relevant_item: any, recommendation: List) -> float:
+    """
+    Calculate the rank of an item in a ranked list of items.
+
+    Args:
+        relevant_item (any): a target item in the predicted list of items.
+        recommendation (array-like): An N x 1 predicted of items.
+    Returns:
+        rank (float): The rank of the item.
+    """
     assert relevant_item in recommendation
     for i, item in enumerate(recommendation):
         if item == relevant_item:
@@ -63,7 +71,7 @@ def mean_rank(relevant_items: List, recommendation: List) -> float:
         MR (float): The mean rank of the relevant items in a predicted.
     """
     return np.mean([
-        _rank(item, recommendation)
+        rank(item, recommendation)
         for item in relevant_items
     ])
 
@@ -79,7 +87,7 @@ def gmean_rank(relevant_items: List, recommendation: List) -> float:
         GMR (float): The mean reciprocal rank of the relevant items in a predicted.
     """
     return stats.gmean([
-        _rank(item, recommendation)
+        rank(item, recommendation)
         for item in relevant_items
     ])
 

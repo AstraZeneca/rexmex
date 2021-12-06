@@ -55,7 +55,7 @@ def average_precision_at_k(relevant_items: np.array, recommendation: np.array, k
     Returns:
         AP@K (float): The average precision @ k of a predicted list.
 
-    `Original: <https://github.com/benhamner/Metrics/blob/master/Python/ml_metrics/average_precision.py>`_
+    `Original <https://github.com/benhamner/Metrics/blob/master/Python/ml_metrics/average_precision.py>`_
     """
 
     if len(recommendation) > k:
@@ -228,7 +228,7 @@ def intra_list_similarity(recommendations: List[list], items_feature_matrix: np.
     Returns:
         (float): Average intra list similarity across predicted
 
-    `Original: <https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L232>`_
+    `Original <https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L232>`_
     """
 
     intra_list_similarities = []
@@ -254,7 +254,7 @@ def personalization(recommendations: List[list]):
     Returns:
         (float): personalization
 
-    `Original: <https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L160>`_
+    `Original <https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L160>`_
     """
 
     n_predictions = len(recommendations)
@@ -306,7 +306,7 @@ def novelty(recommendations: List[list], item_popularities: dict, num_users: int
     Solving the apparent diversity-accuracy dilemma of recommender systems.
     Proceedings of the National Academy of Sciences, 107(10), 4511-4515.
 
-    `Original: <https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L14>`_
+    `Original <https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L14>`_
     """
 
     epsilon = 1e-10

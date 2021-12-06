@@ -5,9 +5,9 @@ from scipy import stats
 from sklearn.metrics.pairwise import cosine_similarity
 import itertools
 from sklearn.metrics import dcg_score, ndcg_score
-from typing import Variable
+from typing import TypeVar
 
-X = Variable(X)
+X = TypeVar("X")
 
 
 def reciprocal_rank(relevant_item: any, recommendation: List) -> float:

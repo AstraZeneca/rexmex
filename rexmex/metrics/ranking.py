@@ -44,6 +44,46 @@ def mean_reciprocal_rank(relevant_items: List, recommendation: List):
     return np.mean(reciprocal_ranks)
 
 
+def _rank(relevant_item: any, recommendation: List) -> float:
+    # calculate the mean rank of an item
+    assert relevant_item in recommendation
+    for i, item in enumerate(recommendation):
+        if item == relevant_item:
+            return i + 1.0
+
+
+def mean_rank(relevant_items: List, recommendation: List) -> float:
+    """
+    Calculate the arithmetic mean rank (MR) of items in a ranked list.
+
+    Args:
+        relevant_items (array-like): An N x 1 array of relevant items.
+        predicted (array-like):  An N x 1 array of ordered items.
+    Returns:
+        MR (float): The mean rank of the relevant items in a predicted.
+    """
+    return np.mean([
+        _rank(item, recommendation)
+        for item in relevant_items
+    ])
+
+
+def gmean_rank(relevant_items: List, recommendation: List) -> float:
+    """
+    Calculate the geometric mean rank (GMR) of items in a ranked list.
+
+    Args:
+        relevant_items (array-like): An N x 1 array of relevant items.
+        predicted (array-like):  An N x 1 array of ordered items.
+    Returns:
+        GMR (float): The mean reciprocal rank of the relevant items in a predicted.
+    """
+    return stats.gmean([
+        _rank(item, recommendation)
+        for item in relevant_items
+    ])
+
+
 def average_precision_at_k(relevant_items: np.array, recommendation: np.array, k=10):
     """
     Calculate the average precision at k (AP@K) of items in a ranked list.

@@ -1,11 +1,14 @@
 from math import log2
-from typing import List
+from typing import List, Sequence
 import numpy as np
 from scipy import stats
 from sklearn.metrics.pairwise import cosine_similarity
 import itertools
 from sklearn.metrics import dcg_score, ndcg_score
+from typing import Variable
 
+
+X = Variable(X)
 
 def reciprocal_rank(relevant_item: any, recommendation: List) -> float:
     """
@@ -44,13 +47,13 @@ def mean_reciprocal_rank(relevant_items: List, recommendation: List):
     return np.mean(reciprocal_ranks)
 
 
-def rank(relevant_item: any, recommendation: List) -> float:
+def rank(relevant_item: X, recommendation: Sequence[X]) -> float:
     """
     Calculate the rank of an item in a ranked list of items.
 
     Args:
-        relevant_item (any): a target item in the predicted list of items.
-        recommendation (array-like): An N x 1 predicted of items.
+        relevant_item: a target item in the predicted list of items.
+        recommendation: An N x 1 sequence of predicted items.
     Returns:
         rank (float): The rank of the item.
     """
@@ -60,13 +63,13 @@ def rank(relevant_item: any, recommendation: List) -> float:
             return i + 1.0
 
 
-def mean_rank(relevant_items: List, recommendation: List) -> float:
+def mean_rank(relevant_items: Sequence[X], recommendation: Sequence[X]) -> float:
     """
     Calculate the arithmetic mean rank (MR) of items in a ranked list.
 
     Args:
-        relevant_items (array-like): An N x 1 array of relevant items.
-        predicted (array-like):  An N x 1 array of ordered items.
+        relevant_items: An N x 1 sequence of relevant items.
+        predicted:  An N x 1 sequence of ordered items.
     Returns:
         MR (float): The mean rank of the relevant items in a predicted.
     """
@@ -76,13 +79,13 @@ def mean_rank(relevant_items: List, recommendation: List) -> float:
     ])
 
 
-def gmean_rank(relevant_items: List, recommendation: List) -> float:
+def gmean_rank(relevant_items: Sequence[X], recommendation: Sequence[X]) -> float:
     """
     Calculate the geometric mean rank (GMR) of items in a ranked list.
 
     Args:
-        relevant_items (array-like): An N x 1 array of relevant items.
-        predicted (array-like):  An N x 1 array of ordered items.
+        relevant_items: An N x 1 sequence of relevant items.
+        predicted:  An N x 1 sequence of ordered items.
     Returns:
         GMR (float): The mean reciprocal rank of the relevant items in a predicted.
     """

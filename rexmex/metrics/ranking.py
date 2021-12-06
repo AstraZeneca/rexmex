@@ -154,7 +154,6 @@ def mean_average_recall_at_k(relevant_items: List[list], recommendations: List[l
         k (int): the number of items considered in the recommendation.
     Returns:
         MAR@K (float): The mean average recall @ k across the recommendations.
-
     """
     ars = []
     for items, recommendation in zip(relevant_items, recommendations):
@@ -230,7 +229,7 @@ def intra_list_similarity(recommendations: List[list], items_feature_matrix: np.
     Returns:
         (float): Average intra list similarity across predicted
 
-    `Original impl.:<https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L232>`_
+    `Original impl.: <https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L232>`_
     """
 
     intra_list_similarities = []

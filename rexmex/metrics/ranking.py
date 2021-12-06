@@ -229,7 +229,7 @@ def intra_list_similarity(recommendations: List[list], items_feature_matrix: np.
     Returns:
         (float): Average intra list similarity across predicted
 
-    `Original impl.: <https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L232>`_
+    `"Original impl.:" <https://github.com/statisticianinstilettos/recmetrics/blob/master/recmetrics/metrics.py#L232>`_
     """
 
     intra_list_similarities = []

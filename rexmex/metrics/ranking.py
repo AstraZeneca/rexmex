@@ -1,10 +1,13 @@
 from math import log2
-from typing import List
+from typing import List, Sequence
 import numpy as np
 from scipy import stats
 from sklearn.metrics.pairwise import cosine_similarity
 import itertools
 from sklearn.metrics import dcg_score, ndcg_score
+from typing import TypeVar
+
+X = TypeVar("X")
 
 
 def reciprocal_rank(relevant_item: any, recommendation: List) -> float:
@@ -42,6 +45,54 @@ def mean_reciprocal_rank(relevant_items: List, recommendation: List):
         reciprocal_ranks.append(rr)
 
     return np.mean(reciprocal_ranks)
+
+
+def rank(relevant_item: X, recommendation: Sequence[X]) -> float:
+    """
+    Calculate the rank of an item in a ranked list of items.
+
+    Args:
+        relevant_item: a target item in the predicted list of items.
+        recommendation: An N x 1 sequence of predicted items.
+    Returns:
+        : The rank of the item.
+    """
+    assert relevant_item in recommendation
+    for i, item in enumerate(recommendation):
+        if item == relevant_item:
+            return i + 1.0
+
+
+def mean_rank(relevant_items: Sequence[X], recommendation: Sequence[X]) -> float:
+    """
+    Calculate the arithmetic mean rank (MR) of items in a ranked list.
+
+    Args:
+        relevant_items: An N x 1 sequence of relevant items.
+        predicted:  An N x 1 sequence of ordered items.
+    Returns:
+        : The mean rank of the relevant items in a predicted.
+    """
+    return np.mean([
+        rank(item, recommendation)
+        for item in relevant_items
+    ])
+
+
+def gmean_rank(relevant_items: Sequence[X], recommendation: Sequence[X]) -> float:
+    """
+    Calculate the geometric mean rank (GMR) of items in a ranked list.
+
+    Args:
+        relevant_items: An N x 1 sequence of relevant items.
+        predicted:  An N x 1 sequence of ordered items.
+    Returns:
+        : The mean reciprocal rank of the relevant items in a predicted.
+    """
+    return stats.gmean([
+        rank(item, recommendation)
+        for item in relevant_items
+    ])
 
 
 def average_precision_at_k(relevant_items: np.array, recommendation: np.array, k=10):

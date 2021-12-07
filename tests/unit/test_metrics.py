@@ -50,9 +50,12 @@ from rexmex.metrics.ranking import (
     kendall_tau,
     mean_average_precision_at_k,
     mean_average_recall_at_k,
+    mean_rank,
+    gmean_rank,
     mean_reciprocal_rank,
     novelty,
     personalization,
+    rank,
     reciprocal_rank,
     spearmans_rho,
 )
@@ -176,6 +179,36 @@ class TestRankingMetrics(unittest.TestCase):
 
         mrr = mean_reciprocal_rank(actual, rec)
         self.assertAlmostEqual(expected_mrr, mrr, 3)
+
+    def test_rank(self):
+        """Test the rank function."""
+        assert rank(1, self.ranking) == 1
+        assert rank(2, self.ranking) == 6
+        assert rank(3, self.ranking) == 3
+
+    def test_mean_rank(self):
+        actual = ["a", "b", "c"]
+        rec = ["b", "c", "a"]
+
+        a_r = 3
+        b_r = 1
+        c_r = 2
+        expected_mr = (a_r + b_r + c_r) / 3
+
+        mr = mean_rank(actual, rec)
+        self.assertAlmostEqual(expected_mr, mr, 3)
+
+    def test_gmean_rank(self):
+        actual = ["a", "b", "c"]
+        rec = ["b", "c", "a"]
+
+        a_rr = 3
+        b_rr = 1
+        c_rr = 2
+        expected_gmr = (a_rr * b_rr * c_rr) ** (1/ 3)
+
+        gmr = gmean_rank(actual, rec)
+        self.assertAlmostEqual(expected_gmr, gmr, 3)
 
     def test_average_percision_at_k(self):
 

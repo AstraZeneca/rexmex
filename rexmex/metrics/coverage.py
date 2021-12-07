@@ -23,6 +23,9 @@ def item_coverage(relevant_items: List, recommendations: List[List]) -> float:
         coverage (float): Single coverage statistic for the given set of recommendations.
 
     """
+    if len(relevant_items) == 0:
+        raise ValueError("relevant_items cannot be empty!")
+
     rec_item_counter = Counter([x for y in recommendations for x in y])
     total_rec_per_item = [rec_item_counter.get(i, 0) for i in relevant_items]
     return sum([x != 0 for x in total_rec_per_item]) / len(total_rec_per_item)

@@ -15,14 +15,14 @@ def item_coverage(relevant_items: List, recommendations: List[List]) -> float:
         has 80% coverage. One element out of five was never recommended.
 
     Args:
-        relevant_items: list of items that could be recommended
-        recommendations: collection (list) of recommendations, each sublist is a separate recommendation,
+        relevant_items (List): items that could be recommended
+        recommendations (List[List]): collection of recommendations, each sublist is a separate recommendation,
         e.g. for one user
 
     Returns:
-        Single coverage statistic for the given set of recommendations.
+        coverage (float): Single coverage statistic for the given set of recommendations.
 
     """
-    cnt = Counter([x for y in recommendations for x in y])
-    rec_totals = [cnt.get(i, 0) for i in relevant_items]
-    return sum([x != 0 for x in rec_totals]) / len(rec_totals)
+    rec_item_counter = Counter([x for y in recommendations for x in y])
+    total_rec_per_item = [rec_item_counter.get(i, 0) for i in relevant_items]
+    return sum([x != 0 for x in total_rec_per_item]) / len(total_rec_per_item)

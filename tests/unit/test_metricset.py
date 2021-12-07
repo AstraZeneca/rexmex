@@ -23,6 +23,9 @@ class TestMetricSet(unittest.TestCase):
 
     def test_metric_filter(self):
         metric_set = ClassificationMetricSet()
+        # Test that filtering with no argument doesn't change anything
+        n_metrics = len(metric_set)
+        assert len(metric_set.filter_metrics()) == n_metrics
         metric_set.filter_metrics(["roc_auc", "pr_auc"])
         assert len(metric_set) == 2
         metric_set = ClassificationMetricSet()

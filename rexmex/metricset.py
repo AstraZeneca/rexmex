@@ -45,6 +45,8 @@ class MetricSet(dict):
         Returns:
             self: The metric set after the metrics were filtered out.
         """
+        if not filter:
+            return self
         for name in list(self.keys()):
             if name not in filter:
                 del self[name]

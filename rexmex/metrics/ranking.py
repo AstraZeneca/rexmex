@@ -10,7 +10,7 @@ from typing import TypeVar
 X = TypeVar("X")
 
 
-def reciprocal_rank(relevant_item: any, recommendation: List) -> float:
+def reciprocal_rank(relevant_item: X, recommendation: Sequence[X]) -> float:
     """
     Calculate the reciprocal rank (RR) of an item in a ranked list of items.
 
@@ -26,6 +26,7 @@ def reciprocal_rank(relevant_item: any, recommendation: List) -> float:
     for i, item in enumerate(recommendation):
         if item == relevant_item:
             return 1.0 / (i + 1.0)
+    raise ValueError
 
 
 def mean_reciprocal_rank(relevant_items: List, recommendation: List):
@@ -61,6 +62,7 @@ def rank(relevant_item: X, recommendation: Sequence[X]) -> float:
     for i, item in enumerate(recommendation):
         if item == relevant_item:
             return i + 1.0
+    raise ValueError
 
 
 def mean_rank(relevant_items: Sequence[X], recommendation: Sequence[X]) -> float:
@@ -363,7 +365,7 @@ def novelty(recommendations: List[list], item_popularities: dict, num_users: int
     epsilon = 1e-10
     all_self_information = []
     for recommendations in recommendations:
-        self_information_sum = 0
+        self_information_sum = 0.0
         for i in range(k):
             item = recommendations[i]
             item_pop = item_popularities[item]

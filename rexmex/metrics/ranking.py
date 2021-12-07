@@ -15,8 +15,8 @@ def reciprocal_rank(relevant_item: X, recommendation: Sequence[X]) -> float:
     Calculate the reciprocal rank (RR) of an item in a ranked list of items.
 
     Args:
-        relevant_item (any): a target item in the predicted list of items.
-        recommendation (array-like): An N x 1 predicted of items.
+        relevant_item: a target item in the predicted list of items.
+        recommendation: An N x 1 sequence of predicted items.
     Returns:
         RR (float): The reciprocal rank of the item.
     """

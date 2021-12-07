@@ -1,65 +1,61 @@
-import pytest
 import unittest
+
 import numpy as np
-
-from rexmex.metrics.classification import precision_score, recall_score
-
-from rexmex.metrics.classification import condition_positive, condition_negative
-from rexmex.metrics.classification import (
-    true_positive,
-    true_negative,
-    false_positive,
-    false_negative,
-)
-from rexmex.metrics.classification import specificity, selectivity, true_negative_rate
-
-from rexmex.metrics.classification import sensitivity, hit_rate, true_positive_rate
+import pytest
 
 from rexmex.metrics.classification import (
-    positive_predictive_value,
-    negative_predictive_value,
-)
-from rexmex.metrics.classification import miss_rate, false_negative_rate
-from rexmex.metrics.classification import fall_out, false_positive_rate
-from rexmex.metrics.classification import false_discovery_rate, false_omission_rate
-
-from rexmex.metrics.classification import (
-    positive_likelihood_ratio,
-    negative_likelihood_ratio,
-)
-from rexmex.metrics.classification import (
-    prevalence_threshold,
-    threat_score,
+    condition_negative,
+    condition_positive,
     critical_success_index,
-)
-
-from rexmex.metrics.classification import (
+    diagnostic_odds_ratio,
+    fall_out,
+    false_discovery_rate,
+    false_negative,
+    false_negative_rate,
+    false_omission_rate,
+    false_positive,
+    false_positive_rate,
     fowlkes_mallows_index,
+    hit_rate,
     informedness,
     markedness,
-    diagnostic_odds_ratio,
+    miss_rate,
+    negative_likelihood_ratio,
+    negative_predictive_value,
+    positive_likelihood_ratio,
+    positive_predictive_value,
+    precision_score,
+    prevalence_threshold,
+    recall_score,
+    selectivity,
+    sensitivity,
+    specificity,
+    threat_score,
+    true_negative,
+    true_negative_rate,
+    true_positive,
+    true_positive_rate,
 )
 from rexmex.metrics.ranking import (
-    discounted_cumulative_gain,
-    normalized_discounted_cumulative_gain,
-    normalized_distance_based_performance_measure,
     average_precision_at_k,
     average_recall_at_k,
+    discounted_cumulative_gain,
+    gmean_rank,
     hits_at_k,
     intra_list_similarity,
     kendall_tau,
     mean_average_precision_at_k,
     mean_average_recall_at_k,
     mean_rank,
-    gmean_rank,
     mean_reciprocal_rank,
+    normalized_discounted_cumulative_gain,
+    normalized_distance_based_performance_measure,
     novelty,
     personalization,
     rank,
     reciprocal_rank,
     spearmans_rho,
 )
-
 from rexmex.metrics.rating import (
     root_mean_squared_error,
     symmetric_mean_absolute_percentage_error,

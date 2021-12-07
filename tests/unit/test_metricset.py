@@ -1,16 +1,17 @@
 import sys
-import pytest
 import unittest
-import pandas as pd
 from io import StringIO
 
+import pandas as pd
+import pytest
 from sklearn.metrics import accuracy_score, balanced_accuracy_score
+
 from rexmex.metricset import (
-    MetricSet,
     ClassificationMetricSet,
-    RatingMetricSet,
-    RankingMetricSet,
     CoverageMetricSet,
+    MetricSet,
+    RankingMetricSet,
+    RatingMetricSet,
 )
 
 

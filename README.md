@@ -23,7 +23,7 @@ If you find *RexMex* useful in your research, please consider adding the followi
 ```bibtex
 @inproceedings{rexmex,
        title = {{rexmex: A General Purpose Recommender Metrics Library for Fair Evaluation.}},
-       author = {Benedek Rozemberczki and Sebastian Nilsson and Piotr Grabowski and Gavin Edwards},
+       author = {Benedek Rozemberczki and Sebastian Nilsson and Piotr Grabowski and Charles Tapley Hoyt and Gavin Edwards},
        year = {2021},
 }
 ```

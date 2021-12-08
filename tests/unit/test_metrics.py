@@ -1,7 +1,6 @@
 import unittest
 
 import numpy as np
-import pytest
 
 from rexmex.metrics.classification import (
     condition_negative,
@@ -207,7 +206,7 @@ class TestRankingMetrics(unittest.TestCase):
         a_rr = 3
         b_rr = 1
         c_rr = 2
-        expected_gmr = (a_rr * b_rr * c_rr) ** (1/ 3)
+        expected_gmr = (a_rr * b_rr * c_rr) ** (1 / 3)
 
         gmr = gmean_rank(actual, rec)
         self.assertAlmostEqual(expected_gmr, gmr, 3)

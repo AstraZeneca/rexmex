@@ -1,7 +1,5 @@
 import unittest
 
-import pytest
-
 from rexmex.dataset import DatasetReader
 
 
@@ -13,16 +11,11 @@ class TestErdosRenyiDataset(unittest.TestCase):
 
         assert dataset.shape[0] == 50378
         assert dataset.shape[1] == 6
-        assert (
-            set(
-                [
-                    "source_group",
-                    "target_group",
-                    "source_id",
-                    "target_id",
-                    "y_score",
-                    "y_true",
-                ]
-            ).issubset(dataset.columns)
-            == True
-        )
+        assert {
+            "source_group",
+            "target_group",
+            "source_id",
+            "target_id",
+            "y_score",
+            "y_true",
+        }.issubset(dataset.columns)

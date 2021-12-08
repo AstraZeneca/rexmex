@@ -1,6 +1,23 @@
 import numpy as np
 import sklearn.metrics
 
+# A dictionary of all classification functions that are annotated
+classification = dict()
+
+
+def annotate(*, name: str, lower: float, upper: float, higher_is_better: bool):
+    """Annotate a classification function."""
+
+    def _wrapper(func):
+        classification[func.__name__] = func
+        func.name = name
+        func.lower = lower
+        func.upper = upper
+        func.higher_is_better = higher_is_better
+        return func
+
+    return _wrapper
+
 
 def condition_positive(y_true: np.array) -> float:
     """
@@ -539,6 +556,12 @@ def average_precision_score(y_true: np.array, y_score: np.array) -> float:
     return average_precision
 
 
+@annotate(
+    name="Matthews Correlation Coefficient",
+    lower=-1.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def matthews_correlation_coefficient(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate Matthew's correlation coefficient for a ground-truth prediction vector pair.
@@ -553,6 +576,12 @@ def matthews_correlation_coefficient(y_true: np.array, y_score: np.array) -> flo
     return mat_cor
 
 
+@annotate(
+    name="Area under the precision-recall curve",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def pr_auc_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the precision recall area under the curve (PR AUC) for a ground-truth prediction vector pair.
@@ -563,6 +592,8 @@ def pr_auc_score(y_true: np.array, y_score: np.array) -> float:
     Returns:
         pr_auc (float): The value of the precision-recall area under the curve.
     """
-    precision, recall, thresholds = sklearn.metrics.precision_recall_curve(y_true, y_score)
+    precision, recall, thresholds = sklearn.metrics.precision_recall_curve(
+        y_true, y_score
+    )
     pr_auc = sklearn.metrics.auc(recall, precision)
     return pr_auc

@@ -83,8 +83,13 @@ class TestClassificationMetrics(unittest.TestCase):
                 continue
             with self.subTest(name=name):
                 self.assertTrue(hasattr(func, "lower"), msg=f"{name} is unannotated")
+                self.assertIsInstance(func.lower, float)
                 self.assertTrue(hasattr(func, "upper"))
+                self.assertIsInstance(func.upper, float)
                 self.assertTrue(hasattr(func, "name"))
+                self.assertIsInstance(func.name, str)
+                self.assertTrue(hasattr(func, "higher_is_better"))
+                self.assertIsInstance(func.higher_is_better, bool)
 
     def test_conditions(self):
         assert condition_positive(self.y_true) == 6

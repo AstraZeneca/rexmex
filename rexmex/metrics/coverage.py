@@ -1,5 +1,5 @@
-from typing import List
 from collections import Counter
+from typing import List
 
 
 def item_coverage(relevant_items: List, recommendations: List[List]) -> float:

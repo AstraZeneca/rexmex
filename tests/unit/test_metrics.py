@@ -4,7 +4,6 @@ import numpy as np
 import pytest
 
 from rexmex.metrics.classification import (
-    classifications,
     condition_negative,
     condition_positive,
     critical_success_index,
@@ -97,7 +96,6 @@ class TestClassificationMetrics(unittest.TestCase):
         assert true_positive_rate(self.y_true, self.y_score) == recall_score(self.y_true, self.y_score)
 
     def test_positivie_predictive_value(self):
-        assert precision_score in classifications.values()
         assert hasattr(precision_score, "lower")
         assert precision_score.lower == 0.0
 

@@ -1,7 +1,5 @@
 import unittest
 
-import pytest
-
 from rexmex.dataset import DatasetReader
 from rexmex.metricset import ClassificationMetricSet, RatingMetricSet
 from rexmex.scorecard import ScoreCard
@@ -19,14 +17,10 @@ class TestMetricAggregation(unittest.TestCase):
         performance_metrics = score_card.generate_report(self.scores)
         assert performance_metrics.shape == (1, 11)
 
-        performance_metrics = score_card.generate_report(
-            self.scores, grouping=["source_group"]
-        )
+        performance_metrics = score_card.generate_report(self.scores, grouping=["source_group"])
         assert performance_metrics.shape == (5, 11)
 
-        performance_metrics = score_card.generate_report(
-            self.scores, grouping=["source_group", "target_group"]
-        )
+        performance_metrics = score_card.generate_report(self.scores, grouping=["source_group", "target_group"])
         assert performance_metrics.shape == (20, 11)
 
     def test_regression(self):
@@ -37,14 +31,10 @@ class TestMetricAggregation(unittest.TestCase):
         performance_metrics = score_card.generate_report(self.scores)
         assert performance_metrics.shape == (1, 7)
 
-        performance_metrics = score_card.generate_report(
-            self.scores, grouping=["source_group"]
-        )
+        performance_metrics = score_card.generate_report(self.scores, grouping=["source_group"])
         assert performance_metrics.shape == (5, 7)
 
-        performance_metrics = score_card.generate_report(
-            self.scores, grouping=["source_group", "target_group"]
-        )
+        performance_metrics = score_card.generate_report(self.scores, grouping=["source_group", "target_group"])
         assert performance_metrics.shape == (20, 7)
 
     def test_addition(self):
@@ -54,12 +44,8 @@ class TestMetricAggregation(unittest.TestCase):
         performance_metrics = score_card.generate_report(self.scores)
         assert performance_metrics.shape == (1, 18)
 
-        performance_metrics = score_card.generate_report(
-            self.scores, grouping=["source_group"]
-        )
+        performance_metrics = score_card.generate_report(self.scores, grouping=["source_group"])
         assert performance_metrics.shape == (5, 18)
 
-        performance_metrics = score_card.generate_report(
-            self.scores, grouping=["source_group", "target_group"]
-        )
+        performance_metrics = score_card.generate_report(self.scores, grouping=["source_group", "target_group"])
         assert performance_metrics.shape == (20, 18)

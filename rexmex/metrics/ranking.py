@@ -71,10 +71,7 @@ def mean_rank(relevant_items: Sequence[X], recommendation: Sequence[X]) -> float
     Returns:
         : The mean rank of the relevant items in a predicted.
     """
-    return np.mean([
-        rank(item, recommendation)
-        for item in relevant_items
-    ])
+    return np.mean([rank(item, recommendation) for item in relevant_items])
 
 
 def gmean_rank(relevant_items: Sequence[X], recommendation: Sequence[X]) -> float:
@@ -87,10 +84,7 @@ def gmean_rank(relevant_items: Sequence[X], recommendation: Sequence[X]) -> floa
     Returns:
         : The mean reciprocal rank of the relevant items in a predicted.
     """
-    return stats.gmean([
-        rank(item, recommendation)
-        for item in relevant_items
-    ])
+    return stats.gmean([rank(item, recommendation) for item in relevant_items])
 
 
 def average_precision_at_k(relevant_items: np.array, recommendation: np.array, k=10):

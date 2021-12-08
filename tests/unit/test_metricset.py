@@ -2,8 +2,6 @@ import sys
 import unittest
 from io import StringIO
 
-import pandas as pd
-import pytest
 from sklearn.metrics import accuracy_score, balanced_accuracy_score
 
 from rexmex.metricset import (

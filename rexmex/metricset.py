@@ -1,33 +1,28 @@
 from typing import List, Tuple
 
-from rexmex.utils import binarize, normalize
-
-from rexmex.metrics.classification import roc_auc_score
-from rexmex.metrics.classification import accuracy_score, balanced_accuracy_score
 from rexmex.metrics.classification import (
-    pr_auc_score,
-    specificity,
-    fowlkes_mallows_index,
-)
-from rexmex.metrics.classification import (
+    accuracy_score,
+    average_precision_score,
+    balanced_accuracy_score,
     f1_score,
+    fowlkes_mallows_index,
+    matthews_correlation_coefficient,
+    pr_auc_score,
     precision_score,
     recall_score,
-    average_precision_score,
-    matthews_correlation_coefficient,
+    roc_auc_score,
+    specificity,
 )
-
-from rexmex.metrics.rating import pearson_correlation_coefficient
 from rexmex.metrics.rating import (
     mean_absolute_error,
-    mean_squared_error,
     mean_absolute_percentage_error,
+    mean_squared_error,
+    pearson_correlation_coefficient,
     r2_score,
-)
-from rexmex.metrics.rating import (
-    symmetric_mean_absolute_percentage_error,
     root_mean_squared_error,
+    symmetric_mean_absolute_percentage_error,
 )
+from rexmex.utils import binarize, normalize
 
 
 class MetricSet(dict):

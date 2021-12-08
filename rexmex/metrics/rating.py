@@ -1,6 +1,6 @@
 import numpy as np
-import sklearn.metrics
 import scipy.stats.stats
+import sklearn.metrics
 
 
 def mean_squared_error(y_true: np.array, y_score: np.array) -> float:

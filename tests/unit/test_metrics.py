@@ -1,8 +1,10 @@
+import inspect
 import unittest
 
 import numpy as np
 import pytest
 
+import rexmex.metrics.classification
 from rexmex.metrics.classification import (
     condition_negative,
     condition_positive,
@@ -70,6 +72,16 @@ class TestClassificationMetrics(unittest.TestCase):
     def setUp(self):
         self.y_true = np.array([0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0])
         self.y_score = np.array([1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0])
+
+    def test_annotations(self):
+        """Check that all functions in the classification module are annotated."""
+        for name, func in rexmex.metrics.classification.__dict__.items():
+            if not callable(func) or name in {"annotate"}:
+                continue
+            with self.subTest(name=name):
+                self.assertTrue(hasattr(func, "lower"), msg=f"{name} is unannotated")
+                self.assertTrue(hasattr(func, "upper"))
+                self.assertTrue(hasattr(func, "name"))
 
     def test_conditions(self):
         assert condition_positive(self.y_true) == 6

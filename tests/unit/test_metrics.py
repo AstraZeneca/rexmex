@@ -61,6 +61,8 @@ from rexmex.metrics.rating import (
     symmetric_mean_absolute_percentage_error,
 )
 
+from rexmex.metrics.coverage import item_coverage
+
 
 class TestClassificationMetrics(unittest.TestCase):
     """
@@ -207,7 +209,7 @@ class TestRankingMetrics(unittest.TestCase):
         a_rr = 3
         b_rr = 1
         c_rr = 2
-        expected_gmr = (a_rr * b_rr * c_rr) ** (1/ 3)
+        expected_gmr = (a_rr * b_rr * c_rr) ** (1 / 3)
 
         gmr = gmean_rank(actual, rec)
         self.assertAlmostEqual(expected_gmr, gmr, 3)
@@ -388,3 +390,9 @@ class TestRankingMetrics(unittest.TestCase):
         scores = np.asarray([[0.1, 0.2, 0.3, 4, 70]])
         ndcg = normalized_discounted_cumulative_gain(true_relevance, scores)
         self.assertAlmostEqual(ndcg, 0.6956, 2)
+
+    def test_item_coverage(self):
+        assert item_coverage([1, 2, 3, 4, 5], [[1, 2, 3], [2, 3, 4], [1, 2, 4]]) == 0.8
+        assert item_coverage([1, 2, 3, 4], [[1, 2, 3], [2, 3, 4], [1, 2, 4]]) == 1.0
+        assert item_coverage([999], [[1, 2, 3], [2, 3, 4], [1, 2, 4]]) == 0.0
+        assert item_coverage(["a", "b", "c", "d"], [["a", "b"], ["c"]]) == 0.75

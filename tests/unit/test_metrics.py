@@ -160,6 +160,9 @@ class TestRankingMetrics(unittest.TestCase):
         self.ranking = np.array([1, 7, 3, 4, 5, 2, 10, 8, 9, 6])
 
     def test_reciprocal_rank(self):
+        with self.assertRaises(ValueError):
+            reciprocal_rank(-1, self.ranking)
+
         assert reciprocal_rank(1, self.ranking) == 1
         assert reciprocal_rank(2, self.ranking) == 1 / 6
         assert reciprocal_rank(3, self.ranking) == 1 / 3
@@ -178,6 +181,9 @@ class TestRankingMetrics(unittest.TestCase):
 
     def test_rank(self):
         """Test the rank function."""
+        with self.assertRaises(ValueError):
+            rank(-1, self.ranking)
+
         assert rank(1, self.ranking) == 1
         assert rank(2, self.ranking) == 6
         assert rank(3, self.ranking) == 3

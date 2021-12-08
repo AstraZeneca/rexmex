@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import Collection, List, Tuple
 
 from rexmex.metrics.classification import (
     accuracy_score,
@@ -31,12 +31,12 @@ class MetricSet(dict):
      name keys and evaluation metric function values.
     """
 
-    def filter_metrics(self, filter: List[str] = None):
+    def filter_metrics(self, filter: Collection[str]):
         """
         A method to keep a list of metrics.
 
         Args:
-            filter (str): A list of metric names to keep.
+            filter: A list of metric names to keep.
         Returns:
             self: The metric set after the metrics were filtered out.
         """

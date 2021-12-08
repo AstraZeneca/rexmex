@@ -2,14 +2,14 @@ import numpy as np
 import sklearn.metrics
 
 # A dictionary of all classification functions that are annotated
-classification = dict()
+classifications = dict()
 
 
 def annotate(*, name: str, lower: float, upper: float, higher_is_better: bool):
     """Annotate a classification function."""
 
     def _wrapper(func):
-        classification[func.__name__] = func
+        classifications[func.__name__] = func
         func.name = name
         func.lower = lower
         func.upper = upper
@@ -514,6 +514,12 @@ def f1_score(y_true: np.array, y_score: np.array) -> float:
     return f1
 
 
+@annotate(
+    name="Precision score",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def precision_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the precision for a ground-truth prediction vector pair.

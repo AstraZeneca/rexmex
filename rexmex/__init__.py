@@ -1,4 +1,4 @@
 from rexmex import dataset, metricset, scorecard, utils
-from rexmex.metrics import classification, coverage, ranking, rating
+from rexmex.metrics import classifications, coverage, ranking, rating
 
 all = ["scorecard", "dataset", "rexmex.metrics.*", "metricset", "utils"]

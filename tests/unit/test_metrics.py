@@ -76,7 +76,10 @@ class TestClassificationMetrics(unittest.TestCase):
     def test_annotations(self):
         """Check that all functions in the classification module are annotated."""
         for name, func in rexmex.metrics.classification.__dict__.items():
-            if not callable(func) or name in {"annotate"}:
+            if not inspect.isfunction(func):
+                continue
+            parameters = inspect.signature(func).parameters
+            if "y_true" not in parameters or "y_score" not in parameters:
                 continue
             with self.subTest(name=name):
                 self.assertTrue(hasattr(func, "lower"), msg=f"{name} is unannotated")

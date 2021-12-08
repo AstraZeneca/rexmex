@@ -3,6 +3,8 @@ import unittest
 import numpy as np
 import pytest
 
+from rexmex.metrics.coverage import item_coverage
+
 from rexmex.metrics.classification import (
     condition_negative,
     condition_positive,
@@ -60,8 +62,6 @@ from rexmex.metrics.rating import (
     root_mean_squared_error,
     symmetric_mean_absolute_percentage_error,
 )
-
-from rexmex.metrics.coverage import item_coverage
 
 
 class TestClassificationMetrics(unittest.TestCase):

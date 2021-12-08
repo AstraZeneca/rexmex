@@ -36,6 +36,7 @@ from rexmex.metrics.classification import (
     true_positive,
     true_positive_rate,
 )
+from rexmex.metrics.coverage import item_coverage
 from rexmex.metrics.ranking import (
     average_precision_at_k,
     average_recall_at_k,
@@ -207,7 +208,7 @@ class TestRankingMetrics(unittest.TestCase):
         a_rr = 3
         b_rr = 1
         c_rr = 2
-        expected_gmr = (a_rr * b_rr * c_rr) ** (1/ 3)
+        expected_gmr = (a_rr * b_rr * c_rr) ** (1 / 3)
 
         gmr = gmean_rank(actual, rec)
         self.assertAlmostEqual(expected_gmr, gmr, 3)
@@ -388,3 +389,9 @@ class TestRankingMetrics(unittest.TestCase):
         scores = np.asarray([[0.1, 0.2, 0.3, 4, 70]])
         ndcg = normalized_discounted_cumulative_gain(true_relevance, scores)
         self.assertAlmostEqual(ndcg, 0.6956, 2)
+
+    def test_item_coverage(self):
+        assert item_coverage([1, 2, 3, 4, 5], [[1, 2, 3], [2, 3, 4], [1, 2, 4]]) == 0.8
+        assert item_coverage([1, 2, 3, 4], [[1, 2, 3], [2, 3, 4], [1, 2, 4]]) == 1.0
+        assert item_coverage([999], [[1, 2, 3], [2, 3, 4], [1, 2, 4]]) == 0.0
+        assert item_coverage(["a", "b", "c", "d"], [["a", "b"], ["c"]]) == 0.75

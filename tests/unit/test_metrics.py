@@ -3,8 +3,6 @@ import unittest
 import numpy as np
 import pytest
 
-from rexmex.metrics.coverage import item_coverage
-
 from rexmex.metrics.classification import (
     condition_negative,
     condition_positive,
@@ -38,6 +36,7 @@ from rexmex.metrics.classification import (
     true_positive,
     true_positive_rate,
 )
+from rexmex.metrics.coverage import item_coverage
 from rexmex.metrics.ranking import (
     average_precision_at_k,
     average_recall_at_k,

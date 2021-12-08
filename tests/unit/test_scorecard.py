@@ -1,7 +1,8 @@
 import sys
-import pytest
 import unittest
 from io import StringIO
+
+import pytest
 
 from rexmex.metricset import ClassificationMetricSet
 from rexmex.scorecard import ScoreCard

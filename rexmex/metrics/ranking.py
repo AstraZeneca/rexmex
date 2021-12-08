@@ -1,11 +1,11 @@
+import itertools
 from math import log2
-from typing import List, Sequence
+from typing import List, Sequence, TypeVar
+
 import numpy as np
 from scipy import stats
-from sklearn.metrics.pairwise import cosine_similarity
-import itertools
 from sklearn.metrics import dcg_score, ndcg_score
-from typing import TypeVar
+from sklearn.metrics.pairwise import cosine_similarity
 
 X = TypeVar("X")
 

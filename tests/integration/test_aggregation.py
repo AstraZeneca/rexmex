@@ -1,9 +1,10 @@
-import pytest
 import unittest
 
-from rexmex.scorecard import ScoreCard
+import pytest
+
 from rexmex.dataset import DatasetReader
 from rexmex.metricset import ClassificationMetricSet, RatingMetricSet
+from rexmex.scorecard import ScoreCard
 
 
 class TestMetricAggregation(unittest.TestCase):

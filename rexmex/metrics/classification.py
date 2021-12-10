@@ -1,18 +1,9 @@
 import numpy as np
 import sklearn.metrics
 
+from rexmex.utils import Annotator
 
-def annotate(*, name: str, lower: float, upper: float, higher_is_better: bool):
-    """Annotate a classification function."""
-
-    def _wrapper(func):
-        func.name = name
-        func.lower = lower
-        func.upper = upper
-        func.higher_is_better = higher_is_better
-        return func
-
-    return _wrapper
+annotator = Annotator()
 
 
 def condition_positive(y_true: np.array) -> float:
@@ -510,7 +501,7 @@ def f1_score(y_true: np.array, y_score: np.array) -> float:
     return f1
 
 
-@annotate(
+@annotator.annotate(
     name="Precision score",
     lower=0.0,
     upper=1.0,
@@ -558,7 +549,7 @@ def average_precision_score(y_true: np.array, y_score: np.array) -> float:
     return average_precision
 
 
-@annotate(
+@annotator.annotate(
     name="Matthews Correlation Coefficient",
     lower=-1.0,
     upper=1.0,
@@ -578,7 +569,7 @@ def matthews_correlation_coefficient(y_true: np.array, y_score: np.array) -> flo
     return mat_cor
 
 
-@annotate(
+@annotator.annotate(
     name="Area under the precision-recall curve",
     lower=0.0,
     upper=1.0,

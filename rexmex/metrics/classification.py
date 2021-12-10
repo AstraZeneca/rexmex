@@ -178,6 +178,12 @@ def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
     return tpr
 
 
+@classifications.annotate(
+    name="Positive predictive value",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def positive_predictive_value(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the positive predictive value (same as precision).
@@ -187,6 +193,9 @@ def positive_predictive_value(y_true: np.array, y_score: np.array) -> float:
         y_score (array-like):  An N x 1 array of predicted values.
     Returns:
         ppv (float): The positive predictive value.
+
+    .. seealso::
+        https://en.wikipedia.org/wiki/Positive_and_negative_predictive_values
     """
     tp = true_positive(y_true, y_score)
     fp = false_positive(y_true, y_score)
@@ -194,6 +203,12 @@ def positive_predictive_value(y_true: np.array, y_score: np.array) -> float:
     return ppv
 
 
+@classifications.annotate(
+    name="Negative predictive value",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def negative_predictive_value(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the negative predictive value (same as precision).
@@ -270,6 +285,12 @@ def false_positive_rate(y_true: np.array, y_score: np.array) -> float:
     return fpr
 
 
+@classifications.annotate(
+    name="False discovery rate",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+)
 def false_discovery_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the false discovery rate.
@@ -286,6 +307,12 @@ def false_discovery_rate(y_true: np.array, y_score: np.array) -> float:
     return fdr
 
 
+@classifications.annotate(
+    name="False omission rate",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+)
 def false_omission_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the false omission rate.
@@ -429,6 +456,12 @@ def markedness(y_true: np.array, y_score: np.array) -> float:
     return mk
 
 
+@classifications.annotate(
+    name="Diagnostic odds ratio",
+    lower=0.0,
+    upper=float("inf"),
+    higher_is_better=True,
+)
 def diagnostic_odds_ratio(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the diagnostic odds ratio.
@@ -438,6 +471,9 @@ def diagnostic_odds_ratio(y_true: np.array, y_score: np.array) -> float:
         y_score (array-like):  An N x 1 array of predicted values.
     Returns:
         dor (float): The diagnostic odds ratio value.
+
+    .. seealso::
+        https://en.wikipedia.org/wiki/Diagnostic_odds_ratio
     """
     lr_minus = negative_likelihood_ratio(y_true, y_score)
     lr_plus = positive_likelihood_ratio(y_true, y_score)
@@ -445,6 +481,12 @@ def diagnostic_odds_ratio(y_true: np.array, y_score: np.array) -> float:
     return dor
 
 
+@classifications.annotate(
+    name="Area under the ROC curve",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def roc_auc_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the AUC for a ground-truth prediction vector pair.
@@ -459,6 +501,12 @@ def roc_auc_score(y_true: np.array, y_score: np.array) -> float:
     return auc
 
 
+@classifications.annotate(
+    name="Accuracy",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def accuracy_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the accuracy score for a ground-truth prediction vector pair.
@@ -473,6 +521,12 @@ def accuracy_score(y_true: np.array, y_score: np.array) -> float:
     return accuracy
 
 
+@classifications.annotate(
+    name="Balanced accuracy",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def balanced_accuracy_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the balanced accuracy for a ground-truth prediction vector pair.
@@ -487,6 +541,12 @@ def balanced_accuracy_score(y_true: np.array, y_score: np.array) -> float:
     return balanced_accuracy
 
 
+@classifications.annotate(
+    name="F-1 score",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def f1_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the F-1 score for a ground-truth prediction vector pair.
@@ -502,7 +562,7 @@ def f1_score(y_true: np.array, y_score: np.array) -> float:
 
 
 @classifications.annotate(
-    name="Precision score",
+    name="Precision",
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
@@ -521,6 +581,12 @@ def precision_score(y_true: np.array, y_score: np.array) -> float:
     return precision
 
 
+@classifications.annotate(
+    name="Recall",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def recall_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the recall for a ground-truth prediction vector pair.
@@ -535,6 +601,12 @@ def recall_score(y_true: np.array, y_score: np.array) -> float:
     return recall
 
 
+@classifications.annotate(
+    name="Average precision score",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def average_precision_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate for a ground-truth prediction vector pair.
@@ -544,6 +616,9 @@ def average_precision_score(y_true: np.array, y_score: np.array) -> float:
         y_score (array-like):  An N x 1 array of predicted values.
     Returns:
         average_precision (float): The value of average precision.
+
+    .. seealso::
+        https://en.wikipedia.org/w/index.php?title=Information_retrieval&oldid=793358396#Average_precision
     """
     average_precision = sklearn.metrics.average_precision_score(y_true, y_score)
     return average_precision

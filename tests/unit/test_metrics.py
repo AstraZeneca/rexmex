@@ -1,7 +1,6 @@
 import unittest
 
 import numpy as np
-import pytest
 
 from rexmex.metrics.classification import (
     condition_negative,

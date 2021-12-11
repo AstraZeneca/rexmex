@@ -131,6 +131,11 @@ def specificity(y_true: np.array, y_score: np.array) -> float:
     return tnr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def selectivity(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the selectivity (same as specificity and true negative rate).
@@ -145,6 +150,11 @@ def selectivity(y_true: np.array, y_score: np.array) -> float:
     return tnr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def true_negative_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the true negative rate (same as specificity and selectivity).
@@ -159,6 +169,11 @@ def true_negative_rate(y_true: np.array, y_score: np.array) -> float:
     return tnr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def sensitivity(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the sensitivity (same as recall, hit rate and true positive rate).
@@ -175,6 +190,11 @@ def sensitivity(y_true: np.array, y_score: np.array) -> float:
     return tpr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def hit_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the hit rate (same as recall, sensitivity and true positive rate).
@@ -189,6 +209,11 @@ def hit_rate(y_true: np.array, y_score: np.array) -> float:
     return tpr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the true positive rate (same as recall, sensitivity and hit rate).
@@ -248,6 +273,11 @@ def negative_predictive_value(y_true: np.array, y_score: np.array) -> float:
     return npv
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+)
 def miss_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the miss rate (same as false negative rate).
@@ -264,6 +294,11 @@ def miss_rate(y_true: np.array, y_score: np.array) -> float:
     return fnr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+)
 def false_negative_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the false negative rate (same as miss rate).
@@ -278,6 +313,11 @@ def false_negative_rate(y_true: np.array, y_score: np.array) -> float:
     return fnr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+)
 def fall_out(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the fall out (same as false positive rate).
@@ -294,6 +334,11 @@ def fall_out(y_true: np.array, y_score: np.array) -> float:
     return fpr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+)
 def false_positive_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the false positive rate (same as fall out).
@@ -350,6 +395,11 @@ def false_omission_rate(y_true: np.array, y_score: np.array) -> float:
     return fomr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=float("inf"),
+    higher_is_better=True,
+)
 def positive_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the positive likelihood ratio.
@@ -366,6 +416,11 @@ def positive_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     return lr_plus
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=float("inf"),
+    higher_is_better=False,
+)
 def negative_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the negative likelihood ratio.
@@ -391,6 +446,9 @@ def prevalence_threshold(y_true: np.array, y_score: np.array) -> float:
         y_score (array-like):  An N x 1 array of predicted values.
     Returns:
         pthr (float): The prevalence threshold value.
+
+    .. seealso::
+        https://en.wikipedia.org/wiki/Sensitivity_and_specificity#Prevalence_threshold
     """
     fpr = false_positive_rate(y_true, y_score)
     tpr = true_positive_rate(y_true, y_score)
@@ -429,6 +487,11 @@ def critical_success_index(y_true: np.array, y_score: np.array) -> float:
     return ts
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def fowlkes_mallows_index(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the Fowlkes-Mallows index.
@@ -445,6 +508,11 @@ def fowlkes_mallows_index(y_true: np.array, y_score: np.array) -> float:
     return fm
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def informedness(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the informedness.
@@ -461,6 +529,11 @@ def informedness(y_true: np.array, y_score: np.array) -> float:
     return bm
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def markedness(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the markedness.

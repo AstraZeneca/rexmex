@@ -1,4 +1,5 @@
 from functools import wraps
+from typing import Optional
 
 import numpy as np
 
@@ -58,11 +59,11 @@ def normalize(metric):
 class Annotator:
     """A class to wrap annotations to make the registry pattern easier later."""
 
-    def annotate(self, *, name: str, lower: float, upper: float, higher_is_better: bool):
+    def annotate(self, *, lower: float, upper: float, higher_is_better: bool, name: Optional[str] = None):
         """Annotate a classification function."""
 
         def _wrapper(func):
-            func.name = name
+            func.name = name or func.__name__.replace("_", " ").title()
             func.lower = lower
             func.upper = upper
             func.higher_is_better = higher_is_better

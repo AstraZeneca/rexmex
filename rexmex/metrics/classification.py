@@ -32,6 +32,11 @@ def condition_negative(y_true: np.array) -> float:
     return cn
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def true_positive(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the number of true positives.
@@ -46,6 +51,11 @@ def true_positive(y_true: np.array, y_score: np.array) -> float:
     return tp
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def true_negative(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the number of true negatives.
@@ -61,6 +71,11 @@ def true_negative(y_true: np.array, y_score: np.array) -> float:
     return tn
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+)
 def false_positive(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the number of false positives.
@@ -75,6 +90,11 @@ def false_positive(y_true: np.array, y_score: np.array) -> float:
     return fp
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+)
 def false_negative(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the number of false negatives.
@@ -90,6 +110,11 @@ def false_negative(y_true: np.array, y_score: np.array) -> float:
     return fn
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def specificity(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the specificity (same as selectivity and true negative rate).
@@ -179,7 +204,6 @@ def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
 
 
 @classifications.annotate(
-    name="Positive predictive value",
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
@@ -204,7 +228,6 @@ def positive_predictive_value(y_true: np.array, y_score: np.array) -> float:
 
 
 @classifications.annotate(
-    name="Negative predictive value",
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
@@ -286,7 +309,6 @@ def false_positive_rate(y_true: np.array, y_score: np.array) -> float:
 
 
 @classifications.annotate(
-    name="False discovery rate",
     lower=0.0,
     upper=1.0,
     higher_is_better=False,
@@ -308,7 +330,6 @@ def false_discovery_rate(y_true: np.array, y_score: np.array) -> float:
 
 
 @classifications.annotate(
-    name="False omission rate",
     lower=0.0,
     upper=1.0,
     higher_is_better=False,
@@ -457,7 +478,6 @@ def markedness(y_true: np.array, y_score: np.array) -> float:
 
 
 @classifications.annotate(
-    name="Diagnostic odds ratio",
     lower=0.0,
     upper=float("inf"),
     higher_is_better=True,
@@ -542,7 +562,7 @@ def balanced_accuracy_score(y_true: np.array, y_score: np.array) -> float:
 
 
 @classifications.annotate(
-    name="F-1 score",
+    name="F_1",
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
@@ -602,7 +622,7 @@ def recall_score(y_true: np.array, y_score: np.array) -> float:
 
 
 @classifications.annotate(
-    name="Average precision score",
+    name="Average precision",
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
@@ -625,7 +645,6 @@ def average_precision_score(y_true: np.array, y_score: np.array) -> float:
 
 
 @classifications.annotate(
-    name="Matthews Correlation Coefficient",
     lower=-1.0,
     upper=1.0,
     higher_is_better=True,

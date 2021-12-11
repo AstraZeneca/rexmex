@@ -437,10 +437,10 @@ def negative_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     return lr_minus
 
 
-@classifications.annotate(  # not confident about this annotation
+@classifications.annotate(  # TODO not confident about this annotation
     lower=0.0,
     upper=1.0,
-    higher_is_better=True,
+    higher_is_better=False,
 )
 def prevalence_threshold(y_true: np.array, y_score: np.array) -> float:
     """
@@ -463,10 +463,10 @@ def prevalence_threshold(y_true: np.array, y_score: np.array) -> float:
     return pthr
 
 
-@classifications.annotate(  # TODO
-    lower=...,
-    upper=...,
-    higher_is_better=...,
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
 )
 def threat_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -485,10 +485,10 @@ def threat_score(y_true: np.array, y_score: np.array) -> float:
     return ts
 
 
-@classifications.annotate(  # TODO
-    lower=...,
-    upper=...,
-    higher_is_better=...,
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
 )
 def critical_success_index(y_true: np.array, y_score: np.array) -> float:
     """

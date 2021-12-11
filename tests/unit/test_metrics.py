@@ -73,7 +73,6 @@ class TestClassificationMetrics(unittest.TestCase):
         self.y_true = np.array([0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0])
         self.y_score = np.array([1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0])
 
-    @unittest.skip("Not ready to commit to requiring this in PR https://github.com/AstraZeneca/rexmex/pull/29")
     def test_annotations(self):
         """Check that all functions in the classification module are annotated."""
         for name, func in rexmex.metrics.classification.__dict__.items():

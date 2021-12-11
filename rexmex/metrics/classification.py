@@ -437,6 +437,11 @@ def negative_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     return lr_minus
 
 
+@classifications.annotate(  # not confident about this annotation
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def prevalence_threshold(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the prevalence threshold score.
@@ -448,7 +453,9 @@ def prevalence_threshold(y_true: np.array, y_score: np.array) -> float:
         pthr (float): The prevalence threshold value.
 
     .. seealso::
-        https://en.wikipedia.org/wiki/Sensitivity_and_specificity#Prevalence_threshold
+
+        - https://en.wikipedia.org/wiki/Sensitivity_and_specificity#Prevalence_threshold
+        - https://dx.doi.org/10.1371%2Fjournal.pone.0240215
     """
     fpr = false_positive_rate(y_true, y_score)
     tpr = true_positive_rate(y_true, y_score)
@@ -456,6 +463,11 @@ def prevalence_threshold(y_true: np.array, y_score: np.array) -> float:
     return pthr
 
 
+@classifications.annotate(  # TODO
+    lower=...,
+    upper=...,
+    higher_is_better=...,
+)
 def threat_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the threat score.
@@ -473,6 +485,11 @@ def threat_score(y_true: np.array, y_score: np.array) -> float:
     return ts
 
 
+@classifications.annotate(  # TODO
+    lower=...,
+    upper=...,
+    higher_is_better=...,
+)
 def critical_success_index(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the critical success index (same as the theat score).

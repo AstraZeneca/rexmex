@@ -32,11 +32,6 @@ def condition_negative(y_true: np.array) -> float:
     return cn
 
 
-@classifications.annotate(
-    lower=0.0,
-    upper=1.0,
-    higher_is_better=True,
-)
 def true_positive(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the number of true positives.
@@ -51,11 +46,6 @@ def true_positive(y_true: np.array, y_score: np.array) -> float:
     return tp
 
 
-@classifications.annotate(
-    lower=0.0,
-    upper=1.0,
-    higher_is_better=True,
-)
 def true_negative(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the number of true negatives.
@@ -71,11 +61,6 @@ def true_negative(y_true: np.array, y_score: np.array) -> float:
     return tn
 
 
-@classifications.annotate(
-    lower=0.0,
-    upper=1.0,
-    higher_is_better=False,
-)
 def false_positive(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the number of false positives.
@@ -90,11 +75,6 @@ def false_positive(y_true: np.array, y_score: np.array) -> float:
     return fp
 
 
-@classifications.annotate(
-    lower=0.0,
-    upper=1.0,
-    higher_is_better=False,
-)
 def false_negative(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the number of false negatives.

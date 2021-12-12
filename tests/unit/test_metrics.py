@@ -75,8 +75,9 @@ class TestClassificationMetrics(unittest.TestCase):
 
     def test_annotations(self):
         """Check that all functions in the classification module are annotated."""
+        skip = {true_positive, false_positive, false_negative, true_negative}
         for name, func in rexmex.metrics.classification.__dict__.items():
-            if not inspect.isfunction(func):
+            if not inspect.isfunction(func) or func in skip:
                 continue
             parameters = inspect.signature(func).parameters
             if "y_true" not in parameters or "y_score" not in parameters:

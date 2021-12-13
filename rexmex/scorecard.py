@@ -56,6 +56,7 @@ class ScoreCard(object):
         validation_set: pd.DataFrame,
         columns: List[str],
     ) -> pd.DataFrame:
+        """ """
         scores_columns = list(scores.columns.tolist())
         in_sample_examples = pd.concat([training_set, testing_set, validation_set])
         scores = scores.merge(in_sample_examples.drop_duplicates(), on=columns, how="left", indicator=True)

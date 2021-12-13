@@ -31,5 +31,13 @@ class TestMetricSet(unittest.TestCase):
         train, remainder = train_test_split(self.scores[["source_id", "target_id"]], test_size=0.2)
         train, test = train_test_split(train, test_size=0.5)
         test, validation = train_test_split(test, test_size=0.5)
-        new_scores = self.score_card.filter_scores(self.scores, train, test, validation, ["source_id", "target_id"])
+
+        new_scores = self.score_card.filter_scores(
+            scores=self.scores,
+            training_set=train,
+            testing_set=test,
+            validation_set=validation,
+            columns=["source_id", "target_id"],
+        )
+
         assert remainder.shape[0] == new_scores.shape[0]

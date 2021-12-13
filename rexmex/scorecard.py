@@ -45,8 +45,10 @@ class ScoreCard(object):
             scores_to_evaluate = scores_to_evaluate.groupby(grouping)
             report = scores_to_evaluate.apply(lambda group: self.get_performance_metrics(group.y_true, group.y_score))
         else:
-            report = self._get_performance_metrics(scores_to_evaluate.y_true, scores_to_evaluate.y_score)
+            report = self.get_performance_metrics(scores_to_evaluate.y_true, scores_to_evaluate.y_score)
         return report
+
+    def filter_scores()
 
     def __repr__(self):
         """

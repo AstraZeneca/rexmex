@@ -29,11 +29,31 @@ If you find *RexMex* useful in your research, please consider adding the followi
 ```
 --------------------------------------------------------------------------------
 
---------------------------------------------------------------------------------
 
 **An introductory example**
 
-The following example loads a synthetic dataset which has the `source_id`, `target_id`, `source_group` and `target group` keys besides the mandatory `y_true` and `y_score`.  The dataset has binary labels and predictied probability scores. We read the dataset and define a defult `ClassificationMetric` instance for the evaluation of the predictions. Using this metric set we create a score card, group the predictions on with the `source_group` key and return a performance metric report.
+The following example loads a synthetic dataset which has the mandatory `y_true` and `y_score` keys.  The dataset has binary labels and predictied probability scores. We read the dataset and define a defult `ClassificationMetric` instance for the evaluation of the predictions. Using this metric set we create a score card and get the predictive performance metrics.
+
+```python
+from rexmex.scorecard import ScoreCard
+from rexmex.dataset import DatasetReader
+from rexmex.metricset import ClassificationMetricSet
+
+reader = DatasetReader()
+scores = reader.read_dataset()
+
+metric_set = ClassificationMetricSet()
+
+score_card = ScoreCard(metric_set)
+
+report = score_card.get_performance_metrics(scores["y_true"], scores["y_score"])
+```
+
+--------------------------------------------------------------------------------
+
+**An advanced example**
+
+The following more advanced example loads the same synthetic dataset which has the `source_id`, `target_id`, `source_group` and `target group` keys besides the mandatory `y_true` and `y_score`.   Using the `source_group` key  we group the predictions and return a performance metric report.
 
 ```python
 from rexmex.scorecard import ScoreCard

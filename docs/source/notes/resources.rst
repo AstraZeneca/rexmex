@@ -1,9 +1,18 @@
 External resources
 ==================
 
+Evaluation Strategies
+--------------------
+
+* Antoine Bordes, Nicolas Usunier, Alberto Garcia-Duran, Jason Weston, Oksana Yakhnenko: **Translating Embeddings for Modeling Multi-relational Data** `Paper <https://papers.nips.cc/paper/2013/file/1cecc7a77928ca8133fa24680a88d2f9-Paper.pdf>`_
+
 Metrics
 --------------------
 
+* Tao Zhou, Zoltan Kuscsik, Jian-Guo Liu, Matus Medo, Joseph R. Wakeling, Yi-Cheng Zhang: **Solving the Apparent Diversity-Accuracy Dilemma of Recommender Systems** `Paper <https://arxiv.org/abs/0808.2670>`_
+* Yiyu Yao: **Measuring Retrieval Effectiveness Based on User Preference of Documents** `Paper <http://www2.cs.uregina.ca/~yyao/PAPERS/jasis_ndpm.pdf>`_
+* Shani, Guy, and Asela Gunawardana: **Evaluating Recommendation Systems** `Paper <https://www.bgu.ac.il/~shanigu/Publications/EvaluationMetrics.17.pdf>`_
+* : **** `Paper <>`_
 
 
 Survey Papers

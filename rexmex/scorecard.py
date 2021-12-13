@@ -56,7 +56,18 @@ class ScoreCard(object):
         validation_set: pd.DataFrame,
         columns: List[str],
     ) -> pd.DataFrame:
-        """ """
+        """
+        A method to filter out those entries which also appear in either the training, testing or validation sets.
+
+        Args:
+            scores (pd.DataFrame): A dataframe with the scores.
+            training_set (pd.DataFrame): A dataframe of training data points.
+            testing_set (pd.DataFrame): A dataframe of testing data points.
+            validation_set (pd.DataFrame): A dataframe of validation data points.
+            columns (list): A list of column names used for cross referencing.
+        Returns:
+            scores (pd.DataFrame): The scores for datapoints which are not in the reference sets.
+        """
         scores_columns = list(scores.columns.tolist())
         in_sample_examples = pd.concat([training_set, testing_set, validation_set])
         scores = scores.merge(in_sample_examples.drop_duplicates(), on=columns, how="left", indicator=True)

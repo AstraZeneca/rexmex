@@ -1,12 +1,12 @@
 import sys
 import unittest
-
 from io import StringIO
+
 from sklearn.model_selection import train_test_split
 
-from rexmex.scorecard import ScoreCard
 from rexmex.dataset import DatasetReader
 from rexmex.metricset import ClassificationMetricSet
+from rexmex.scorecard import ScoreCard
 
 
 class TestMetricSet(unittest.TestCase):

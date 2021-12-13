@@ -14,7 +14,7 @@ class ScoreCard(object):
     def __init__(self, metric_set: rexmex.metricset.MetricSet):
         self.metric_set = metric_set
 
-    def _get_performance_metrics(self, y_true: np.array, y_score: np.array) -> pd.DataFrame:
+    def get_performance_metrics(self, y_true: np.array, y_score: np.array) -> pd.DataFrame:
         """
         A method to get the performance metrics for a pair of vectors.
 
@@ -43,7 +43,7 @@ class ScoreCard(object):
         """
         if grouping is not None:
             scores_to_evaluate = scores_to_evaluate.groupby(grouping)
-            report = scores_to_evaluate.apply(lambda group: self._get_performance_metrics(group.y_true, group.y_score))
+            report = scores_to_evaluate.apply(lambda group: self.get_performance_metrics(group.y_true, group.y_score))
         else:
             report = self._get_performance_metrics(scores_to_evaluate.y_true, scores_to_evaluate.y_score)
         return report

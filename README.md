@@ -29,7 +29,6 @@ If you find *RexMex* useful in your research, please consider adding the followi
 ```
 --------------------------------------------------------------------------------
 
-
 **An introductory example**
 
 The following example loads a synthetic dataset which has the mandatory `y_true` and `y_score` keys.  The dataset has binary labels and predictied probability scores. We read the dataset and define a defult `ClassificationMetric` instance for the evaluation of the predictions. Using this metric set we create a score card and get the predictive performance metrics.

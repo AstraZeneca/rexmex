@@ -58,7 +58,7 @@ class ScoreCard(object):
     ) -> pd.DataFrame:
         """
         A method to filter out those entries which also appear in either the training, testing or validation sets.
-
+        `The original is here: <https://papers.nips.cc/paper/2013/file/1cecc7a77928ca8133fa24680a88d2f9-Paper.pdf>.`
         Args:
             scores (pd.DataFrame): A dataframe with the scores.
             training_set (pd.DataFrame): A dataframe of training data points.

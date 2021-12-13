@@ -12,7 +12,6 @@ Metrics
 * Tao Zhou, Zoltan Kuscsik, Jian-Guo Liu, Matus Medo, Joseph R. Wakeling, Yi-Cheng Zhang: **Solving the Apparent Diversity-Accuracy Dilemma of Recommender Systems** `Paper <https://arxiv.org/abs/0808.2670>`_
 * Yiyu Yao: **Measuring Retrieval Effectiveness Based on User Preference of Documents** `Paper <http://www2.cs.uregina.ca/~yyao/PAPERS/jasis_ndpm.pdf>`_
 * Shani, Guy, and Asela Gunawardana: **Evaluating Recommendation Systems** `Paper <https://www.bgu.ac.il/~shanigu/Publications/EvaluationMetrics.17.pdf>`_
-* : **** `Paper <>`_
 
 
 Survey Papers

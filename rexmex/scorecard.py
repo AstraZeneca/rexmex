@@ -49,15 +49,18 @@ class ScoreCard(object):
         return report
 
     def filter_scores(
+        self,
         scores: pd.DataFrame,
         training_set: pd.DataFrame,
         testing_set: pd.DataFrame,
         validation_set: pd.DataFrame,
         columns: List[str],
     ) -> pd.DataFrame:
+        scores_columns = list(scores.columns.tolist())
         in_sample_examples = pd.concat([training_set, testing_set, validation_set])
-        print(in_sample_examples.shape)
-        pass
+        scores = scores.merge(in_sample_examples.drop_duplicates(), on=columns, how="left", indicator=True)
+        scores = scores[scores["_merge"] == "left_only"].reset_index()[scores_columns]
+        return scores
 
     def __repr__(self):
         """

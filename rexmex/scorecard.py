@@ -48,7 +48,15 @@ class ScoreCard(object):
             report = self.get_performance_metrics(scores_to_evaluate.y_true, scores_to_evaluate.y_score)
         return report
 
-    def filter_scores(scores: pd.DataFrame, training_set: pd.DataFrame, testing_set: pd.DataFrame, validation_set: pd.DataFrame, columns: List[str]) -> pd.DataFrame:
+    def filter_scores(
+        scores: pd.DataFrame,
+        training_set: pd.DataFrame,
+        testing_set: pd.DataFrame,
+        validation_set: pd.DataFrame,
+        columns: List[str],
+    ) -> pd.DataFrame:
+        in_sample_examples = pd.concat([training_set, testing_set, validation_set])
+        print(in_sample_examples.shape)
         pass
 
     def __repr__(self):

@@ -67,6 +67,7 @@ class Annotator:
         upper: float,
         higher_is_better: bool,
         link: str,
+        description: str,
         name: Optional[str] = None,
         lower_inclusive: bool = True,
         upper_inclusive: bool = True,
@@ -85,6 +86,7 @@ class Annotator:
             func.upper_inclusive = upper_inclusive
             func.higher_is_better = higher_is_better
             func.link = link
+            func.description = description
             return func
 
         return _wrapper

@@ -1,6 +1,13 @@
 from functools import wraps
+from typing import Optional
 
 import numpy as np
+
+__all__ = [
+    "binarize",
+    "normalize",
+    "Annotator",
+]
 
 
 def binarize(metric):
@@ -47,3 +54,19 @@ def normalize(metric):
         return score
 
     return metric_wrapper
+
+
+class Annotator:
+    """A class to wrap annotations to make the registry pattern easier later."""
+
+    def annotate(self, *, lower: float, upper: float, higher_is_better: bool, name: Optional[str] = None):
+        """Annotate a classification function."""
+
+        def _wrapper(func):
+            func.name = name or func.__name__.replace("_", " ").title()
+            func.lower = lower
+            func.upper = upper
+            func.higher_is_better = higher_is_better
+            return func
+
+        return _wrapper

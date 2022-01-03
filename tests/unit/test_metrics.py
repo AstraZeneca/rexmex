@@ -1,7 +1,9 @@
+import inspect
 import unittest
 
 import numpy as np
 
+import rexmex.metrics.classification
 from rexmex.metrics.classification import (
     condition_negative,
     condition_positive,
@@ -71,6 +73,25 @@ class TestClassificationMetrics(unittest.TestCase):
         self.y_true = np.array([0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0])
         self.y_score = np.array([1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0])
 
+    def test_annotations(self):
+        """Check that all functions in the classification module are annotated."""
+        skip = {true_positive, false_positive, false_negative, true_negative}
+        for name, func in rexmex.metrics.classification.__dict__.items():
+            if not inspect.isfunction(func) or func in skip:
+                continue
+            parameters = inspect.signature(func).parameters
+            if "y_true" not in parameters or "y_score" not in parameters:
+                continue
+            with self.subTest(name=name):
+                self.assertTrue(hasattr(func, "lower"), msg=f"{name} is unannotated")
+                self.assertIsInstance(func.lower, float)
+                self.assertTrue(hasattr(func, "upper"))
+                self.assertIsInstance(func.upper, float)
+                self.assertTrue(hasattr(func, "name"))
+                self.assertIsInstance(func.name, str)
+                self.assertTrue(hasattr(func, "higher_is_better"))
+                self.assertIsInstance(func.higher_is_better, bool)
+
     def test_conditions(self):
         assert condition_positive(self.y_true) == 6
         assert condition_negative(self.y_true) == 8
@@ -96,6 +117,9 @@ class TestClassificationMetrics(unittest.TestCase):
         assert true_positive_rate(self.y_true, self.y_score) == recall_score(self.y_true, self.y_score)
 
     def test_positivie_predictive_value(self):
+        assert hasattr(precision_score, "lower")
+        assert precision_score.lower == 0.0
+
         assert positive_predictive_value(self.y_true, self.y_score) == precision_score(self.y_true, self.y_score)
         assert positive_predictive_value(self.y_true, self.y_score) == 4 / 9
 

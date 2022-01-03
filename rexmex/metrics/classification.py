@@ -1,6 +1,10 @@
 import numpy as np
 import sklearn.metrics
 
+from rexmex.utils import Annotator
+
+classifications = Annotator()
+
 
 def condition_positive(y_true: np.array) -> float:
     """
@@ -86,6 +90,11 @@ def false_negative(y_true: np.array, y_score: np.array) -> float:
     return fn
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def specificity(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the specificity (same as selectivity and true negative rate).
@@ -102,6 +111,11 @@ def specificity(y_true: np.array, y_score: np.array) -> float:
     return tnr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def selectivity(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the selectivity (same as specificity and true negative rate).
@@ -116,6 +130,11 @@ def selectivity(y_true: np.array, y_score: np.array) -> float:
     return tnr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def true_negative_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the true negative rate (same as specificity and selectivity).
@@ -130,6 +149,11 @@ def true_negative_rate(y_true: np.array, y_score: np.array) -> float:
     return tnr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def sensitivity(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the sensitivity (same as recall, hit rate and true positive rate).
@@ -146,6 +170,11 @@ def sensitivity(y_true: np.array, y_score: np.array) -> float:
     return tpr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def hit_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the hit rate (same as recall, sensitivity and true positive rate).
@@ -160,6 +189,11 @@ def hit_rate(y_true: np.array, y_score: np.array) -> float:
     return tpr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the true positive rate (same as recall, sensitivity and hit rate).
@@ -174,6 +208,11 @@ def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
     return tpr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def positive_predictive_value(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the positive predictive value (same as precision).
@@ -183,6 +222,9 @@ def positive_predictive_value(y_true: np.array, y_score: np.array) -> float:
         y_score (array-like):  An N x 1 array of predicted values.
     Returns:
         ppv (float): The positive predictive value.
+
+    .. seealso::
+        https://en.wikipedia.org/wiki/Positive_and_negative_predictive_values
     """
     tp = true_positive(y_true, y_score)
     fp = false_positive(y_true, y_score)
@@ -190,6 +232,11 @@ def positive_predictive_value(y_true: np.array, y_score: np.array) -> float:
     return ppv
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def negative_predictive_value(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the negative predictive value (same as precision).
@@ -206,6 +253,11 @@ def negative_predictive_value(y_true: np.array, y_score: np.array) -> float:
     return npv
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+)
 def miss_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the miss rate (same as false negative rate).
@@ -222,6 +274,11 @@ def miss_rate(y_true: np.array, y_score: np.array) -> float:
     return fnr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+)
 def false_negative_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the false negative rate (same as miss rate).
@@ -236,6 +293,11 @@ def false_negative_rate(y_true: np.array, y_score: np.array) -> float:
     return fnr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+)
 def fall_out(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the fall out (same as false positive rate).
@@ -252,6 +314,11 @@ def fall_out(y_true: np.array, y_score: np.array) -> float:
     return fpr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+)
 def false_positive_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the false positive rate (same as fall out).
@@ -266,6 +333,11 @@ def false_positive_rate(y_true: np.array, y_score: np.array) -> float:
     return fpr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+)
 def false_discovery_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the false discovery rate.
@@ -282,6 +354,11 @@ def false_discovery_rate(y_true: np.array, y_score: np.array) -> float:
     return fdr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+)
 def false_omission_rate(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the false omission rate.
@@ -298,6 +375,11 @@ def false_omission_rate(y_true: np.array, y_score: np.array) -> float:
     return fomr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=float("inf"),
+    higher_is_better=True,
+)
 def positive_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the positive likelihood ratio.
@@ -314,6 +396,11 @@ def positive_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     return lr_plus
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=float("inf"),
+    higher_is_better=False,
+)
 def negative_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the negative likelihood ratio.
@@ -330,6 +417,11 @@ def negative_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     return lr_minus
 
 
+@classifications.annotate(  # TODO not confident about this annotation
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+)
 def prevalence_threshold(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the prevalence threshold score.
@@ -339,6 +431,11 @@ def prevalence_threshold(y_true: np.array, y_score: np.array) -> float:
         y_score (array-like):  An N x 1 array of predicted values.
     Returns:
         pthr (float): The prevalence threshold value.
+
+    .. seealso::
+
+        - https://en.wikipedia.org/wiki/Sensitivity_and_specificity#Prevalence_threshold
+        - https://dx.doi.org/10.1371%2Fjournal.pone.0240215
     """
     fpr = false_positive_rate(y_true, y_score)
     tpr = true_positive_rate(y_true, y_score)
@@ -346,6 +443,11 @@ def prevalence_threshold(y_true: np.array, y_score: np.array) -> float:
     return pthr
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def threat_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the threat score.
@@ -363,6 +465,11 @@ def threat_score(y_true: np.array, y_score: np.array) -> float:
     return ts
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def critical_success_index(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the critical success index (same as the theat score).
@@ -377,6 +484,11 @@ def critical_success_index(y_true: np.array, y_score: np.array) -> float:
     return ts
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def fowlkes_mallows_index(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the Fowlkes-Mallows index.
@@ -393,6 +505,11 @@ def fowlkes_mallows_index(y_true: np.array, y_score: np.array) -> float:
     return fm
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def informedness(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the informedness.
@@ -409,6 +526,11 @@ def informedness(y_true: np.array, y_score: np.array) -> float:
     return bm
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def markedness(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the markedness.
@@ -425,6 +547,11 @@ def markedness(y_true: np.array, y_score: np.array) -> float:
     return mk
 
 
+@classifications.annotate(
+    lower=0.0,
+    upper=float("inf"),
+    higher_is_better=True,
+)
 def diagnostic_odds_ratio(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the diagnostic odds ratio.
@@ -434,6 +561,9 @@ def diagnostic_odds_ratio(y_true: np.array, y_score: np.array) -> float:
         y_score (array-like):  An N x 1 array of predicted values.
     Returns:
         dor (float): The diagnostic odds ratio value.
+
+    .. seealso::
+        https://en.wikipedia.org/wiki/Diagnostic_odds_ratio
     """
     lr_minus = negative_likelihood_ratio(y_true, y_score)
     lr_plus = positive_likelihood_ratio(y_true, y_score)
@@ -441,6 +571,12 @@ def diagnostic_odds_ratio(y_true: np.array, y_score: np.array) -> float:
     return dor
 
 
+@classifications.annotate(
+    name="Area under the ROC curve",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def roc_auc_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the AUC for a ground-truth prediction vector pair.
@@ -455,6 +591,12 @@ def roc_auc_score(y_true: np.array, y_score: np.array) -> float:
     return auc
 
 
+@classifications.annotate(
+    name="Accuracy",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def accuracy_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the accuracy score for a ground-truth prediction vector pair.
@@ -469,6 +611,12 @@ def accuracy_score(y_true: np.array, y_score: np.array) -> float:
     return accuracy
 
 
+@classifications.annotate(
+    name="Balanced accuracy",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def balanced_accuracy_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the balanced accuracy for a ground-truth prediction vector pair.
@@ -483,6 +631,12 @@ def balanced_accuracy_score(y_true: np.array, y_score: np.array) -> float:
     return balanced_accuracy
 
 
+@classifications.annotate(
+    name="F_1",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def f1_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the F-1 score for a ground-truth prediction vector pair.
@@ -497,6 +651,12 @@ def f1_score(y_true: np.array, y_score: np.array) -> float:
     return f1
 
 
+@classifications.annotate(
+    name="Precision",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def precision_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the precision for a ground-truth prediction vector pair.
@@ -511,6 +671,12 @@ def precision_score(y_true: np.array, y_score: np.array) -> float:
     return precision
 
 
+@classifications.annotate(
+    name="Recall",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def recall_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the recall for a ground-truth prediction vector pair.
@@ -525,6 +691,12 @@ def recall_score(y_true: np.array, y_score: np.array) -> float:
     return recall
 
 
+@classifications.annotate(
+    name="Average precision",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def average_precision_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate for a ground-truth prediction vector pair.
@@ -534,11 +706,19 @@ def average_precision_score(y_true: np.array, y_score: np.array) -> float:
         y_score (array-like):  An N x 1 array of predicted values.
     Returns:
         average_precision (float): The value of average precision.
+
+    .. seealso::
+        https://en.wikipedia.org/w/index.php?title=Information_retrieval&oldid=793358396#Average_precision
     """
     average_precision = sklearn.metrics.average_precision_score(y_true, y_score)
     return average_precision
 
 
+@classifications.annotate(
+    lower=-1.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def matthews_correlation_coefficient(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate Matthew's correlation coefficient for a ground-truth prediction vector pair.
@@ -553,6 +733,12 @@ def matthews_correlation_coefficient(y_true: np.array, y_score: np.array) -> flo
     return mat_cor
 
 
+@classifications.annotate(
+    name="Area under the precision-recall curve",
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=True,
+)
 def pr_auc_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the precision recall area under the curve (PR AUC) for a ground-truth prediction vector pair.

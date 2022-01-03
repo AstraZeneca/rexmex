@@ -160,7 +160,7 @@ def true_negative_rate(y_true: np.array, y_score: np.array) -> float:
     upper=1.0,
     higher_is_better=True,
     description="TP / (TP + FN)",
-    link="https://en.wikipedia.org/wiki/Sensitivity_(test)"
+    link="https://en.wikipedia.org/wiki/Sensitivity_(test)",
 )
 def sensitivity(y_true: np.array, y_score: np.array) -> float:
     """
@@ -183,7 +183,7 @@ def sensitivity(y_true: np.array, y_score: np.array) -> float:
     upper=1.0,
     higher_is_better=True,
     description="TP / (TP + FN)",
-    link="https://en.wikipedia.org/wiki/Sensitivity_(test)"
+    link="https://en.wikipedia.org/wiki/Sensitivity_(test)",
 )
 def hit_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -204,7 +204,7 @@ def hit_rate(y_true: np.array, y_score: np.array) -> float:
     upper=1.0,
     higher_is_better=True,
     description="TP / (TP + FN)",
-    link="https://en.wikipedia.org/wiki/Sensitivity_(test)"
+    link="https://en.wikipedia.org/wiki/Sensitivity_(test)",
 )
 def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -552,7 +552,7 @@ def fowlkes_mallows_index(y_true: np.array, y_score: np.array) -> float:
     upper=1.0,
     higher_is_better=True,
     description="TPR + TNR - 1",
-    link="https://en.wikipedia.org/wiki/Informedness"
+    link="https://en.wikipedia.org/wiki/Informedness",
 )
 def informedness(y_true: np.array, y_score: np.array) -> float:
     """
@@ -575,7 +575,7 @@ def informedness(y_true: np.array, y_score: np.array) -> float:
     upper=1.0,
     higher_is_better=True,
     description="PPV + NPV - 1",
-    link="https://en.wikipedia.org/wiki/Markedness"
+    link="https://en.wikipedia.org/wiki/Markedness",
 )
 def markedness(y_true: np.array, y_score: np.array) -> float:
     """
@@ -736,7 +736,7 @@ def precision_score(y_true: np.array, y_score: np.array) -> float:
     upper=1.0,
     higher_is_better=True,
     description="TP / (TP + FN)",
-    link="https://en.wikipedia.org/wiki/Sensitivity_(test)"
+    link="https://en.wikipedia.org/wiki/Sensitivity_(test)",
 )
 def recall_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -804,7 +804,7 @@ def matthews_correlation_coefficient(y_true: np.array, y_score: np.array) -> flo
     upper=1.0,
     higher_is_better=True,
     description="Area Under the Precision-Recall Curve",
-    link="https://scikit-learn.org/stable/auto_examples/model_selection/plot_precision_recall.html"
+    link="https://scikit-learn.org/stable/auto_examples/model_selection/plot_precision_recall.html",
 )
 def pr_auc_score(y_true: np.array, y_score: np.array) -> float:
     """

@@ -1,3 +1,4 @@
+import math
 from functools import wraps
 from typing import Optional
 
@@ -67,13 +68,21 @@ class Annotator:
         higher_is_better: bool,
         link: str,
         name: Optional[str] = None,
+        lower_inclusive: bool = True,
+        upper_inclusive: bool = True,
     ):
         """Annotate a classification function."""
+        if math.isinf(upper) and upper_inclusive:
+            raise ValueError("Infinite upper bound must be annotated as exclusive")
+        if math.isinf(lower) and lower_inclusive:
+            raise ValueError("Infinite lower bound must be annotated as exclusive")
 
         def _wrapper(func):
             func.name = name or func.__name__.replace("_", " ").title()
             func.lower = lower
+            func.lower_inclusive = lower_inclusive
             func.upper = upper
+            func.upper_inclusive = upper_inclusive
             func.higher_is_better = higher_is_better
             func.link = link
             return func

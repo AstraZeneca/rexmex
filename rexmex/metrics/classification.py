@@ -392,6 +392,7 @@ def false_omission_rate(y_true: np.array, y_score: np.array) -> float:
 @classifications.annotate(
     lower=0.0,
     upper=float("inf"),
+    upper_inclusive=False,
     higher_is_better=True,
     link="https://en.wikipedia.org/wiki/Positive_likelihood_ratio",
 )
@@ -414,6 +415,7 @@ def positive_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
 @classifications.annotate(
     lower=0.0,
     upper=float("inf"),
+    upper_inclusive=False,
     higher_is_better=False,
     link="https://en.wikipedia.org/wiki/Negative_likelihood_ratio",
 )
@@ -572,6 +574,7 @@ def markedness(y_true: np.array, y_score: np.array) -> float:
 @classifications.annotate(
     lower=0.0,
     upper=float("inf"),
+    upper_inclusive=False,
     higher_is_better=True,
     link="https://en.wikipedia.org/wiki/Diagnostic_odds_ratio",
 )

@@ -59,7 +59,15 @@ def normalize(metric):
 class Annotator:
     """A class to wrap annotations to make the registry pattern easier later."""
 
-    def annotate(self, *, lower: float, upper: float, higher_is_better: bool, name: Optional[str] = None):
+    def annotate(
+        self,
+        *,
+        lower: float,
+        upper: float,
+        higher_is_better: bool,
+        link: str,
+        name: Optional[str] = None,
+    ):
         """Annotate a classification function."""
 
         def _wrapper(func):
@@ -67,6 +75,7 @@ class Annotator:
             func.lower = lower
             func.upper = upper
             func.higher_is_better = higher_is_better
+            func.link = link
             return func
 
         return _wrapper

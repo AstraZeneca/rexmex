@@ -94,6 +94,7 @@ def false_negative(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Specificity_(tests)",
 )
 def specificity(y_true: np.array, y_score: np.array) -> float:
     """
@@ -115,6 +116,7 @@ def specificity(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Specificity_(tests)",
 )
 def selectivity(y_true: np.array, y_score: np.array) -> float:
     """
@@ -134,6 +136,7 @@ def selectivity(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Specificity_(tests)",
 )
 def true_negative_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -153,6 +156,7 @@ def true_negative_rate(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Sensitivity_(test)"
 )
 def sensitivity(y_true: np.array, y_score: np.array) -> float:
     """
@@ -174,6 +178,7 @@ def sensitivity(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Sensitivity_(test)"
 )
 def hit_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -193,6 +198,7 @@ def hit_rate(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Sensitivity_(test)"
 )
 def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -212,6 +218,7 @@ def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Positive_predictive_value",
 )
 def positive_predictive_value(y_true: np.array, y_score: np.array) -> float:
     """
@@ -236,6 +243,7 @@ def positive_predictive_value(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Negative_predictive_value",
 )
 def negative_predictive_value(y_true: np.array, y_score: np.array) -> float:
     """
@@ -257,6 +265,7 @@ def negative_predictive_value(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=False,
+    link="https://en.wikipedia.org/wiki/Type_I_and_type_II_errors#False_positive_and_false_negative_rates",
 )
 def miss_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -278,6 +287,7 @@ def miss_rate(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=False,
+    link="https://en.wikipedia.org/wiki/Type_I_and_type_II_errors#False_positive_and_false_negative_rates",
 )
 def false_negative_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -297,6 +307,7 @@ def false_negative_rate(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=False,
+    link="https://en.wikipedia.org/wiki/False_positive_rate",
 )
 def fall_out(y_true: np.array, y_score: np.array) -> float:
     """
@@ -318,6 +329,7 @@ def fall_out(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=False,
+    link="https://en.wikipedia.org/wiki/False_positive_rate",
 )
 def false_positive_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -337,6 +349,7 @@ def false_positive_rate(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=False,
+    link="https://en.wikipedia.org/wiki/False_discovery_rate",
 )
 def false_discovery_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -358,6 +371,7 @@ def false_discovery_rate(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=False,
+    link="https://en.wikipedia.org/wiki/Positive_and_negative_predictive_values",
 )
 def false_omission_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -379,6 +393,7 @@ def false_omission_rate(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=float("inf"),
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Positive_likelihood_ratio",
 )
 def positive_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     """
@@ -400,6 +415,7 @@ def positive_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=float("inf"),
     higher_is_better=False,
+    link="https://en.wikipedia.org/wiki/Negative_likelihood_ratio",
 )
 def negative_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     """
@@ -421,6 +437,7 @@ def negative_likelihood_ratio(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=False,
+    link="https://en.wikipedia.org/wiki/Prevalence_threshold",
 )
 def prevalence_threshold(y_true: np.array, y_score: np.array) -> float:
     """
@@ -447,6 +464,7 @@ def prevalence_threshold(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://rexmex.readthedocs.io/en/latest/modules/root.html#rexmex.metrics.classification.threat_score",
 )
 def threat_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -469,6 +487,7 @@ def threat_score(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://rexmex.readthedocs.io/en/latest/modules/root.html#rexmex.metrics.classification.threat_score",
 )
 def critical_success_index(y_true: np.array, y_score: np.array) -> float:
     """
@@ -488,6 +507,7 @@ def critical_success_index(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Fowlkes%E2%80%93Mallows_index",
 )
 def fowlkes_mallows_index(y_true: np.array, y_score: np.array) -> float:
     """
@@ -509,6 +529,7 @@ def fowlkes_mallows_index(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Informedness"
 )
 def informedness(y_true: np.array, y_score: np.array) -> float:
     """
@@ -530,6 +551,7 @@ def informedness(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Markedness"
 )
 def markedness(y_true: np.array, y_score: np.array) -> float:
     """
@@ -551,6 +573,7 @@ def markedness(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=float("inf"),
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Diagnostic_odds_ratio",
 )
 def diagnostic_odds_ratio(y_true: np.array, y_score: np.array) -> float:
     """
@@ -576,6 +599,7 @@ def diagnostic_odds_ratio(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Receiver_operating_characteristic",
 )
 def roc_auc_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -596,6 +620,7 @@ def roc_auc_score(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Accuracy",
 )
 def accuracy_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -616,6 +641,7 @@ def accuracy_score(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html",
 )
 def balanced_accuracy_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -636,6 +662,7 @@ def balanced_accuracy_score(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/F1_score",
 )
 def f1_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -656,6 +683,7 @@ def f1_score(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Positive_predictive_value",
 )
 def precision_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -676,6 +704,7 @@ def precision_score(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Sensitivity_(test)"
 )
 def recall_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -696,6 +725,7 @@ def recall_score(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.average_precision_score.html",
 )
 def average_precision_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -718,6 +748,7 @@ def average_precision_score(y_true: np.array, y_score: np.array) -> float:
     lower=-1.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://en.wikipedia.org/wiki/Phi_coefficient",
 )
 def matthews_correlation_coefficient(y_true: np.array, y_score: np.array) -> float:
     """
@@ -738,6 +769,7 @@ def matthews_correlation_coefficient(y_true: np.array, y_score: np.array) -> flo
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
+    link="https://scikit-learn.org/stable/auto_examples/model_selection/plot_precision_recall.html"
 )
 def pr_auc_score(y_true: np.array, y_score: np.array) -> float:
     """

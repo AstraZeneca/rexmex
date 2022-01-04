@@ -1,31 +1,53 @@
-from collections import Counter
-from typing import List
+from typing import List, Tuple
+import numpy as np
 
 
-def item_coverage(relevant_items: List, recommendations: List[List]) -> float:
+def user_coverage(possible_users_items: List[List], recommendations: List[Tuple]) -> float:
     """
-    Calculates the coverage value for items in relevant_items given the collection of recommendations.
-    This is defined as the fraction of items that got recommended at least once, divided by all possible items.
-
-    Example:
-
-        item_coverage([1, 2, 3, 4, 5],
-              [[1, 2, 3], [2, 3, 4], [1, 2, 4]])
-
-        has 80% coverage. One element out of five was never recommended.
+    Calculates the coverage value for users in possible_users_items[0] given the collection of recommendations.
+    Recommendations over users/items not in possible_users_items are discarded.
 
     Args:
-        relevant_items (List): items that could be recommended
-        recommendations (List[List]): collection of recommendations, each sublist is a separate recommendation,
-        e.g. for one user
+        possible_users_items (List[List]): contains exactly TWO sub-lists, first one with users, second with items
+        recommendations (List[Tuple]): contains user-item recommendation tuples, e.g. [(user1, item1),(user2, item2),]
 
-    Returns:
-        coverage (float): Single coverage statistic for the given set of recommendations.
-
+    Returns: user coverage (float): a metric showing the fraction of users who got at least one recommendation out
+    of all possible users.
     """
-    if len(relevant_items) == 0:
-        raise ValueError("relevant_items cannot be empty!")
+    if len(possible_users_items) != 2:
+        raise ValueError("possible_users_items must be of length 2: [users, items]")
 
-    rec_item_counter = Counter([x for y in recommendations for x in y])
-    total_rec_per_item = [rec_item_counter.get(i, 0) for i in relevant_items]
-    return sum([x != 0 for x in total_rec_per_item]) / len(total_rec_per_item)
+    if np.any([len(x) == 0 for x in possible_users_items]):
+        raise ValueError("possible_users_items cannot hold empty lists!")
+
+    possible_users = set(possible_users_items[0])
+    users_with_recommendations = set([x[0] for x in recommendations])
+    users_without_recommendations = possible_users.difference(users_with_recommendations)
+    user_cov = 1 - len(users_without_recommendations) / len(possible_users)
+
+    return round(user_cov, 3)
+
+
+def item_coverage(possible_users_items: List[List], recommendations: List[Tuple]) -> float:
+    """
+    Calculates the coverage value for items in possible_users_items[1] given the collection of recommendations.
+    Recommendations over users/items not in possible_users_items are discarded.
+
+    Args:
+        possible_users_items (List[List]): contains exactly TWO sub-lists, first one with users, second with items
+        recommendations (List[Tuple]): contains user-item recommendation tuples, e.g. [(user1, item1),(user2, item2),]
+
+    Returns: item coverage (float): a metric showing the fraction of items which got recommended at least once.
+    """
+    if len(possible_users_items) != 2:
+        raise ValueError("possible_users_items must be of length 2: [users, items]")
+
+    if np.any([len(x) == 0 for x in possible_users_items]):
+        raise ValueError("possible_users_items cannot hold empty lists!")
+
+    possible_items = set(possible_users_items[1])
+    items_with_recommendations = set([x[1] for x in recommendations])
+    items_without_recommendations = possible_items.difference(items_with_recommendations)
+    item_cov = 1 - len(items_without_recommendations) / len(possible_items)
+
+    return round(item_cov, 3)

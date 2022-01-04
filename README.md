@@ -179,8 +179,10 @@ We are motivated to constantly make RexMex even better.
 RexMex can be installed with the following command after the repo is cloned.
 
 ```sh
-$ python setup.py install
+$ pip install .
 ```
+
+Use `-e/--editable` when developing.
 
 **Installation via pip**
 

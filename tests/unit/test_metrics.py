@@ -95,6 +95,7 @@ class TestClassificationMetrics(unittest.TestCase):
                 self.assert_hasattr(func, "link", str)
                 self.assert_hasattr(func, "lower_inclusive", bool)
                 self.assert_hasattr(func, "upper_inclusive", bool)
+                self.assert_hasattr(func, "binarize", bool)
 
     def assert_hasattr(self, obj, name, cls):
         """Check a function is annotated."""

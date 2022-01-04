@@ -96,6 +96,7 @@ def false_negative(y_true: np.array, y_score: np.array) -> float:
     higher_is_better=True,
     description="TN / (TN + FP)",
     link="https://en.wikipedia.org/wiki/Specificity_(tests)",
+    binarize=True,
 )
 def specificity(y_true: np.array, y_score: np.array) -> float:
     """
@@ -530,6 +531,7 @@ def critical_success_index(y_true: np.array, y_score: np.array) -> float:
     higher_is_better=True,
     description="√PPV x √TPR",
     link="https://en.wikipedia.org/wiki/Fowlkes%E2%80%93Mallows_index",
+    binarize=True,
 )
 def fowlkes_mallows_index(y_true: np.array, y_score: np.array) -> float:
     """
@@ -649,6 +651,7 @@ def roc_auc_score(y_true: np.array, y_score: np.array) -> float:
     higher_is_better=True,
     description="(TP + TN) / (TP + TN + FP + FN)",
     link="https://en.wikipedia.org/wiki/Accuracy",
+    binarize=True,
 )
 def accuracy_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -671,6 +674,7 @@ def accuracy_score(y_true: np.array, y_score: np.array) -> float:
     higher_is_better=True,
     description="An adjusted version of the accuracy for imbalanced datasets",
     link="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.balanced_accuracy_score.html",
+    binarize=True,
 )
 def balanced_accuracy_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -693,6 +697,7 @@ def balanced_accuracy_score(y_true: np.array, y_score: np.array) -> float:
     higher_is_better=True,
     description="2TP / (2TP + FP + FN)",
     link="https://en.wikipedia.org/wiki/F1_score",
+    binarize=True,
 )
 def f1_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -715,6 +720,7 @@ def f1_score(y_true: np.array, y_score: np.array) -> float:
     higher_is_better=True,
     description="TP / (TP + FP)",
     link="https://en.wikipedia.org/wiki/Positive_predictive_value",
+    binarize=True,
 )
 def precision_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -737,6 +743,7 @@ def precision_score(y_true: np.array, y_score: np.array) -> float:
     higher_is_better=True,
     description="TP / (TP + FN)",
     link="https://en.wikipedia.org/wiki/Sensitivity_(test)",
+    binarize=True,
 )
 def recall_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -783,6 +790,7 @@ def average_precision_score(y_true: np.array, y_score: np.array) -> float:
     higher_is_better=True,
     description="A balanced measure applicable even with class imbalance",
     link="https://en.wikipedia.org/wiki/Phi_coefficient",
+    binarize=True,
 )
 def matthews_correlation_coefficient(y_true: np.array, y_score: np.array) -> float:
     """

@@ -211,7 +211,7 @@ $ pytest ./tests/integration -cov rexmex/
 
 **Citation**
 
-If you use RexMex in a scientific publication, we would appreciate citations. Please see GitHubs built in citation tool.
+If you use RexMex in a scientific publication, we would appreciate citations. Please see GitHub's built-in citation tool.
 
 
 

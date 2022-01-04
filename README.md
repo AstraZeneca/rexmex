@@ -202,9 +202,11 @@ $ pip install rexmex --upgrade
 
 **Running tests**
 
+Tests can be run with `tox` with the following:
+
 ```sh
-$ pytest ./tests/unit -cov rexmex/
-$ pytest ./tests/integration -cov rexmex/
+$ pip install tox
+$ tox -e py
 ```
 
 --------------------------------------------------------------------------------

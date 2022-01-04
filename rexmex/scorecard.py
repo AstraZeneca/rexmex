@@ -1,17 +1,23 @@
-from typing import List
+from typing import List, Mapping
 
 import numpy as np
 import pandas as pd
 
-import rexmex.metricset
+from rexmex.utils import Metric
+
+__all__ = [
+    "ScoreCard",
+]
 
 
-class ScoreCard(object):
+class ScoreCard:
     """
-    A score card can be used to aggregate metrics, plot those, and generate performance reports.
+    A scorecard can be used to aggregate metrics, plot those, and generate performance reports.
     """
 
-    def __init__(self, metric_set: rexmex.metricset.MetricSet):
+    metric_set: Mapping[str, Metric]
+
+    def __init__(self, metric_set: Mapping[str, Metric]):
         self.metric_set = metric_set
 
     def get_performance_metrics(self, y_true: np.array, y_score: np.array) -> pd.DataFrame:
@@ -25,8 +31,8 @@ class ScoreCard(object):
             performance_metrics (pd.DataFrame): The performance metrics calculated from the vectors.
         """
         performance_metrics = {name: [metric(y_true, y_score)] for name, metric in self.metric_set.items()}
-        performance_metrics = pd.DataFrame.from_dict(performance_metrics)
-        return performance_metrics
+        performance_metrics_df = pd.DataFrame.from_dict(performance_metrics)
+        return performance_metrics_df
 
     def generate_report(self, scores_to_evaluate: pd.DataFrame, grouping: List[str] = None) -> pd.DataFrame:
         """
@@ -64,9 +70,9 @@ class ScoreCard(object):
             training_set (pd.DataFrame): A dataframe of training data points.
             testing_set (pd.DataFrame): A dataframe of testing data points.
             validation_set (pd.DataFrame): A dataframe of validation data points.
-            columns (list): A list of column names used for cross referencing.
+            columns (list): A list of column names used for cross-referencing.
         Returns:
-            scores (pd.DataFrame): The scores for datapoints which are not in the reference sets.
+            scores (pd.DataFrame): The scores for data points which are not in the reference sets.
         """
         scores_columns = list(scores.columns.tolist())
         in_sample_examples = pd.concat([training_set, testing_set, validation_set])
@@ -78,7 +84,7 @@ class ScoreCard(object):
         """
         A representation of the ScoreCard object.
         """
-        return "ScoreCard()"
+        return f"ScoreCard(metric_set={self.metric_set!r})"
 
     def print_metrics(self):
         """

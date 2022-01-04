@@ -70,6 +70,7 @@ class Annotator:
         name: Optional[str] = None,
         lower_inclusive: bool = True,
         upper_inclusive: bool = True,
+        binarize: bool = False,
     ):
         """Annotate a classification function."""
 
@@ -82,6 +83,7 @@ class Annotator:
             func.higher_is_better = higher_is_better
             func.link = link
             func.description = description
+            func.binarize = binarize
             return func
 
         return _wrapper

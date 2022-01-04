@@ -95,6 +95,7 @@ class TestClassificationMetrics(unittest.TestCase):
                 self.assert_hasattr(func, "link", str)
                 self.assert_hasattr(func, "lower_inclusive", bool)
                 self.assert_hasattr(func, "upper_inclusive", bool)
+                self.assert_hasattr(func, "binarize", bool)
 
     def assert_hasattr(self, obj, name, cls):
         """Check a function is annotated."""
@@ -117,6 +118,7 @@ class TestClassificationMetrics(unittest.TestCase):
         assert true_negative_rate(self.y_true, self.y_score) == 3 / 8
 
     def test_sensitivity(self):
+        assert not sensitivity.binarize
         assert sensitivity(self.y_true, self.y_score) == 4 / 6
         assert hit_rate(self.y_true, self.y_score) == 4 / 6
         assert true_positive_rate(self.y_true, self.y_score) == 4 / 6
@@ -125,9 +127,10 @@ class TestClassificationMetrics(unittest.TestCase):
         assert hit_rate(self.y_true, self.y_score) == recall_score(self.y_true, self.y_score)
         assert true_positive_rate(self.y_true, self.y_score) == recall_score(self.y_true, self.y_score)
 
-    def test_positivie_predictive_value(self):
-        assert hasattr(precision_score, "lower")
+    def test_positive_predictive_value(self):
         assert precision_score.lower == 0.0
+        assert precision_score.upper == 1.0
+        assert precision_score.binarize
 
         assert positive_predictive_value(self.y_true, self.y_score) == precision_score(self.y_true, self.y_score)
         assert positive_predictive_value(self.y_true, self.y_score) == 4 / 9

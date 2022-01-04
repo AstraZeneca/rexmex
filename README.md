@@ -175,8 +175,10 @@ We are motivated to constantly make RexMex even better.
 RexMex can be installed with the following command after the repo is cloned.
 
 ```sh
-$ python setup.py install
+$ pip install .
 ```
+
+Use `-e/--editable` when developing.
 
 **Installation via pip**
 
@@ -196,16 +198,18 @@ $ pip install rexmex --upgrade
 
 **Running tests**
 
+Tests can be run with `tox` with the following:
+
 ```sh
-$ pytest ./tests/unit -cov rexmex/
-$ pytest ./tests/integration -cov rexmex/
+$ pip install tox
+$ tox -e py
 ```
 
 --------------------------------------------------------------------------------
 
 **Citation**
 
-If you use RexMex in a scientific publication, we would appreciate citations. Please see GitHubs built in citation tool.
+If you use RexMex in a scientific publication, we would appreciate citations. Please see GitHub's built-in citation tool.
 
 
 

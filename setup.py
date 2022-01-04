@@ -6,8 +6,9 @@ install_requires = ["numpy", "sklearn", "pandas", "scipy", "scikit-learn"]
 setup_requires = ["pytest-runner"]
 
 
-tests_require = ["pytest", "pytest-cov", "mock", "unittest"]
+tests_require = ["pytest", "pytest-cov"]
 
+extras_require = {"test": tests_require}
 
 keywords = [
     "recommender",
@@ -37,6 +38,7 @@ setup(
     install_requires=install_requires,
     setup_requires=setup_requires,
     tests_require=tests_require,
+    extras_require=extras_require,
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",

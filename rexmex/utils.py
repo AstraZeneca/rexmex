@@ -1,13 +1,17 @@
 from functools import wraps
-from typing import Optional
+from typing import Callable, Optional
 
 import numpy as np
 
 __all__ = [
+    "Metric",
     "binarize",
     "normalize",
     "Annotator",
 ]
+
+#: A function that can be called on y_true, y_score and return a floating point result
+Metric = Callable[[np.array, np.array], float]
 
 
 def binarize(metric):

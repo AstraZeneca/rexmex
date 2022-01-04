@@ -34,9 +34,7 @@ If you find *RexMex* useful in your research, please consider adding the followi
 The following example loads a synthetic dataset which has the mandatory `y_true` and `y_score` keys.  The dataset has binary labels and predictied probability scores. We read the dataset and define a defult `ClassificationMetric` instance for the evaluation of the predictions. Using this metric set we create a score card and get the predictive performance metrics.
 
 ```python
-from rexmex.scorecard import ScoreCard
-from rexmex.dataset import DatasetReader
-from rexmex.metricset import ClassificationMetricSet
+from rexmex import ClassificationMetricSet, DatasetReader, ScoreCard
 
 reader = DatasetReader()
 scores = reader.read_dataset()
@@ -55,9 +53,7 @@ report = score_card.get_performance_metrics(scores["y_true"], scores["y_score"])
 The following more advanced example loads the same synthetic dataset which has the `source_id`, `target_id`, `source_group` and `target group` keys besides the mandatory `y_true` and `y_score`.   Using the `source_group` key  we group the predictions and return a performance metric report.
 
 ```python
-from rexmex.scorecard import ScoreCard
-from rexmex.dataset import DatasetReader
-from rexmex.metricset import ClassificationMetricSet
+from rexmex import ClassificationMetricSet, DatasetReader, ScoreCard
 
 reader = DatasetReader()
 scores = reader.read_dataset()

@@ -227,6 +227,7 @@ def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
     higher_is_better=True,
     description="TP / (TP + FP)",
     link="https://en.wikipedia.org/wiki/Positive_predictive_value",
+    binarize=True,
 )
 def positive_predictive_value(y_true: np.array, y_score: np.array) -> float:
     """

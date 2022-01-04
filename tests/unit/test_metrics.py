@@ -126,9 +126,10 @@ class TestClassificationMetrics(unittest.TestCase):
         assert hit_rate(self.y_true, self.y_score) == recall_score(self.y_true, self.y_score)
         assert true_positive_rate(self.y_true, self.y_score) == recall_score(self.y_true, self.y_score)
 
-    def test_positivie_predictive_value(self):
-        assert hasattr(precision_score, "lower")
+    def test_positive_predictive_value(self):
         assert precision_score.lower == 0.0
+        assert precision_score.upper == 1.0
+        assert not precision_score.binarize
 
         assert positive_predictive_value(self.y_true, self.y_score) == precision_score(self.y_true, self.y_score)
         assert positive_predictive_value(self.y_true, self.y_score) == 4 / 9

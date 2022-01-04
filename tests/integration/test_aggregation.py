@@ -15,13 +15,13 @@ class TestMetricAggregation(unittest.TestCase):
         score_card = ScoreCard(metric_set)
 
         performance_metrics = score_card.generate_report(self.scores)
-        assert performance_metrics.shape == (1, 11)
+        assert performance_metrics.shape == (1, len(metric_set))
 
         performance_metrics = score_card.generate_report(self.scores, grouping=["source_group"])
-        assert performance_metrics.shape == (5, 11)
+        assert performance_metrics.shape == (5, len(metric_set))
 
         performance_metrics = score_card.generate_report(self.scores, grouping=["source_group", "target_group"])
-        assert performance_metrics.shape == (20, 11)
+        assert performance_metrics.shape == (20, len(metric_set))
 
     def test_regression(self):
         metric_set = RatingMetricSet()
@@ -29,23 +29,23 @@ class TestMetricAggregation(unittest.TestCase):
         score_card = ScoreCard(metric_set)
 
         performance_metrics = score_card.generate_report(self.scores)
-        assert performance_metrics.shape == (1, 7)
+        assert performance_metrics.shape == (1, len(metric_set))
 
         performance_metrics = score_card.generate_report(self.scores, grouping=["source_group"])
-        assert performance_metrics.shape == (5, 7)
+        assert performance_metrics.shape == (5, len(metric_set))
 
         performance_metrics = score_card.generate_report(self.scores, grouping=["source_group", "target_group"])
-        assert performance_metrics.shape == (20, 7)
+        assert performance_metrics.shape == (20, len(metric_set))
 
     def test_addition(self):
         metric_set = RatingMetricSet() + ClassificationMetricSet()
         score_card = ScoreCard(metric_set)
 
         performance_metrics = score_card.generate_report(self.scores)
-        assert performance_metrics.shape == (1, 18)
+        assert performance_metrics.shape == (1, len(metric_set))
 
         performance_metrics = score_card.generate_report(self.scores, grouping=["source_group"])
-        assert performance_metrics.shape == (5, 18)
+        assert performance_metrics.shape == (5, len(metric_set))
 
         performance_metrics = score_card.generate_report(self.scores, grouping=["source_group", "target_group"])
-        assert performance_metrics.shape == (20, 18)
+        assert performance_metrics.shape == (20, len(metric_set))

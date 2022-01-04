@@ -73,7 +73,7 @@ report = score_card.generate_report(scores, grouping=["source_group"])
 
 **Scorecard**
 
-A **rexmex** score card allows the reporting of recommender system performance metrics, plotting the performance metrics and saving those. Our framework provides 7 rating, 38 classification, Z ranking, and W coverage metrics.
+A **rexmex** score card allows the reporting of recommender system performance metrics, plotting the performance metrics and saving those. Our framework provides 7 rating, 38 classification, 18 ranking, and 2 coverage metrics.
 
 **Metric Sets**
 
@@ -161,10 +161,7 @@ These metrics assume that the items are scored with raw probabilities (these can
 
 These merics measure how well the recommender system covers the available items in the catalog. In other words measure the diversity of predictions.
 
-* **[Prediction Coverage](docs)**
-* **[Weighted Prediction Coverage](docs)**
-* **[Catalog Coverage](docs)**
-* **[Weighted Catalog Coverage](docs)**
+* **[Item Coverage](https://www.sciencedirect.com/science/article/pii/S163107051930043X)**
 
 
 --------------------------------------------------------------------------------

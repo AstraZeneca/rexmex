@@ -91,6 +91,15 @@ class TestClassificationMetrics(unittest.TestCase):
                 self.assertIsInstance(func.name, str)
                 self.assertTrue(hasattr(func, "higher_is_better"))
                 self.assertIsInstance(func.higher_is_better, bool)
+                self.assert_hasattr(func, "description", str)
+                self.assert_hasattr(func, "link", str)
+                self.assert_hasattr(func, "lower_inclusive", bool)
+                self.assert_hasattr(func, "upper_inclusive", bool)
+
+    def assert_hasattr(self, obj, name, cls):
+        """Check a function is annotated."""
+        self.assertTrue(hasattr(obj, name), msg=f"{name} is unannotated")
+        self.assertIsInstance(getattr(obj, name), cls)
 
     def test_conditions(self):
         assert condition_positive(self.y_true) == 6

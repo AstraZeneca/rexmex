@@ -6,7 +6,7 @@ install_requires = ["numpy", "sklearn", "pandas", "scipy", "scikit-learn"]
 setup_requires = ["pytest-runner"]
 
 
-tests_require = ["pytest", "pytest-cov", "mock", "unittest"]
+tests_require = ["pytest", "pytest-cov"]
 
 
 keywords = [

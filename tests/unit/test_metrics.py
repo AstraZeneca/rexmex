@@ -118,6 +118,7 @@ class TestClassificationMetrics(unittest.TestCase):
         assert true_negative_rate(self.y_true, self.y_score) == 3 / 8
 
     def test_sensitivity(self):
+        assert not sensitivity.binarize
         assert sensitivity(self.y_true, self.y_score) == 4 / 6
         assert hit_rate(self.y_true, self.y_score) == 4 / 6
         assert true_positive_rate(self.y_true, self.y_score) == 4 / 6
@@ -129,7 +130,7 @@ class TestClassificationMetrics(unittest.TestCase):
     def test_positive_predictive_value(self):
         assert precision_score.lower == 0.0
         assert precision_score.upper == 1.0
-        assert not precision_score.binarize
+        assert precision_score.binarize
 
         assert positive_predictive_value(self.y_true, self.y_score) == precision_score(self.y_true, self.y_score)
         assert positive_predictive_value(self.y_true, self.y_score) == 4 / 9

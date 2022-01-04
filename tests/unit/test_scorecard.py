@@ -17,7 +17,7 @@ class TestMetricSet(unittest.TestCase):
         self.score_card = ScoreCard(self.metric_set)
 
     def test_representation(self):
-        assert repr(self.score_card) == "ScoreCard()"
+        assert repr(self.score_card) == "ScoreCard(metric_set=ClassificationMetricSet())"
 
     def test_printing(self):
         self.score_card.metric_set.filter_metrics(["roc_auc", "pr_auc"])

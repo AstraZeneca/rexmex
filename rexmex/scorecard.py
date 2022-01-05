@@ -1,4 +1,4 @@
-from typing import List, Mapping, Collection, Tuple
+from typing import Collection, List, Mapping, Tuple
 
 import numpy as np
 import pandas as pd
@@ -108,7 +108,7 @@ class CoverageScoreCard(ScoreCard):
         self.all_users = all_users
         self.all_items = all_items
 
-    def get_performance_metrics(self, recommendations: List[Tuple]) -> pd.DataFrame:
+    def get_coverage_metrics(self, recommendations: List[Tuple]) -> pd.DataFrame:
         """
         Gets all coverage (performance) values using the defined metric_set. It expects a list of tuples of user/item
         combinations, e.g., [(user_1, item_1), (user_2, item1),]. The space of possible users and items to recommend
@@ -148,12 +148,12 @@ class CoverageScoreCard(ScoreCard):
         if grouping is not None:
             recs_to_evaluate = recs_to_evaluate.groupby(grouping)
             report = recs_to_evaluate.apply(
-                lambda group: self.get_performance_metrics(
+                lambda group: self.get_coverage_metrics(
                     list(group[["user", "item"]].itertuples(index=False, name=None))
                 )
             )
         else:
-            report = self.get_performance_metrics(
+            report = self.get_coverage_metrics(
                 list(recs_to_evaluate[["user", "item"]].itertuples(index=False, name=None))
             )
         return report

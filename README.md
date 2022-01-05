@@ -155,9 +155,11 @@ These metrics assume that the items are scored with raw probabilities (these can
 
 **Coverage Metric Set**
 
-These merics measure how well the recommender system covers the available items in the catalog. In other words measure the diversity of predictions.
+These metrics measure how well the recommender system covers the available items in the catalog and possible users. 
+In other words measure the diversity of predictions.
 
-* **[Item Coverage](https://www.sciencedirect.com/science/article/pii/S163107051930043X)**
+* **[Item Coverage](https://www.bgu.ac.il/~shanigu/Publications/EvaluationMetrics.17.pdf)**
+* **[User Coverage](https://www.bgu.ac.il/~shanigu/Publications/EvaluationMetrics.17.pdf)**
 
 
 --------------------------------------------------------------------------------

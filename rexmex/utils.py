@@ -75,7 +75,7 @@ class Annotator:
         lower_inclusive: bool = True,
         upper_inclusive: bool = True,
         binarize: bool = False,
-        duplicate_of: Optional[Metric] = None
+        duplicate_of: Optional[Metric] = None,
     ):
         """Annotate a classification function."""
 

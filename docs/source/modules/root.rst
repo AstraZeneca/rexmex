@@ -34,6 +34,15 @@ Classification Metrics
     :members:
     :undoc-members:
 
+
+Coverage Metrics
+--------------------
+
+.. automodule:: rexmex.metrics.coverage
+    :members:
+    :undoc-members:
+
+
 Rating Metrics
 --------------------
 

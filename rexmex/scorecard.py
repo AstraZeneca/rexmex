@@ -1,4 +1,4 @@
-from typing import List, Mapping
+from typing import List, Mapping, Collection, Tuple
 
 import numpy as np
 import pandas as pd
@@ -7,6 +7,7 @@ from rexmex.utils import Metric
 
 __all__ = [
     "ScoreCard",
+    "CoverageScoreCard",
 ]
 
 
@@ -91,3 +92,68 @@ class ScoreCard:
         Printing the name of metrics.
         """
         print({k for k in self.metric_set.keys()})
+
+
+class CoverageScoreCard(ScoreCard):
+    """
+    Coverage scorecard can be used to aggregate coverage-related metrics, plot those, and generate performance reports.
+    """
+
+    def __init__(self, metric_set: Mapping[str, Metric], all_users: Collection[str], all_items: Collection[str]):
+        """
+        all_users and all_items define the relevant user and item space.
+        """
+
+        super().__init__(metric_set)
+        self.all_users = all_users
+        self.all_items = all_items
+
+    def get_performance_metrics(self, recommendations: List[Tuple]) -> pd.DataFrame:
+        """
+        Gets all coverage (performance) values using the defined metric_set. It expects a list of tuples of user/item
+        combinations, e.g., [(user_1, item_1), (user_2, item1),]. The space of possible users and items to recommend
+        is defined during initalisation of this class.
+
+        Args:
+            recommendations List[Tuple]: recommendations of items to users, made by the evaluated system.
+            The user has to decide which score or confidence levels to use prior to calling this ScoreCard.
+
+        Returns:
+            performance_metrics (pd.DataFrame): The coverage (performance) metrics calculated from the recommendations.
+
+        """
+        performance_metrics = {
+            name: [metric([self.all_users, self.all_items], recommendations)]
+            for name, metric in self.metric_set.items()
+        }
+        performance_metrics_df = pd.DataFrame.from_dict(performance_metrics)
+        return performance_metrics_df
+
+    def generate_report(self, recs_to_evaluate: pd.DataFrame, grouping: List[str] = None) -> pd.DataFrame:
+        """
+        A method to calculate (aggregated) coverage/performance metrics based on a dataframe of predictions.
+        It assumes that the dataframe has the `user` and `item` keys in the dataframe.
+
+        Args:
+            recs_to_evaluate (pd.DataFrame): A dataframe holding the recommendations (users, items). Contains
+            columns `user` and `item`.
+            grouping (list): A list of performance grouping variable names (e.g., different recommender settings).
+
+        Returns:
+            report (pd.DataFrame): The performance report.
+        """
+        if "user" not in recs_to_evaluate.columns or "item" not in recs_to_evaluate.columns:
+            raise ValueError("recs_to_evaluate has to have user and item columns!")
+
+        if grouping is not None:
+            recs_to_evaluate = recs_to_evaluate.groupby(grouping)
+            report = recs_to_evaluate.apply(
+                lambda group: self.get_performance_metrics(
+                    list(group[["user", "item"]].itertuples(index=False, name=None))
+                )
+            )
+        else:
+            report = self.get_performance_metrics(
+                list(recs_to_evaluate[["user", "item"]].itertuples(index=False, name=None))
+            )
+        return report

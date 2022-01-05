@@ -13,6 +13,7 @@ from rexmex.metrics.classification import (
     roc_auc_score,
     specificity,
 )
+from rexmex.metrics.coverage import item_coverage, user_coverage
 from rexmex.metrics.rating import (
     mean_absolute_error,
     mean_absolute_percentage_error,
@@ -166,8 +167,13 @@ class RatingMetricSet(MetricSet):
 class CoverageMetricSet(MetricSet):
     """
     A set of coverage metrics with the following metrics included:
-
+    | **Item Coverage**
+    | **User Coverage**
     """
+
+    def __init__(self):
+        self["item_coverage"] = item_coverage
+        self["user_coverage"] = user_coverage
 
     def __repr__(self):
         """

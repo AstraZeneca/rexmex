@@ -300,6 +300,7 @@ def miss_rate(y_true: np.array, y_score: np.array) -> float:
     higher_is_better=False,
     description="FN / (FN + TP)",
     link="https://en.wikipedia.org/wiki/Type_I_and_type_II_errors#False_positive_and_false_negative_rates",
+    duplicate_of=miss_rate,
 )
 def false_negative_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -344,6 +345,7 @@ def fall_out(y_true: np.array, y_score: np.array) -> float:
     higher_is_better=False,
     description="FP / (FP + TN)",
     link="https://en.wikipedia.org/wiki/False_positive_rate",
+    duplicate_of=fall_out,
 )
 def false_positive_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -511,6 +513,7 @@ def threat_score(y_true: np.array, y_score: np.array) -> float:
     higher_is_better=True,
     description="TP / (TP + FN + FP)",
     link="https://rexmex.readthedocs.io/en/latest/modules/root.html#rexmex.metrics.classification.threat_score",
+    duplicate_of=threat_score,
 )
 def critical_success_index(y_true: np.array, y_score: np.array) -> float:
     """
@@ -722,6 +725,7 @@ def f1_score(y_true: np.array, y_score: np.array) -> float:
     description="TP / (TP + FP)",
     link="https://en.wikipedia.org/wiki/Positive_predictive_value",
     binarize=True,
+    duplicate_of=positive_predictive_value,
 )
 def precision_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -745,6 +749,7 @@ def precision_score(y_true: np.array, y_score: np.array) -> float:
     description="TP / (TP + FN)",
     link="https://en.wikipedia.org/wiki/Sensitivity_(test)",
     binarize=True,
+    duplicate_of=true_positive_rate,
 )
 def recall_score(y_true: np.array, y_score: np.array) -> float:
     """

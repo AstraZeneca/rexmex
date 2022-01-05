@@ -75,6 +75,7 @@ class Annotator:
         lower_inclusive: bool = True,
         upper_inclusive: bool = True,
         binarize: bool = False,
+        duplicate_of: Optional[Metric] = None
     ):
         """Annotate a classification function."""
 
@@ -88,6 +89,7 @@ class Annotator:
             func.link = link
             func.description = description
             func.binarize = binarize
+            func.duplicate_of = duplicate_of
             return func
 
         return _wrapper

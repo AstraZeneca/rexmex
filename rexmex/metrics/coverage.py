@@ -4,7 +4,7 @@ import numpy as np
 
 
 def user_coverage(
-    possible_users_items: List[List[Union[int, str]], List[Union[int, str]]],
+    possible_users_items: Tuple[List[Union[int, str]], List[Union[int, str]]],
     recommendations: List[Tuple[Union[int, str], Union[int, str]]],
 ) -> float:
     """
@@ -12,7 +12,7 @@ def user_coverage(
     Recommendations over users/items not in possible_users_items are discarded.
 
     Args:
-        possible_users_items (List[List[Union[int, str]], List[Union[int, str]]]): contains exactly TWO sub-lists,
+        possible_users_items (Tuple[List[Union[int, str]], List[Union[int, str]]]): contains exactly TWO sub-lists,
         first one with users, second with items
         recommendations (List[Tuple[Union[int, str], Union[int, str]]]): contains user-item recommendation tuples,
         e.g. [(user1, item1),(user2, item2),]
@@ -35,7 +35,7 @@ def user_coverage(
 
 
 def item_coverage(
-    possible_users_items: List[List[Union[int, str]], List[Union[int, str]]],
+    possible_users_items: Tuple[List[Union[int, str]], List[Union[int, str]]],
     recommendations: List[Tuple[Union[int, str], Union[int, str]]],
 ) -> float:
     """
@@ -43,7 +43,7 @@ def item_coverage(
     Recommendations over users/items not in possible_users_items are discarded.
 
     Args:
-        possible_users_items (List[List[Union[int, str]], List[Union[int, str]]]): contains exactly TWO sub-lists,
+        possible_users_items (Tuple[List[Union[int, str]], List[Union[int, str]]]): contains exactly TWO sub-lists,
         first one with users, second with items
         recommendations (List[Tuple[Union[int, str], Union[int, str]]]): contains user-item recommendation tuples,
         e.g. [(user1, item1),(user2, item2),]

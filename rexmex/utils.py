@@ -83,7 +83,7 @@ class Annotator:
         binarize: bool = False,
         duplicate_of: Optional[Metric] = None,
     ):
-        """Annotate a classification function."""
+        """Annotate a function."""
 
         def _wrapper(func):
             self.funcs[func.__name__] = func
@@ -100,3 +100,25 @@ class Annotator:
             return func
 
         return _wrapper
+
+    def duplicate(
+        self,
+        other,
+        *,
+        name: Optional[str] = None
+    ):
+        """Annotate a function as a duplicate."""
+        return self.annotate(
+            name=name,
+            lower=other.lower,
+            lower_inclusive=other.lower_inclusive,
+            upper=other.upper,
+            upper_inclusive=other.upper_inclusive,
+            link=other.link,
+            description=other.description,
+            binarize=other.binarize,
+            duplicate_of=other,
+            higher_is_better=other.higher_is_better,
+        )
+
+

@@ -96,8 +96,22 @@ def false_negative(y_true: np.array, y_score: np.array) -> float:
     higher_is_better=True,
     description="TN / (TN + FP)",
     link="https://en.wikipedia.org/wiki/Specificity_(tests)",
-    binarize=True,
 )
+def true_negative_rate(y_true: np.array, y_score: np.array) -> float:
+    """
+    Calculate the true negative rate (same as specificity and selectivity).
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_score (array-like):  An N x 1 array of predicted values.
+    Returns:
+        tnr (float): The true negative rate.
+    """
+    tnr = specificity(y_true, y_score)
+    return tnr
+
+
+@classifications.duplicate(true_negative_rate)
 def specificity(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the specificity (same as selectivity and true negative rate).
@@ -114,13 +128,7 @@ def specificity(y_true: np.array, y_score: np.array) -> float:
     return tnr
 
 
-@classifications.annotate(
-    lower=0.0,
-    upper=1.0,
-    higher_is_better=True,
-    description="TN / (TN + FP)",
-    link="https://en.wikipedia.org/wiki/Specificity_(tests)",
-)
+@classifications.duplicate(true_negative_rate)
 def selectivity(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the selectivity (same as specificity and true negative rate).
@@ -133,71 +141,6 @@ def selectivity(y_true: np.array, y_score: np.array) -> float:
     """
     tnr = specificity(y_true, y_score)
     return tnr
-
-
-@classifications.annotate(
-    lower=0.0,
-    upper=1.0,
-    higher_is_better=True,
-    description="TN / (TN + FP)",
-    link="https://en.wikipedia.org/wiki/Specificity_(tests)",
-)
-def true_negative_rate(y_true: np.array, y_score: np.array) -> float:
-    """
-    Calculate the true negative rate (same as specificity and selectivity).
-
-    Args:
-        y_true (array-like): An N x 1 array of ground truth values.
-        y_score (array-like):  An N x 1 array of predicted values.
-    Returns:
-        tnr (float): The true negative rate.
-    """
-    tnr = specificity(y_true, y_score)
-    return tnr
-
-
-@classifications.annotate(
-    lower=0.0,
-    upper=1.0,
-    higher_is_better=True,
-    description="TP / (TP + FN)",
-    link="https://en.wikipedia.org/wiki/Sensitivity_(test)",
-)
-def sensitivity(y_true: np.array, y_score: np.array) -> float:
-    """
-    Calculate the sensitivity (same as recall, hit rate and true positive rate).
-
-    Args:
-        y_true (array-like): An N x 1 array of ground truth values.
-        y_score (array-like):  An N x 1 array of predicted values.
-    Returns:
-        tpr (float): The sensitivity score.
-    """
-    p = condition_positive(y_true)
-    tp = true_positive(y_true, y_score)
-    tpr = tp / p
-    return tpr
-
-
-@classifications.annotate(
-    lower=0.0,
-    upper=1.0,
-    higher_is_better=True,
-    description="TP / (TP + FN)",
-    link="https://en.wikipedia.org/wiki/Sensitivity_(test)",
-)
-def hit_rate(y_true: np.array, y_score: np.array) -> float:
-    """
-    Calculate the hit rate (same as recall, sensitivity and true positive rate).
-
-    Args:
-        y_true (array-like): An N x 1 array of ground truth values.
-        y_score (array-like):  An N x 1 array of predicted values.
-    Returns:
-        tpr (float): The hit rate.
-    """
-    tpr = sensitivity(y_true, y_score)
-    return tpr
 
 
 @classifications.annotate(
@@ -218,6 +161,38 @@ def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
         tpr (float): The true positive rate.
     """
     tpr = sensitivity(y_true, y_score)
+    return tpr
+
+
+@classifications.duplicate(true_positive_rate)
+def hit_rate(y_true: np.array, y_score: np.array) -> float:
+    """
+    Calculate the hit rate (same as recall, sensitivity and true positive rate).
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_score (array-like):  An N x 1 array of predicted values.
+    Returns:
+        tpr (float): The hit rate.
+    """
+    tpr = sensitivity(y_true, y_score)
+    return tpr
+
+
+@classifications.duplicate(true_positive_rate)
+def sensitivity(y_true: np.array, y_score: np.array) -> float:
+    """
+    Calculate the sensitivity (same as recall, hit rate and true positive rate).
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_score (array-like):  An N x 1 array of predicted values.
+    Returns:
+        tpr (float): The sensitivity score.
+    """
+    p = condition_positive(y_true)
+    tp = true_positive(y_true, y_score)
+    tpr = tp / p
     return tpr
 
 
@@ -278,9 +253,24 @@ def negative_predictive_value(y_true: np.array, y_score: np.array) -> float:
     description="FN / (FN + TP)",
     link="https://en.wikipedia.org/wiki/Type_I_and_type_II_errors#False_positive_and_false_negative_rates",
 )
+def false_negative_rate(y_true: np.array, y_score: np.array) -> float:
+    """
+    Calculate the false negative rate (same as miss rate).
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_score (array-like):  An N x 1 array of predicted values.
+    Returns:
+        fnr (float): The false negative rate value.
+    """
+    fnr = miss_rate(y_true, y_score)
+    return fnr
+
+
+@classifications.duplicate(false_negative_rate)
 def miss_rate(y_true: np.array, y_score: np.array) -> float:
     """
-    Calculate the miss rate (same as false negative rate).
+    Calculate the miss rate (duplicate of :func:`false_negative_rate`).
 
     Args:
         y_true (array-like): An N x 1 array of ground truth values.
@@ -298,54 +288,8 @@ def miss_rate(y_true: np.array, y_score: np.array) -> float:
     lower=0.0,
     upper=1.0,
     higher_is_better=False,
-    description="FN / (FN + TP)",
-    link="https://en.wikipedia.org/wiki/Type_I_and_type_II_errors#False_positive_and_false_negative_rates",
-    duplicate_of=miss_rate,
-)
-def false_negative_rate(y_true: np.array, y_score: np.array) -> float:
-    """
-    Calculate the false negative rate (same as miss rate).
-
-    Args:
-        y_true (array-like): An N x 1 array of ground truth values.
-        y_score (array-like):  An N x 1 array of predicted values.
-    Returns:
-        fnr (float): The false negative rate value.
-    """
-    fnr = miss_rate(y_true, y_score)
-    return fnr
-
-
-@classifications.annotate(
-    lower=0.0,
-    upper=1.0,
-    higher_is_better=False,
     description="FP / (FP + TN)",
     link="https://en.wikipedia.org/wiki/False_positive_rate",
-)
-def fall_out(y_true: np.array, y_score: np.array) -> float:
-    """
-    Calculate the fall out (same as false positive rate).
-
-    Args:
-        y_true (array-like): An N x 1 array of ground truth values.
-        y_score (array-like):  An N x 1 array of predicted values.
-    Returns:
-        fpr (float): The fall out value.
-    """
-    fp = false_positive(y_true, y_score)
-    n = condition_negative(y_true)
-    fpr = fp / n
-    return fpr
-
-
-@classifications.annotate(
-    lower=0.0,
-    upper=1.0,
-    higher_is_better=False,
-    description="FP / (FP + TN)",
-    link="https://en.wikipedia.org/wiki/False_positive_rate",
-    duplicate_of=fall_out,
 )
 def false_positive_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -358,6 +302,23 @@ def false_positive_rate(y_true: np.array, y_score: np.array) -> float:
         fpr (float): The false positive rate value.
     """
     fpr = fall_out(y_true, y_score)
+    return fpr
+
+
+@classifications.duplicate(false_positive_rate)
+def fall_out(y_true: np.array, y_score: np.array) -> float:
+    """
+    Calculate the fall out (duplicate of :func:`false_positive_rate`).
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_score (array-like):  An N x 1 array of predicted values.
+    Returns:
+        fpr (float): The fall out value.
+    """
+    fp = false_positive(y_true, y_score)
+    n = condition_negative(y_true)
+    fpr = fp / n
     return fpr
 
 
@@ -507,17 +468,10 @@ def threat_score(y_true: np.array, y_score: np.array) -> float:
     return ts
 
 
-@classifications.annotate(
-    lower=0.0,
-    upper=1.0,
-    higher_is_better=True,
-    description="TP / (TP + FN + FP)",
-    link="https://rexmex.readthedocs.io/en/latest/modules/root.html#rexmex.metrics.classification.threat_score",
-    duplicate_of=threat_score,
-)
+@classifications.duplicate(threat_score)
 def critical_success_index(y_true: np.array, y_score: np.array) -> float:
     """
-    Calculate the critical success index (same as the theat score).
+    Calculate the critical success index (duplicate of :func:`threat_score`).
 
     Args:
         y_true (array-like): An N x 1 array of ground truth values.
@@ -717,15 +671,9 @@ def f1_score(y_true: np.array, y_score: np.array) -> float:
     return f1
 
 
-@classifications.annotate(
+@classifications.duplicate(
+    positive_predictive_value,
     name="Precision",
-    lower=0.0,
-    upper=1.0,
-    higher_is_better=True,
-    description="TP / (TP + FP)",
-    link="https://en.wikipedia.org/wiki/Positive_predictive_value",
-    binarize=True,
-    duplicate_of=positive_predictive_value,
 )
 def precision_score(y_true: np.array, y_score: np.array) -> float:
     """
@@ -741,16 +689,7 @@ def precision_score(y_true: np.array, y_score: np.array) -> float:
     return precision
 
 
-@classifications.annotate(
-    name="Recall",
-    lower=0.0,
-    upper=1.0,
-    higher_is_better=True,
-    description="TP / (TP + FN)",
-    link="https://en.wikipedia.org/wiki/Sensitivity_(test)",
-    binarize=True,
-    duplicate_of=true_positive_rate,
-)
+@classifications.duplicate(true_positive_rate, name="Recall")
 def recall_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the recall for a ground-truth prediction vector pair.

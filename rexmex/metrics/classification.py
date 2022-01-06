@@ -149,7 +149,6 @@ def selectivity(y_true: np.array, y_score: np.array) -> float:
     higher_is_better=True,
     description="TP / (TP + FN)",
     link="https://en.wikipedia.org/wiki/Sensitivity_(test)",
-    binarize=True,
 )
 def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
     """
@@ -197,7 +196,7 @@ def sensitivity(y_true: np.array, y_score: np.array) -> float:
     return tpr
 
 
-@classifications.duplicate(true_positive_rate, name="Recall")
+@classifications.duplicate(true_positive_rate, name="Recall", binarize=True)
 def recall_score(y_true: np.array, y_score: np.array) -> float:
     """
     Calculate the recall for a ground-truth prediction vector pair.
@@ -210,6 +209,11 @@ def recall_score(y_true: np.array, y_score: np.array) -> float:
         y_score (array-like):  An N x 1 array of predicted values.
     Returns:
         recall (float): The value of recall.
+
+    .. note::
+
+        It's surprising that the sklearn implementation of TPR needs
+        to be binarized but the rexmex implementation does not
     """
     recall = sklearn.metrics.recall_score(y_true, y_score)
     return recall

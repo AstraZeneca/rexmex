@@ -101,7 +101,7 @@ class Annotator:
 
         return _wrapper
 
-    def duplicate(self, other, *, name: Optional[str] = None):
+    def duplicate(self, other, *, name: Optional[str] = None, binarize: Optional[bool] = None):
         """Annotate a function as a duplicate."""
         return self.annotate(
             name=name,
@@ -111,7 +111,8 @@ class Annotator:
             upper_inclusive=other.upper_inclusive,
             link=other.link,
             description=other.description,
-            binarize=other.binarize,
             duplicate_of=other,
             higher_is_better=other.higher_is_better,
+            # need to be able to override for sklearn functions
+            binarize=binarize if binarize is not None else other.binarize,
         )

@@ -29,7 +29,6 @@ jobs:
          pip install codecov
          pip install pytest
          pip install tox
-         python setup.py install
       - name: Run code quality tests
         run: |
           tox -e flake8
@@ -38,7 +37,7 @@ jobs:
           tox -e mypy
       - name: Install main package
         run: |
-          pip install -e .[test]
+          tox -e py
       - name: Run test-suite
         run: |
           python -m pytest

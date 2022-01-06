@@ -121,6 +121,9 @@ class TestClassificationMetrics(unittest.TestCase):
 
     def test_sensitivity(self):
         assert not sensitivity.binarize
+        assert hit_rate.duplicate_of == true_positive_rate
+        assert sensitivity.duplicate_of == true_positive_rate
+        assert true_positive_rate.duplicate_of is None
         assert sensitivity(self.y_true, self.y_score) == 4 / 6
         assert hit_rate(self.y_true, self.y_score) == 4 / 6
         assert true_positive_rate(self.y_true, self.y_score) == 4 / 6

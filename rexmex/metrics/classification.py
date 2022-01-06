@@ -99,7 +99,7 @@ def false_negative(y_true: np.array, y_score: np.array) -> float:
 )
 def true_negative_rate(y_true: np.array, y_score: np.array) -> float:
     """
-    Calculate the true negative rate (same as specificity and selectivity).
+    Calculate the true negative rate (duplicated in :func:`specificity` and :func:`selectivity`).
 
     Args:
         y_true (array-like): An N x 1 array of ground truth values.
@@ -114,7 +114,7 @@ def true_negative_rate(y_true: np.array, y_score: np.array) -> float:
 @classifications.duplicate(true_negative_rate)
 def specificity(y_true: np.array, y_score: np.array) -> float:
     """
-    Calculate the specificity (same as selectivity and true negative rate).
+    Calculate the specificity (duplicate of :func:`true_negative_rate`).
 
     Args:
         y_true (array-like): An N x 1 array of ground truth values.
@@ -131,7 +131,7 @@ def specificity(y_true: np.array, y_score: np.array) -> float:
 @classifications.duplicate(true_negative_rate)
 def selectivity(y_true: np.array, y_score: np.array) -> float:
     """
-    Calculate the selectivity (same as specificity and true negative rate).
+    Calculate the selectivity (duplicate of :func:`true_negative_rate`).
 
     Args:
         y_true (array-like): An N x 1 array of ground truth values.
@@ -152,7 +152,7 @@ def selectivity(y_true: np.array, y_score: np.array) -> float:
 )
 def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
     """
-    Calculate the true positive rate (same as recall, sensitivity and hit rate).
+    Calculate the true positive rate (duplicated in :func:`hit_rate`, :func:`sensitivity`, and :func:`recall_score`).
 
     Args:
         y_true (array-like): An N x 1 array of ground truth values.
@@ -167,7 +167,7 @@ def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
 @classifications.duplicate(true_positive_rate)
 def hit_rate(y_true: np.array, y_score: np.array) -> float:
     """
-    Calculate the hit rate (same as recall, sensitivity and true positive rate).
+    Calculate the hit rate (duplicate of :func:`true_positive_rate`).
 
     Args:
         y_true (array-like): An N x 1 array of ground truth values.
@@ -182,7 +182,7 @@ def hit_rate(y_true: np.array, y_score: np.array) -> float:
 @classifications.duplicate(true_positive_rate)
 def sensitivity(y_true: np.array, y_score: np.array) -> float:
     """
-    Calculate the sensitivity (same as recall, hit rate and true positive rate).
+    Calculate the sensitivity (duplicate of :func:`true_positive_rate`).
 
     Args:
         y_true (array-like): An N x 1 array of ground truth values.
@@ -196,6 +196,24 @@ def sensitivity(y_true: np.array, y_score: np.array) -> float:
     return tpr
 
 
+@classifications.duplicate(true_positive_rate, name="Recall")
+def recall_score(y_true: np.array, y_score: np.array) -> float:
+    """
+    Calculate the recall for a ground-truth prediction vector pair.
+
+    Duplicate of :func:`true_positive_rate`, but with alternate
+    implementation from :mod:`sklearn`.
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_score (array-like):  An N x 1 array of predicted values.
+    Returns:
+        recall (float): The value of recall.
+    """
+    recall = sklearn.metrics.recall_score(y_true, y_score)
+    return recall
+
+
 @classifications.annotate(
     lower=0.0,
     upper=1.0,
@@ -206,7 +224,7 @@ def sensitivity(y_true: np.array, y_score: np.array) -> float:
 )
 def positive_predictive_value(y_true: np.array, y_score: np.array) -> float:
     """
-    Calculate the positive predictive value (same as precision).
+    Calculate the positive predictive value (duplicated in :func:`precision_score`).
 
     Args:
         y_true (array-like): An N x 1 array of ground truth values.
@@ -223,6 +241,24 @@ def positive_predictive_value(y_true: np.array, y_score: np.array) -> float:
     return ppv
 
 
+@classifications.duplicate(positive_predictive_value, name="Precision")
+def precision_score(y_true: np.array, y_score: np.array) -> float:
+    """
+    Calculate the precision for a ground-truth prediction vector pair.
+
+    Duplicate of :func:`positive_predictive_value`, but with an
+    alternate implementation using :mod:`sklearn`.
+
+    Args:
+        y_true (array-like): An N x 1 array of ground truth values.
+        y_score (array-like):  An N x 1 array of predicted values.
+    Returns:
+        precision (float): The value of precision.
+    """
+    precision = sklearn.metrics.precision_score(y_true, y_score)
+    return precision
+
+
 @classifications.annotate(
     lower=0.0,
     upper=1.0,
@@ -232,7 +268,7 @@ def positive_predictive_value(y_true: np.array, y_score: np.array) -> float:
 )
 def negative_predictive_value(y_true: np.array, y_score: np.array) -> float:
     """
-    Calculate the negative predictive value (same as precision).
+    Calculate the negative predictive value (duplicted in :func:`precision_score`).
 
     Args:
         y_true (array-like): An N x 1 array of ground truth values.
@@ -255,7 +291,7 @@ def negative_predictive_value(y_true: np.array, y_score: np.array) -> float:
 )
 def false_negative_rate(y_true: np.array, y_score: np.array) -> float:
     """
-    Calculate the false negative rate (same as miss rate).
+    Calculate the false negative rate (duplicated in :func:`miss_rate`).
 
     Args:
         y_true (array-like): An N x 1 array of ground truth values.
@@ -293,7 +329,7 @@ def miss_rate(y_true: np.array, y_score: np.array) -> float:
 )
 def false_positive_rate(y_true: np.array, y_score: np.array) -> float:
     """
-    Calculate the false positive rate (same as fall out).
+    Calculate the false positive rate (duplicated in :func:`false_positive_rate`).
 
     Args:
         y_true (array-like): An N x 1 array of ground truth values.
@@ -669,39 +705,6 @@ def f1_score(y_true: np.array, y_score: np.array) -> float:
     """
     f1 = sklearn.metrics.f1_score(y_true, y_score)
     return f1
-
-
-@classifications.duplicate(
-    positive_predictive_value,
-    name="Precision",
-)
-def precision_score(y_true: np.array, y_score: np.array) -> float:
-    """
-    Calculate the precision for a ground-truth prediction vector pair.
-
-    Args:
-        y_true (array-like): An N x 1 array of ground truth values.
-        y_score (array-like):  An N x 1 array of predicted values.
-    Returns:
-        precision (float): The value of precision.
-    """
-    precision = sklearn.metrics.precision_score(y_true, y_score)
-    return precision
-
-
-@classifications.duplicate(true_positive_rate, name="Recall")
-def recall_score(y_true: np.array, y_score: np.array) -> float:
-    """
-    Calculate the recall for a ground-truth prediction vector pair.
-
-    Args:
-        y_true (array-like): An N x 1 array of ground truth values.
-        y_score (array-like):  An N x 1 array of predicted values.
-    Returns:
-        recall (float): The value of recall.
-    """
-    recall = sklearn.metrics.recall_score(y_true, y_score)
-    return recall
 
 
 @classifications.annotate(

@@ -101,12 +101,7 @@ class Annotator:
 
         return _wrapper
 
-    def duplicate(
-        self,
-        other,
-        *,
-        name: Optional[str] = None
-    ):
+    def duplicate(self, other, *, name: Optional[str] = None):
         """Annotate a function as a duplicate."""
         return self.annotate(
             name=name,
@@ -120,5 +115,3 @@ class Annotator:
             duplicate_of=other,
             higher_is_better=other.higher_is_better,
         )
-
-

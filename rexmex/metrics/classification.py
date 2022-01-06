@@ -149,6 +149,7 @@ def selectivity(y_true: np.array, y_score: np.array) -> float:
     higher_is_better=True,
     description="TP / (TP + FN)",
     link="https://en.wikipedia.org/wiki/Sensitivity_(test)",
+    binarize=True,
 )
 def true_positive_rate(y_true: np.array, y_score: np.array) -> float:
     """

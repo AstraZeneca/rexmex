@@ -123,7 +123,7 @@ class CoverageScoreCard(ScoreCard):
 
         """
         performance_metrics = {
-            name: [metric([self.all_users, self.all_items], recommendations)]
+            name: [metric((self.all_users, self.all_items), recommendations)]
             for name, metric in self.metric_set.items()
         }
         performance_metrics_df = pd.DataFrame.from_dict(performance_metrics)

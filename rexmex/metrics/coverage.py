@@ -1,16 +1,21 @@
-from typing import List, Tuple
+from typing import List, Tuple, Union
 
 import numpy as np
 
 
-def user_coverage(possible_users_items: List[List], recommendations: List[Tuple]) -> float:
+def user_coverage(
+    possible_users_items: List[List[Union[int, str]], List[Union[int, str]]],
+    recommendations: List[Tuple[Union[int, str], Union[int, str]]],
+) -> float:
     """
     Calculates the coverage value for users in possible_users_items[0] given the collection of recommendations.
     Recommendations over users/items not in possible_users_items are discarded.
 
     Args:
-        possible_users_items (List[List]): contains exactly TWO sub-lists, first one with users, second with items
-        recommendations (List[Tuple]): contains user-item recommendation tuples, e.g. [(user1, item1),(user2, item2),]
+        possible_users_items (List[List[Union[int, str]], List[Union[int, str]]]): contains exactly TWO sub-lists,
+        first one with users, second with items
+        recommendations (List[Tuple[Union[int, str], Union[int, str]]]): contains user-item recommendation tuples,
+        e.g. [(user1, item1),(user2, item2),]
 
     Returns: user coverage (float): a metric showing the fraction of users who got at least one recommendation out
     of all possible users.
@@ -29,14 +34,19 @@ def user_coverage(possible_users_items: List[List], recommendations: List[Tuple]
     return round(user_cov, 3)
 
 
-def item_coverage(possible_users_items: List[List], recommendations: List[Tuple]) -> float:
+def item_coverage(
+    possible_users_items: List[List[Union[int, str]], List[Union[int, str]]],
+    recommendations: List[Tuple[Union[int, str], Union[int, str]]],
+) -> float:
     """
     Calculates the coverage value for items in possible_users_items[1] given the collection of recommendations.
     Recommendations over users/items not in possible_users_items are discarded.
 
     Args:
-        possible_users_items (List[List]): contains exactly TWO sub-lists, first one with users, second with items
-        recommendations (List[Tuple]): contains user-item recommendation tuples, e.g. [(user1, item1),(user2, item2),]
+        possible_users_items (List[List[Union[int, str]], List[Union[int, str]]]): contains exactly TWO sub-lists,
+        first one with users, second with items
+        recommendations (List[Tuple[Union[int, str], Union[int, str]]]): contains user-item recommendation tuples,
+        e.g. [(user1, item1),(user2, item2),]
 
     Returns: item coverage (float): a metric showing the fraction of items which got recommended at least once.
     """

@@ -431,9 +431,9 @@ class TestRankingMetrics(unittest.TestCase):
         recommendations1 = (
             list(zip(("u1",) * 3, (1, 2, 3))) + list(zip(("u2",) * 3, (2, 3, 4))) + list(zip(("u3",) * 3, (1, 2, 4)))
         )
-        assert user_coverage([["u1", "u2", "u3"], items], recommendations1) == 1.0
-        assert user_coverage([["u1", "u2", "u3", "u4"], items], recommendations1) == 0.75
-        assert user_coverage([["u4"], items], recommendations1) == 0.0
+        assert user_coverage((["u1", "u2", "u3"], items), recommendations1) == 1.0
+        assert user_coverage((["u1", "u2", "u3", "u4"], items), recommendations1) == 0.75
+        assert user_coverage((["u4"], items), recommendations1) == 0.0
 
     def test_item_coverage(self):
         users = ["u"]  # dummy, not used by this test
@@ -441,6 +441,6 @@ class TestRankingMetrics(unittest.TestCase):
         recommendations1 = (
             list(zip(("u1",) * 3, (1, 2, 3))) + list(zip(("u2",) * 3, (2, 3, 4))) + list(zip(("u3",) * 3, (1, 2, 4)))
         )
-        assert item_coverage([users, [1, 2, 3, 4, 5]], recommendations1) == 0.8
-        assert item_coverage([users, [1, 2, 3, 4]], recommendations1) == 1.0
-        assert item_coverage([users, [999]], recommendations1) == 0.0
+        assert item_coverage((users, [1, 2, 3, 4, 5]), recommendations1) == 0.8
+        assert item_coverage((users, [1, 2, 3, 4]), recommendations1) == 1.0
+        assert item_coverage((users, [999]), recommendations1) == 0.0

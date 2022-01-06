@@ -66,9 +66,6 @@ class Annotator:
     def __init__(self):
         self.funcs = {}
 
-    def __iter__(self):
-        return iter(self.funcs.values())
-
     def annotate(
         self,
         *,
@@ -78,6 +75,7 @@ class Annotator:
         link: str,
         description: str,
         name: Optional[str] = None,
+        key: Optional[str] = None,
         lower_inclusive: bool = True,
         upper_inclusive: bool = True,
         binarize: bool = False,
@@ -85,7 +83,8 @@ class Annotator:
         """Annotate a classification function."""
 
         def _wrapper(func):
-            self.funcs[func.__name__] = func
+            func.key = key or func.__name__
+            self.funcs[func.key] = func
             func.name = name or func.__name__.replace("_", " ").title()
             func.lower = lower
             func.lower_inclusive = lower_inclusive

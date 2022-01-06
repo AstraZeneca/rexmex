@@ -625,6 +625,7 @@ def diagnostic_odds_ratio(y_true: np.array, y_score: np.array) -> float:
 
 @classifications.annotate(
     name="AUC-ROC",
+    key="auc_roc",
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
@@ -647,6 +648,7 @@ def roc_auc_score(y_true: np.array, y_score: np.array) -> float:
 
 @classifications.annotate(
     name="Accuracy",
+    key="accuracy",
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
@@ -670,6 +672,7 @@ def accuracy_score(y_true: np.array, y_score: np.array) -> float:
 
 @classifications.annotate(
     name="Balanced accuracy",
+    key="balanced_accuracy",
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
@@ -693,6 +696,7 @@ def balanced_accuracy_score(y_true: np.array, y_score: np.array) -> float:
 
 @classifications.annotate(
     name="F_1",
+    key="f_1",
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
@@ -716,6 +720,7 @@ def f1_score(y_true: np.array, y_score: np.array) -> float:
 
 @classifications.annotate(
     name="Precision",
+    key="precision",
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
@@ -739,6 +744,7 @@ def precision_score(y_true: np.array, y_score: np.array) -> float:
 
 @classifications.annotate(
     name="Recall",
+    key="recall",
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
@@ -762,6 +768,7 @@ def recall_score(y_true: np.array, y_score: np.array) -> float:
 
 @classifications.annotate(
     name="Average precision",
+    key="average_precision",
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
@@ -809,6 +816,7 @@ def matthews_correlation_coefficient(y_true: np.array, y_score: np.array) -> flo
 
 @classifications.annotate(
     name="AUC-PR",
+    key="auc_pr",
     lower=0.0,
     upper=1.0,
     higher_is_better=True,

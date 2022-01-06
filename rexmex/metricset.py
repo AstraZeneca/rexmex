@@ -92,14 +92,10 @@ class ClassificationMetricSet(MetricSet):
     """
 
     def __init__(self):
-        super().__init__()
-        for func in classifications:
-            name = func.__name__
-            if name.endswith("_score"):
-                name = name[: -len("_score")]
-            if func.binarize:
-                func = binarize(func)
-            self[name] = func
+        super().__init__({
+            key: binarize(func) if func.binarize else func
+            for key, func in classifications.funcs.items()
+        })
 
     def __repr__(self):
         """

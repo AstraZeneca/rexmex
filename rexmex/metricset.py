@@ -1,6 +1,7 @@
 from typing import Collection, List, Tuple
 
 from rexmex.metrics.classification import classifications
+from rexmex.metrics.coverage import item_coverage, user_coverage
 from rexmex.metrics.rating import ratings
 from rexmex.utils import binarize, normalize
 
@@ -133,8 +134,13 @@ class RatingMetricSet(MetricSet):
 class CoverageMetricSet(MetricSet):
     """
     A set of coverage metrics with the following metrics included:
-
+    | **Item Coverage**
+    | **User Coverage**
     """
+
+    def __init__(self):
+        self["item_coverage"] = item_coverage
+        self["user_coverage"] = user_coverage
 
     def __repr__(self):
         """

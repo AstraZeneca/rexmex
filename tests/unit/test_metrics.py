@@ -37,7 +37,7 @@ from rexmex.metrics.classification import (
     true_positive,
     true_positive_rate,
 )
-from rexmex.metrics.coverage import item_coverage
+from rexmex.metrics.coverage import item_coverage, user_coverage
 from rexmex.metrics.ranking import (
     average_precision_at_k,
     average_recall_at_k,
@@ -96,6 +96,8 @@ class MetricTestCase(unittest.TestCase):
                 self.assert_hasattr(func, "lower_inclusive", bool)
                 self.assert_hasattr(func, "upper_inclusive", bool)
                 self.assert_hasattr(func, "binarize", bool)
+                self.assertTrue(hasattr(func, "duplicate_of"))
+                self.assertTrue(func.duplicate_of is None or inspect.isfunction(func.duplicate_of))
 
 
 class TestClassificationMetrics(MetricTestCase):
@@ -129,6 +131,9 @@ class TestClassificationMetrics(MetricTestCase):
 
     def test_sensitivity(self):
         assert not sensitivity.binarize
+        assert hit_rate.duplicate_of == true_positive_rate
+        assert sensitivity.duplicate_of == true_positive_rate
+        assert true_positive_rate.duplicate_of is None
         assert sensitivity(self.y_true, self.y_score) == 4 / 6
         assert hit_rate(self.y_true, self.y_score) == 4 / 6
         assert true_positive_rate(self.y_true, self.y_score) == 4 / 6
@@ -439,8 +444,22 @@ class TestRankingMetrics(unittest.TestCase):
         ndcg = normalized_discounted_cumulative_gain(true_relevance, scores)
         self.assertAlmostEqual(ndcg, 0.6956, 2)
 
+    def test_user_coverage(self):
+        items = ["i"]  # dummy, not used by this test
+
+        recommendations1 = (
+            list(zip(("u1",) * 3, (1, 2, 3))) + list(zip(("u2",) * 3, (2, 3, 4))) + list(zip(("u3",) * 3, (1, 2, 4)))
+        )
+        assert user_coverage((["u1", "u2", "u3"], items), recommendations1) == 1.0
+        assert user_coverage((["u1", "u2", "u3", "u4"], items), recommendations1) == 0.75
+        assert user_coverage((["u4"], items), recommendations1) == 0.0
+
     def test_item_coverage(self):
-        assert item_coverage([1, 2, 3, 4, 5], [[1, 2, 3], [2, 3, 4], [1, 2, 4]]) == 0.8
-        assert item_coverage([1, 2, 3, 4], [[1, 2, 3], [2, 3, 4], [1, 2, 4]]) == 1.0
-        assert item_coverage([999], [[1, 2, 3], [2, 3, 4], [1, 2, 4]]) == 0.0
-        assert item_coverage(["a", "b", "c", "d"], [["a", "b"], ["c"]]) == 0.75
+        users = ["u"]  # dummy, not used by this test
+
+        recommendations1 = (
+            list(zip(("u1",) * 3, (1, 2, 3))) + list(zip(("u2",) * 3, (2, 3, 4))) + list(zip(("u3",) * 3, (1, 2, 4)))
+        )
+        assert item_coverage((users, [1, 2, 3, 4, 5]), recommendations1) == 0.8
+        assert item_coverage((users, [1, 2, 3, 4]), recommendations1) == 1.0
+        assert item_coverage((users, [999]), recommendations1) == 0.0

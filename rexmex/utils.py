@@ -79,8 +79,9 @@ class Annotator:
         lower_inclusive: bool = True,
         upper_inclusive: bool = True,
         binarize: bool = False,
+        duplicate_of: Optional[Metric] = None,
     ):
-        """Annotate a classification function."""
+        """Annotate a function."""
 
         def _wrapper(func):
             func.key = key or func.__name__
@@ -94,6 +95,23 @@ class Annotator:
             func.link = link
             func.description = description
             func.binarize = binarize
+            func.duplicate_of = duplicate_of
             return func
 
         return _wrapper
+
+    def duplicate(self, other, *, name: Optional[str] = None, binarize: Optional[bool] = None):
+        """Annotate a function as a duplicate."""
+        return self.annotate(
+            name=name,
+            lower=other.lower,
+            lower_inclusive=other.lower_inclusive,
+            upper=other.upper,
+            upper_inclusive=other.upper_inclusive,
+            link=other.link,
+            description=other.description,
+            duplicate_of=other,
+            higher_is_better=other.higher_is_better,
+            # need to be able to override for sklearn functions
+            binarize=binarize if binarize is not None else other.binarize,
+        )

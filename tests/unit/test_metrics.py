@@ -64,19 +64,19 @@ from rexmex.metrics.rating import (
 )
 
 
-class TestClassificationMetrics(unittest.TestCase):
-    """
-    Newly defined classification metric behaviour tests.
-    """
+class MetricTestCase(unittest.TestCase):
+    """A mixin with tests for metrics."""
 
-    def setUp(self):
-        self.y_true = np.array([0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0])
-        self.y_score = np.array([1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0])
+    def assert_hasattr(self, obj, name, cls):
+        """Check a function is annotated."""
+        self.assertTrue(hasattr(obj, name), msg=f"{name} is unannotated")
+        self.assertIsInstance(getattr(obj, name), cls)
 
-    def test_annotations(self):
+    def assert_annotations(self, module, skip=None):
         """Check that all functions in the classification module are annotated."""
-        skip = {true_positive, false_positive, false_negative, true_negative}
-        for name, func in rexmex.metrics.classification.__dict__.items():
+        if skip is None:
+            skip = set()
+        for name, func in module.__dict__.items():
             if not inspect.isfunction(func) or func in skip:
                 continue
             parameters = inspect.signature(func).parameters
@@ -97,10 +97,20 @@ class TestClassificationMetrics(unittest.TestCase):
                 self.assert_hasattr(func, "upper_inclusive", bool)
                 self.assert_hasattr(func, "binarize", bool)
 
-    def assert_hasattr(self, obj, name, cls):
-        """Check a function is annotated."""
-        self.assertTrue(hasattr(obj, name), msg=f"{name} is unannotated")
-        self.assertIsInstance(getattr(obj, name), cls)
+
+class TestClassificationMetrics(MetricTestCase):
+    """
+    Newly defined classification metric behaviour tests.
+    """
+
+    def setUp(self):
+        self.y_true = np.array([0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0])
+        self.y_score = np.array([1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0])
+
+    def test_annotations(self):
+        """Check that all functions in the classification module are annotated."""
+        skip = {true_positive, false_positive, false_negative, true_negative}
+        self.assert_annotations(rexmex.metrics.classification)
 
     def test_conditions(self):
         assert condition_positive(self.y_true) == 6
@@ -170,7 +180,7 @@ class TestClassificationMetrics(unittest.TestCase):
         assert diagnostic_odds_ratio(self.y_true, self.y_score) == 6 / 5
 
 
-class TestRatingMetrics(unittest.TestCase):
+class TestRatingMetrics(MetricTestCase):
     """
     Newly defined rating metric behaviour tests.
     """
@@ -178,6 +188,10 @@ class TestRatingMetrics(unittest.TestCase):
     def setUp(self):
         self.y_true = np.array([0, 2, 3])
         self.y_score = np.array([4, 7, 8])
+
+    def test_annotations(self):
+        """Check that all functions in the rating module are annotated."""
+        self.assert_annotations(rexmex.metrics.rating)
 
     def test_metrics(self):
         assert root_mean_squared_error(self.y_true, self.y_score) == 22 ** 0.5

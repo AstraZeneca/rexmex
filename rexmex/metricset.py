@@ -1,15 +1,7 @@
 from typing import Collection, List, Tuple
 
 from rexmex.metrics.classification import classifications
-from rexmex.metrics.rating import (
-    mean_absolute_error,
-    mean_absolute_percentage_error,
-    mean_squared_error,
-    pearson_correlation_coefficient,
-    r2_score,
-    root_mean_squared_error,
-    symmetric_mean_absolute_percentage_error,
-)
+from rexmex.metrics.rating import ratings
 from rexmex.utils import binarize, normalize
 
 
@@ -118,13 +110,7 @@ class RatingMetricSet(MetricSet):
     """
 
     def __init__(self):
-        self["mae"] = mean_absolute_error
-        self["mse"] = mean_squared_error
-        self["rmse"] = root_mean_squared_error
-        self["mape"] = mean_absolute_percentage_error
-        self["smape"] = symmetric_mean_absolute_percentage_error
-        self["r_squared"] = r2_score
-        self["pearson_correlation"] = pearson_correlation_coefficient
+        super().__init__(ratings.funcs)
 
     def normalize_metrics(self):
         """

@@ -96,6 +96,8 @@ class TestClassificationMetrics(unittest.TestCase):
                 self.assert_hasattr(func, "lower_inclusive", bool)
                 self.assert_hasattr(func, "upper_inclusive", bool)
                 self.assert_hasattr(func, "binarize", bool)
+                self.assertTrue(hasattr(func, "duplicate_of"))
+                self.assertTrue(func.duplicate_of is None or inspect.isfunction(func.duplicate_of))
 
     def assert_hasattr(self, obj, name, cls):
         """Check a function is annotated."""
@@ -119,6 +121,9 @@ class TestClassificationMetrics(unittest.TestCase):
 
     def test_sensitivity(self):
         assert not sensitivity.binarize
+        assert hit_rate.duplicate_of == true_positive_rate
+        assert sensitivity.duplicate_of == true_positive_rate
+        assert true_positive_rate.duplicate_of is None
         assert sensitivity(self.y_true, self.y_score) == 4 / 6
         assert hit_rate(self.y_true, self.y_score) == 4 / 6
         assert true_positive_rate(self.y_true, self.y_score) == 4 / 6

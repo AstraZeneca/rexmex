@@ -112,7 +112,7 @@ class TestClassificationMetrics(MetricTestCase):
     def test_annotations(self):
         """Check that all functions in the classification module are annotated."""
         skip = {true_positive, false_positive, false_negative, true_negative}
-        self.assert_annotations(rexmex.metrics.classification)
+        self.assert_annotations(rexmex.metrics.classification, skip=skip)
 
     def test_conditions(self):
         assert condition_positive(self.y_true) == 6

@@ -622,8 +622,8 @@ def diagnostic_odds_ratio(y_true: np.array, y_score: np.array) -> float:
 
 
 @classifications.annotate(
-    name="AUC-ROC",
-    key="auc_roc",
+    name="ROC-AUC",
+    key="roc_auc",
     lower=0.0,
     upper=1.0,
     higher_is_better=True,
@@ -765,8 +765,8 @@ def matthews_correlation_coefficient(y_true: np.array, y_score: np.array) -> flo
 
 
 @classifications.annotate(
-    name="AUC-PR",
-    key="auc_pr",
+    name="PR-AUC",
+    key="pr_auc",
     lower=0.0,
     upper=1.0,
     higher_is_better=True,

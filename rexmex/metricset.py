@@ -85,10 +85,9 @@ class ClassificationMetricSet(MetricSet):
     """
 
     def __init__(self):
-        super().__init__({
-            key: binarize(func) if func.binarize else func
-            for key, func in classifications.funcs.items()
-        })
+        super().__init__(
+            {key: binarize(func) if func.binarize else func for key, func in classifications.funcs.items()}
+        )
 
     def __repr__(self):
         """

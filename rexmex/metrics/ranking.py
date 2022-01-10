@@ -7,7 +7,11 @@ from scipy import stats
 from sklearn.metrics import dcg_score, ndcg_score
 from sklearn.metrics.pairwise import cosine_similarity
 
+from rexmex.utils import Annotator
+
 X = TypeVar("X")
+
+rankings = Annotator()
 
 
 def reciprocal_rank(relevant_item: X, recommendation: Sequence[X]) -> float:
@@ -26,6 +30,13 @@ def reciprocal_rank(relevant_item: X, recommendation: Sequence[X]) -> float:
     raise ValueError("relevant item did not appear in recommendation")
 
 
+@rankings.annotate(
+    lower=0.0,
+    upper=1.0,
+    higher_is_better=False,
+    description=r"\frac{1}{n}\sum_{i=1}^n r_i^{-1}",
+    link="https://en.wikipedia.org/wiki/Mean_reciprocal_rank"
+)
 def mean_reciprocal_rank(relevant_items: List, recommendation: List):
     """
     Calculate the mean reciprocal rank (MRR) of items in a ranked list.
@@ -61,6 +72,13 @@ def rank(relevant_item: X, recommendation: Sequence[X]) -> float:
     raise ValueError("relevant item did not appear in recommendation")
 
 
+@rankings.annotate(
+    lower=1.0,
+    upper=float("inf"),
+    higher_is_better=False,
+    description=r"\frac{1}{n}\sum_{i=1}^n r_i",
+    link="https://en.wikipedia.org/wiki/Knowledge_graph_embedding#Mean_rank_%28MR%29"
+)
 def mean_rank(relevant_items: Sequence[X], recommendation: Sequence[X]) -> float:
     """
     Calculate the arithmetic mean rank (MR) of items in a ranked list.

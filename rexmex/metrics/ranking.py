@@ -32,7 +32,7 @@ def mean_reciprocal_rank(relevant_items: List, recommendation: List):
 
     Args:
         relevant_items (array-like): An N x 1 array of relevant items.
-        predicted (array-like):  An N x 1 array of ordered items.
+        recommendation (array-like): An N x 1 array of ordered items.
     Returns:
         MRR (float): The mean reciprocal rank of the relevant items in a predicted.
     """
@@ -67,7 +67,7 @@ def mean_rank(relevant_items: Sequence[X], recommendation: Sequence[X]) -> float
 
     Args:
         relevant_items: An N x 1 sequence of relevant items.
-        predicted:  An N x 1 sequence of ordered items.
+        recommendation: An N x 1 sequence of ordered items.
     Returns:
         : The mean rank of the relevant items in a predicted.
     """
@@ -80,7 +80,7 @@ def gmean_rank(relevant_items: Sequence[X], recommendation: Sequence[X]) -> floa
 
     Args:
         relevant_items: An N x 1 sequence of relevant items.
-        predicted:  An N x 1 sequence of ordered items.
+        recommendation: An N x 1 sequence of ordered items.
     Returns:
         : The mean reciprocal rank of the relevant items in a predicted.
     """
@@ -93,7 +93,7 @@ def average_precision_at_k(relevant_items: np.array, recommendation: np.array, k
 
     Args:
         relevant_items (array-like): An N x 1 array of relevant items.
-        predicted (array-like):  An N x 1 array of ordered items.
+        recommendation (array-like): An N x 1 array of ordered items.
         k (int): the number of items considered in the predicted list.
     Returns:
         AP@K (float): The average precision @ k of a predicted list.
@@ -211,7 +211,7 @@ def hits_at_k(relevant_items: np.array, recommendation: np.array, k=10):
 
     Args:
         relevant_items (array-like): An 1 x N array of relevant items.
-        predicted (array-like):  An 1 x N array of predicted arrays
+        recommendation (array-like): An 1 x N array of predicted arrays
         k (int): the number of items considered in the predicted list
     Returns:
         HITS@K (float):  The number of relevant items in the first k items of a prediction.
@@ -243,7 +243,7 @@ def spearmans_rho(relevant_items: np.array, recommendation: np.array):
 
 def kendall_tau(relevant_items: np.array, recommendation: np.array):
     """
-    Calculate the Kendall's tau, measuring the correspondance between two lists.
+    Calculate the Kendall's tau, measuring the correspondence between two lists.
 
     Args:
         relevant_items (array-like): An 1 x N array of items.
@@ -265,7 +265,7 @@ def intra_list_similarity(recommendations: List[list], items_feature_matrix: np.
     Args:
         recommendations (List[list]): A M x N array of predicted, where M is the number
                                of predicted and N the number of recommended items
-        features (matrix-link): A N x D matrix, where N is the number of items and D the
+        items_feature_matrix (matrix-link): A N x D matrix, where N is the number of items and D the
                                 number of features representing one item
 
     Returns:

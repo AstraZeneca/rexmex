@@ -70,7 +70,7 @@ def pearson_correlation_coefficient(y_true: np.array, y_score: np.array) -> floa
         rho (float): The value of the correlation coefficient.
     """
     rho = scipy.stats.stats.pearsonr(y_true, y_score)
-    return rho
+    return rho[0]
 
 
 def root_mean_squared_error(y_true: np.array, y_score: np.array) -> float:

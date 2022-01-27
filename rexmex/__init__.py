@@ -8,4 +8,4 @@ from rexmex.metricset import (  # noqa:F401
     RankingMetricSet,
     RatingMetricSet,
 )
-from rexmex.scorecard import ScoreCard  # noqa:F401
+from rexmex.scorecard import CoverageScoreCard, ScoreCard  # noqa:F401

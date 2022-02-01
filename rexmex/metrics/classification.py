@@ -481,7 +481,7 @@ def prevalence_threshold(y_true: np.array, y_score: np.array) -> float:
     """
     fpr = false_positive_rate(y_true, y_score)
     tpr = true_positive_rate(y_true, y_score)
-    pthr = (fpr ** 0.5) / (fpr ** 0.5 + tpr ** 0.5)
+    pthr = (fpr**0.5) / (fpr**0.5 + tpr**0.5)
     return pthr
 
 

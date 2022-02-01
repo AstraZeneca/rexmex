@@ -409,7 +409,7 @@ def normalized_distance_based_performance_measure(relevant_items: List, recommen
 
         C = np.sign(item1_pred_rank - item2_pred_rank) * np.sign(item1_relevant_items_rank - item2_relevant_items_rank)
 
-        C_u += C ** 2
+        C_u += C**2
 
         if C < 0:
             C_minus += 1

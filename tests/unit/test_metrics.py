@@ -185,7 +185,7 @@ class TestRatingMetrics(unittest.TestCase):
         self.y_score = np.array([4, 7, 8])
 
     def test_metrics(self):
-        assert root_mean_squared_error(self.y_true, self.y_score) == 22 ** 0.5
+        assert root_mean_squared_error(self.y_true, self.y_score) == (22 ** 0.5)
         assert round(symmetric_mean_absolute_percentage_error(self.y_true, self.y_score)) == 134
 
 

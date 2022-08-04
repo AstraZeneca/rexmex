@@ -22,6 +22,7 @@ jobs:
       - name: Run installation.
         run: |
          pip install isort
+         pip install flake8-isort
          pip install codecov
          pip install pytest
          pip install tox

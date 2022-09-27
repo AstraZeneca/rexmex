@@ -12,20 +12,20 @@ on:
 jobs:
     build:
       runs-on: ubuntu-latest
+      defaults:
+        run:
+          shell: bash -l {0}
       steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v1
+      - uses: conda-incubator/setup-miniconda@v2
         with:
-          python-version: 3.7.12
-      - uses: s-weigand/setup-conda@v1
-        with:
-          activate-conda: true
-          python-version: 3.7
+          miniconda-version: 'latest'
+          python-version: 3.8.13
+          activate-environment: rexmex-ci
       - run: conda --version
       - run: which python
       - name: Run installation.
         run: |
-         conda install -y scipy
          pip install codecov
          pip install pytest
          pip install tox

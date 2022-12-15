@@ -1,4 +1,4 @@
-from typing import Collection, List, Mapping, Tuple
+from typing import Collection, List, Mapping, Optional, Tuple
 
 import numpy as np
 import pandas as pd
@@ -35,7 +35,7 @@ class ScoreCard:
         performance_metrics_df = pd.DataFrame.from_dict(performance_metrics)
         return performance_metrics_df
 
-    def generate_report(self, scores_to_evaluate: pd.DataFrame, grouping: List[str] = None) -> pd.DataFrame:
+    def generate_report(self, scores_to_evaluate: pd.DataFrame, grouping: Optional[List[str]] = None) -> pd.DataFrame:
         """
         A method to calculate (aggregated) performance metrics based
         on a dataframe of ground truth and predictions. It assumes that the dataframe has the `y_true`
@@ -129,7 +129,7 @@ class CoverageScoreCard(ScoreCard):
         performance_metrics_df = pd.DataFrame.from_dict(performance_metrics)
         return performance_metrics_df
 
-    def generate_report(self, recs_to_evaluate: pd.DataFrame, grouping: List[str] = None) -> pd.DataFrame:
+    def generate_report(self, recs_to_evaluate: pd.DataFrame, grouping: Optional[List[str]] = None) -> pd.DataFrame:
         """
         A method to calculate (aggregated) coverage/performance metrics based on a dataframe of predictions.
         It assumes that the dataframe has the `user` and `item` keys in the dataframe.

@@ -1,4 +1,4 @@
-from typing import Collection, List, Mapping, Tuple
+from typing import Collection, List, Mapping, Optional, Tuple
 
 import numpy as np
 import pandas as pd
@@ -129,7 +129,7 @@ class CoverageScoreCard(ScoreCard):
         performance_metrics_df = pd.DataFrame.from_dict(performance_metrics)
         return performance_metrics_df
 
-    def generate_report(self, recs_to_evaluate: pd.DataFrame, grouping: List[str] = []) -> pd.DataFrame:
+    def generate_report(self, recs_to_evaluate: pd.DataFrame, grouping: Optional[List[str]] = None) -> pd.DataFrame:
         """
         A method to calculate (aggregated) coverage/performance metrics based on a dataframe of predictions.
         It assumes that the dataframe has the `user` and `item` keys in the dataframe.
@@ -145,7 +145,7 @@ class CoverageScoreCard(ScoreCard):
         if "user" not in recs_to_evaluate.columns or "item" not in recs_to_evaluate.columns:
             raise ValueError("recs_to_evaluate has to have user and item columns!")
 
-        if grouping:
+        if grouping is not None:
             recs_to_evaluate = recs_to_evaluate.groupby(grouping)
             report = recs_to_evaluate.apply(
                 lambda group: self.get_coverage_metrics(

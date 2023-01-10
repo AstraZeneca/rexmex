@@ -26,7 +26,7 @@ keywords = [
 setup(
     name="rexmex",
     packages=find_packages(),
-    version="0.1.2",
+    version="0.1.3",
     license="Apache License, Version 2.0",
     description="A General Purpose Recommender Metrics Library for Fair Evaluation.",
     author="Benedek Rozemberczki, Sebastian Nilsson, Piotr Grabowski, Charles Tapley Hoyt, Gavin Edwards",

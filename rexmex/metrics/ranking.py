@@ -224,7 +224,7 @@ def hits_at_k(relevant_items: np.array, recommendation: np.array, k=10):
         if item in relevant_items and item not in recommendation[:i]:
             hits += 1.0
 
-    return hits / len(recommendation)
+    return hits / len(relevant_items)
 
 
 def spearmans_rho(relevant_items: np.array, recommendation: np.array):

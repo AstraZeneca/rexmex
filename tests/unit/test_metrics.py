@@ -366,7 +366,6 @@ class TestRankingMetrics(unittest.TestCase):
         assert sim == 0.5
 
     def test_personalization(self):
-
         rec1 = [0, 0, 0]
         rec2 = [1, 1, 1]
         recommendations = [rec1, rec2]
@@ -378,9 +377,7 @@ class TestRankingMetrics(unittest.TestCase):
         assert personalization(recommendations) == 0.0
 
     def test_novelty(self):
-
         # TODO: Better test cases?
-
         # users see the same items, novelty -> 0
         rec1 = [1, 1, 1]
         rec2 = [1, 1, 1]
@@ -398,7 +395,6 @@ class TestRankingMetrics(unittest.TestCase):
         self.assertAlmostEqual(nov2, 1, 2)
 
     def test_NDPM(self):
-
         # Ranking is fully correct
         actual = [1, 2, 3]
         system = [1, 2, 3]

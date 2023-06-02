@@ -254,7 +254,6 @@ class TestRankingMetrics(unittest.TestCase):
         self.assertAlmostEqual(expected_gmr, gmr, 3)
 
     def test_average_percision_at_k(self):
-
         actual = [1, 2, 3]
         predicted = [1, 5, 4, 3, 2]
 

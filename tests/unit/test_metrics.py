@@ -254,7 +254,6 @@ class TestRankingMetrics(unittest.TestCase):
         self.assertAlmostEqual(expected_gmr, gmr, 3)
 
     def test_average_percision_at_k(self):
-
         actual = [1, 2, 3]
         predicted = [1, 5, 4, 3, 2]
 
@@ -292,7 +291,6 @@ class TestRankingMetrics(unittest.TestCase):
         self.assertAlmostEqual(map_10, (0.62 + 0.44) / 2, 2)
 
     def test_average_recall_at_k(self):
-
         relevant_items = [1]
         ranking = [1, 1, 1]
         recall = average_recall_at_k(relevant_items, ranking)
@@ -368,7 +366,6 @@ class TestRankingMetrics(unittest.TestCase):
         assert sim == 0.5
 
     def test_personalization(self):
-
         rec1 = [0, 0, 0]
         rec2 = [1, 1, 1]
         recommendations = [rec1, rec2]
@@ -380,9 +377,7 @@ class TestRankingMetrics(unittest.TestCase):
         assert personalization(recommendations) == 0.0
 
     def test_novelty(self):
-
         # TODO: Better test cases?
-
         # users see the same items, novelty -> 0
         rec1 = [1, 1, 1]
         rec2 = [1, 1, 1]
@@ -400,7 +395,6 @@ class TestRankingMetrics(unittest.TestCase):
         self.assertAlmostEqual(nov2, 1, 2)
 
     def test_NDPM(self):
-
         # Ranking is fully correct
         actual = [1, 2, 3]
         system = [1, 2, 3]

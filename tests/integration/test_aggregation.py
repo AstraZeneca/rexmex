@@ -51,7 +51,6 @@ class TestMetricAggregation(unittest.TestCase):
         assert performance_metrics.shape == (20, len(metric_set))
 
     def test_coverage(self):
-
         # change example dataset columns to fit requirements of coverage metrics
         cov_scores = self.scores.copy()
         cov_scores.rename({"source_id": "user", "target_id": "item"}, axis=1, inplace=True)

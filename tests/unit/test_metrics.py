@@ -292,7 +292,6 @@ class TestRankingMetrics(unittest.TestCase):
         self.assertAlmostEqual(map_10, (0.62 + 0.44) / 2, 2)
 
     def test_average_recall_at_k(self):
-
         relevant_items = [1]
         ranking = [1, 1, 1]
         recall = average_recall_at_k(relevant_items, ranking)

@@ -5,7 +5,6 @@ from rexmex.dataset import DatasetReader
 
 class TestErdosRenyiDataset(unittest.TestCase):
     def test_erdos_renyi_structure(self):
-
         reader = DatasetReader()
         dataset = reader.read_dataset()
 

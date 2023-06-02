@@ -20,7 +20,7 @@ jobs:
       - uses: conda-incubator/setup-miniconda@v2
         with:
           miniconda-version: 'latest'
-          python-version: 3.9
+          python-version: 3.7
           activate-environment: rexmex-ci
       - run: conda --version
       - run: which python

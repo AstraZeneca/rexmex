@@ -32,7 +32,7 @@ setup(
     author="Benedek Rozemberczki, Sebastian Nilsson, Piotr Grabowski, Charles Tapley Hoyt, Gavin Edwards",
     author_email="bikg@astrazeneca.com",
     url="https://github.com/AstraZeneca/rexmex",
-    download_url="https://github.com/AstraZeneca/rexmex/archive/v_00102.tar.gz",
+    download_url="https://github.com/AstraZeneca/rexmex/archive/v_00103.tar.gz",
     keywords=keywords,
     install_requires=install_requires,
     setup_requires=setup_requires,
